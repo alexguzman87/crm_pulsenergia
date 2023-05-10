@@ -13,7 +13,7 @@ class AuthController extends Controller
             if(Auth::check()){
                 return redirect('/home');
             }
-            return view ('auth-signin-cover');
+            return view ('auth/login');
     }
     
     public function login(LoginRequest $request){
@@ -33,6 +33,10 @@ class AuthController extends Controller
 
         Auth::logout();
 
-        return view('auth-signout-cover'); 
+        return view('auth/logout'); 
+    }
+
+    public function create (){
+        return view('index');
     }
 }

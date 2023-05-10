@@ -32,11 +32,25 @@
                     <div class="collapse navbar-collapse" id="topnav-menu-content">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link dropdown-toggle arrow-none" href="index" id="topnav-dashboard" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle arrow-none" href="/" id="topnav-dashboard" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="bx bx-home-circle icon"></i>
                                     <span data-key="t-dashboard">Dashboard</span>
                                 </a>
                             </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-pages" role="button">
+                                    <i class="bx bx-user-circle icon"></i>
+                                    <span data-key="t-apps">Usuarios</span>
+                                    <div class="arrow-down"></div>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="topnav-pages">
+
+                                    <a href="/user" class="dropdown-item" data-key="t-calendar">Usuarios</a>
+                                    <a href="/user_create" class="dropdown-item" data-key="t-chat">Crear Usuarios</a>
+                                </div>
+                            </li>
+
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-uielement" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="bx bx-tone icon"></i>
