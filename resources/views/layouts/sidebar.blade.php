@@ -4,21 +4,21 @@
 
      <!-- LOGO -->
      <div class="navbar-brand-box">
-        <a href="index" class="logo logo-dark">
+        <a href="/" class="logo logo-dark">
             <span class="logo-sm">
-                <img src="{{URL::asset('assets/images/logo-sm.svg')}}" alt="" height="26">
+                <img src="{{URL::asset('assets/images/logoEbora.png')}}" alt="" height="30">
             </span>
             <span class="logo-lg">
-                <img src="{{URL::asset('assets/images/logo-sm.svg')}}" alt="" height="26"> <span class="logo-txt">Vuesy</span>
+                <img src="{{URL::asset('assets/images/logoEbora.png')}}" alt="" height="50"> <span class="logo-txt">ATENEA</span>
             </span>
         </a>
 
-        <a href="index" class="logo logo-light">
+        <a href="/" class="logo logo-light">
             <span class="logo-sm">
-                <img src="{{URL::asset('assets/images/logo-sm.svg')}}" alt="" height="26">
+                <img src="{{URL::asset('assets/images/logoEbora.png')}}" alt="" height="30">
             </span>
             <span class="logo-lg">
-                <img src="{{URL::asset('assets/images/logo-sm.svg')}}" alt="" height="26"> <span class="logo-txt">Vuesy</span>
+                <img src="{{URL::asset('assets/images/logoEbora.png')}}" alt="" height="50"> <span class="logo-txt">ATENEA</span>
             </span>
         </a>
     </div>
@@ -31,26 +31,33 @@
 
         <!--- Sidemenu -->
         <div id="sidebar-menu">
-            <!-- Left Menu Start -->
             <ul class="metismenu list-unstyled" id="side-menu">
                 <li class="menu-title" data-key="t-menu">Menu</li>
-
                 <li>
-                    <a href="index">
+                    <a href="/">
                         <i class="bx bx-home-circle nav-icon"></i>
-                        <span class="menu-item" data-key="t-dashboard">Dashboard</span>
+                        <span class="menu-item" data-key="t-dashboard">Inicio</span>
                     </a>
                 </li>
-
-                <li class="menu-title" data-key="t-applications">Applications</li>
-
+                <li>
+                    <a href="javascript: void(0);">
+                        <i class="bx bx-user nav-icon"></i>
+                        <span class="has-arrow" data-key="t-authentication">Usuarios</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="true">
+                        <li>
+                            <a href="/user" class="menu-item" data-key="t-signin">Listado Usuarios</a>
+                            <a href="/user_create" class="menu-item" data-key="t-signin">Crear Usuario</a>
+                        </li>
+                    </ul>
+                </li>
+                <!--
                 <li>
                     <a href="apps-calendar">
                         <i class="bx bx-calendar-alt nav-icon"></i>
                         <span class="menu-item" data-key="t-calendar">Calendar</span>
                     </a>
                 </li>
-
                 <li>
                     <a href="apps-chat">
                         <i class="bx bx-chat nav-icon"></i>
@@ -58,21 +65,18 @@
                         <span class="badge rounded-pill badge-soft-danger" data-key="t-hot">Hot</span>
                     </a>
                 </li>
-
                 <li>
                     <a href="apps-kanban-board">
                         <i class="bx bxl-trello nav-icon"></i>
                         <span class="menu-item" data-key="t-kanban">Kanban Board</span>
                     </a>
                 </li>
-
                 <li>
                     <a href="apps-file-manager">
                         <i class="bx bx-folder nav-icon"></i>
                         <span class="menu-item" data-key="t-filemanager">File Manager</span>
                     </a>
                 </li>
-
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">
                         <i class="bx bx-shield-quarter nav-icon"></i>
@@ -89,7 +93,6 @@
                         <li><a href="ecommerce-add-product" data-key="t-add-product">Add Product</a></li>
                     </ul>
                 </li>
-
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">
                         <i class="bx bx-mail-send nav-icon"></i>
@@ -100,7 +103,6 @@
                         <li><a href="email-read" data-key="t-read-email">Read Email</a></li>
                     </ul>
                 </li>
-
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">
                         <i class="bx bx-book nav-icon"></i>
@@ -112,14 +114,12 @@
                         <li><a href="contacts-settings" data-key="t-user-settings">User Settings</a></li>
                     </ul>
                 </li>
-
                 <li>
                     <a href="apps-gallery">
                         <i class="bx bx-image-alt nav-icon"></i>
                         <span class="menu-item" data-key="t-gallery">Gallery</span>
                     </a>
                 </li>
-
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">
                         <i class="bx bx-briefcase-alt-2 nav-icon"></i>
@@ -132,18 +132,14 @@
                         <li><a href="projects-create" data-key="t-create-new">Create New</a></li>
                     </ul>
                 </li>
-
-                <li class="menu-title" data-key="t-layouts">Layouts</li>
-                
+                <li class="menu-title" data-key="t-layouts">Layouts</li>                
                 <li>
                     <a href="layout-vertical">
                         <i class="bx bx-layout nav-icon"></i>
                         <span class="menu-item" data-key="t-verfical">Vertical</span>
                     </a>
                 </li>
-
                 <li class="menu-title" data-key="t-pages">Pages</li>
-
                 <li>
                     <a href="javascript: void(0);">
                         <i class="bx bx-user nav-icon"></i>
@@ -224,7 +220,6 @@
                         </li>
                     </ul>
                 </li>
-
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">
                         <i class="bx bx-info-circle nav-icon"></i>
@@ -237,7 +232,6 @@
                         <li><a href="error-500-cover" data-key="t-error-500-cover">500 Cover</a></li>
                     </ul>
                 </li>
-
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">
                         <i class="bx bx-file-blank nav-icon"></i>
@@ -251,7 +245,6 @@
                         <li><a href="pages-faqs" data-key="t-faqs">FAQs</a></li>
                     </ul>
                 </li>
-
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">
                         <i class="bx bx-purchase-tag-alt nav-icon"></i>
@@ -262,7 +255,6 @@
                         <li><a href="pricing-table" data-key="t-table">Table</a></li>
                     </ul>
                 </li>
-
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">
                         <i class="bx bx-file nav-icon"></i>
@@ -273,7 +265,6 @@
                         <li><a href="invoices-detail" data-key="t-invoice-detail">Invoice Detail</a></li>
                     </ul>
                 </li>
-
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">
                         <i class="bx bx-award nav-icon"></i>
@@ -284,9 +275,7 @@
                         <li><a href="timeline-left" data-key="t-left-view">Left View</a></li>
                     </ul>
                 </li>
-
                 <li class="menu-title" data-key="t-components">Components</li>
-
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">
                         <i class="bx bx-tone nav-icon"></i>
@@ -312,7 +301,6 @@
                         <li><a href="ui-utilities" data-key="t-utilities">Utilities</a></li>
                     </ul>
                 </li>
-
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">
                         <i class="bx bx-customize nav-icon"></i>
@@ -327,7 +315,6 @@
                         <li><a href="extended-swiperslider" data-key="t-swiperslider">Swiper Slider</a></li>
                     </ul>
                 </li>
-
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">
                         <i class="bx bx-pencil nav-icon"></i>
@@ -343,7 +330,6 @@
                         <li><a href="form-mask" data-key="t-mask">Mask</a></li>
                     </ul>
                 </li>
-
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">
                         <i class="bx bx-table nav-icon"></i>
@@ -354,7 +340,6 @@
                         <li><a href="tables-advanced" data-key="t-advanced-tables">Advance Tables</a></li>
                     </ul>
                 </li>
-
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">
                         <i class="bx bx-bar-chart-alt-2 nav-icon"></i>
@@ -379,7 +364,6 @@
                         <li><a href="charts-polararea" data-key="t-polararea">Polararea</a></li>
                     </ul>
                 </li>
-
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">
                         <i class="bx bx-archive nav-icon"></i>
@@ -393,7 +377,6 @@
                         <li><a href="icons-fontawesome" data-key="t-font-awesome">Font Awesome 5</a></li>
                     </ul>
                 </li>
-
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">
                         <i class="bx bx-map-alt nav-icon"></i>
@@ -405,7 +388,6 @@
                         <li><a href="maps-leaflet" data-key="t-leaflet">Leaflet</a></li>
                     </ul>
                 </li>
-
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">
                         <i class="bx bx-share-alt nav-icon"></i>
@@ -421,7 +403,7 @@
                         </li>
                     </ul>
                 </li>
-
+            -->
             </ul>
         </div>
         <!-- Sidebar -->

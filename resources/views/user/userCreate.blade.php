@@ -1,11 +1,11 @@
-@extends('layouts.master')
-@section('title')Basic Elements @endsection
+@extends('layouts.vertical-master-layout')
+@section('title')Registro @endsection
 @section('content')
 {{-- breadcrumbs  --}}
     @section('breadcrumb')
         @component('components.breadcrumb')
-            @slot('li_1') Forms @endslot
-            @slot('title') Basic Elements @endslot
+            @slot('li_1') usuarios @endslot
+            @slot('title') Registro @endslot
         @endcomponent
     @endsection
 

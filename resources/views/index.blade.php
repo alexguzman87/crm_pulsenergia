@@ -1,16 +1,16 @@
-@extends('layouts.master')
+@extends('layouts.vertical-master-layout')
 @section('title')
 @endsection
 @section('content')
 {{-- breadcrumbs  --}}
     @section('breadcrumb')
         @component('components.breadcrumb')
-            @slot('li_1') Dashboard @endslot
-            @slot('title') Welcome ! @endslot
+            @slot('li_1') Home @endslot
+            @slot('title') Bienvenido  @endslot
         @endcomponent
     @endsection
-<div class="row">
-    <div class="col-xl-8">
+ <!--<div class="row">
+   <div class="col-xl-8">
         <div class="card">
             <div class="card-body pb-2">
                 <div class="d-flex align-items-start mb-4 mb-xl-0">
@@ -82,7 +82,6 @@
                 </div>
 
             </div>
-
         </div>
     </div>
 
@@ -138,9 +137,9 @@
             </div>
         </div>
     </div>
-</div><!-- end row-->
+</div>-->
 
-<div class="row">
+<!--<div class="row">
     <div class="col-xl-7">
         <div class="row">
             <div class="col-xl-6">
@@ -483,7 +482,7 @@
                 </div>
 
                 <div class="slider mt-4">
-                    <!-- Add Pagination -->
+                    <!-- Add Pagination 
                     <div class="swiper-button-next"><i class="mdi mdi-arrow-right"></i></div>
                     <div class="swiper-button-prev"><i class="mdi mdi-arrow-left"></i></div>
 
@@ -611,9 +610,9 @@
             </div>
         </div>
     </div>
-</div> <!-- end row -->
+</div>-->
 
-<div class="row">
+<!--<div class="row">
     <div class="col-xl-4">
         <div class="card">
             <div class="card-body pb-0">

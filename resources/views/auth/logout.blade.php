@@ -12,7 +12,7 @@
                             <span class="logo-txt">ATENEA</span>
                         </div>
                         <div class="p-3 text-center">
-                            <img src="{{URL::asset('assets/images/logoEbora.png')}}" alt="" class="img-fluid">
+                            <img src="{{URL::asset('assets/images/logoEbora.png')}}" alt="" height="200px">
                         </div>
                     </div>
 

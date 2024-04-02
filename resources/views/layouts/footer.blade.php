@@ -5,11 +5,11 @@
                 <script>
                     document.write(new Date().getFullYear())
 
-                </script> &copy; Vuesy.
+                </script> &copy; <a href="{{url('https://eboraformacion.es/')}}" target="_blank"> Ebora Formación.</a>
             </div>
             <div class="col-sm-6">
                 <div class="text-sm-end d-none d-sm-block">
-                    Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesdesign
+                     Desarrollado por <a href="{{url('https://itglobalproject.com/')}}" target="_blank"><img src="{{URL::asset('assets/images/logoITGP.png')}}" alt="" height="35"></a>
                 </div>
             </div>
         </div>

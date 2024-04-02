@@ -17,7 +17,7 @@
                         <img src="{{URL::asset ('assets/images/logo-sm.svg')}}" alt="" height="26">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{URL::asset ('assets/images/logo-sm.svg')}}" alt="" height="26"> <span class="logo-txt">Vuesy</span>
+                        <img src="{{URL::asset ('assets/images/logo-sm.svg')}}" alt="" height="26"> <span class="logo-txt">ATENEA</span>
                     </span>
                 </a>
             </div>
@@ -34,7 +34,7 @@
                             <li class="nav-item">
                                 <a class="nav-link dropdown-toggle arrow-none" href="/" id="topnav-dashboard" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="bx bx-home-circle icon"></i>
-                                    <span data-key="t-dashboard">Dashboard</span>
+                                    <span data-key="t-dashboard">Inicio</span>
                                 </a>
                             </li>
 
@@ -416,37 +416,38 @@
                 </div>
             </div>
 
-            <div class="dropdown d-inline-block language-switch">
+            <!--Listado de banderas de países
+                <div class="dropdown d-inline-block language-switch">
                 <button type="button" class="btn header-item noti-icon" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img id="header-lang-img" src="assets/images/flags/us.jpg" alt="Header Language" height="16">
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
 
-                    <!-- item-->
+                    
                     <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="eng">
                         <img src="assets/images/flags/us.jpg" alt="user-image" class="me-2" height="12"> <span class="align-middle">English</span>
                     </a>
-                    <!-- item-->
+                    
                     <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="sp">
                         <img src="assets/images/flags/spain.jpg" alt="user-image" class="me-2" height="12"> <span class="align-middle">Spanish</span>
                     </a>
 
-                    <!-- item-->
+                    
                     <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="gr">
                         <img src="assets/images/flags/germany.jpg" alt="user-image" class="me-2" height="12"> <span class="align-middle">German</span>
                     </a>
 
-                    <!-- item-->
+                    
                     <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="it">
                         <img src="assets/images/flags/italy.jpg" alt="user-image" class="me-2" height="12"> <span class="align-middle">Italian</span>
                     </a>
 
-                    <!-- item-->
+                    
                     <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="ru">
                         <img src="assets/images/flags/russia.jpg" alt="user-image" class="me-2" height="12"> <span class="align-middle">Russian</span>
                     </a>
                 </div>
-            </div>
+            </div>-->
 
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item noti-icon" id="page-header-notifications-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -575,9 +576,9 @@
         </div>
     </div>
 
-    <div class="collapse show dash-content" id="dashtoggle">
+    <!--<div class="collapse show dash-content" id="dashtoggle">
         <div class="container-fluid">
-            <!-- start page title -->
+             start page title
             <div class="row">
                 {{-- <div class="col-12">
                             <div class="page-title-box d-flex align-items-center justify-content-between">
@@ -592,13 +593,12 @@
 
                             </div>
                         </div> --}}
-                @yield('breadcrumb')
+                {{--@yield('breadcrumb')--}}
             </div>
 
             {{-- @extends('components.breadcrumb') --}}
-            <!-- end page title -->
-
-            <!-- start dash info -->
+            
+            <!-- start dash info 
             <div class="row">
                 <div class="col-xl-12">
                     <div class="card dash-header-box shadow-none border-0">
@@ -609,53 +609,53 @@
                                         <p class="text-white-50 mb-2 text-truncate">Campaign Sent </p>
                                         <h3 class="text-white mb-0">197</h3>
                                     </div>
-                                </div><!-- end col -->
+                                </div><!-- end col
 
                                 <div class="col">
                                     <div class="mt-3 mt-md-0 py-3 px-4 mx-2">
                                         <p class="text-white-50 mb-2 text-truncate">Annual Profit</p>
                                         <h3 class="text-white mb-0">$489.4k</h3>
                                     </div>
-                                </div><!-- end col -->
+                                </div><!-- end col
 
                                 <div class="col">
                                     <div class="mt-3 mt-md-0 py-3 px-4 mx-2">
                                         <p class="text-white-50 mb-2 text-truncate">Lead Coversation</p>
                                         <h3 class="text-white mb-0">32.89%</h3>
                                     </div>
-                                </div><!-- end col -->
+                                </div><!-- end col
 
                                 <div class="col">
                                     <div class="mt-3 mt-md-0 py-3 px-4 mx-2">
                                         <p class="text-white-50 mb-2 text-truncate">Sales Forecast</p>
                                         <h3 class="text-white mb-0">75.35%</h3>
                                     </div>
-                                </div><!-- end col -->
+                                </div><!-- end col
 
                                 <div class="col">
                                     <div class="mt-3 mt-lg-0 py-3 px-4 mx-2">
                                         <p class="text-white-50 mb-2 text-truncate">Daily Average Income</p>
                                         <h3 class="text-white mb-0">$1,596.5</h3>
                                     </div>
-                                </div><!-- end col -->
+                                </div><!-- end col
 
                                 <div class="col">
                                     <div class="mt-3 mt-lg-0 py-3 px-4 mx-2">
                                         <p class="text-white-50 mb-2 text-truncate">Annual Deals</p>
                                         <h3 class="text-white mb-0">2,659</h3>
                                     </div>
-                                </div><!-- end col -->
+                                </div><!-- end col
 
-                            </div><!-- end row -->
-                        </div><!-- end card body -->
-                    </div><!-- end card -->
-                </div><!-- end col -->
+                            </div><!-- end row
+                        </div><!-- end card body
+                    </div><!-- end card
+                </div><!-- end col
             </div>
-            <!-- end dash info -->
+            <!-- end dash info
         </div>
     </div>
 
-    <!-- start dash troggle-icon -->
+    <!-- start dash troggle-icon 
     <div>
         <a class="dash-troggle-icon" id="dash-troggle-icon" data-bs-toggle="collapse" href="#dashtoggle" aria-expanded="true" aria-controls="dashtoggle">
             <i class="bx bx-up-arrow-alt"></i>

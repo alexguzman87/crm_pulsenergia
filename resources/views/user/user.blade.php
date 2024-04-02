@@ -1,5 +1,5 @@
-@extends('layouts.master')
-@section('title')Advance Tables @endsection
+@extends('layouts.vertical-master-layout')
+@section('title')Usuarios @endsection
 @section('css')
 <link href="{{ URL::asset('assets/libs/gridjs/gridjs.min.css') }}" rel="stylesheet" type="text/css" />
 @endsection
@@ -7,8 +7,8 @@
 {{-- breadcrumbs  --}}
     @section('breadcrumb')
         @component('components.breadcrumb')
-            @slot('li_1') Tables @endslot
-            @slot('title') Advance Tables @endslot
+            @slot('li_1') Inicio @endslot
+            @slot('title') Usuarios  @endslot
         @endcomponent
     @endsection
 <div class="row">
@@ -23,7 +23,7 @@
                         <div role="complementary" class="gridjs gridjs-container" style="width: 100%;">
                             <div class="gridjs-head">
                                 <div class="gridjs-search">
-                                    <input type="search" placeholder="Type a keyword..." aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
+                                    <input type="search" placeholder="Buscar..." aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
                                 </div>
                             </div>
                             <div class="gridjs-wrapper" style="height: auto;">

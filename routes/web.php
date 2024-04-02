@@ -27,3 +27,5 @@ Route::view('home', 'index')->middleware('auth');;
 Route::get('user',[UserController::class,'index']);
 Route::get('user_create',[UserController::class,'create']);
 Route::post('user_create',[UserController::class,'store']);
+
+route::view('test','auth.login');

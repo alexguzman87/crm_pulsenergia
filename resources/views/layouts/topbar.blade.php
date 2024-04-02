@@ -29,7 +29,7 @@
 
             <form class="app-search d-none d-lg-block">
                 <div class="position-relative">
-                    <input type="text" class="form-control" placeholder="Search...">
+                    <input type="text" class="form-control" placeholder="Buscar...">
                     <span class="bx bx-search icon-sm"></span>
                 </div>
             </form>
@@ -55,38 +55,38 @@
                 </div>
             </div>
 
-           <div class="dropdown d-inline-block language-switch">
+           <!--<div class="dropdown d-inline-block language-switch">
                 <button type="button" class="btn header-item noti-icon"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img id="header-lang-img" src="assets/images/flags/us.jpg" alt="Header Language" height="16">
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
                     
-                    <!-- item-->
+                     
                     <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="eng">
                         <img src="{{URL::asset('assets/images/flags/us.jpg')}}" alt="user-image" class="me-2" height="12"> <span class="align-middle">English</span>
                     </a>
-                    <!-- item-->
+                     
                     <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="sp">
                         <img src="{{URL::asset('assets/images/flags/spain.jpg')}}" alt="user-image" class="me-2" height="12"> <span class="align-middle">Spanish</span>
                     </a>
 
-                    <!-- item-->
+                    
                     <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="gr">
                         <img src="{{URL::asset('assets/images/flags/germany.jpg')}}" alt="user-image" class="me-2" height="12"> <span class="align-middle">German</span>
                     </a>
 
-                    <!-- item-->
+                    
                     <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="it">
                         <img src="{{URL::asset('assets/images/flags/italy.jpg')}}" alt="user-image" class="me-2" height="12"> <span class="align-middle">Italian</span>
                     </a>
 
-                    <!-- item-->
+                    
                     <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="ru">
                         <img src="{{URL::asset('assets/images/flags/russia.jpg')}}" alt="user-image" class="me-2" height="12"> <span class="align-middle">Russian</span>
                     </a>
                 </div>
-            </div>
+            </div>-->
 
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item noti-icon" id="page-header-notifications-dropdown"
@@ -239,7 +239,7 @@
             <!-- end page title -->
 
             <!-- start dash info -->
-            <div class="row">
+            <!--<div class="row">
                 <div class="col-xl-12">
                     <div class="card dash-header-box shadow-none border-0">
                         <div class="card-body p-0">
@@ -249,59 +249,52 @@
                                         <p class="text-white-50 mb-2 text-truncate">Campaign Sent </p>
                                         <h3 class="text-white mb-0">197</h3>
                                     </div>
-                                </div><!-- end col -->
-
+                                </div> 
                                 <div class="col">
                                     <div class="mt-3 mt-md-0 py-3 px-4 mx-2">
                                         <p class="text-white-50 mb-2 text-truncate">Annual Profit</p>
                                         <h3 class="text-white mb-0">$489.4k</h3>
                                     </div>
-                                </div><!-- end col -->
-
+                                </div>
                                 <div class="col">
                                     <div class="mt-3 mt-md-0 py-3 px-4 mx-2">
                                         <p class="text-white-50 mb-2 text-truncate">Lead Coversation</p>
                                         <h3 class="text-white mb-0">32.89%</h3>
                                     </div>
-                                </div><!-- end col -->
-
+                                </div>
                                 <div class="col">
                                     <div class="mt-3 mt-md-0 py-3 px-4 mx-2">
                                         <p class="text-white-50 mb-2 text-truncate">Sales Forecast</p>
                                         <h3 class="text-white mb-0">75.35%</h3>
                                     </div>
-                                </div><!-- end col -->
-
+                                </div>
                                 <div class="col">
                                     <div class="mt-3 mt-lg-0 py-3 px-4 mx-2">
                                         <p class="text-white-50 mb-2 text-truncate">Daily Average Income</p>
                                         <h3 class="text-white mb-0">$1,596.5</h3>
                                     </div>
-                                </div><!-- end col -->
-
+                                </div>
                                 <div class="col">
                                     <div class="mt-3 mt-lg-0 py-3 px-4 mx-2">
                                         <p class="text-white-50 mb-2 text-truncate">Annual Deals</p>
                                         <h3 class="text-white mb-0">2,659</h3>
                                     </div>
-                                </div><!-- end col -->
-
-                            </div><!-- end row -->
-                        </div><!-- end card body -->
-                    </div><!-- end card -->
-                </div><!-- end col -->
-            </div>
-            <!-- end dash info -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>-->
         </div>
     </div>
 
-      <!-- start dash troggle-icon -->
+      <!-- start dash troggle-icon 
       <div>
         <a class="dash-troggle-icon" id="dash-troggle-icon" data-bs-toggle="collapse" href="#dashtoggle" aria-expanded="true" aria-controls="dashtoggle">
             <i class="bx bx-up-arrow-alt"></i>
         </a>
     </div>
-  <!-- end dash troggle-icon -->
+     end dash troggle-icon -->
 
     
 </header>
