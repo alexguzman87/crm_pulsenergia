@@ -1,5 +1,5 @@
 @extends('layouts.vertical-master-layout')
-@section('title')Usuarios @endsection
+@section('title')Contactos @endsection
 @section('css')
 <link href="{{ URL::asset('assets/libs/gridjs/gridjs.min.css') }}" rel="stylesheet" type="text/css" />
 @endsection
@@ -8,14 +8,14 @@
     @section('breadcrumb')
         @component('components.breadcrumb')
             @slot('li_1') Inicio @endslot
-            @slot('title') Usuarios  @endslot
+            @slot('title') Contactos  @endslot
         @endcomponent
     @endsection
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header justify-content-between d-flex align-items-center">
-                <h4 class="card-title">Usuarios Registrados</h4>
+                <h4 class="card-title">Contactos Registrados</h4>
             </div><!-- end card header -->
             <div class="card-body">
                 <div class="card-body">
@@ -39,33 +39,41 @@
                                             <th data-column-id="email" class="gridjs-th" style="min-width: 188px; width: auto;">
                                                 <div class="gridjs-th-content">Email</div>
                                             </th>
-                                            <th data-column-id="position" class="gridjs-th" style="min-width: 243px; width: auto;">
-                                                <div class="gridjs-th-content">Nombre de Usuario</div>
+                                            <th data-column-id="second_email" class="gridjs-th" style="min-width: 243px; width: auto;">
+                                                <div class="gridjs-th-content">Email Secundario</div>
                                             </th>
-                                            <th data-column-id="company" class="gridjs-th" style="min-width: 124px; width: auto;">
-                                                <div class="gridjs-th-content">Perfil</div>
+                                            <th data-column-id="phone" class="gridjs-th" style="min-width: 124px; width: auto;">
+                                                <div class="gridjs-th-content">Teléfono</div>
                                             </th>
-                                            <th data-column-id="company" class="gridjs-th" style="min-width: 124px; width: auto;">
-                                                <div class="gridjs-th-content">Perfil</div>
+                                            <th data-column-id="second_phone" class="gridjs-th" style="min-width: 124px; width: auto;">
+                                                <div class="gridjs-th-content">Teléfono Secundario</div>
+                                            </th>
+                                            <th data-column-id="notes" class="gridjs-th" style="min-width: 124px; width: auto;">
+                                                <div class="gridjs-th-content">Notas</div>
+                                            </th>
+                                            <th data-column-id="" class="gridjs-th" style="min-width: 124px; width: auto;">
+                                                <div class="gridjs-th-content"></div>
                                             </th>
                                         </tr>
                                     </thead>
                                     <tbody class="gridjs-tbody">
-                                        @foreach ( $users as $user )
+                                        @foreach ( $contact as $c )
                                             <tr class="gridjs-tr">
-                                                <td data-column-id="id" class="gridjs-td">{{$user->id}}</td>
-                                                <td data-column-id="name" class="gridjs-td">{{$user->name}}</td>
-                                                <td data-column-id="email" class="gridjs-td">{{$user->email}}</td>
-                                                <td data-column-id="position" class="gridjs-td">{{$user->username}}</td>
-                                                <td data-column-id="company" class="gridjs-td"></td>
-                                                <td><a href="{{route('user_edit', $user->id)}}"><button type="submit" class="btn btn-primary w-md">Modificar Contraseña</button></a></td>
+                                                <td data-column-id="id" class="gridjs-td">{{$c->id}}</td>
+                                                <td data-column-id="name" class="gridjs-td">{{$c->name}}</td>
+                                                <td data-column-id="email" class="gridjs-td">{{$c->email}}</td>
+                                                <td data-column-id="second_email" class="gridjs-td">{{$c->second_email}}</td>
+                                                <td data-column-id="phone" class="gridjs-td">{{$c->phone}}</td>
+                                                <td data-column-id="second_phone" class="gridjs-td">{{$c->second_phone}}</td>
+                                                <td data-column-id="notes" class="gridjs-td">{{$c->notes}}</td>
+                                                <td><a href="{{route('contact_edit', $c->id)}}"><button type="submit" class="btn btn-primary w-md">Editar</button></a></td>
                                             </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
                             </div>
                             <div class="gridjs-footer">
-                                <div>{{$users->links('layouts.pagination')}}</div>
+                                <div>{{$contact->links('layouts.pagination')}}</div>
                             </div>    
                             <div id="gridjs-temp" class="gridjs-temp"></div>
                         </div>

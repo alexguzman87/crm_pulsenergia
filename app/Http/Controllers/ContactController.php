@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contact;
 use Illuminate\Http\Request;
-use App\Models\User;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\View;
 
-class UserController extends Controller
+class ContactController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,11 +15,11 @@ class UserController extends Controller
     public function index()
     {
 
-        $users = User::all();
+        $contact = Contact::all();
 
-        $users = User::orderBy('name')->paginate(2);
+        $contact = Contact::orderBy('name')->paginate(2);
                 
-        return view('user.user',compact('users'));
+        return view('contact.contact',compact('contact'));
 
     }
 
@@ -32,7 +30,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('user.userCreate');
+        return view('contact.contactCreate');
     }
 
     /**
@@ -43,16 +41,17 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $user=new User;
-        $user->name=$request->input('name');
-        $user->username=$request->input('username');
-        $user->email=$request->input('email');
-        $user->password=$request->input('password');
-        $user->save();
-        
-        Session::flash('cliente_creado','El cliente ha sido registrado con éxito');
+        $contact=new Contact();
+        $contact->name=$request->input('name');
+        $contact->email=$request->input('email');
+        $contact->second_email=$request->input('second_email');
+        $contact->phone=$request->input('phone');
+        $contact->second_phone=$request->input('second_phone');
+        $contact->notes=$request->input('notes');
 
-        return redirect('/user');
+        $contact->save();
+        
+        return redirect('/contact');
     }
 
     /**
@@ -75,8 +74,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user=User::findOrFail($id);
-        return view ('user.userEdit', compact('user'));
+        $contact=Contact::findOrFail($id);
+        return view ('contact.contactEdit', compact('contact'));
     }
 
     /**
@@ -88,15 +87,17 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user=User::findOrFail($id);
-        $user->name=$request->input('name');
-        $user->username=$request->input('username');
-        $user->email=$request->input('email');
-        $user->password=$request->input('password');
+        $contact=Contact::findOrFail($id);
+        $contact->name=$request->input('name');
+        $contact->email=$request->input('email');
+        $contact->second_email=$request->input('second_email');
+        $contact->phone=$request->input('phone');
+        $contact->second_phone=$request->input('second_phone');
+        $contact->notes=$request->input('notes');
 
-        $user->update();
+        $contact->update();
         
-        return redirect("user");
+        return redirect("contact");
 
         /*
         if($request->hasFile('image')){

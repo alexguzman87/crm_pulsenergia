@@ -5,7 +5,7 @@
                 <script>
                     document.write(new Date().getFullYear())
 
-                </script> &copy; <a href="{{url('https://eboraformacion.es/')}}" target="_blank"> Ebora Formación.</a>
+                </script> &copy; <a href="{{url('https://eboraformacion.es/')}}" target="_blank"> Ebora Formación</a> - V 2.0
             </div>
             <div class="col-sm-6">
                 <div class="text-sm-end d-none d-sm-block">
