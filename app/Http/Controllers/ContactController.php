@@ -17,7 +17,7 @@ class ContactController extends Controller
 
         $contact = Contact::all();
 
-        $contact = Contact::orderBy('name')->paginate(2);
+        $contact = Contact::orderBy('id')->paginate(25);
                 
         return view('contact.contact',compact('contact'));
 

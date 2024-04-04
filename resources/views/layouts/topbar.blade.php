@@ -3,40 +3,38 @@
         <div class="d-flex">
            <!-- LOGO -->
            <div class="navbar-brand-box">
-            <a href="index" class="logo logo-dark">
-                <span class="logo-sm">
-                    <img src="{{URL::asset('assets/images/logo-sm.svg')}}" alt="" height="26">
-                </span>
-                <span class="logo-lg">
-                    <img src="{{URL::asset('assets/images/logo-sm.svg')}}" alt="" height="26"> <span class="logo-txt">Vusey</span>
-                </span>
-            </a>
-
-            <a href="index" class="logo logo-light">
-                <span class="logo-sm">
-                    <img src="{{URL::asset('assets/images/logo-sm.svg')}}" alt="" height="26">
-                </span>
-                <span class="logo-lg">
-                    <img src="{{URL::asset('assets/images/logo-sm.svg')}}" alt="" height="26"> <span class="logo-txt">Vusey</span>
-                </span>
-            </a>
-
-        </div>
-
+                <a href="index" class="logo logo-dark">
+                    <span class="logo-sm">
+                        <img src="{{URL::asset('assets/images/logo-sm.svg')}}" alt="" height="26">
+                    </span>
+                    <span class="logo-lg">
+                        <img src="{{URL::asset('assets/images/logo-sm.svg')}}" alt="" height="26"> <span class="logo-txt">Vusey</span>
+                    </span>
+                </a>
+                <a href="index" class="logo logo-light">
+                    <span class="logo-sm">
+                        <img src="{{URL::asset('assets/images/logo-sm.svg')}}" alt="" height="26">
+                    </span>
+                    <span class="logo-lg">
+                        <img src="{{URL::asset('assets/images/logo-sm.svg')}}" alt="" height="26"> <span class="logo-txt">Vusey</span>
+                    </span>
+                </a>
+            </div>
+            <!--FORMATO DE BUSCADOR
             <button type="button" class="btn btn-sm px-3 header-item vertical-menu-btn noti-icon">
                 <i class="fa fa-fw fa-bars font-size-16"></i>
             </button>
 
+             
             <form class="app-search d-none d-lg-block">
                 <div class="position-relative">
                     <input type="text" class="form-control" placeholder="Buscar...">
                     <span class="bx bx-search icon-sm"></span>
                 </div>
             </form>
-
+            -->
          
         </div>
-
         <div class="d-flex">
             <div class="dropdown d-inline-block d-block d-lg-none">
                 <button type="button" class="btn header-item noti-icon"
@@ -54,40 +52,31 @@
                     </form>
                 </div>
             </div>
-
-           <!--<div class="dropdown d-inline-block language-switch">
+           <!--
+            <div class="dropdown d-inline-block language-switch">
                 <button type="button" class="btn header-item noti-icon"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img id="header-lang-img" src="assets/images/flags/us.jpg" alt="Header Language" height="16">
                 </button>
-                <div class="dropdown-menu dropdown-menu-end">
-                    
-                     
+                <div class="dropdown-menu dropdown-menu-end">                    
                     <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="eng">
                         <img src="{{URL::asset('assets/images/flags/us.jpg')}}" alt="user-image" class="me-2" height="12"> <span class="align-middle">English</span>
-                    </a>
-                     
+                    </a>                     
                     <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="sp">
                         <img src="{{URL::asset('assets/images/flags/spain.jpg')}}" alt="user-image" class="me-2" height="12"> <span class="align-middle">Spanish</span>
-                    </a>
-
-                    
+                    </a>                    
                     <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="gr">
                         <img src="{{URL::asset('assets/images/flags/germany.jpg')}}" alt="user-image" class="me-2" height="12"> <span class="align-middle">German</span>
-                    </a>
-
-                    
+                    </a>                    
                     <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="it">
                         <img src="{{URL::asset('assets/images/flags/italy.jpg')}}" alt="user-image" class="me-2" height="12"> <span class="align-middle">Italian</span>
-                    </a>
-
-                    
+                    </a>                    
                     <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="ru">
                         <img src="{{URL::asset('assets/images/flags/russia.jpg')}}" alt="user-image" class="me-2" height="12"> <span class="align-middle">Russian</span>
                     </a>
                 </div>
-            </div>-->
-
+            </div>
+            -->
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item noti-icon" id="page-header-notifications-dropdown"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -160,7 +149,6 @@
                                 </div>
                             </div>
                         </a>
-
                         <a href="" class="text-reset notification-item">
                             <div class="d-flex border-bottom align-items-start">
                                 <div class="flex-shrink-0">
@@ -184,13 +172,11 @@
                     </div>
                 </div>
             </div>
-
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item noti-icon right-bar-toggle" id="right-bar-toggle">
                     <i class="bx bx-cog icon-sm"></i>
                 </button>
             </div>
-
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item user text-start d-flex align-items-center" id="page-header-user-dropdown"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -211,35 +197,30 @@
                     <a class="dropdown-item" href="#"><i class="mdi mdi-wallet text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Balance : <b>$6951.02</b></span></a>
                     <a class="dropdown-item d-flex align-items-center" href="contacts-settings"><i class="mdi mdi-cog-outline text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Settings</span><span class="badge badge-soft-success ms-auto">New</span></a>
                     <a class="dropdown-item" href="auth-lockscreen-cover"><i class="mdi mdi-lock text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Lock screen</span></a>
-                    <a class="dropdown-item" href="/logout"><i class="mdi mdi-logout text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Logout</span></a>
+                    <a class="dropdown-item" href="/logout"><i class="mdi mdi-logout text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Cerrar Sesión</span></a>
                 </div>
             </div>
         </div>
     </div>
-
     <div class="collapse show verti-dash-content" id="dashtoggle">
         <div class="container-fluid">
-            <!-- start page title -->
-            {{-- <div class="row">
+            {{-- 
+            <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-flex align-items-center justify-content-between">
                         <h4 class="mb-0">@@title</h4>
-
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="javascript: void(0);">@@pagetitle</a></li>
                                 <li class="breadcrumb-item active">@@title</li>
                             </ol>
                         </div>
-
                     </div>
                 </div>
             </div> --}}
             @yield('breadcrumb')
-            <!-- end page title -->
-
-            <!-- start dash info -->
-            <!--<div class="row">
+            <!--
+            <div class="row">
                 <div class="col-xl-12">
                     <div class="card dash-header-box shadow-none border-0">
                         <div class="card-body p-0">
@@ -287,14 +268,15 @@
             </div>-->
         </div>
     </div>
-
-      <!-- start dash troggle-icon 
-      <div>
+    <!--
+    start dash troggle-icon 
+    <div>
         <a class="dash-troggle-icon" id="dash-troggle-icon" data-bs-toggle="collapse" href="#dashtoggle" aria-expanded="true" aria-controls="dashtoggle">
             <i class="bx bx-up-arrow-alt"></i>
         </a>
     </div>
-     end dash troggle-icon -->
+     end dash troggle-icon 
+    -->
 
     
 </header>

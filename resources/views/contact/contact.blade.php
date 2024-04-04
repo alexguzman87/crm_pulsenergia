@@ -20,10 +20,19 @@
             <div class="card-body">
                 <div class="card-body">
                     <div id="table-search">
-                        <div role="complementary" class="gridjs gridjs-container" style="width: 100%;">
-                            <div class="gridjs-head">
-                                <div class="gridjs-search">
-                                    <input type="search" placeholder="Buscar..." aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
+                        <div role="complementary" class="gridjs gridjs-container" style="width: 100%;">                 
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <input type="search" placeholder="Buscar..." aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex flex-wrap align-items-start justify-content-md-end mt-2 mt-md-0 gap-2 mb-3">
+                                        <div>
+                                            <a href="/contact_create"><button type="submit" class="btn btn-primary w-md">Agregar</button></a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="gridjs-wrapper" style="height: auto;">
@@ -51,8 +60,8 @@
                                             <th data-column-id="notes" class="gridjs-th" style="min-width: 124px; width: auto;">
                                                 <div class="gridjs-th-content">Notas</div>
                                             </th>
-                                            <th data-column-id="" class="gridjs-th" style="min-width: 124px; width: auto;">
-                                                <div class="gridjs-th-content"></div>
+                                            <th data-column-id="" class="gridjs-th" style="min-width: 124px; width: auto;text-align: center;">
+                                                <div class="gridjs-th-content">Editar</div>
                                             </th>
                                         </tr>
                                     </thead>
@@ -66,7 +75,7 @@
                                                 <td data-column-id="phone" class="gridjs-td">{{$c->phone}}</td>
                                                 <td data-column-id="second_phone" class="gridjs-td">{{$c->second_phone}}</td>
                                                 <td data-column-id="notes" class="gridjs-td">{{$c->notes}}</td>
-                                                <td><a href="{{route('contact_edit', $c->id)}}"><button type="submit" class="btn btn-primary w-md">Editar</button></a></td>
+                                                <td style="text-align: center;"><a href="{{route('contact_edit', $c->id)}}"><button type="submit" class="btn btn-primary"><i class="fas fa-pencil-alt"></i></button></a></td>
                                             </tr>
                                         @endforeach
                                     </tbody>

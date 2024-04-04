@@ -27,7 +27,7 @@
                                 </div>
                             </div>
                             <div class="gridjs-wrapper" style="height: auto;">
-                                <table role="grid" class="gridjs-table" style="height: auto;">
+                                <table role="grid" class="gridjs-table" style="height: auto; text-align: center;">
                                     <thead class="gridjs-thead">
                                         <tr class="gridjs-tr">
                                             <th data-column-id="id" class="gridjs-th" style="min-width: 85px; width: auto;">
@@ -43,10 +43,7 @@
                                                 <div class="gridjs-th-content">Nombre de Usuario</div>
                                             </th>
                                             <th data-column-id="company" class="gridjs-th" style="min-width: 124px; width: auto;">
-                                                <div class="gridjs-th-content">Perfil</div>
-                                            </th>
-                                            <th data-column-id="company" class="gridjs-th" style="min-width: 124px; width: auto;">
-                                                <div class="gridjs-th-content">Perfil</div>
+                                                <div class="gridjs-th-content">Modificar Contraseña</div>
                                             </th>
                                         </tr>
                                     </thead>
@@ -57,8 +54,7 @@
                                                 <td data-column-id="name" class="gridjs-td">{{$user->name}}</td>
                                                 <td data-column-id="email" class="gridjs-td">{{$user->email}}</td>
                                                 <td data-column-id="position" class="gridjs-td">{{$user->username}}</td>
-                                                <td data-column-id="company" class="gridjs-td"></td>
-                                                <td><a href="{{route('user_edit', $user->id)}}"><button type="submit" class="btn btn-primary w-md">Modificar Contraseña</button></a></td>
+                                                <td><a href="{{route('user_edit', $user->id)}}"><button type="submit" class="btn btn-primary"><i class="fas fa-key"></i></button></a></td>
                                             </tr>
                                         @endforeach
                                     </tbody>

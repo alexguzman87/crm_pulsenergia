@@ -19,7 +19,7 @@ class UserController extends Controller
 
         $users = User::all();
 
-        $users = User::orderBy('name')->paginate(2);
+        $users = User::orderBy('id')->paginate(25);
                 
         return view('user.user',compact('users'));
 

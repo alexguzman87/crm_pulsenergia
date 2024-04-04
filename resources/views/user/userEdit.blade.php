@@ -20,41 +20,36 @@
                 <form action="/user_edit/{{$user->id}}" method="POST">
                         @csrf
                         @method('PUT')
-                        <div class="mb-3">
-                            <input type="text" name="name" class="form-control" id="formrow-firstname-input" value="{{$user->name}}">
-                        </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <input type="Text" name="username" class="form-control" id="formrow-email-input" value="{{$user->username}}">
+                                    <label class="form-label" for="formrow-firstname-input">Nombre</label>
+                                    <input type="text" name="name" class="form-control" id="formrow-firstname-input" disabled value="{{$user->name}}">
                                 </div>
                             </div><!-- end col -->
                             <div class="col-md-6">
-                                <!--<div class="mb-3">
-                                    <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Perfil de usuario">
-                                    <datalist id="datalistOptions">
-                                        <option value="Administrador">
-                                        <option value="Editor">
-                                        <option value="Usuario">
-                                    </datalist>
-                                    
-                                </div>-->
-                            </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="formrow-firstname-input">Nombre de Usuario</label>
+                                    <input type="Text" name="username" class="form-control" id="formrow-email-input" disabled value="{{$user->username}}">
+                                </div>
+                            </div><!-- end col -->
                         </div><!-- end row -->
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <input type="email" name="email" class="form-control" id="formrow-email-input" value="{{$user->email}}">
+                                    <label class="form-label" for="formrow-firstname-input">Correo</label>
+                                    <input type="email" name="email" class="form-control" id="formrow-email-input" disabled value="{{$user->email}}">
                                 </div>
                             </div><!-- end col -->
                             <div class="col-md-6">
                                 <div class="mb-3">
+                                    <label class="form-label" for="formrow-firstname-input">Nueva Contraseña</label>
                                     <input type="text" name="password" class="form-control" id="formrow-password-input" placeholder="Escribe la nueva contraseña">
                                 </div>
                             </div><!-- end col -->
                         </div><!-- end row -->
                         <div class="mt-4">
-                            <button type="submit" class="btn btn-primary w-md">Editar Usuario</button>
+                            <button type="submit" class="btn btn-primary w-md">Modificar Contraseña</button>
                         </div>
                     </form><!-- end form -->
                 </div>

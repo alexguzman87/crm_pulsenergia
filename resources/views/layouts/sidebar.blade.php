@@ -52,15 +52,13 @@
                         <i class="bx bx-book nav-icon"></i> <span>Wiki</span>
                     </a>
                 </li>
-                <li class="menu-title" data-key="t-layouts">CRM</li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">
                         <i class="bx bx-user-pin nav-icon"></i>
-                        <span class="menu-item" data-key="t-contacts">Contactos</span>
+                        <span class="menu-item" data-key="t-contacts">CRM</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="/contact" data-key="t-user-grid">Listado</a></li>
-                        <li><a href="contact_create" data-key="t-user-grid">Agregar</a></li>
+                        <li><a href="/contact" data-key="t-user-grid">Contactos</a></li>
                     </ul>
                 </li>
             </ul>
