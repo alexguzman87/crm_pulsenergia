@@ -52,7 +52,7 @@
                                             </div>
                                             <div class="form-floating form-floating-custom mb-3 auth-pass-inputgroup">
                                                 <input type="password" name="password" class="form-control" id="password-input" placeholder="Enter Password">
-                                                <button type="button" class="btn btn-link position-absolute h-100 end-0 top-0" id="password-addon">
+                                                <button type="button" class="btn btn-link position-absolute h-100 end-0 top-0" id="password-addon" onclick="showpassword()">
                                                     <i class="mdi mdi-eye-outline font-size-18 text-muted"></i>
                                                 </button>
                                                 <label for="password-input">Contraseña</label>
@@ -91,3 +91,14 @@
 <!-- end authentication section -->
 
 @endsection
+
+<script>
+function showpassword(){
+      var tipo = document.getElementById("password-input");
+      if(tipo.type == "password"){
+          tipo.type = "text";
+      }else{
+          tipo.type = "password";
+      }
+  }
+</script>

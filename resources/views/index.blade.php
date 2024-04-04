@@ -5,7 +5,7 @@
 {{-- breadcrumbs  --}}
     @section('breadcrumb')
         @component('components.breadcrumb')
-            @slot('li_1') Home @endslot
+            @slot('li_1') Inicio @endslot
             @slot('title') Bienvenido  @endslot
         @endcomponent
     @endsection

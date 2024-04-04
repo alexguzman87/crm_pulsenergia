@@ -183,11 +183,11 @@
                     <img class="rounded-circle header-profile-user" src="{{URL::asset('assets/images/users/avatar-3.jpg')}}"
                     alt="Header Avatar">
                     <span class="ms-2 d-none d-xl-inline-block user-item-desc">
-                        <span class="user-name">Marie N. <i class="mdi mdi-chevron-down"></i></span>
+                        <span class="user-name">{{auth()->user()->name}} <i class="mdi mdi-chevron-down"></i></span>
                     </span>
                 </button>
                 <div class="dropdown-menu dropdown-menu-end pt-0">
-                    <h6 class="dropdown-header">Welcome Marie N!</h6>
+                    <h6 class="dropdown-header">{{auth()->user()->name}}</h6>
                     <a class="dropdown-item" href="pages-profile"><i class="mdi mdi-account-circle text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Profile</span></a>
                     <a class="dropdown-item" href="users"><i class="mdi mdi-account-circle text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Users</span></a>
                     <a class="dropdown-item" href="apps-chat"><i class="mdi mdi-message-text-outline text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Messages</span></a>
