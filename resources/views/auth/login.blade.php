@@ -60,20 +60,21 @@
                                                     <i class="uil uil-padlock"></i>
                                                 </div>
                                             </div>
-                                            <div class="form-check form-check-primary font-size-16 py-1">
+                                            <!--<div class="form-check form-check-primary font-size-16 py-1">
                                                 <input class="form-check-input" type="checkbox" id="remember-check">
                                                 <div class="float-end">
                                                     <a href="auth-resetpassword-basic" class="text-muted text-decoration-underline font-size-14">¿Olvidaste tu contraseña?</a>
                                                 </div>
+                                            
                                                 <label class="form-check-label font-size-14" for="remember-check">
                                                     Recuerdame
                                                 </label>
-                                            </div>
+                                            </div>-->
 
                                             <div class="mt-3">
                                                 <button class="btn btn-primary w-100" type="submit">Inicia Sesión</button>
                                             </div>
-
+                                        @include('layouts.message')
                                         </form><!-- end form -->
                                     </div>
                                 </div>

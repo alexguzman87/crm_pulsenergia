@@ -22,12 +22,18 @@
                     <div id="table-search">
                         <div role="complementary" class="gridjs gridjs-container" style="width: 100%;">                 
                             <div class="row">
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <input type="search" placeholder="Buscar..." aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
-                                    </div>
+                                <div class="col-md-11">
+                                        <form method="GET" action="/contact">
+                                            @csrf
+                                            <input type="text" name="search_id" placeholder="Buscar ID..." aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
+                                            <input type="text" name="search_name" placeholder="Buscar Nombre..." aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
+                                            <input type="text" name="search_email" placeholder="Buscar email..." aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
+                                            <input type="text" name="search_phone" placeholder="Buscar Teléfono..." aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
+                                            <input type="date" name="search_created_at" placeholder="Buscar fecha..." aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
+                                            <button type="submit" name="send" class="btn btn-default"></button>
+                                        </form>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-1">
                                     <div class="d-flex flex-wrap align-items-start justify-content-md-end mt-2 mt-md-0 gap-2 mb-3">
                                         <div>
                                             <a href="/contact_create"><button type="submit" class="btn btn-primary w-md">Agregar</button></a>
@@ -41,6 +47,9 @@
                                         <tr class="gridjs-tr">
                                             <th data-column-id="id" class="gridjs-th" style="min-width: 85px; width: auto;">
                                                 <div class="gridjs-th-content">ID</div>
+                                            </th>
+                                            <th data-column-id="id" class="gridjs-th" style="min-width: 85px; width: auto;">
+                                                <div class="gridjs-th-content">Fecha de contacto</div>
                                             </th>
                                             <th data-column-id="name" class="gridjs-th" style="min-width: 85px; width: auto;">
                                                 <div class="gridjs-th-content">Nombre</div>
@@ -69,6 +78,7 @@
                                         @foreach ( $contact as $c )
                                             <tr class="gridjs-tr">
                                                 <td data-column-id="id" class="gridjs-td">{{$c->id}}</td>
+                                                <td data-column-id="id" class="gridjs-td">{{date("d/m/Y", strtotime($c->created_at))}}</td>
                                                 <td data-column-id="name" class="gridjs-td">{{$c->name}}</td>
                                                 <td data-column-id="email" class="gridjs-td">{{$c->email}}</td>
                                                 <td data-column-id="second_email" class="gridjs-td">{{$c->second_email}}</td>

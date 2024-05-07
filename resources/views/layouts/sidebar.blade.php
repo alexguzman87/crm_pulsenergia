@@ -61,6 +61,15 @@
                         <li><a href="/contact" data-key="t-user-grid">Contactos</a></li>
                     </ul>
                 </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="bx bx-link-external"></i>
+                        <span class="menu-item" data-key="t-contacts">CONTACTOS WEB</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="/contact_web" data-key="t-user-grid">Contactos</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>

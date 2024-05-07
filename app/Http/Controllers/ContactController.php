@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ContactRequest;
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class ContactController extends Controller
 {
@@ -12,12 +14,17 @@ class ContactController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $contact = Contact::orderBy('id')
+            ->name($request->search_name)
+            ->email($request->search_email)
+            ->id($request->search_id)
+            ->phone($request->search_phone)
+            ->date($request->search_created_at)
+            ->paginate(25);
+        //where('id', 'Like', "%$request->$search_id%")
 
-        $contact = Contact::all();
-
-        $contact = Contact::orderBy('id')->paginate(25);
                 
         return view('contact.contact',compact('contact'));
 
@@ -39,7 +46,7 @@ class ContactController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ContactRequest $request)
     {
         $contact=new Contact();
         $contact->name=$request->input('name');
@@ -51,7 +58,9 @@ class ContactController extends Controller
 
         $contact->save();
         
-        return redirect('/contact');
+        Session::flash('cliente_creado','El cliente ha sido registrado con éxito');
+
+        return redirect('contact');
     }
 
     /**

@@ -52,6 +52,7 @@
                         <div class="mt-4">
                             <button type="submit" class="btn btn-primary w-md">Registrar Usuarios</button>
                         </div>
+                        @include('layouts.message')
                     </form><!-- end form -->
                 </div>
             </div><!-- end card body -->

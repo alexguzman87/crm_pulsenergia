@@ -5,6 +5,7 @@ use App\Http\Controllers\BasicController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WordpressFormController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,7 +39,8 @@ Route::get('contact_edit/{contact}',[ContactController::class,'edit'])->name('co
 Route::put('contact_edit/{contact}',[ContactController::class,'update'])->name('contact_update');
 
 
-route::view('test','auth.login');
+route::get('contact_web', [WordpressFormController::class,'ShowForm'])->name('formulario');
+
 route::view('icons1','templates.icons-boxicons');
 route::view('icons2','templates.icons-feathericons');
 route::view('icons3','templates.icons-fontawesome');
@@ -52,3 +54,7 @@ route::view('formulario4','templates.form-mask');
 route::view('formulario5','templates.form-uploads');
 route::view('formulario6','templates.form-validation');
 route::view('formulario7','templates.form-wizard');
+
+// Esta es la ruta de prueba de nuevos componentes
+
+route::get('test', [UserController::class,'test'])->name('test');
