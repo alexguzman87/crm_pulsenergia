@@ -23,24 +23,13 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label class="form-label" for="formrow-firstname-input">Nombre</label>
-                                    <input type="text" name="name" class="form-control" id="formrow-firstname-input" disabled value="{{$user->name}}">
-                                </div>
-                            </div><!-- end col -->
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label class="form-label" for="formrow-firstname-input">Nombre de Usuario</label>
-                                    <input type="Text" name="username" class="form-control" id="formrow-email-input" disabled value="{{$user->username}}">
+                                    <input type="hidden" name="username" class="form-control" id="formrow-email-input"  value="{{$user->username}}">
+                                    <input type="hidden" name="email" class="form-control" id="formrow-email-input"  value="{{$user->email}}">
+                                    <input type="hidden" name="name" class="form-control" id="formrow-firstname-input"  value="{{$user->name}}">
                                 </div>
                             </div><!-- end col -->
                         </div><!-- end row -->
                         <div class="row">
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label class="form-label" for="formrow-firstname-input">Correo</label>
-                                    <input type="email" name="email" class="form-control" id="formrow-email-input" disabled value="{{$user->email}}">
-                                </div>
-                            </div><!-- end col -->
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label" for="formrow-firstname-input">Nueva Contraseña</label>
@@ -51,6 +40,7 @@
                         <div class="mt-4">
                             <button type="submit" class="btn btn-primary w-md">Modificar Contraseña</button>
                         </div>
+                        @include('layouts.message')
                     </form><!-- end form -->
                 </div>
             </div><!-- end card body -->
