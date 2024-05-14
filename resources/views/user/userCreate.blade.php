@@ -17,7 +17,7 @@
             </div><!-- end card header -->
             <div class="card-body">
                 <div>
-                <form action="/user_create" method="POST">
+                <form action="/user_create" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3">
                             <input type="text" name="name" class="form-control" id="formrow-firstname-input" placeholder="Nombre Completo">
@@ -30,13 +30,12 @@
                             </div><!-- end col -->
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Perfil de usuario">
-                                    <datalist id="datalistOptions">
-                                        <option value="Administrador">
-                                        <option value="Editor">
-                                        <option value="Usuario">
-                                    </datalist>
-                                    
+                                    <select name="type_user" class="form-select">
+                                        <option value="" selected disabled hidden>Selecciona un perfil</option>
+                                        <option value="admin">Administrador</option>
+                                        <option value="analyst">Analista</option>
+                                        <option value="general">General</option>
+                                    </select> 
                                 </div>
                             </div><!-- end row -->
                         </div><!-- end row -->
@@ -52,9 +51,14 @@
                                 </div>
                             </div><!-- end col -->
                         </div><!-- end row -->
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Subir imagen</label>
+                            <input class="form-control" name="image" type="file" id="formFile">
+                        </div>
                         <div class="mt-4">
                             <button type="submit" class="btn btn-primary w-md">Registrar Usuarios</button>
                         </div>
+                        @include('layouts.message')
                     </form><!-- end form -->
                 </div>
             </div><!-- end card body -->

@@ -34,6 +34,9 @@
                                                 <div class="gridjs-th-content">ID</div>
                                             </th>
                                             <th data-column-id="name" class="gridjs-th" style="min-width: 85px; width: auto;">
+                                                <div class="gridjs-th-content">Tipo</div>
+                                            </th>
+                                            <th data-column-id="type_user" class="gridjs-th" style="min-width: 85px; width: auto;">
                                                 <div class="gridjs-th-content">Nombre</div>
                                             </th>
                                             <th data-column-id="email" class="gridjs-th" style="min-width: 188px; width: auto;">
@@ -42,19 +45,40 @@
                                             <th data-column-id="position" class="gridjs-th" style="min-width: 243px; width: auto;">
                                                 <div class="gridjs-th-content">Nombre de Usuario</div>
                                             </th>
-                                            <th data-column-id="company" class="gridjs-th" style="min-width: 124px; width: auto;">
-                                                <div class="gridjs-th-content">Modificar Contraseña</div>
+                                            <th data-column-id="company" class="gridjs-th" style="min-width: 100px; width: 10%;">
+                                                <div class="gridjs-th-content">Ed. Usuario</div>
+                                            </th>
+                                            <th data-column-id="company" class="gridjs-th" style="min-width: 100px; width: 10%;">
+                                                <div class="gridjs-th-content">Ed. Contraseña</div>
                                             </th>
                                         </tr>
                                     </thead>
                                     <tbody class="gridjs-tbody">
                                         @foreach ( $users as $user )
                                             <tr class="gridjs-tr">
-                                                <td data-column-id="id" class="gridjs-td">{{$user->id}}</td>
-                                                <td data-column-id="name" class="gridjs-td">{{$user->name}}</td>
-                                                <td data-column-id="email" class="gridjs-td">{{$user->email}}</td>
-                                                <td data-column-id="position" class="gridjs-td">{{$user->username}}</td>
-                                                <td><a href="{{route('user_edit', $user->id)}}"><button type="submit" class="btn btn-primary"><i class="fas fa-key"></i></button></a></td>
+                                                <td data-column-id="id" class="gridjs-td">
+                                                    {{$user->id}}
+                                                </td>
+                                                <td data-column-id="type_user" class="gridjs-td"> 
+                                                    @if($user->type_user == 'admin') Administrador @endif
+                                                    @if($user->type_user == 'analyst') Analista @endif
+                                                    @if($user->type_user == 'general') General @endif
+                                                </td>
+                                                <td data-column-id="name" class="gridjs-td">
+                                                    {{$user->name}}
+                                                </td>
+                                                <td data-column-id="email" class="gridjs-td">
+                                                    {{$user->email}}
+                                                </td>
+                                                <td data-column-id="position" class="gridjs-td">
+                                                    {{$user->username}}
+                                                </td>
+                                                <td>
+                                                    <a href="{{route('user_edit', $user->id)}}"><button type="submit" class="btn btn-primary"><i class="bx bx-pencil"></i></button></a>
+                                                </td>
+                                                <td>
+                                                    <a href="{{route('user_edit_pass', $user->id)}}"><button type="submit" class="btn btn-primary"><i class="fas fa-key"></i></button></a>
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>

@@ -42,13 +42,21 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
         $user=new User;
         $user->name=$request->input('name');
         $user->username=$request->input('username');
         $user->email=$request->input('email');
         $user->password=$request->input('password');
+        $user->type_user=$request->input('type_user');
+        if($request->hasFile('image')){
+            $file=$request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time()."_".$user->id.".".$extension;
+            $file->move('images/',$filename);
+            $user->image=$filename;
+        }
         $user->save();
         
         Session::flash('cliente_creado','El cliente ha sido registrado con éxito');
@@ -80,6 +88,12 @@ class UserController extends Controller
         return view ('user.userEdit', compact('user'));
     }
 
+    public function edit_pass($id)
+    {
+        $user=User::findOrFail($id);
+        return view ('user.userEditPassword', compact('user'));
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -87,37 +101,45 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UserRequest $request, $id)
+    public function update_pass(UserRequest $request, $id)
     {
         $user=User::findOrFail($id);
-        $user->name=$request->input('name');
-        $user->username=$request->input('username');
-        $user->email=$request->input('email');
         $user->password=$request->input('password');
 
         $user->update();
         
         return redirect("user");
+       
+    }
 
-        /*
+    public function update(Request $request, $id)
+    {
+        $user=User::findOrFail($id);
+        $user->email=$request->input('email');
+        $user->username=$request->input('username');
+        $user->name=$request->input('name');
+        $user->type_user=$request->input('type_user');
         if($request->hasFile('image')){
-            if (!$request->hasFile('image')||$client->image==null)
+            if (!$request->hasFile('image')||$user->image==null)
             {
                     $file=$request->file('image');
                     $extension = $file->getClientOriginalExtension();
-                    $filename = time()."_".$client->identification_number.".".$extension;
+                    $filename = time()."_".$user->id.".".$extension;
                     $file->move('images/',$filename);
-                    $client->image=$filename;
+                    $user->image=$filename;
                 }else{
-                    unlink(public_path('images/'.$client -> image));
+                    unlink(public_path('images/'.$user -> image));
                     $file=$request->file('image');
                     $extension = $file->getClientOriginalExtension();
-                    $filename = time()."_".$client->identification_number.".".$extension;
+                    $filename = time()."_".$user->id.".".$extension;
                     $file->move('images/',$filename);
-                    $client->image=$filename;
+                    $user->image=$filename;
                 }
-        }*/
-                
+        }
+
+        $user->update();
+        
+        return redirect("user");                
        
     }
 

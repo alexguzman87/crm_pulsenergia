@@ -30,7 +30,9 @@ Route::get('user',[UserController::class,'index']);
 Route::get('user_create',[UserController::class,'create']);
 Route::post('user_create',[UserController::class,'store']);
 Route::get('user_edit/{user}',[UserController::class,'edit'])->name('user_edit');
+Route::get('user_edit_pass/{user}',[UserController::class,'edit_pass'])->name('user_edit_pass');
 Route::put('user_edit/{user}',[UserController::class,'update'])->name('user_update');
+Route::put('user_edit_pass/{user}',[UserController::class,'update_pass'])->name('user_update_pass');
 
 Route::get('contact',[ContactController::class,'index']);
 Route::get('contact_create',[ContactController::class,'create']);
