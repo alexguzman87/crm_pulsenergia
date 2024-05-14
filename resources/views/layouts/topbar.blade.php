@@ -177,10 +177,6 @@
                     <i class="bx bx-cog icon-sm"></i>
                 </button>
             </div>
-            @php
-    use App\Models\User;
-    $users = User::all();
-@endphp
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item user text-start d-flex align-items-center" id="page-header-user-dropdown"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
