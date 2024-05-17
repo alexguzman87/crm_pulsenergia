@@ -70,6 +70,15 @@
                         <li><a href="/contact_web" data-key="t-user-grid">Contactos</a></li>
                     </ul>
                 </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="bx bx-book-bookmark"></i>
+                        <span class="menu-item" data-key="t-contacts">Clientes</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="/lead" data-key="t-user-grid">Clientes</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BasicController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\LeadController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WordpressFormController;
 
@@ -33,6 +34,15 @@ Route::get('user_edit/{user}',[UserController::class,'edit'])->name('user_edit')
 Route::get('user_edit_pass/{user}',[UserController::class,'edit_pass'])->name('user_edit_pass');
 Route::put('user_edit/{user}',[UserController::class,'update'])->name('user_update');
 Route::put('user_edit_pass/{user}',[UserController::class,'update_pass'])->name('user_update_pass');
+
+Route::get('lead',[LeadController::class,'index']);
+Route::get('lead_create',[LeadController::class,'create']);
+Route::post('lead_create',[LeadController::class,'store']);
+Route::get('lead_edit/{lead}',[LeadController::class,'edit'])->name('user_edit');
+Route::get('lead_edit_pass/{lead}',[LeadController::class,'edit_pass'])->name('user_edit_pass');
+Route::put('lead_edit/{lead}',[LeadController::class,'update'])->name('user_update');
+Route::put('lead_edit_pass/{lead}',[LeadController::class,'update_pass'])->name('user_update_pass');
+
 
 Route::get('contact',[ContactController::class,'index']);
 Route::get('contact_create',[ContactController::class,'create']);
