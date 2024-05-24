@@ -8,14 +8,14 @@
     @section('breadcrumb')
         @component('components.breadcrumb')
             @slot('li_1') Inicio @endslot
-            @slot('title') Contactos  @endslot
+            @slot('title') Leads  @endslot
         @endcomponent
     @endsection
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header justify-content-between d-flex align-items-center">
-                <h4 class="card-title">Contactos Registrados</h4>
+                <h4 class="card-title">Leads Registrados</h4>
             </div><!-- end card header -->
             <div class="card-body">
                 <div class="card-body">
@@ -30,7 +30,8 @@
                                             <input type="text" name="search_email" placeholder="Buscar email..." aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
                                             <input type="text" name="search_phone" placeholder="Buscar Teléfono..." aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
                                             <input type="date" name="search_created_at" placeholder="Buscar fecha..." aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
-                                            <button type="submit" name="send" class="btn btn-default"></button>
+                                            <button type="submit" name="send" class="btn btn-primary"><i class="bx bx-send"></i></button>
+                                            <button type="reset" name="send" class="btn btn-primary"><i class="bx bxs-eraser"></i></button>
                                         </form>
                                 </div>
                                 <div class="col-md-1">
@@ -70,7 +71,7 @@
                                                 <div class="gridjs-th-content">Notas</div>
                                             </th>
                                             <th data-column-id="" class="gridjs-th" style="min-width: 124px; width: auto;text-align: center;">
-                                                <div class="gridjs-th-content">Editar</div>
+                                                <div class="gridjs-th-content"></div>
                                             </th>
                                         </tr>
                                     </thead>

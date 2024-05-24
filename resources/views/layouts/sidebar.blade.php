@@ -58,7 +58,7 @@
                         <span class="menu-item" data-key="t-contacts">CRM</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="/contact" data-key="t-user-grid">Contactos</a></li>
+                        <li><a href="/contact" data-key="t-user-grid">Leads</a></li>
                     </ul>
                 </li>
                 <li>

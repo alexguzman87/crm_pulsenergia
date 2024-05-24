@@ -42,6 +42,15 @@
                                             <th data-column-id="name" class="gridjs-th" style="min-width: 85px; width: auto;">
                                                 <div class="gridjs-th-content">Teléfono</div>
                                             </th>
+                                            <th data-column-id="name" class="gridjs-th" style="min-width: 85px; width: auto;">
+                                                <div class="gridjs-th-content">Ciclo</div>
+                                            </th>
+                                            <th data-column-id="name" class="gridjs-th" style="min-width: 85px; width: auto;">
+                                                <div class="gridjs-th-content">Asunto</div>
+                                            </th>
+                                            <th data-column-id="name" class="gridjs-th" style="min-width: 85px; width: auto;">
+                                                <div class="gridjs-th-content">Mensaje</div>
+                                            </th>
                                         </tr>
                                     </thead>
                                     <tbody class="gridjs-tbody">
