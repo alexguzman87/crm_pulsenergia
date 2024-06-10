@@ -31,9 +31,9 @@
                                             <input type="text" name="search_phone" placeholder="Buscar Teléfono..." aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
                                             <input type="date" name="search_created_at" placeholder="Buscar fecha..." aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
                                             <button type="submit" name="send" class="btn btn-primary"><i class="bx bx-send"></i></button>
-                                            <button type="reset" name="send" class="btn btn-primary"><i class="bx bxs-eraser"></i></button>
+                                            <a href="/contact"><button type="submit" name="send" class="btn btn-primary"><i class="bx bxs-eraser"></i></button></a>
                                         </form>
-                                </div>
+                                </div>                                
                                 <div class="col-md-1">
                                     <div class="d-flex flex-wrap align-items-start justify-content-md-end mt-2 mt-md-0 gap-2 mb-3">
                                         <div>

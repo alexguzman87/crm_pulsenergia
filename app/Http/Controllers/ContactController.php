@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ContactRequest;
 use App\Models\Contact;
+use App\Models\Task;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -84,7 +86,13 @@ class ContactController extends Controller
     public function edit($id)
     {
         $contact=Contact::findOrFail($id);
-        return view ('contact.contactEdit', compact('contact'));
+
+        $task = Task::all();
+
+        $user = User::all();
+
+        return view ('contact.contactEdit', compact('contact', 'task', 'user'));
+
     }
 
     /**

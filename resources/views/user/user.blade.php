@@ -46,10 +46,7 @@
                                                 <div class="gridjs-th-content">Nombre de Usuario</div>
                                             </th>
                                             <th data-column-id="company" class="gridjs-th" style="min-width: 100px; width: 10%;">
-                                                <div class="gridjs-th-content">Ed. Usuario</div>
-                                            </th>
-                                            <th data-column-id="company" class="gridjs-th" style="min-width: 100px; width: 10%;">
-                                                <div class="gridjs-th-content">Ed. Contraseña</div>
+                                                <div class="gridjs-th-content"></div>
                                             </th>
                                         </tr>
                                     </thead>
@@ -75,8 +72,6 @@
                                                 </td>
                                                 <td>
                                                     <a href="{{route('user_edit', $user->id)}}"><button type="submit" class="btn btn-primary"><i class="bx bx-pencil"></i></button></a>
-                                                </td>
-                                                <td>
                                                     <a href="{{route('user_edit_pass', $user->id)}}"><button type="submit" class="btn btn-primary"><i class="fas fa-key"></i></button></a>
                                                 </td>
                                             </tr>

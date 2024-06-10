@@ -5,8 +5,10 @@ use App\Http\Controllers\BasicController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\LeadController;
+use App\Http\Controllers\TaskCotroller;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WordpressFormController;
+use PHPUnit\TextUI\XmlConfiguration\CodeCoverage\Report\Php;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,6 +52,10 @@ Route::post('contact_create',[ContactController::class,'store']);
 Route::get('contact_edit/{contact}',[ContactController::class,'edit'])->name('contact_edit');
 Route::put('contact_edit/{contact}',[ContactController::class,'update'])->name('contact_update');
 
+Route::get('task_create',[TaskCotroller::class,'create']);
+Route::post('task_create',[TaskCotroller::class,'store']);
+Route::get('contact_edit/{contact}',[ContactController::class,'edit'])->name('contact_edit');
+Route::put('contact_edit/{contact}',[ContactController::class,'update'])->name('contact_update');
 
 route::get('contact_web', [WordpressFormController::class,'ShowForm'])->name('formulario');
 
@@ -58,7 +64,10 @@ route::view('icons2','templates.icons-feathericons');
 route::view('icons3','templates.icons-fontawesome');
 route::view('icons4','templates.icons-materialdesign');
 route::view('icons5','templates.icons-unicons.blade');
-route::view('contacts-grid','templates.contacts-list');
+route::view('contactos1','templates.contacts-grid');
+route::view('contactos2','templates.contacts-list');
+route::view('contactos3','templates.contacts-settings');
+route::view('contactos4','templates.pages-profile');
 route::view('formulario1','templates.form-advanced');
 route::view('formulario2','templates.form-editors');
 route::view('formulario3','templates.form-elements');
@@ -68,5 +77,8 @@ route::view('formulario6','templates.form-validation');
 route::view('formulario7','templates.form-wizard');
 
 // Esta es la ruta de prueba de nuevos componentes
+
+
+
 
 route::get('test', [UserController::class,'test'])->name('test');

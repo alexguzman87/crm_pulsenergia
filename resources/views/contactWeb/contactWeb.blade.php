@@ -23,8 +23,17 @@
                         <div role="complementary" class="gridjs gridjs-container" style="width: 100%;">
                             <div class="gridjs-head">
                                 <div class="gridjs-search">
-                                    <input type="search" placeholder="Buscar..." aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
-                                </div>
+                                    <form method="GET" action="/contact">
+                                        @csrf
+                                        <input type="text" name="search_id" placeholder="Buscar ID..." aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
+                                        <input type="text" name="search_name" placeholder="Buscar Nombre..." aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
+                                        <input type="text" name="search_email" placeholder="Buscar email..." aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
+                                        <input type="text" name="search_phone" placeholder="Buscar Teléfono..." aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
+                                        <input type="text" name="search_cycle" placeholder="Buscar Ciclo..." aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
+                                        <button type="submit" name="send" class="btn btn-primary"><i class="bx bx-send"></i></button>
+                                        <a href="/contact"><button type="submit" name="send" class="btn btn-primary"><i class="bx bxs-eraser"></i></button></a>
+                                    </form>
+                                </div>                                
                             </div>
                             <div class="gridjs-wrapper" style="height: auto;">
                                 <table role="grid" class="gridjs-table" style="height: auto; text-align: center;">
