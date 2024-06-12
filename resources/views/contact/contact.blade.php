@@ -37,7 +37,7 @@
                                 <div class="col-md-1">
                                     <div class="d-flex flex-wrap align-items-start justify-content-md-end mt-2 mt-md-0 gap-2 mb-3">
                                         <div>
-                                            <a href="/contact_create"><button type="submit" class="btn btn-primary w-md">Agregar</button></a>
+                                            <a href="/lead_create"><button type="submit" class="btn btn-primary w-md">Agregar</button></a>
                                         </div>
                                     </div>
                                 </div>
@@ -86,7 +86,7 @@
                                                 <td data-column-id="phone" class="gridjs-td">{{$c->phone}}</td>
                                                 <td data-column-id="second_phone" class="gridjs-td">{{$c->second_phone}}</td>
                                                 <td data-column-id="notes" class="gridjs-td">{{$c->notes}}</td>
-                                                <td style="text-align: center;"><a href="{{route('contact_edit', $c->id)}}"><button type="submit" class="btn btn-primary"><i class="fas fa-pencil-alt"></i></button></a></td>
+                                                <td style="text-align: center;"><a href="{{route('lead_edit', $c->id)}}"><button type="submit" class="btn btn-primary"><i class="fas fa-pencil-alt"></i></button></a></td>
                                             </tr>
                                         @endforeach
                                     </tbody>

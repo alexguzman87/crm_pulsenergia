@@ -38,9 +38,22 @@
                     </div>
 
                     <div class="mt-4">
-                        <p class="text-muted mb-1">Teléfono:</p>
-                        <h5 class="font-size-14 text-truncate">{{$contact->phone}}</h5>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <p class="text-muted mb-1">Teléfono:</p>
+                                    <h5 class="font-size-14 text-truncate">{{$contact->phone}}</h5>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <p class="text-muted mb-1">Teléfono Secundario:</p>
+                                    <h5 class="font-size-14 text-truncate">{{$contact->second_phone}}</h5>                                </div>
+                            </div>
+                        </div>
                     </div>
+
                 </div>
 
             </div>

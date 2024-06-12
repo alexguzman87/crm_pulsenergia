@@ -37,20 +37,20 @@ Route::get('user_edit_pass/{user}',[UserController::class,'edit_pass'])->name('u
 Route::put('user_edit/{user}',[UserController::class,'update'])->name('user_update');
 Route::put('user_edit_pass/{user}',[UserController::class,'update_pass'])->name('user_update_pass');
 
-Route::get('lead',[LeadController::class,'index']);
-Route::get('lead_create',[LeadController::class,'create']);
-Route::post('lead_create',[LeadController::class,'store']);
-Route::get('lead_edit/{lead}',[LeadController::class,'edit'])->name('user_edit');
-Route::get('lead_edit_pass/{lead}',[LeadController::class,'edit_pass'])->name('user_edit_pass');
-Route::put('lead_edit/{lead}',[LeadController::class,'update'])->name('user_update');
-Route::put('lead_edit_pass/{lead}',[LeadController::class,'update_pass'])->name('user_update_pass');
+Route::get('client',[LeadController::class,'index']);
+Route::get('client_create',[LeadController::class,'create']);
+Route::post('client_create',[LeadController::class,'store']);
+Route::get('client_edit/{lead}',[LeadController::class,'edit'])->name('client_edit');
+Route::get('client_edit_pass/{lead}',[LeadController::class,'edit_pass'])->name('client_edit_pass');
+Route::put('client_edit/{lead}',[LeadController::class,'update'])->name('client_update');
+Route::put('client_edit_pass/{lead}',[LeadController::class,'update_pass'])->name('client_update_pass');
 
 
-Route::get('contact',[ContactController::class,'index']);
-Route::get('contact_create',[ContactController::class,'create']);
-Route::post('contact_create',[ContactController::class,'store']);
-Route::get('contact_edit/{contact}',[ContactController::class,'edit'])->name('contact_edit');
-Route::put('contact_edit/{contact}',[ContactController::class,'update'])->name('contact_update');
+Route::get('lead',[ContactController::class,'index']);
+Route::get('lead_create',[ContactController::class,'create']);
+Route::post('lead_create',[ContactController::class,'store']);
+Route::get('lead_edit/{contact}',[ContactController::class,'edit'])->name('lead_edit');
+Route::put('lead_edit/{contact}',[ContactController::class,'update'])->name('lead_update');
 
 Route::get('task_create',[TaskCotroller::class,'create']);
 Route::post('task_create',[TaskCotroller::class,'store']);

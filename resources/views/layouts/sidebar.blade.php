@@ -58,7 +58,7 @@
                         <span class="menu-item" data-key="t-contacts">CRM</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="/contact" data-key="t-user-grid">Leads</a></li>
+                        <li><a href="/lead" data-key="t-user-grid">Leads</a></li>
                     </ul>
                 </li>
                 <li>
@@ -76,7 +76,7 @@
                         <span class="menu-item" data-key="t-contacts">Clientes</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="/lead" data-key="t-user-grid">Clientes</a></li>
+                        <li><a href="/client" data-key="t-user-grid">Clientes</a></li>
                     </ul>
                 </li>
             </ul>
