@@ -62,6 +62,8 @@ route::get('contact_web', [WordpressFormController::class,'ShowForm'])->name('fo
 
 Route::get('send-mail', [MailController::class, 'index'])->name('send-mail');
 
+Route::get('lead_export',[LeadController::class, 'export'])->name('lead_export');
+
 route::view('icons1','templates.icons-boxicons');
 route::view('icons2','templates.icons-feathericons');
 route::view('icons3','templates.icons-fontawesome');

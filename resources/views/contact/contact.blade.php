@@ -23,7 +23,7 @@
                         <div role="complementary" class="gridjs gridjs-container" style="width: 100%;">                 
                             <div class="row">
                                 <div class="col-md-11">
-                                        <form method="GET" action="/contact">
+                                        <form method="GET" action="/lead">
                                             @csrf
                                             <input type="text" name="search_id" placeholder="Buscar ID..." aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
                                             <input type="text" name="search_name" placeholder="Buscar Nombre..." aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
@@ -31,13 +31,15 @@
                                             <input type="text" name="search_phone" placeholder="Buscar Teléfono..." aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
                                             <input type="date" name="search_created_at" placeholder="Buscar fecha..." aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
                                             <button type="submit" name="send" class="btn btn-primary"><i class="bx bx-send"></i></button>
-                                            <a href="/contact"><button type="submit" name="send" class="btn btn-primary"><i class="bx bxs-eraser"></i></button></a>
+                                            <a href="/contact">
+                                            <button type="submit" name="send" class="btn btn-primary"><i class="bx bxs-eraser"></i></button></a>
                                         </form>
                                 </div>                                
                                 <div class="col-md-1">
                                     <div class="d-flex flex-wrap align-items-start justify-content-md-end mt-2 mt-md-0 gap-2 mb-3">
                                         <div>
-                                            <a href="/lead_create"><button type="submit" class="btn btn-primary w-md">Agregar</button></a>
+                                            <a href="/lead_export"><button type="submit" name="send" class="btn btn-primary"><i class="bx bx-download"></i></button></a>
+                                            <a href="/lead_create"><button type="submit" name="send" class="btn btn-primary"><i class="bx bx-user-plus"></i></button></a>
                                         </div>
                                     </div>
                                 </div>
