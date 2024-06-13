@@ -7,6 +7,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\LeadController;
 use App\Http\Controllers\TaskCotroller;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\WordpressFormController;
 use PHPUnit\TextUI\XmlConfiguration\CodeCoverage\Report\Php;
 
@@ -58,6 +59,8 @@ Route::get('contact_edit/{contact}',[ContactController::class,'edit'])->name('co
 Route::put('contact_edit/{contact}',[ContactController::class,'update'])->name('contact_update');
 
 route::get('contact_web', [WordpressFormController::class,'ShowForm'])->name('formulario');
+
+Route::get('send-mail', [MailController::class, 'index'])->name('send-mail');
 
 route::view('icons1','templates.icons-boxicons');
 route::view('icons2','templates.icons-feathericons');

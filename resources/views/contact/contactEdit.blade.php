@@ -104,7 +104,7 @@
                 <div class="tab-content p-3 text-muted">
                     <div class="tab-pane active" id="navtabs-profile" role="tabpanel">                    
                         <div class="card-body">
-                            <form action="/contact_edit/{{$contact->id}}" method="POST">
+                            <form action="/lead_edit/{{$contact->id}}" method="POST">
                                 @csrf
                                 @method('PUT')
                                     <div class="mb-3">
@@ -278,18 +278,23 @@
                     </div><!-- end tab pane -->
                     <div class="tab-pane" id="navtabs-mail" role="tabpanel">
                         <div class="card-body">
-                            <form action="" method="POST">
+                            <form action="/send-mail" method="GET">
                                 @csrf
-                                @method('PUT')
                                     <div class="mb-3">
-                                        <input type="text" name="name" class="form-control" value="{{$contact->email}}">
+                                        <input type="hidden" name="email_user" class="form-control" value="{{auth()->user()->email}}">
                                     </div>
                                     <div class="mb-3">
-                                        <input type="text" name="name" class="form-control" placeholder="Asunto">
+                                        <input type="hidden" name="email" class="form-control" value="{{$contact->email}}">
                                     </div>
-                                    <div class="card-body">
-                                        <div id="ckeditor-classic"></div>
-                                    </div><!-- end cardbody -->
+                                    <div class="mb-3">
+                                        <input type="text" name="title" class="form-control" placeholder="Asunto">
+                                    </div>
+                                    <div class="mb-3">
+                                        <textarea name="body" id=""  class="form-control" placeholder="Escribe aquí tu mensaje" cols="20" rows="5"></textarea>
+                                    </div>
+                                    <!--<div class="card-body">
+                                        <div id="ckeditor-classic" name="body"></div>
+                                    </div> end cardbody -->
                                     <div class="mt-4">
                                         <button type="submit" class="btn btn-primary w-md">Enviar Correo</button>
                                     </div>

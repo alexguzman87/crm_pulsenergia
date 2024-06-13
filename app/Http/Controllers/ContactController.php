@@ -114,7 +114,7 @@ class ContactController extends Controller
 
         $contact->update();
         
-        return redirect("contact");
+        return redirect()->back();
 
         /*
         if($request->hasFile('image')){
