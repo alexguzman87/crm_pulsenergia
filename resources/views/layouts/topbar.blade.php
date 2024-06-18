@@ -20,12 +20,12 @@
                     </span>
                 </a>
             </div>
-            <!--FORMATO DE BUSCADOR
+            
             <button type="button" class="btn btn-sm px-3 header-item vertical-menu-btn noti-icon">
                 <i class="fa fa-fw fa-bars font-size-16"></i>
             </button>
 
-             
+            <!--FORMATO DE BUSCADOR 
             <form class="app-search d-none d-lg-block">
                 <div class="position-relative">
                     <input type="text" class="form-control" placeholder="Buscar...">

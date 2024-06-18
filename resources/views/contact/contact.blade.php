@@ -30,16 +30,16 @@
                                             <input type="text" name="search_email" placeholder="Buscar email..." aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
                                             <input type="text" name="search_phone" placeholder="Buscar Teléfono..." aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
                                             <input type="date" name="search_created_at" placeholder="Buscar fecha..." aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
-                                            <button type="submit" name="send" class="btn btn-primary"><i class="bx bx-send"></i></button>
+                                            <button type="submit" name="send" title="Filtrar" class="btn btn-primary"><i class="bx bx-send"></i></button>
                                             <a href="/contact">
-                                            <button type="submit" name="send" class="btn btn-primary"><i class="bx bxs-eraser"></i></button></a>
+                                            <button type="submit" name="send" title="Borrar Filtro" class="btn btn-primary"><i class="bx bxs-eraser"></i></button></a>
                                         </form>
                                 </div>                                
                                 <div class="col-md-1">
                                     <div class="d-flex flex-wrap align-items-start justify-content-md-end mt-2 mt-md-0 gap-2 mb-3">
                                         <div>
-                                            <a href="/lead_export"><button type="submit" name="send" class="btn btn-primary"><i class="bx bx-download"></i></button></a>
-                                            <a href="/lead_create"><button type="submit" name="send" class="btn btn-primary"><i class="bx bx-user-plus"></i></button></a>
+                                            <a href="/lead_export"><button type="submit" title="Exportar Excel" name="send" class="btn btn-primary"><i class="bx bx-download"></i></button></a>
+                                            <a href="/lead_create"><button type="submit" title="Crear Lead" name="send" class="btn btn-primary"><i class="bx bx-user-plus"></i></button></a>
                                         </div>
                                     </div>
                                 </div>
@@ -88,7 +88,7 @@
                                                 <td data-column-id="phone" class="gridjs-td">{{$c->phone}}</td>
                                                 <td data-column-id="second_phone" class="gridjs-td">{{$c->second_phone}}</td>
                                                 <td data-column-id="notes" class="gridjs-td">{{$c->notes}}</td>
-                                                <td style="text-align: center;"><a href="{{route('lead_edit', $c->id)}}"><button type="submit" class="btn btn-primary"><i class="fas fa-pencil-alt"></i></button></a></td>
+                                                <td style="text-align: center;"><a href="{{route('lead_edit', $c->id)}}"><button type="submit" title="Editar Lead" class="btn btn-primary"><i class="fas fa-pencil-alt"></i></button></a></td>
                                             </tr>
                                         @endforeach
                                     </tbody>

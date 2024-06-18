@@ -11,6 +11,6 @@ class WordpressForm extends Model
 
     protected $connection = 'test';
 
-    protected $table = '6myowa_wpforms_entries';
+    protected $table = '6myowA_wpforms_entries';
 
 }
