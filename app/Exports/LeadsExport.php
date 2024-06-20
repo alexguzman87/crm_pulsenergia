@@ -4,15 +4,17 @@ namespace App\Exports;
 
 use App\Models\Contact;
 use App\Models\Lead;
-use Maatwebsite\Excel\Concerns\FromCollection;
-
-class LeadsExport implements FromCollection
+use Illuminate\Contracts\View\View;
+use Maatwebsite\Excel\Concerns\FromView;
+use Maatwebsite\Excel\Concerns\ShouldAutoSize;
+ 
+class LeadsExport implements FromView, ShouldAutoSize
 {
     /**
     * @return \Illuminate\Support\Collection
     */
-    public function collection()
+    public function view(): View
     {
-        return Contact::all();
+        return View('excelExport.leads',['contact'=>Contact::all()]);
     }
 }
