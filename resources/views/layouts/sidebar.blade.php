@@ -43,7 +43,6 @@
                     <ul class="sub-menu" aria-expanded="true">
                         <li>
                             <a href="/user" class="menu-item" data-key="t-signin">Listado Usuarios</a>
-                            <a href="/user_create" class="menu-item" data-key="t-signin">Crear Usuario</a>
                         </li>
                     </ul>
                 </li>

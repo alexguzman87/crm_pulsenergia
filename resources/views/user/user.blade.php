@@ -21,9 +21,26 @@
                 <div class="card-body">
                     <div id="table-search">
                         <div role="complementary" class="gridjs gridjs-container" style="width: 100%;">
-                            <div class="gridjs-head">
-                                <div class="gridjs-search">
-                                    <input type="search" placeholder="Buscar..." aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
+                            <div class="row">
+                                <div class="col-md-11">
+                                        <form method="GET" action="/user">
+                                            @csrf
+                                            <input type="text" name="search_id" placeholder="Buscar ID..." aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
+                                            <input type="text" name="search_type" placeholder="Buscar Tipo..." aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
+                                            <input type="text" name="search_name" placeholder="Buscar Nombre..." aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
+                                            <input type="text" name="search_email" placeholder="Buscar email..." aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
+                                            <input type="text" name="search_username" placeholder="Buscar Nombre de Usuario..." aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
+                                            <button type="submit" name="send" title="FILTRAR" class="btn btn-primary"><i class="bx bx-send"></i></button>
+                                            <a href="/errase"><button type="submit" name="send" title="BORRAR FILTRO" class="btn btn-primary"><i class="bx bxs-eraser"></i></button></a>
+                                        </form>
+                                </div>                                
+                                <div class="col-md-1">
+                                    <div class="d-flex flex-wrap align-items-start justify-content-md-end mt-2 mt-md-0 gap-2 mb-3">
+                                        <div>
+                                            <a href="/user_export"><button type="submit" title="EXPORTAR EXCEL" name="send" class="btn btn-primary"><i class="bx bx-download"></i></button></a>
+                                            <a href="/user_create"><button type="submit" title="CREAR USUARIO" name="send" class="btn btn-primary"><i class="bx bx-user-plus"></i></button></a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="gridjs-wrapper" style="height: auto;">

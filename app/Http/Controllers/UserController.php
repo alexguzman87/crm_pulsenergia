@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\UsersExport;
 use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\View;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
@@ -15,12 +17,18 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
 
         $users = User::all();
 
-        $users = User::orderBy('id')->paginate(25);
+        $users = User::orderBy('id')
+            ->id($request->search_id)
+            ->type_user($request->search_type)
+            ->name($request->search_name)
+            ->email($request->search_email)
+            ->username($request->search_username)
+            ->paginate(25);
                 
         return view('user.user',compact('users'));
 
@@ -166,4 +174,11 @@ class UserController extends Controller
         return redirect("clientes");
         */
     }
+
+    public function export() 
+    {
+        return Excel::download(new UsersExport, 'user.xlsx');
+    }
+
+
 }
