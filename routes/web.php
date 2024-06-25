@@ -3,11 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BasicController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ConfigController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\LeadController;
 use App\Http\Controllers\TaskCotroller;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\SaveFilesController;
 use App\Http\Controllers\WordpressFormController;
 use PHPUnit\TextUI\XmlConfiguration\CodeCoverage\Report\Php;
 
@@ -64,6 +66,17 @@ Route::get('send-mail', [MailController::class, 'index'])->name('send-mail');
 
 Route::get('lead_export',[LeadController::class, 'export'])->name('lead_export');
 Route::get('user_export',[UserController::class, 'export'])->name('user_export');
+
+Route::get('config_origin',[ConfigController::class, 'index'])->name('config_origin');
+Route::post('config_origin_create',[ConfigController::class,'store'])->name('config_origin_create');
+Route::get('config_origin_edit/{origin}',[ConfigController::class,'edit'])->name('config_origin_edit');
+Route::put('config_origin_update/{origin}',[ConfigController::class,'update'])->name('config_origin_update');
+Route::delete('config_origin_delete/{origin}',[ConfigController::class,'destroy'])->name('config_origin_delete');
+
+Route::get('loadFile',[SaveFilesController::class, 'loadFile'])->name('loadFile');
+Route::post('storeFile',[SaveFilesController::class, 'storeFile'])->name('storeFile');
+Route::get('downloadFile/{file}',[SaveFilesController::class, 'downloadFile'])->name('downloadFile');
+
 
 route::view('icons1','templates.icons-boxicons');
 route::view('icons2','templates.icons-feathericons');

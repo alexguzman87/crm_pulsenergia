@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ContactRequest;
 use App\Models\Contact;
+use App\Models\Origin;
 use App\Models\Task;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use App\Models\FileSave;
 
 class ContactController extends Controller
 {
@@ -91,7 +93,11 @@ class ContactController extends Controller
 
         $user = User::all();
 
-        return view ('contact.contactEdit', compact('contact', 'task', 'user'));
+        $origin = Origin::all();
+
+        $file = FileSave::where('id_contact', $id)->get();
+
+        return view ('contact.contactEdit', compact('contact', 'task', 'user','origin','file'));
 
     }
 
@@ -106,6 +112,7 @@ class ContactController extends Controller
     {
         $contact=Contact::findOrFail($id);
         $contact->name=$request->input('name');
+        $contact->id_origins=$request->input('id_origins');
         $contact->email=$request->input('email');
         $contact->second_email=$request->input('second_email');
         $contact->phone=$request->input('phone');
@@ -114,7 +121,7 @@ class ContactController extends Controller
 
         $contact->update();
         
-        return redirect()->back();
+        return redirect('lead');
 
         /*
         if($request->hasFile('image')){

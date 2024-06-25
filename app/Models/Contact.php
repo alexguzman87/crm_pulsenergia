@@ -49,4 +49,9 @@ class Contact extends Model
         return $query->where('created_at', 'Like', "%$created_at%");
 
     }
+
+    public function origin(){
+        return $this->belongsTo('App\Models\Origin','id_origins','id');
+    }
+
 }

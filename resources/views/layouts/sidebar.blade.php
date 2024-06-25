@@ -35,17 +35,6 @@
                         <span class="menu-item" data-key="t-dashboard">Inicio</span>
                     </a>
                 </li>
-                <li>
-                    <a href="javascript: void(0);">
-                        <i class="bx bx-user nav-icon"></i>
-                        <span class="has-arrow" data-key="t-authentication">Usuarios</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="true">
-                        <li>
-                            <a href="/user" class="menu-item" data-key="t-signin">Listado Usuarios</a>
-                        </li>
-                    </ul>
-                </li>
                 <li class="menu-item">
                     <a href="https://wiki.eboraformacion.es" target="_blank">
                         <i class="bx bx-book nav-icon"></i> <span>Wiki</span>
@@ -53,7 +42,7 @@
                 </li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">
-                        <i class="bx bx-user-pin nav-icon"></i>
+                        <i class="bx bx-user nav-icon"></i>
                         <span class="menu-item" data-key="t-contacts">CRM</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
@@ -76,6 +65,20 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="/client" data-key="t-user-grid">Clientes</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="bx bx-cog icon-sm"></i>
+                        <span class="menu-item" data-key="t-contacts">Configuración</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="true">
+                        <li>
+                            <a href="/user" class="menu-item" data-key="t-signin">Usuarios</a>
+                        </li>
+                        <li>
+                            <a href="/config_origin" class="menu-item" data-key="t-signin">Fuente</a>
+                        </li>
                     </ul>
                 </li>
             </ul>

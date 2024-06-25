@@ -133,6 +133,16 @@
                                                 <input type="number" name="second_phone" class="form-control" value="{{$contact->second_phone}}">                                    
                                             </div>
                                         </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <select class="form-control" name="id_origins">
+                                                    <option value="" disabled selected>Origen</option>
+                                                    @foreach ($origin as $u)
+                                                        <option value="{{$u->id}}">{{$u->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="mt-4">
                                         <button type="submit" class="btn btn-primary w-md">Editar Usuario</button>
@@ -253,7 +263,12 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <div>
-                                            <form action="#" class="dropzone">
+                                            <form action="/storeFile" class="dropzone" method="POST" enctype="multipart/form-data">
+                                                @csrf
+                                                <div class="mb-3">
+                                                    <input type="hidden" name="id_contact" class="form-control" value="{{$contact->id}}">
+                                                    <input name="fileName" type="text" class="form-control" placeholder="Nombre / Descripción del archivo">
+                                                </div>
                                                 <div class="fallback">
                                                     <input name="file" type="file" multiple="multiple">
                                                 </div>
@@ -264,13 +279,41 @@
                         
                                                     <h4>Suelte los archivos aquí o haga clic para cargarlos.                                                    </h4>
                                                 </div>
+                                                <div class="text-center mt-4">
+                                                    <button type="submit" class="btn btn-primary">Guardar Archivo</button>
+                                                </div>
                                             </form>
-                                            <!-- end form -->
                                         </div>
-                        
-                                        <div class="text-center mt-4">
-                                            <button type="button" class="btn btn-primary">Guardar Archivo</button>
+                                        <div class="card-body">
+                                            <table role="grid" class="gridjs-table" style="height: auto;">
+                                                <thead class="gridjs-thead">
+                                                    <tr class="gridjs-tr">
+                                                        <th data-column-id="id" class="gridjs-th" style="min-width: 85px; width: auto;">
+                                                            <div class="gridjs-th-content">Nombre del Archivo</div>
+                                                        </th>
+                                                        <th data-column-id="id" class="gridjs-th" style="min-width: 85px; width: auto;">
+                                                            <div class="gridjs-th-content">Archivo</div>
+                                                        </th>
+                                                        <th data-column-id="name" class="gridjs-th" style="min-width: 85px; width: auto;">
+                                                            <div class="gridjs-th-content">Subido el</div>
+                                                        </th>
+                                                        <th data-column-id="name" class="gridjs-th" style="min-width: 85px; width: auto;">
+                                                            <div class="gridjs-th-content"></div>
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="gridjs-tbody">
+                                                    @foreach ( $file as $c )
+                                                        <tr class="gridjs-tr">
+                                                            <td data-column-id="id" class="gridjs-td">{{$c->fileName}}</td>
+                                                            <td data-column-id="id" class="gridjs-td">{{$c->file}}</td>
+                                                            <td data-column-id="id" class="gridjs-td">{{ date('d-M-y', strtotime($c->created_at)) }}</td>
+                                                            <td style="text-align: center;"><a href="/downloadFile/{{$c->file}}"><button type="submit" title="Editar Lead" class="btn btn-primary"><i class="bx bx-download"></i></button></a></td>                                                           
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
                                         </div>
+                                        
                                     </div>
                                 </div><!-- end card -->
                             </div> <!-- end col -->

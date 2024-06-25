@@ -54,6 +54,9 @@
                                             <th data-column-id="id" class="gridjs-th" style="min-width: 85px; width: auto;">
                                                 <div class="gridjs-th-content">Fecha de contacto</div>
                                             </th>
+                                            <th data-column-id="id" class="gridjs-th" style="min-width: 85px; width: auto;">
+                                                <div class="gridjs-th-content">Origen</div>
+                                            </th>
                                             <th data-column-id="name" class="gridjs-th" style="min-width: 85px; width: auto;">
                                                 <div class="gridjs-th-content">Nombre</div>
                                             </th>
@@ -82,6 +85,7 @@
                                             <tr class="gridjs-tr">
                                                 <td data-column-id="id" class="gridjs-td">{{$c->id}}</td>
                                                 <td data-column-id="id" class="gridjs-td">{{date("d/m/Y", strtotime($c->created_at))}}</td>
+                                                <td data-column-id="origin" class="gridjs-td">{{$c->origin->name}}</td>
                                                 <td data-column-id="name" class="gridjs-td">{{$c->name}}</td>
                                                 <td data-column-id="email" class="gridjs-td">{{$c->email}}</td>
                                                 <td data-column-id="second_email" class="gridjs-td">{{$c->second_email}}</td>
