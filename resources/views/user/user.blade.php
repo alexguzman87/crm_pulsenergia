@@ -65,6 +65,9 @@
                                             <th data-column-id="company" class="gridjs-th" style="min-width: 100px; width: 10%;">
                                                 <div class="gridjs-th-content"></div>
                                             </th>
+                                            <th data-column-id="company" class="gridjs-th" style="min-width: 100px; width: 10%;">
+                                                <div class="gridjs-th-content"></div>
+                                            </th>
                                         </tr>
                                     </thead>
                                     <tbody class="gridjs-tbody">
@@ -88,8 +91,15 @@
                                                     {{$user->username}}
                                                 </td>
                                                 <td>
-                                                    <a href="{{route('user_edit', $user->id)}}"><button type="submit" class="btn btn-primary"><i class="bx bx-pencil"></i></button></a>
-                                                    <a href="{{route('user_edit_pass', $user->id)}}"><button type="submit" class="btn btn-primary"><i class="fas fa-key"></i></button></a>
+                                                    <a href="{{route('user_edit', $user->id)}}"><button type="submit" title="EDITAR USUARIO" class="btn btn-primary"><i class="bx bx-pencil"></i></button></a>
+                                                    <a href="{{route('user_edit_pass', $user->id)}}"><button type="submit" title="MODIFICAR CONTRASEÑA" class="btn btn-primary"><i class="fas fa-key"></i></button></a>
+                                                </td>
+                                                <td>
+                                                    <form action="{{route('user_delete', $user->id)}}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" title="BORRAR USUARIO" class="btn btn-primary"><i class="bx bx-x-circle"></i></button>
+                                                    </form>                                                   
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -100,6 +110,7 @@
                                 <div>{{$users->links('layouts.pagination')}}</div>
                             </div>    
                             <div id="gridjs-temp" class="gridjs-temp"></div>
+                            @include('layouts.message')
                         </div>
                     </div>
                 </div>

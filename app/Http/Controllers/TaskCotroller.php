@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\TaskCreateRequest;
 use App\Models\Task;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class TaskCotroller extends Controller
 {
@@ -20,6 +21,8 @@ class TaskCotroller extends Controller
         $Task->done_date=$request->input('done_date');
 
         $Task->save();
+
+        Session::flash('success_green','Se ha agregado una tarea con éxito');
 
         return redirect()->back();
     }

@@ -1,5 +1,7 @@
 /node_modules
 /public/build
+/public/files
+/public/images
 /public/hot
 /public/storage
 /storage/*.key

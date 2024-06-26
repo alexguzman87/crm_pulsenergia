@@ -6,6 +6,7 @@ use App\Http\Requests\SaveFileRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\FileSave;
+use Illuminate\Support\Facades\Session;
 
 class SaveFilesController extends Controller
 {
@@ -25,6 +26,8 @@ class SaveFilesController extends Controller
             $file->file=$filename;
         }
         $file->save();
+
+        Session::flash('success_green','Se ha agregado un archivo con éxito');
 
         return redirect()->back();       
         

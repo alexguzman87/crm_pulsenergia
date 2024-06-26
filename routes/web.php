@@ -39,6 +39,7 @@ Route::get('user_edit/{user}',[UserController::class,'edit'])->name('user_edit')
 Route::get('user_edit_pass/{user}',[UserController::class,'edit_pass'])->name('user_edit_pass');
 Route::put('user_edit/{user}',[UserController::class,'update'])->name('user_update');
 Route::put('user_edit_pass/{user}',[UserController::class,'update_pass'])->name('user_update_pass');
+Route::delete('user_delete/{user}',[UserController::class,'destroy'])->name('user_delete');
 
 Route::get('client',[LeadController::class,'index']);
 Route::get('client_create',[LeadController::class,'create']);

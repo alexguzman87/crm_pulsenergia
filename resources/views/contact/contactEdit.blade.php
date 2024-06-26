@@ -309,7 +309,7 @@
                                                             <td data-column-id="id" class="gridjs-td">{{$c->fileName}}</td>
                                                             <td data-column-id="id" class="gridjs-td">{{$c->file}}</td>
                                                             <td data-column-id="id" class="gridjs-td">{{ date('d-M-y', strtotime($c->created_at)) }}</td>
-                                                            <td style="text-align: center;"><a href="/downloadFile/{{$c->file}}"><button type="submit" title="Editar Lead" class="btn btn-primary"><i class="bx bx-download"></i></button></a></td>                                                           
+                                                            <td style="text-align: center;"><a href="/downloadFile/{{$c->file}}"><button type="submit" title="DESCARGAR ARCHIVO" class="btn btn-primary"><i class="bx bx-download"></i></button></a></td>                                                           
                                                     @endforeach
                                                 </tbody>
                                             </table>

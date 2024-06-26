@@ -119,8 +119,10 @@ class ContactController extends Controller
         $contact->notes=$request->input('notes');
 
         $contact->update();
+
+        Session::flash('success_green','Los datos del Lead han sido modificados con éxito');
         
-        return redirect('lead');
+        return redirect()->back();
 
         /*
         if($request->hasFile('image')){

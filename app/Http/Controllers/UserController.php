@@ -159,6 +159,13 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+        $user=User::find($id);
+        $user->delete();
+
+        Session::flash('danger_red','Los datos del Usuario han sido eliminado con éxito');
+
+        return redirect()->back();
+        
         /*
         $client=Client::findOrFail($id);
         
@@ -169,7 +176,6 @@ class UserController extends Controller
 
         //unlink(public_path('images/'.$client -> image)); $client->delete();
 
-        Session::flash('cliente_borrado','Los datos del cliente han sido eliminado con éxito');
 
         return redirect("clientes");
         */
