@@ -6,9 +6,57 @@
     @section('breadcrumb')
         @component('components.breadcrumb')
             @slot('li_1') Inicio @endslot
-            @slot('title') Bienvenido  @endslot
+            @slot('title') Bienvenido {{auth()->user()->name}}  @endslot
         @endcomponent
     @endsection
+
+    <div class="collapse show verti-dash-content" id="dashtoggle">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-12">   
+                    <div class="card-body p-0">
+                        <div class="row row-cols-xxl-5 row-cols-md-3 row-cols-1 g-0">
+                            <div class="col">
+                                <div class="mt-md-0 py-3 px-4 mx-2">
+                                    <p class="text-white-50 mb-2 text-truncate">Total Clientes </p>
+                                    <h3 class="text-white mb-0">{{$lead}}</h3>
+                                </div>
+                            </div> 
+                            <div class="col">
+                                <div class="mt-3 mt-md-0 py-3 px-4 mx-2">
+                                    <p class="text-white-50 mb-2 text-truncate">Total Lead</p>
+                                    <h3 class="text-white mb-0">{{$contact}}</h3>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="mt-3 mt-md-0 py-3 px-4 mx-2">
+                                    <p class="text-white-50 mb-2 text-truncate">Total Lead Semana</p>
+                                    <h3 class="text-white mb-0">{{$lastContactDays7}}</h3>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="mt-3 mt-md-0 py-3 px-4 mx-2">
+                                    <p class="text-white-50 mb-2 text-truncate">Tareas Creadas Semana</p>
+                                    <h3 class="text-white mb-0">{{$lastTaskDays7}}</h3>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="mt-3 mt-lg-0 py-3 px-4 mx-2">
+                                    <p class="text-white-50 mb-2 text-truncate">Total Presupuestos</p>
+                                    <h3 class="text-white mb-0">000000000</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <a class="dash-troggle-icon" id="dash-troggle-icon" data-bs-toggle="collapse" href="#dashtoggle" aria-expanded="true" aria-controls="dashtoggle">
+            <i class="bx bx-up-arrow-alt"></i>
+        </a>
+    </div>
  <!--<div class="row">
    <div class="col-xl-8">
         <div class="card">

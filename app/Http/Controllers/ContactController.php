@@ -63,7 +63,7 @@ class ContactController extends Controller
 
         $contact->save();
         
-        return redirect('contact');
+        return redirect('lead');
     }
 
     /**

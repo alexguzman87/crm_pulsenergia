@@ -26,7 +26,12 @@
                                         <form method="GET" action="/user">
                                             @csrf
                                             <input type="text" name="search_id" placeholder="Buscar ID..." aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
-                                            <input type="text" name="search_type" placeholder="Buscar Tipo..." aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
+                                            <select class="gridjs-input gridjs-search-input" name="search_type">
+                                                <option value="" disabled selected>Buscar tipo...</option>
+                                                <option value="admin">Administrador</option>
+                                                <option value="analyst">Analista</option>
+                                                <option value="general">General</option>
+                                            </select> 
                                             <input type="text" name="search_name" placeholder="Buscar Nombre..." aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
                                             <input type="text" name="search_email" placeholder="Buscar email..." aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
                                             <input type="text" name="search_username" placeholder="Buscar Nombre de Usuario..." aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
