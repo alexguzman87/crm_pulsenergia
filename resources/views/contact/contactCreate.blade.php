@@ -4,7 +4,7 @@
 {{-- breadcrumbs  --}}
     @section('breadcrumb')
         @component('components.breadcrumb')
-            @slot('li_1') Contactos @endslot
+            @slot('li_1') Lead @endslot
             @slot('title') Registro @endslot
         @endcomponent
     @endsection
@@ -13,11 +13,11 @@
     <div class="col-xl-6">
         <div class="card card-h-100">
             <div class="card-header justify-content-between d-flex align-items-center">
-                <h4 class="card-title">Registro de contactos</h4>
+                <h4 class="card-title">Registro de Lead</h4>
             </div><!-- end card header -->
             <div class="card-body">
                 <div>
-                <form action="/contact_create" method="POST">
+                <form action="/lead_create" method="POST">
                         @csrf
                         <div class="mb-3">
                             <input type="text" name="name" class="form-control" placeholder="Nombre Completo">

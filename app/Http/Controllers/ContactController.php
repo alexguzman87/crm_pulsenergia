@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ContactEditRequest;
 use App\Http\Requests\ContactRequest;
 use App\Models\Contact;
 use App\Models\Origin;
@@ -62,8 +63,6 @@ class ContactController extends Controller
 
         $contact->save();
         
-        Session::flash('cliente_creado','El cliente ha sido registrado con éxito');
-
         return redirect('contact');
     }
 
@@ -108,7 +107,7 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ContactEditRequest $request, $id)
     {
         $contact=Contact::findOrFail($id);
         $contact->name=$request->input('name');

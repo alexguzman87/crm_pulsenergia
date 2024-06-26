@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SaveFileRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\FileSave;
@@ -9,7 +10,7 @@ use App\Models\FileSave;
 class SaveFilesController extends Controller
 {
 
-    public function storeFile(Request $request){
+    public function storeFile(SaveFileRequest $request){
 
         $file=new FileSave;
         $file->id_contact=$request->input('id_contact');

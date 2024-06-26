@@ -147,6 +147,7 @@
                                     <div class="mt-4">
                                         <button type="submit" class="btn btn-primary w-md">Editar Usuario</button>
                                     </div>
+                                    @include('layouts.message')
                             </form>
                         </div>
                     </div>
@@ -203,8 +204,7 @@
                                                 <button type="submit" class="btn btn-primary w-md">Agregar Tarea</button>                                            </div>
                                             </div>
                                         </div>
-                                                                           
-
+                                    @include('layouts.message')
                             </form>
                         </div>
                         <div class="card-body">
@@ -282,6 +282,7 @@
                                                 <div class="text-center mt-4">
                                                     <button type="submit" class="btn btn-primary">Guardar Archivo</button>
                                                 </div>
+                                                @include('layouts.message')
                                             </form>
                                         </div>
                                         <div class="card-body">
@@ -341,6 +342,7 @@
                                     <div class="mt-4">
                                         <button type="submit" class="btn btn-primary w-md">Enviar Correo</button>
                                     </div>
+                                    @include('layouts.message')
                             </form>
                         </div>
                     </div><!-- end tab pane -->
