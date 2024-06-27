@@ -24,7 +24,7 @@ class ContactEditRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|alpha:ascii',
+            'name'=>'required',
             'email'=>'required|email',
             'phone'=>'required|numeric|digits_between:8,20',
             'id_origins'=>'required',
@@ -34,7 +34,6 @@ class ContactEditRequest extends FormRequest
     public function messages(){
         return[
             'name.required'=>'El Nombre es requerido',
-            'name.alpha'=>'El Nombre sólo debe tener letras',
             'email.required'=>'El Correo Electrónico es requerido',
             'email.email'=>'El Correo Electrónico debe tener formato xxxx@xxx.xxx',
             'phone'=>'El Teléfono es requerido',

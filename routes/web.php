@@ -58,6 +58,7 @@ Route::put('lead_edit/{contact}',[ContactController::class,'update'])->name('lea
 
 Route::get('task_create',[TaskCotroller::class,'create']);
 Route::post('task_create',[TaskCotroller::class,'store']);
+
 Route::get('contact_edit/{contact}',[ContactController::class,'edit'])->name('contact_edit');
 Route::put('contact_edit/{contact}',[ContactController::class,'update'])->name('contact_update');
 

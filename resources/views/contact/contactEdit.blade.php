@@ -108,35 +108,35 @@
                                 @csrf
                                 @method('PUT')
                                     <div class="mb-3">
-                                        <input type="text" name="name" class="form-control" value="{{$contact->name}}">
+                                        <input type="text" name="name" class="form-control" value="{{$contact->name}}" placeholder="Nombre...">
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="mb-3">
-                                                <input type="email" name="email" class="form-control" value="{{$contact->email}}">
+                                                <input type="email" name="email" class="form-control" value="{{$contact->email}}" placeholder="Correo Electrónico...">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="mb-3">
-                                                <input type="email" name="second_email" class="form-control" value="{{$contact->second_email}}">                                    
+                                                <input type="email" name="second_email" class="form-control" value="{{$contact->second_email}}" placeholder="Correo Electrónico Secundario...">                                    
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="mb-3">
-                                                <input type="number" name="phone" name="email" class="form-control" value="{{$contact->phone}}">
+                                                <input type="number" name="phone" class="form-control" value="{{$contact->phone}}" placeholder="Teléfono...">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="mb-3">
-                                                <input type="number" name="second_phone" class="form-control" value="{{$contact->second_phone}}">                                    
+                                                <input type="number" name="second_phone" class="form-control" value="{{$contact->second_phone}}" placeholder="Teléfono Secundario...">                                    
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="mb-3">
                                                 <select class="form-control" name="id_origins">
-                                                    <option value="" disabled selected>Origen</option>
+                                                    <option value="" disabled selected>Origen del Lead...</option>
                                                     @foreach ($origin as $u)
                                                         <option value="{{$u->id}}">{{$u->name}}</option>
                                                     @endforeach
@@ -156,7 +156,7 @@
                             <form action="/task_create" method="POST">
                                 @csrf
                                     <div class="mb-3">
-                                        <input type="text" name="task" class="form-control" placeholder="Tarea">
+                                        <input type="text" name="task" class="form-control" placeholder="Nombre de la Tarea...">
                                     </div>
                                     <div class="row">
                                         <div class="col-md-2">
@@ -250,7 +250,7 @@
                             @csrf
                             @method('PUT')
                                 <div class="mb-3">
-                                    <textarea name="notes" placeholder="Escribe aquí las notas" class="form-control" cols="30" rows="10" value="{{$contact->notes}}"></textarea>
+                                    <textarea name="notes" placeholder="Escribe aquí las notas..." class="form-control" cols="30" rows="10" value="{{$contact->notes}}"></textarea>
                                 </div>
                                 <div class="mt-4">
                                     <button type="submit" class="btn btn-primary w-md">Editar Notas</button>
@@ -272,14 +272,13 @@
                                                 <div class="fallback">
                                                     <input name="file" type="file" multiple="multiple">
                                                 </div>
-                                                <div class="dz-message needsclick">
+                                                <div class="dz-message needsclick text-center">
                                                     <div class="mb-3">
                                                         <i class="display-4 text-muted uil uil-cloud-upload"></i>
+                                                        <h4>Suelte los archivos aquí o haga clic para cargarlos.</h4>
                                                     </div>
-                        
-                                                    <h4>Suelte los archivos aquí o haga clic para cargarlos.                                                    </h4>
                                                 </div>
-                                                <div class="text-center mt-4">
+                                                <div class="mt-4">
                                                     <button type="submit" class="btn btn-primary">Guardar Archivo</button>
                                                 </div>
                                                 @include('layouts.message')

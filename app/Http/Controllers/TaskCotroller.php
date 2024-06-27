@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TaskCreateRequest;
+use App\Models\Contact;
 use App\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;

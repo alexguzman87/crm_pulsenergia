@@ -122,7 +122,9 @@ class ContactController extends Controller
 
         Session::flash('success_green','Los datos del Lead han sido modificados con éxito');
         
-        return redirect()->back();
+        $url = 'lead_edit/' . $id . '#navtabs-profile';
+
+        return redirect($url);
 
         /*
         if($request->hasFile('image')){
