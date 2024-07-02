@@ -42,7 +42,7 @@
                     </a>
                 </li>-->
                 <li>
-                    <a href="/leads">
+                    <a href="/lead">
                         <i class="bx bx-user nav-icon"></i>
                         <span class="menu-item" data-key="t-dashboard">LEADS</span>
                     </a>
@@ -67,13 +67,13 @@
                 </li>
                 <li class="menu-title" data-key="t-menu">CONFIGURACIÓN</li>
                 <li>
-                    <a href="#">
+                    <a href="/user">
                         <i class="bx bx-user nav-icon"></i>
                         <span class="menu-item" data-key="t-dashboard">USUARIOS</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="/config_origin">
                         <i class="bx bx-table nav-icon"></i>
                         <span class="menu-item" data-key="t-dashboard">TIPOS DE LEADS</span>
                     </a>

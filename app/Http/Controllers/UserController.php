@@ -64,6 +64,9 @@ class UserController extends Controller
             $filename = time()."_".$user->id.".".$extension;
             $file->move('images/',$filename);
             $user->image=$filename;
+        }else{
+            $filename = "Sin-Perfil-Hombre.png";
+            $user->image=$filename;
         }
         $user->save();
         

@@ -1,5 +1,5 @@
 @extends('layouts.master-without-nav')
-@section('title')Cerrar Sesión @endsection
+@section('title')CERRAR SESIÓN @endsection
 @section('content')
 
 <div class="auth-page d-flex align-items-center min-vh-100">
@@ -9,10 +9,7 @@
                 <div class="d-flex flex-column h-100 py-5 px-4">
                     <div class="my-auto">
                         <div class="p-3 text-center">
-                            <span class="logo-txt">ATENEA</span>
-                        </div>
-                        <div class="p-3 text-center">
-                            <img src="{{URL::asset('assets/images/logoEbora.png')}}" alt="" height="200px">
+                            <img src="{{URL::asset('assets/images/logo-pulse-favicon.jpg')}}" alt="" height="200px">
                         </div>
                     </div>
 
@@ -20,7 +17,7 @@
                         <p class="mb-0">© <script>
                                 document.write(new Date().getFullYear())
 
-                            </script><a href="{{url('https://eboraformacion.es/')}}" target="_blank"> Ebora Formación.</a> Creado por <a href="{{url('https://itglobalproject.com/')}}" target="_blank"><img src="{{URL::asset('assets/images/logoITGP.png')}}" alt="" height="35"></a></p>
+                            </script><a href="{{url('https://pulsenergia.com/')}}" target="_blank"> Pulse Energía.</a> Creado por <a href="{{url('https://itglobalproject.com/')}}" target="_blank"><img src="{{URL::asset('assets/images/logoITGP.png')}}" alt="" height="35"></a></p>
                     </div>
                 </div>
 
@@ -45,7 +42,7 @@
 
                                         <div class="text-center mt-4 py-2">
                                             <h4>Has Cerrado Sesión</h4>
-                                            <p>Gracias por usar <span class="fw-semibold">Atenea</span></p>
+                                            <p>Gracias por usar <span class="fw-semibold">PULSE ENERGIA</span></p>
                                             <div class="mt-4">
                                                 <a href="{{url('/login')}}" class="btn btn-primary w-100">Iniciar Sesión</a>
                                             </div>

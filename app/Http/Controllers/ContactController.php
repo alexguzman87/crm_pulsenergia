@@ -21,6 +21,8 @@ class ContactController extends Controller
      */
     public function index(Request $request)
     {
+        $origin=Origin::orderBy('name')->get();
+
         $contact = Contact::orderBy('id')
             ->name($request->search_name)
             ->email($request->search_email)
@@ -31,7 +33,7 @@ class ContactController extends Controller
         //where('id', 'Like', "%$request->$search_id%")
 
                 
-        return view('contact.contact',compact('contact'));
+        return view('contact.contact',compact('contact','origin'));
 
     }
 
@@ -52,14 +54,30 @@ class ContactController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(ContactRequest $request)
-    {
+    {       
         $contact=new Contact();
         $contact->name=$request->input('name');
         $contact->email=$request->input('email');
         $contact->second_email=$request->input('second_email');
         $contact->phone=$request->input('phone');
         $contact->second_phone=$request->input('second_phone');
-        $contact->notes=$request->input('notes');
+        $contact->country=$request->input('country');
+        $contact->state=$request->input('state');
+        $contact->address=$request->input('address');
+        $contact->city=$request->input('city');
+        $contact->postal_code=$request->input('postal_code');
+        $contact->id_origins=$request->input('id_origins');
+        $contact->lead_level=$request->input('lead_level');
+        if($request->hasFile('image')){
+            $file=$request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time()."_".$contact->id.".".$extension;
+            $file->move('images/',$filename);
+            $contact->image=$filename;
+        }else{
+            $filename = "Sin-Perfil-Hombre.png";
+            $contact->image=$filename;
+        }
 
         $contact->save();
         
@@ -156,19 +174,11 @@ class ContactController extends Controller
      */
     public function destroy($id)
     {
-        /*
-        $client=Client::findOrFail($id);
-        
-        if($client->image==null){$client->delete();}else{
-            unlink(public_path('images/'.$client -> image));
-            $client->delete();
-        }
+        $contact=Contact::find($id);
+        $contact->delete();
 
-        //unlink(public_path('images/'.$client -> image)); $client->delete();
+        Session::flash('danger_red','Los datos del Lead han sido eliminado con éxito');
 
-        Session::flash('cliente_borrado','Los datos del cliente han sido eliminado con éxito');
-
-        return redirect("clientes");
-        */
+        return redirect()->back();
     }
 }

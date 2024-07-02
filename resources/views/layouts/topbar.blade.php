@@ -5,18 +5,18 @@
            <div class="navbar-brand-box">
                 <a href="/" class="logo logo-dark">
                     <span class="logo-sm">
-                        <img src="{{URL::asset('assets/images/logoEbora.png')}}" alt="" height="26">
+                        <img src="{{URL::asset('assets/images/logo-pulse-favicon.jpg')}}" alt="" height="26">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{URL::asset('assets/images/logoEbora.png')}}" alt="" height="26"> <span class="logo-txt">Ebora</span>
+                        <img src="{{URL::asset('assets/images/logo-pulse-favicon.jpg')}}" alt="" height="26"> <span class="logo-txt">PULSE</span>
                     </span>
                 </a>
                 <a href="/" class="logo logo-light">
                     <span class="logo-sm">
-                        <img src="{{URL::asset('assets/images/logoEbora.png')}}" alt="" height="26">
+                        <img src="{{URL::asset('assets/images/logo-pulse-favicon.jpg')}}" alt="" height="26">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{URL::asset('assets/images/logoEbora.png')}}" alt="" height="26"> <span class="logo-txt">Ebora</span>
+                        <img src="{{URL::asset('assets/images/logo-pulse-favicon.jpg')}}" alt="" height="26"> <span class="logo-txt">PULSE</span>
                     </span>
                 </a>
             </div>

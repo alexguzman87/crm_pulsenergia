@@ -25,25 +25,48 @@ use PHPUnit\TextUI\XmlConfiguration\CodeCoverage\Report\Php;
 */
 
 Route::get('/', [BasicController::class, 'home'])->middleware('auth');
+Route::view('home', 'index')->middleware('auth');
+
+//Ruta Login
+Route::get('/login', [AuthController::class,'show']);
+Route::post('/login', [AuthController::class,'login'])->name('login');
+Route::get('/logout', [AuthController::class,'logout'])->middleware('auth');
+
+//Rutas de Usuario
+Route::get('user',[UserController::class,'index'])->middleware('auth');
+Route::get('user_create',[UserController::class,'create'])->middleware('auth');
+Route::post('user_create',[UserController::class,'store'])->middleware('auth');
+Route::get('user_edit/{user}',[UserController::class,'edit'])->middleware('auth')->name('user_edit');
+Route::get('user_edit_pass/{user}',[UserController::class,'edit_pass'])->middleware('auth')->name('user_edit_pass');
+Route::put('user_edit/{user}',[UserController::class,'update'])->middleware('auth')->name('user_update');
+Route::put('user_edit_pass/{user}',[UserController::class,'update_pass'])->middleware('auth')->name('user_update_pass');
+Route::delete('user_delete/{user}',[UserController::class,'destroy'])->middleware('auth')->name('user_delete');
+
+//Routes Leads
+
+Route::get('lead',[ContactController::class,'index'])->middleware('auth');
+Route::get('lead_create',[ContactController::class,'create'])->middleware('auth');
+Route::post('lead_create',[ContactController::class,'store'])->middleware('auth');
+Route::get('lead_edit/{lead}',[ContactController::class,'edit'])->middleware('auth')->name('lead_edit');
+Route::put('lead_edit/{lead}',[ContactController::class,'update'])->middleware('auth')->name('lead_update');
+Route::delete('lead_delete/{lead}',[ContactController::class,'destroy'])->middleware('auth')->name('lead_delete');
+
+//CONFIGURACIONES
+
+//ORIGIN
+Route::get('config_origin',[ConfigController::class, 'index'])->name('config_origin');
+Route::post('config_origin_create',[ConfigController::class,'store'])->name('config_origin_create');
+Route::get('config_origin_edit/{origin}',[ConfigController::class,'edit'])->name('config_origin_edit');
+Route::put('config_origin_update/{origin}',[ConfigController::class,'update'])->name('config_origin_update');
+Route::delete('config_origin_delete/{origin}',[ConfigController::class,'destroy'])->name('config_origin_delete');
+
 
 Route::view('leads', 'leadsWeb.contacts-list');
 Route::view('oportunity', 'oportunity.apps-kanban-board');
 Route::view('leadsWeb', 'viewName');
 
-Route::get('/login', [AuthController::class,'show']);
-Route::post('/login', [AuthController::class,'login'])->name('login');
-Route::get('/logout', [AuthController::class,'logout'])->middleware('auth');
 
-Route::view('home', 'index')->middleware('auth');;
 
-Route::get('user',[UserController::class,'index']);
-Route::get('user_create',[UserController::class,'create']);
-Route::post('user_create',[UserController::class,'store']);
-Route::get('user_edit/{user}',[UserController::class,'edit'])->name('user_edit');
-Route::get('user_edit_pass/{user}',[UserController::class,'edit_pass'])->name('user_edit_pass');
-Route::put('user_edit/{user}',[UserController::class,'update'])->name('user_update');
-Route::put('user_edit_pass/{user}',[UserController::class,'update_pass'])->name('user_update_pass');
-Route::delete('user_delete/{user}',[UserController::class,'destroy'])->name('user_delete');
 
 Route::get('client',[LeadController::class,'index']);
 Route::get('client_create',[LeadController::class,'create']);
@@ -54,11 +77,7 @@ Route::put('client_edit/{lead}',[LeadController::class,'update'])->name('client_
 Route::put('client_edit_pass/{lead}',[LeadController::class,'update_pass'])->name('client_update_pass');
 
 
-Route::get('lead',[ContactController::class,'index']);
-Route::get('lead_create',[ContactController::class,'create']);
-Route::post('lead_create',[ContactController::class,'store']);
-Route::get('lead_edit/{contact}',[ContactController::class,'edit'])->name('lead_edit');
-Route::put('lead_edit/{contact}',[ContactController::class,'update'])->name('lead_update');
+
 
 Route::get('task_create',[TaskCotroller::class,'create']);
 Route::post('task_create',[TaskCotroller::class,'store']);
@@ -73,11 +92,7 @@ Route::get('send-mail', [MailController::class, 'index'])->name('send-mail');
 Route::get('lead_export',[LeadController::class, 'export'])->name('lead_export');
 Route::get('user_export',[UserController::class, 'export'])->name('user_export');
 
-Route::get('config_origin',[ConfigController::class, 'index'])->name('config_origin');
-Route::post('config_origin_create',[ConfigController::class,'store'])->name('config_origin_create');
-Route::get('config_origin_edit/{origin}',[ConfigController::class,'edit'])->name('config_origin_edit');
-Route::put('config_origin_update/{origin}',[ConfigController::class,'update'])->name('config_origin_update');
-Route::delete('config_origin_delete/{origin}',[ConfigController::class,'destroy'])->name('config_origin_delete');
+
 
 Route::get('loadFile',[SaveFilesController::class, 'loadFile'])->name('loadFile');
 Route::post('storeFile',[SaveFilesController::class, 'storeFile'])->name('storeFile');

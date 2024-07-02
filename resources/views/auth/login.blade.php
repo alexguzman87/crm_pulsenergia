@@ -1,5 +1,5 @@
 @extends('layouts.master-without-nav')
-@section('title')Iniciar Sesión @endsection
+@section('title')INICIAR SESION @endsection
 @section('content')
 
 <div class="auth-page d-flex align-items-center min-vh-100">

@@ -14,7 +14,7 @@ class ConfigController extends Controller
 
         $origin = Origin::all();
 
-        $origin = Origin::orderBy('id')->paginate(25);
+        $origin = Origin::orderBy('name')->paginate(25);
 
         return view('config.origin',compact('origin'));
 

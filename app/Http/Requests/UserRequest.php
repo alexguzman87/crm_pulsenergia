@@ -24,29 +24,26 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
+            'name'=>'required',
+            'username'=>'required|unique:users',
+            'type_user'=>'required',
+            'email'=>'required|unique:users',
             'password'=>'required',
         ];
     }
 
     public function messages(){
         return[
-            'password.required'=>'La Contraseña es requerida',
-            //'identification_number.numeric'=>'El Número de Identificación sólo debe tener caracteres numéricos',
-            //'identification_number.unique'=>'El Número de Identificación ya está siendo usado',
-            //'email.required'=>'El Correo Electrónico es requerido',
-            //'email.unique'=>'El Correo Electrónico ya está siendo usado',
-            //'phone'=>'El Teléfono es requerido',
-            /*'birth_date.before'=>'La Fecha de Nacimiento debe tener un formato válido',
             'name.required'=>'El Nombre es requerido',
-            'name.regex'=>'El Nombre sólo debe tener letras',
-            'lastname.required'=>'El Apellido es requerido',
-            'lastname.regex'=>'El Apellido sólo debe tener letras',
-            'phone_number.required'=>'El Teléfono es requerido',
-            'phone_number.numeric'=>'El Teléfono solo debe tener números',
-            'phone_number.digits_between'=>'El Teléfono debe ser mayor a 8 números y menor a 20 números',
-            'address.required'=>'La Dirección es requerida',
-            //'image.required'=>'La Imagen es requerida',
-            //'image.image'=>'La Imagen sólo debe tener formatos (jpg, jpeg, png, bmp, gif, svg, or webp)',*/
+            'username.required'=>'El Nombre de Usuario es requerido',
+            'username.unique'=>'El Nombre de Usuario ya está siendo usado',
+            'type_user.required'=>'El Tipo de Usuario es requerido',
+            'email.required'=>'El Correo Electrónico es requerido',
+            'email.required'=>'El Correo Electrónico es requerido',
+            'email.unique'=>'El Correo Electrónico ya está siendo usado',
+            'password.required'=>'La Contraseña es requerida',
+            'image.required'=>'La Imagen es requerida',
+            'image.image'=>'La Imagen sólo debe tener formatos (jpg, jpeg, png, bmp, gif, svg, or webp)',
         ];    
     }
 }

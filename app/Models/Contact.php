@@ -17,7 +17,14 @@ class Contact extends Model
         'second_email',
         'phone',
         'second_phone',
-        'notes',
+        'country',
+        'state',
+        'address',
+        'city',
+        'postalCode',
+        'id_origins',
+        'lead_level',
+        'image',
     ];
 
     public function scopeName ($query, $name){
