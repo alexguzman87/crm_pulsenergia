@@ -10,7 +10,7 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="{{ URL::asset('assets/images/logoEbora.png')}}" rel="icon">
+    <link href="{{ URL::asset('assets/images/logo-pulse-favicon.png')}}" rel="icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">

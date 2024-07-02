@@ -8,56 +8,8 @@
             @slot('li_1') Inicio @endslot
             @slot('title') Bienvenido {{auth()->user()->name}}  @endslot
         @endcomponent
-    @endsection
-
-    <div class="collapse show verti-dash-content" id="dashtoggle">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-xl-12">   
-                    <div class="card-body p-0">
-                        <div class="row row-cols-xxl-5 row-cols-md-3 row-cols-1 g-0 text-center">
-                            <div class="col">
-                                <div class="mt-md-0 py-3 px-4 mx-2">
-                                    <i class="bx bx-user-check" style="font-size:50px; color:#789CAD;"></i>
-                                    <p class="text-white-50 mb-2 text-truncate">Total Clientes </p>
-                                    <h3 class="text-white mb-0">{{$lead}}</h3>
-                                </div>
-                            </div> 
-                            <div class="col">
-                                <div class="mt-3 mt-md-0 py-3 px-4 mx-2">
-                                    <i class="bx bx-user-plus" style="font-size:50px; color:#789CAD;"></i>
-                                    <p class="text-white-50 mb-2 text-truncate">Total Lead</p>
-                                    <h3 class="text-white mb-0">{{$contact}}</h3>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="mt-3 mt-md-0 py-3 px-4 mx-2">
-                                    <i class="bx bx-calendar" style="font-size:50px; color:#789CAD;"></i>
-                                    <p class="text-white-50 mb-2 text-truncate">Total Lead Semana</p>
-                                    <h3 class="text-white mb-0">{{$lastContactDays7}}</h3>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="mt-3 mt-md-0 py-3 px-4 mx-2">
-                                    <i class="bx bx-list-check" style="font-size:50px; color:#789CAD;"></i>
-                                    <p class="text-white-50 mb-2 text-truncate">Tareas Creadas Semana</p>
-                                    <h3 class="text-white mb-0">{{$lastTaskDays7}}</h3>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="mt-3 mt-lg-0 py-3 px-4 mx-2">
-                                    <i class="bx bx-euro" style="font-size:50px; color:#789CAD;"></i>
-                                    <p class="text-white-50 mb-2 text-truncate">Total Presupuestos</p>
-                                    <h3 class="text-white mb-0">000000000</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
- <!--<div class="row">
+    @endsection    
+ <div class="row">
    <div class="col-xl-8">
         <div class="card">
             <div class="card-body pb-2">
@@ -185,9 +137,9 @@
             </div>
         </div>
     </div>
-</div>-->
+</div>
 
-<!--<div class="row">
+<div class="row">
     <div class="col-xl-7">
         <div class="row">
             <div class="col-xl-6">
@@ -530,7 +482,6 @@
                 </div>
 
                 <div class="slider mt-4">
-                    <!-- Add Pagination 
                     <div class="swiper-button-next"><i class="mdi mdi-arrow-right"></i></div>
                     <div class="swiper-button-prev"><i class="mdi mdi-arrow-left"></i></div>
 
@@ -658,9 +609,9 @@
             </div>
         </div>
     </div>
-</div>-->
+</div>
 
-<!--<div class="row">
+<div class="row">
     <div class="col-xl-4">
         <div class="card">
             <div class="card-body pb-0">
@@ -920,7 +871,7 @@
             </div>
         </div>
     </div>
-</div> <!-- end row -->
+</div>
 
 @endsection
 

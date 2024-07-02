@@ -24,7 +24,11 @@ use PHPUnit\TextUI\XmlConfiguration\CodeCoverage\Report\Php;
 |
 */
 
-Route::get('/', [BasicController::class, 'home'])->middleware('auth');;
+Route::get('/', [BasicController::class, 'home'])->middleware('auth');
+
+Route::view('leads', 'leadsWeb.contacts-list');
+Route::view('oportunity', 'oportunity.apps-kanban-board');
+Route::view('leadsWeb', 'viewName');
 
 Route::get('/login', [AuthController::class,'show']);
 Route::post('/login', [AuthController::class,'login'])->name('login');

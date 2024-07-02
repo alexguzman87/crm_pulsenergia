@@ -5,12 +5,12 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title> @yield('title')ATENEA</title>
+    <title> @yield('title')PULSE ENERGÍA</title>
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesdesign" name="author" />
         
     <!-- Favicons -->
-    <link href="{{ URL::asset('assets/images/logoEbora.png')}}" rel="icon">
+    <link href="{{ URL::asset('assets/images/logo-pulse-favicon.jpg')}}" rel="icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
