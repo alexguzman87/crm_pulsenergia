@@ -65,6 +65,7 @@
                         <span class="menu-item" data-key="t-dashboard">LEAD WEB</span>
                     </a>
                 </li>
+                @if(auth()->user()->type_user=='admin')
                 <li class="menu-title" data-key="t-menu">CONFIGURACIÓN</li>
                 <li>
                     <a href="/user">
@@ -78,6 +79,7 @@
                         <span class="menu-item" data-key="t-dashboard">TIPOS DE LEADS</span>
                     </a>
                 </li>
+                @endif
             </ul>
         </div>
     </div>

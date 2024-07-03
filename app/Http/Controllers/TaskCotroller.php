@@ -15,6 +15,7 @@ class TaskCotroller extends Controller
     {
         $Task=new Task();
         $Task->id_user=$request->input('id_user');
+        $Task->id_contact=$request->input('id_contact');
         $Task->task=$request->input('task');
         $Task->priority=$request->input('priority');
         $Task->status=$request->input('status');

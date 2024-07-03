@@ -24,22 +24,35 @@ class ContactRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|alpha:ascii',
+            'name'=>'required',
             'email'=>'required|email|unique:App\Models\Contact,email',
             'phone'=>'required|numeric|digits_between:8,20',
+            'country'=>'required',
+            'state'=>'required',
+            'address'=>'required',
+            'city'=>'required',
+            'postal_code'=>'required',
+            'id_origins'=>'required',
+            'lead_level'=>'required',
         ];
     }
 
     public function messages(){
         return[
             'name.required'=>'El Nombre es requerido',
-            'name.alpha'=>'El Nombre sólo debe tener letras',
             'email.required'=>'El Correo Electrónico es requerido',
             'email.email'=>'El Correo Electrónico debe tener formato xxxx@xxx.xxx',
             'email.unique'=>'El Correo Electrónico ya está siendo usado',
             'phone'=>'El Teléfono es requerido',
             'phone.numeric'=>'El Teléfono solo debe tener números',
-            'phone.digits_between'=>'El Teléfono debe ser mayor a 8 números y menor a 20 números'
+            'phone.digits_between'=>'El Teléfono debe ser mayor a 8 números y menor a 20 números',
+            'country.required'=>'El País es requerido',
+            'state.required'=>'El Estado o Región es requerida',
+            'address.required'=>'La Direcció es requerida',
+            'city.required'=>'La Ciudad es requerida',
+            'postalCode.required'=>'El Código Postal es requerido',
+            'id_origins.required'=>'El Origen del Lead es requerido',
+            'lead_level.required'=>'El Nivel del Lead es requerido',
         ];    
     }
 

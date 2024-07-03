@@ -15,7 +15,7 @@
             <div class="card-body p-0">
                 <div class="mt-n5 position-relative">
                     <div class="text-center">
-                        <img src="{{URL::asset('images/'.auth()->user()->image)}}" alt="" class="avatar-xl rounded-circle img-thumbnail">
+                        <img src="{{URL::asset('images/'.$contact->image)}}" alt="" class="avatar-xl rounded-circle img-thumbnail">
 
                         <div class="mt-3">
                             <h5 class="mb-1">{{$contact->name}}</h5>
@@ -71,7 +71,7 @@
                     <li class="nav-item">
                         <a class="nav-link active" data-bs-toggle="tab" href="#navtabs-profile" role="tab">
                             <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
-                            <span class="d-none d-sm-block">Editar Usuario</span>
+                            <span class="d-none d-sm-block">Editar</span>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -104,58 +104,106 @@
                 <div class="tab-content p-3 text-muted">
                     <div class="tab-pane active" id="navtabs-profile" role="tabpanel">                    
                         <div class="card-body">
-                            <form action="/lead_edit/{{$contact->id}}" method="POST">
+                            <form action="/lead_edit/{{$contact->id}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
-                                    <div class="mb-3">
-                                        <input type="text" name="name" class="form-control" value="{{$contact->name}}" placeholder="Nombre...">
+                                    <div class="modal-body p-4">
+                                        <div class="mb-3">
+                                                <input type="text" name="name" class="form-control" value="{{$contact->name}}" placeholder="Nombre Completo">
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <input type="email" name="email" class="form-control" value="{{$contact->email}}" placeholder="Correo Electrónico">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <input type="email" name="second_email" class="form-control" value="{{$contact->second_email}}" placeholder="Correo Electrónico Secundario">                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <input type="number" name="phone" class="form-control" value="{{$contact->phone}}" placeholder="Teléfono">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <input type="number" name="second_phone" class="form-control" value="{{$contact->second_phone}}" placeholder="Teléfono Secundario">                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <input type="text" name="country" name="email" class="form-control" value="{{$contact->country}}" placeholder="País de origen...">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <input type="text" name="state" class="form-control" value="{{$contact->state}}" placeholder="Provincia de Origen...">                                    
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <input type="text" name="address" class="form-control" value="{{$contact->address}}" placeholder="Dirección">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <input type="text" name="city" class="form-control" value="{{$contact->city}}" placeholder="Ciudad">                                    
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <input type="number" name="postal_code" value="{{$contact->postal_code}}" class="form-control" placeholder="Código Postal">                                    
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <select name="id_origins" class="form-select">
+                                                        <option value="{{$contact->id_origins}}">{{$contact->origin->name}}</option>
+                                                        @foreach ($origin as $o)
+                                                            <option value="{{$o->id}}">{{$o->name}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <select name="lead_level" class="form-select">
+                                                        <option value="{{$contact->lead_level}}">{{$contact->lead_level}}</option>
+                                                        <option value="Desconocido">Desconocido</option>
+                                                        <option value="Poco Probable">Poco Probable</option>
+                                                        <option value="Probable">Probable</option>
+                                                        <option value="Muy Probable">Muy Probable</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="mb-3">
+                                            <label for="formFile" class="form-label">Subir imagen de perfil (Opcional)</label>
+                                            <input class="form-control" name="image" type="file" id="formFile">
+                                        </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="mb-3">
-                                                <input type="email" name="email" class="form-control" value="{{$contact->email}}" placeholder="Correo Electrónico...">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="mb-3">
-                                                <input type="email" name="second_email" class="form-control" value="{{$contact->second_email}}" placeholder="Correo Electrónico Secundario...">                                    
-                                            </div>
-                                        </div>
+                                    <!-- end modalbody -->
+                                    <div class="modal-footer">
+                                        <a href="/lead"><button type="button" class="btn btn-light w-sm" data-bs-dismiss="modal">Cancelar</button></a>
+                                        <button type="submit" class="btn btn-primary w-sm">Modificar Lead</button>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="mb-3">
-                                                <input type="number" name="phone" class="form-control" value="{{$contact->phone}}" placeholder="Teléfono...">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="mb-3">
-                                                <input type="number" name="second_phone" class="form-control" value="{{$contact->second_phone}}" placeholder="Teléfono Secundario...">                                    
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="mb-3">
-                                                <select class="form-control" name="id_origins">
-                                                    <option value="" disabled selected>Origen del Lead...</option>
-                                                    @foreach ($origin as $u)
-                                                        <option value="{{$u->id}}">{{$u->name}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="mt-4">
-                                        <button type="submit" class="btn btn-primary w-md">Editar Usuario</button>
-                                    </div>
-                                    @include('layouts.message')
-                            </form>
+                                @include('layouts.message')
+                            </form><!-- end form -->    
                         </div>
                     </div>
+
+                    {{--TASK--}}
                     <div class="tab-pane" id="navtabs-task" role="tabpanel">
                         <div class="card-body">
                             <form action="/task_create" method="POST">
                                 @csrf
                                     <div class="mb-3">
+                                        <input type="hidden" name="id_contact" value={{$contact->id}}>
                                         <input type="text" name="task" class="form-control" placeholder="Nombre de la Tarea...">
                                     </div>
                                     <div class="row">
@@ -199,64 +247,80 @@
                                                 <input type="date" name="done_date" class="form-control" placeholder="Realizado el..." value="<?php echo date('Y-m-d'); ?>" min="<?php echo date('Y-m-d'); ?>">                                                                     
                                             </div>
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="modal-footer">
                                             <div class="mb-3">
+                                                <a href="/lead"><button type="button" class="btn btn-light w-sm" data-bs-dismiss="modal">Cancelar</button></a>
                                                 <button type="submit" class="btn btn-primary w-md">Agregar Tarea</button>                                            </div>
                                             </div>
                                         </div>
                                     @include('layouts.message')
                             </form>
+                            <div class="table-responsive">
+                                <table class="table align-middle table-nowrap table-check">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Responsable</th>
+                                            <th scope="col">Tarea</th>
+                                            <th scope="col">Prioridad</th>
+                                            <th scope="col">Estado</th>
+                                            <th scope="col">Creado</th>
+                                            <th scope="col">Finalizado</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ( $task as $c )
+                                            <tr>
+                                                <td>{{$c->user->name}}</td>
+                                                <td>{{$c->task}}</td>
+                                                <td>{{$c->priority}}</td>
+                                                <td>{{$c->status}}</td>
+                                                <td>{{ date('d-M-y', strtotime($c->assigned_date)) }}</td>
+                                                <td>{{ date('d-M-y', strtotime($c->done_date)) }}</td>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <table role="grid" class="gridjs-table" style="height: auto;">
-                                <thead class="gridjs-thead">
-                                    <tr class="gridjs-tr">
-                                        <th data-column-id="id" class="gridjs-th" style="min-width: 85px; width: auto;">
-                                            <div class="gridjs-th-content">Responsable</div>
-                                        </th>
-                                        <th data-column-id="id" class="gridjs-th" style="min-width: 85px; width: auto;">
-                                            <div class="gridjs-th-content">Tarea</div>
-                                        </th>
-                                        <th data-column-id="name" class="gridjs-th" style="min-width: 85px; width: auto;">
-                                            <div class="gridjs-th-content">Prioridad</div>
-                                        </th>
-                                        <th data-column-id="email" class="gridjs-th" style="min-width: 188px; width: auto;">
-                                            <div class="gridjs-th-content">Estado</div>
-                                        </th>
-                                        <th data-column-id="second_email" class="gridjs-th" style="min-width: 243px; width: auto;">
-                                            <div class="gridjs-th-content">Creado</div>
-                                        </th>
-                                        <th data-column-id="phone" class="gridjs-th" style="min-width: 124px; width: auto;">
-                                            <div class="gridjs-th-content">Finalizado</div>
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody class="gridjs-tbody">
-                                    @foreach ( $task as $c )
-                                        <tr class="gridjs-tr">
-                                            <td data-column-id="id" class="gridjs-td">{{$c->user->name}}</td>
-                                            <td data-column-id="id" class="gridjs-td">{{$c->task}}</td>
-                                            <td data-column-id="id" class="gridjs-td">{{$c->priority}}</td>
-                                            <td data-column-id="id" class="gridjs-td">{{$c->status}}</td>
-                                            <td data-column-id="id" class="gridjs-td">{{ date('d-M-y', strtotime($c->assigned_date)) }}</td>
-                                            <td data-column-id="id" class="gridjs-td">{{ date('d-M-y', strtotime($c->done_date)) }}</td>
+                    </div><!-- end tab pane -->
+
+
+                    {{--Notas--}}
+                    <div class="tab-pane" id="navtabs-notes" role="tabpanel">
+                        <form action="/notes_create" method="POST">
+                            @csrf
+                                <div class="mb-3">
+                                    <input type="hidden" value="{{$contact->id}}" name="id_contact">
+                                    <textarea name="notes" placeholder="Escribe aquí las notas..." class="form-control" cols="30" rows="10" value="{{$contact->notes}}"></textarea>
+                                </div>
+                                <div class="modal-footer">
+                                    <div class="mt-4">
+                                        <a href="/lead"><button type="button" class="btn btn-light w-sm" data-bs-dismiss="modal">Cancelar</button></a>
+                                        <button type="submit" class="btn btn-primary w-md">Agregar Notas</button>
+                                    </div>
+                                </div>
+                        </form>
+                        <div class="table-responsive">
+                            <table class="table align-middle table-nowrap table-check">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Fecha</th>
+                                        <th scope="col">Nota</th>
+                                    </tr><!-- end tr -->
+                                </thead><!-- end thead -->
+                                <tbody>
+                                    @foreach ( $notes as $n )
+                                    <tr>
+                                        <td>{{ date('d-M-y', strtotime($n->created_at)) }}</td>
+                                        <td>{{$n->notes}}</td>
+                                    </tr><!-- end tr --> 
                                     @endforeach
                                 </tbody>
                             </table>
                         </div>
                     </div><!-- end tab pane -->
-                    <div class="tab-pane" id="navtabs-notes" role="tabpanel">
-                        <form action="/contact_edit/{{$contact->id}}" method="POST">
-                            @csrf
-                            @method('PUT')
-                                <div class="mb-3">
-                                    <textarea name="notes" placeholder="Escribe aquí las notas..." class="form-control" cols="30" rows="10" value="{{$contact->notes}}"></textarea>
-                                </div>
-                                <div class="mt-4">
-                                    <button type="submit" class="btn btn-primary w-md">Editar Notas</button>
-                                </div>
-                        </form>
-                    </div><!-- end tab pane -->
+                    
+                    
+                    {{--ARCHIVOS--}}
                     <div class="tab-pane" id="navtabs-files" role="tabpanel">
                         <div class="row">
                             <div class="col-12">
@@ -278,37 +342,32 @@
                                                         <h4>Suelte los archivos aquí o haga clic para cargarlos.</h4>
                                                     </div>
                                                 </div>
-                                                <div class="mt-4">
-                                                    <button type="submit" class="btn btn-primary">Guardar Archivo</button>
+                                                <div class="modal-footer">
+                                                    <div class="mt-4">
+                                                        <a href="/lead"><button type="button" class="btn btn-light w-sm" data-bs-dismiss="modal">Cancelar</button></a>
+                                                        <button type="submit" class="btn btn-primary">Guardar Archivo</button>
+                                                    </div>
                                                 </div>
                                                 @include('layouts.message')
                                             </form>
                                         </div>
-                                        <div class="card-body">
-                                            <table role="grid" class="gridjs-table" style="height: auto;">
-                                                <thead class="gridjs-thead">
-                                                    <tr class="gridjs-tr">
-                                                        <th data-column-id="id" class="gridjs-th" style="min-width: 85px; width: auto;">
-                                                            <div class="gridjs-th-content">Nombre del Archivo</div>
-                                                        </th>
-                                                        <th data-column-id="id" class="gridjs-th" style="min-width: 85px; width: auto;">
-                                                            <div class="gridjs-th-content">Archivo</div>
-                                                        </th>
-                                                        <th data-column-id="name" class="gridjs-th" style="min-width: 85px; width: auto;">
-                                                            <div class="gridjs-th-content">Subido el</div>
-                                                        </th>
-                                                        <th data-column-id="name" class="gridjs-th" style="min-width: 85px; width: auto;">
-                                                            <div class="gridjs-th-content"></div>
-                                                        </th>
+                                        <div class="table-responsive">
+                                            <table class="table align-middle table-nowrap table-check">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Nombre del Archivo</th>
+                                                        <th scope="col">Archivo</th>
+                                                        <th scope="col">Subido el</th>
+                                                        <th scope="col"></th>
                                                     </tr>
                                                 </thead>
-                                                <tbody class="gridjs-tbody">
+                                                <tbody>
                                                     @foreach ( $file as $c )
-                                                        <tr class="gridjs-tr">
-                                                            <td data-column-id="id" class="gridjs-td">{{$c->fileName}}</td>
-                                                            <td data-column-id="id" class="gridjs-td">{{$c->file}}</td>
-                                                            <td data-column-id="id" class="gridjs-td">{{ date('d-M-y', strtotime($c->created_at)) }}</td>
-                                                            <td style="text-align: center;"><a href="/downloadFile/{{$c->file}}"><button type="submit" title="DESCARGAR ARCHIVO" class="btn btn-primary"><i class="bx bx-download"></i></button></a></td>                                                           
+                                                        <tr>
+                                                            <td>{{$c->fileName}}</td>
+                                                            <td>{{$c->file}}</td>
+                                                            <td>{{ date('d-M-y', strtotime($c->created_at)) }}</td>
+                                                            <td><a href="/downloadFile/{{$c->file}}"><button type="submit" title="DESCARGAR ARCHIVO" class="btn btn-primary"><i class="bx bx-download"></i></button></a></td>                                                           
                                                     @endforeach
                                                 </tbody>
                                             </table>
@@ -338,8 +397,11 @@
                                     <!--<div class="card-body">
                                         <div id="ckeditor-classic" name="body"></div>
                                     </div> end cardbody -->
-                                    <div class="mt-4">
-                                        <button type="submit" class="btn btn-primary w-md">Enviar Correo</button>
+                                    <div class="modal-footer">
+                                        <div class="mt-4">
+                                            <a href="/lead"><button type="button" class="btn btn-light w-sm" data-bs-dismiss="modal">Cancelar</button></a>
+                                            <button type="submit" class="btn btn-primary w-md">Enviar Correo</button>
+                                        </div>
                                     </div>
                                     @include('layouts.message')
                             </form>

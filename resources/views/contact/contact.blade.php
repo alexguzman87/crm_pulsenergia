@@ -1,5 +1,5 @@
 @extends('layouts.vertical-master-layout')
-@section('title')Contactos @endsection
+@section('title')LEADS | @endsection
 @section('css')
 <link href="{{ URL::asset('assets/libs/gridjs/gridjs.min.css') }}" rel="stylesheet" type="text/css" />
 @endsection
@@ -66,7 +66,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <!-- end modalheader -->
-                            <form action="/lead_create" method="POST">
+                            <form action="/lead_create" method="POST" enctype="multipart/form-data">
                             @csrf
                                 <div class="modal-body p-4">
                                     <div class="mb-3">
@@ -144,7 +144,7 @@
                                     </div>
                                 
                                     <div class="mb-3">
-                                        <label for="formFile" class="form-label">Subir imagen</label>
+                                        <label for="formFile" class="form-label">Subir imagen de perfil (Opcional)</label>
                                         <input class="form-control" name="image" type="file" id="formFile">
                                     </div>
                                 </div>

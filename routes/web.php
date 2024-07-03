@@ -9,6 +9,7 @@ use App\Http\Controllers\LeadController;
 use App\Http\Controllers\TaskCotroller;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\NotesController;
 use App\Http\Controllers\SaveFilesController;
 use App\Http\Controllers\WordpressFormController;
 use PHPUnit\TextUI\XmlConfiguration\CodeCoverage\Report\Php;
@@ -27,12 +28,12 @@ use PHPUnit\TextUI\XmlConfiguration\CodeCoverage\Report\Php;
 Route::get('/', [BasicController::class, 'home'])->name('home')->middleware('auth');
 Route::view('home', 'index')->name('home')->middleware('auth');
 
-//Ruta Login
+//Routes Login
 Route::get('/login', [AuthController::class,'show']);
 Route::post('/login', [AuthController::class,'login'])->name('login');
 Route::get('/logout', [AuthController::class,'logout'])->middleware('auth');
 
-//Rutas de Usuario
+//Routes de Usuario
 Route::get('user',[UserController::class,'index'])->middleware('auth');
 Route::get('user_create',[UserController::class,'create'])->middleware('auth');
 Route::post('user_create',[UserController::class,'store'])->middleware('auth');
@@ -43,7 +44,6 @@ Route::put('user_edit_pass/{user}',[UserController::class,'update_pass'])->middl
 Route::delete('user_delete/{user}',[UserController::class,'destroy'])->middleware('auth')->name('user_delete');
 
 //Routes Leads
-
 Route::get('lead',[ContactController::class,'index'])->middleware('auth');
 Route::get('lead_create',[ContactController::class,'create'])->middleware('auth');
 Route::post('lead_create',[ContactController::class,'store'])->middleware('auth');
@@ -52,6 +52,11 @@ Route::put('lead_edit/{lead}',[ContactController::class,'update'])->middleware('
 Route::delete('lead_delete/{lead}',[ContactController::class,'destroy'])->middleware('auth')->name('lead_delete');
 
 //CONFIGURACIONES
+
+//Routes Notes and Task
+Route::post('task_create',[TaskCotroller::class,'store']);
+Route::post('notes_create',[NotesController::class,'store']);
+
 
 //ORIGIN
 Route::get('config_origin',[ConfigController::class, 'index'])->name('config_origin');

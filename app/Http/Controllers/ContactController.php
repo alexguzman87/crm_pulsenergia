@@ -11,6 +11,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\FileSave;
+use App\Models\Note;
 
 class ContactController extends Controller
 {
@@ -75,7 +76,7 @@ class ContactController extends Controller
             $file->move('images/',$filename);
             $contact->image=$filename;
         }else{
-            $filename = "Sin-Perfil-Hombre.png";
+            $filename = "user/Sin-Perfil-Hombre.png";
             $contact->image=$filename;
         }
 
@@ -106,15 +107,17 @@ class ContactController extends Controller
     {
         $contact=Contact::findOrFail($id);
 
-        $task = Task::all();
+        $task = Task::where('id_contact', $id)->get();
 
         $user = User::all();
 
         $origin = Origin::all();
 
+        $notes = Note::where('id_contact', $id)->get();
+
         $file = FileSave::where('id_contact', $id)->get();
 
-        return view ('contact.contactEdit', compact('contact', 'task', 'user','origin','file'));
+        return view ('contact.contactEdit', compact('contact', 'task', 'user','origin','file','notes'));
 
     }
 
@@ -128,21 +131,42 @@ class ContactController extends Controller
     public function update(ContactEditRequest $request, $id)
     {
         $contact=Contact::findOrFail($id);
+
         $contact->name=$request->input('name');
-        $contact->id_origins=$request->input('id_origins');
         $contact->email=$request->input('email');
         $contact->second_email=$request->input('second_email');
         $contact->phone=$request->input('phone');
         $contact->second_phone=$request->input('second_phone');
-        $contact->notes=$request->input('notes');
+        $contact->country=$request->input('country');
+        $contact->state=$request->input('state');
+        $contact->address=$request->input('address');
+        $contact->city=$request->input('city');
+        $contact->postal_code=$request->input('postal_code');
+        $contact->id_origins=$request->input('id_origins');
+        $contact->lead_level=$request->input('lead_level');
+        if($request->hasFile('image')){
+            if (!$request->hasFile('image')||$contact->image==null)
+            {
+                    $file=$request->file('image');
+                    $extension = $file->getClientOriginalExtension();
+                    $filename = time()."_".$contact->id.".".$extension;
+                    $file->move('images/',$filename);
+                    $contact->image=$filename;
+                }else{
+                    unlink(public_path('images/'.$contact -> image));
+                    $file=$request->file('image');
+                    $extension = $file->getClientOriginalExtension();
+                    $filename = time()."_".$contact->id."_".$contact->name."_".$extension;
+                    $file->move('images/',$filename);
+                    $contact->image=$filename;
+                }
+        }
 
         $contact->update();
 
         Session::flash('success_green','Los datos del Lead han sido modificados con éxito');
         
-        $url = 'lead_edit/' . $id . '#navtabs-profile';
-
-        return redirect($url);
+        return redirect()->back();
 
         /*
         if($request->hasFile('image')){

@@ -14,6 +14,7 @@ class Task extends Model
     protected $fillable = [
         'task',
         'id_user',
+        'id_contact',
         'priority',
         'status',
         'assigned_date',
@@ -21,7 +22,7 @@ class Task extends Model
     ];
 
     public function user(){
-        return $this->belongsTo('App\Models\Contact','id_user','id');
+        return $this->belongsTo('App\Models\User','id_user','id');
     }
     
 }

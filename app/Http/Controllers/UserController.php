@@ -67,7 +67,7 @@ class UserController extends Controller
             $file->move('images/',$filename);
             $user->image=$filename;
         }else{
-            $filename = "Sin-Perfil-Hombre.png";
+            $filename = "/user/Sin-Perfil-Hombre.png";
             $user->image=$filename;
         }
         $user->save();

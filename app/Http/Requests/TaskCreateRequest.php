@@ -29,7 +29,7 @@ class TaskCreateRequest extends FormRequest
             'priority'=>'required',
             'status'=>'required',
             'assigned_date'=>'required',
-            'done_date'=>'required|after:assigned_date',
+            'done_date'=>'required',
         ];
     }
 
@@ -41,7 +41,6 @@ class TaskCreateRequest extends FormRequest
             'status.required'=>'El Estado es requerido',
             'assigned_date.required'=>'La fecha de Asignación es requerida',
             'done_date.required'=>'La fecha de Finalización es requerida',
-            'done_date.after'=>'La fecha de Finalización debe ser posterior a la fecha requerida'
         ]; 
     }
 }

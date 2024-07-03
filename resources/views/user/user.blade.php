@@ -1,5 +1,5 @@
 @extends('layouts.vertical-master-layout')
-@section('title')Usuarios @endsection
+@section('title')USUARIOS | @endsection
 @section('css')
 <link href="{{ URL::asset('assets/libs/gridjs/gridjs.min.css') }}" rel="stylesheet" type="text/css" />
 @endsection

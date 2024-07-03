@@ -4,8 +4,8 @@
 {{-- breadcrumbs  --}}
     @section('breadcrumb')
         @component('components.breadcrumb')
-            @slot('li_1') Contacts @endslot
-            @slot('title') User List @endslot
+            @slot('li_1') Leads @endslot
+            @slot('title') Listado @endslot
         @endcomponent
     @endsection
 <div class="row">

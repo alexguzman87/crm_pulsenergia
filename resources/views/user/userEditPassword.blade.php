@@ -33,7 +33,7 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label" for="formrow-firstname-input">Nueva Contraseña</label>
-                                    <input type="text" name="password" class="form-control" id="formrow-password-input" placeholder="Escribe la nueva contraseña">
+                                    <input type="password" name="password" class="form-control" id="formrow-password-input" placeholder="Escribe la nueva contraseña">
                                 </div>
                             </div><!-- end col -->
                         </div><!-- end row -->

@@ -21,7 +21,7 @@ class Contact extends Model
         'state',
         'address',
         'city',
-        'postalCode',
+        'postal_code',
         'id_origins',
         'lead_level',
         'image',
