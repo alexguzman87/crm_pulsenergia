@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Exports\UsersExport;
+use App\Http\Requests\UserEditRequest;
+use App\Http\Requests\UserPassEditRequest;
 use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -112,7 +114,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update_pass(UserRequest $request, $id)
+    public function update_pass(UserPassEditRequest $request, $id)
     {
         $user=User::findOrFail($id);
         $user->password=$request->input('password');
@@ -123,7 +125,7 @@ class UserController extends Controller
        
     }
 
-    public function update(Request $request, $id)
+    public function update(UserEditRequest $request, $id)
     {
         $user=User::findOrFail($id);
         $user->email=$request->input('email');

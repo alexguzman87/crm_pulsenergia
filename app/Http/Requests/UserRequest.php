@@ -39,7 +39,6 @@ class UserRequest extends FormRequest
             'username.unique'=>'El Nombre de Usuario ya está siendo usado',
             'type_user.required'=>'El Tipo de Usuario es requerido',
             'email.required'=>'El Correo Electrónico es requerido',
-            'email.required'=>'El Correo Electrónico es requerido',
             'email.unique'=>'El Correo Electrónico ya está siendo usado',
             'password.required'=>'La Contraseña es requerida',
             'image.required'=>'La Imagen es requerida',

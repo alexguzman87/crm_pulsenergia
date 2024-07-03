@@ -45,10 +45,12 @@
                                 <div class="mb-3">
                                     <label class="form-label" for="formrow-firstname-input">Tipo de Usuario</label>
                                     <select name="type_user" class="form-select">
-                                        <option value="" selected disabled hidden>Selecciona un perfil</option>
+                                        <option value="{{$user->type_user}}">
+                                            @if($user->type_user == 'admin') Administrador @endif
+                                            @if($user->type_user == 'commercial') Comercial @endif
+                                        </option>
                                         <option value="admin">Administrador</option>
-                                        <option value="analyst">Analista</option>
-                                        <option value="general">General</option>
+                                        <option value="commercial">Comercial</option>
                                     </select>                          
                                 </div>
                             </div>
@@ -59,6 +61,7 @@
                         </div>
                         <div class="mt-4">
                             <button type="submit" class="btn btn-primary w-md">Editar Usuario</button>
+                            <a href="/user"><button type="button" class="btn btn-light w-sm" data-bs-dismiss="modal">Cancelar</button></a>
                         </div>
                         @include('layouts.message')
                     </form><!-- end form -->

@@ -205,6 +205,7 @@
     <div class="container-fluid">
         @yield('breadcrumb')
     </div> 
+    @if(Route::is('home') )
     <div class="collapse show verti-dash-content" id="dashtoggle">
         <div class="container-fluid">
             <div class="row">
@@ -260,5 +261,7 @@
         <a class="dash-troggle-icon" id="dash-troggle-icon" data-bs-toggle="collapse" href="#dashtoggle" aria-expanded="true" aria-controls="dashtoggle">
             <i class="bx bx-up-arrow-alt"></i>
         </a>
-    </div>   
+    </div>    
+    @endif
+   
 </header>

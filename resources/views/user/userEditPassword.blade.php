@@ -39,6 +39,7 @@
                         </div><!-- end row -->
                         <div class="mt-4">
                             <button type="submit" class="btn btn-primary w-md">Modificar Contraseña</button>
+                            <a href="/user"><button type="button" class="btn btn-light w-sm" data-bs-dismiss="modal">Cancelar</button></a>
                         </div>
                         @include('layouts.message')
                     </form><!-- end form -->

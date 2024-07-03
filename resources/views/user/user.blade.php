@@ -30,7 +30,7 @@
                                 <a href="/user_export"><button type="submit" title="EXPORTAR EXCEL" name="send" class="btn btn-primary"><i class="bx bx-download"></i></button></a>
                             </div>
                             <div>
-                                <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addUserModal"><i class="bx bx-user-plus"></i></a>
+                                <a href="#" class="btn btn-primary" title="AGREGAR USUARIO" data-bs-toggle="modal" data-bs-target="#addUserModal"><i class="bx bx-user-plus"></i></a>
                             </div>
                         </div>
                     </div><!-- end col -->
@@ -43,8 +43,7 @@
                             <select style="width: 250px; border-color: var(--bs-input-border);background-color: var(--bs-input-bg);color: var(--bs-body-color); border: 1px solid #d2d6dc; border-radius: 5px; font-size: 14px; line-height: 1.45; outline: none; padding: 10px 13px;" class="gridjs-input gridjs-search-input" name="search_type">
                                 <option value="" disabled selected>Buscar tipo...</option>
                                 <option value="admin">Administrador</option>
-                                <option value="analyst">Analista</option>
-                                <option value="general">General</option>
+                                <option value="commercial">Comercial</option>
                             </select> 
                             <input type="text" name="search_name" placeholder="Buscar Nombre..." aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
                             <input type="text" name="search_email" placeholder="Buscar email..." aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
@@ -85,8 +84,7 @@
                                                 <select name="type_user" class="form-select">
                                                     <option value="" selected disabled hidden>Selecciona un perfil</option>
                                                     <option value="admin">Administrador</option>
-                                                    <option value="analyst">Analista</option>
-                                                    <option value="general">General</option>
+                                                    <option value="commercial">Comercial</option>
                                                 </select> 
                                             </div>
                                         </div><!-- end row -->
@@ -138,19 +136,23 @@
                             @foreach ( $users as $user )
                             <tr>
                                 <td>{{$user->id}}</td>
-                                <td><img src="{{URL::asset('images/'.$user->image)}}" alt="" class="avatar-sm rounded-circle me-2"></td>
+                                <td>
+                                    @if($user->image)<img src={{URL::asset('images/'.$user->image)}} alt="" class="avatar-sm rounded-circle me-2">
+                                    @else<img src={{URL::asset('images/user/Sin-Perfil-Hombre.png')}} alt="" class="avatar-sm rounded-circle me-2">
+                                    @endif
+                                </td>
                                 <td>
                                     @if($user->type_user == 'admin') Administrador @endif
-                                    @if($user->type_user == 'analyst') Analista @endif
-                                    @if($user->type_user == 'general') General @endif
+                                    @if($user->type_user == 'commercial') Comercial @endif
                                 </td>
                                 <td>{{$user->name}}</td>
                                 <td>{{$user->email}}</td>
                                 <td>{{$user->username}}</td>
                                 <td>
                                     <div class="d-flex gap-2">
-                                        <a href="#" data-bs-toggle="modal" data-bs-target="#editUserModal"><button type="submit" title="EDITAR USUARIO" class="btn btn-primary"><i class="bx bx-pencil"></i></button></a>
-                                        <a href="#" data-bs-toggle="modal" data-bs-target="#editPasswordModal"><button type="submit" title="MODIFICAR CONTRASEÑA" class="btn btn-primary"><i class="fas fa-key"></i></button></a>
+                                        <a href="{{route('user_edit', $user->id)}}"><button type="submit" title="EDITAR USUARIO" class="btn btn-primary"><i class="bx bx-pencil"></i></button></a>
+                                        <a href="{{route('user_edit_pass', $user->id)}}"><button type="submit" title="MODIFICAR CONTRASEÑA" class="btn btn-primary"><i class="fas fa-key"></i></button></a>
+                                        <!--<a href="#" data-bs-toggle="modal" data-bs-target="#editPasswordModal"><button type="submit" title="MODIFICAR CONTRASEÑA" class="btn btn-primary"><i class="fas fa-key"></i></button></a>-->
                                         <form action="{{route('user_delete', $user->id)}}" method="POST">
                                             @csrf
                                             @method('DELETE')

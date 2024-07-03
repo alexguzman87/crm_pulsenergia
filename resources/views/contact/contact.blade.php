@@ -30,7 +30,7 @@
                                 <a href="/contact_export"><button type="submit" title="EXPORTAR EXCEL" name="send" class="btn btn-primary"><i class="bx bx-download"></i></button></a>
                             </div>
                             <div>
-                                <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addLeadModal"><i class="bx bx-user-plus"></i></a>
+                                <a href="#" class="btn btn-primary" title="AGREGAR LEAD" data-bs-toggle="modal" data-bs-target="#addLeadModal"><i class="bx bx-user-plus"></i></a>
                             </div>
                         </div>
                     </div><!-- end col -->
@@ -181,7 +181,11 @@
                             @foreach ( $contact as $c )
                             <tr>
                                 <td>{{$c->id}}</td>
-                                <td><img src="{{--URL::asset('images/'.$contact->image)--}}" alt="" class="avatar-sm rounded-circle me-2"></td>
+                                <td>
+                                    @if($c->image)<img src={{URL::asset('images/'.$c->image)}} alt="" class="avatar-sm rounded-circle me-2">
+                                    @else<img src={{URL::asset('images/Sin-Perfil-Hombre.png')}} alt="" class="avatar-sm rounded-circle me-2">
+                                    @endif
+                                </td>
                                 <td>{{date("d/m/Y", strtotime($c->created_at))}}</td>
                                 <td>{{$c->origin->name}}</td>
                                 <td>{{$c->name}}</td>
@@ -191,7 +195,7 @@
                                 <td>{{$c->second_phone}}</td>
                                 <td>
                                     <div class="d-flex gap-2">
-                                        <a href="{{route('lead_edit', $c->id)}}"><button type="submit" title="Editar Lead" class="btn btn-primary"><i class="fas fa-pencil-alt"></i></button></a>
+                                        <a href="{{route('lead_edit', $c->id)}}"><button type="submit" title="EDITAR LEAD" class="btn btn-primary"><i class="fas fa-pencil-alt"></i></button></a>
                                         <form action="{{route('lead_delete', $c->id)}}" method="POST">
                                             @csrf
                                             @method('DELETE')
