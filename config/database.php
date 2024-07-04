@@ -63,7 +63,7 @@ return [
             ]) : [],
         ],
 
-        'test' => [
+        'wp_form_entries' => [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
             'host' => env('DB_WP_HOST', '127.0.0.1'),

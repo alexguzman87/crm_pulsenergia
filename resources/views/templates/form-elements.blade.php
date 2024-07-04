@@ -463,7 +463,7 @@
                 <div class="mt-4">
                     <h5 class="font-size-14">Custom Range</h5>
                     <input type="range" class="form-range" id="customRange1">
-                    <input type="range" class="form-range mt-2" min="0" max="5" id="customRange2">
+                    <input type="range" <input id="field-probability" type="range" min="1" max="100" name="probability" value="46" wfd-id="id12" style="background: linear-gradient(to right, rgb(50, 100, 254) 46%, rgb(204, 214, 255) 46%);"> min="0" max="5" id="customRange2">
                 </div>
             </div><!-- end cardbody -->
         </div><!-- end card -->

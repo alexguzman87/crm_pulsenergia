@@ -9,8 +9,8 @@ class WordpressForm extends Model
 {
     use HasFactory;
 
-    protected $connection = 'test';
+    protected $connection = 'wp_form_entries';
 
-    protected $table = '6myowA_wpforms_entries';
+    protected $table = '6jmdda9o9_fluentform_entry_details';
 
 }

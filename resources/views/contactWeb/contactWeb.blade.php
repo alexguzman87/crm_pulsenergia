@@ -39,41 +39,25 @@
                                 <table role="grid" class="gridjs-table" style="height: auto; text-align: center;">
                                     <thead class="gridjs-thead">
                                         <tr class="gridjs-tr">
-                                            <th data-column-id="id" class="gridjs-th" style="min-width: 85px; width: auto;">
-                                                <div class="gridjs-th-content">ID</div>
-                                            </th>
-                                            <th data-column-id="name" class="gridjs-th" style="min-width: 85px; width: auto;">
-                                                <div class="gridjs-th-content">Nombre</div>
-                                            </th>
-                                            <th data-column-id="name" class="gridjs-th" style="min-width: 85px; width: auto;">
-                                                <div class="gridjs-th-content">Correo</div>
-                                            </th>
-                                            <th data-column-id="name" class="gridjs-th" style="min-width: 85px; width: auto;">
-                                                <div class="gridjs-th-content">Teléfono</div>
-                                            </th>
-                                            <th data-column-id="name" class="gridjs-th" style="min-width: 85px; width: auto;">
-                                                <div class="gridjs-th-content">Ciclo</div>
-                                            </th>
-                                            <th data-column-id="name" class="gridjs-th" style="min-width: 85px; width: auto;">
-                                                <div class="gridjs-th-content">Asunto</div>
-                                            </th>
-                                            <th data-column-id="name" class="gridjs-th" style="min-width: 85px; width: auto;">
-                                                <div class="gridjs-th-content">Mensaje</div>
-                                            </th>
+                                            <th>ID</th>
+                                            <th>Nombre</th>
+                                            <th>Correo</th>
+                                            <th>Teléfono</th>
+                                            <th>Ciclo</th>
+                                            <th>Asunto</th>
+                                            <th>Mensaje</th>
                                         </tr>
                                     </thead>
-                                    <tbody class="gridjs-tbody">
-                                       @foreach ($form as $i)
+                                    <tbody>
+                                        @foreach ($data as $i => $k)
                                        <tr>
+                                            <td>
+                                            {{$data['name']}}
+                                           </td>                                        
                                            <td>
-                                            {{$i->entry_id}}
-                                           </td> 
-                                           
-                                            @foreach (json_decode($i->fields) as $i)
-                                            <td> {{$i->value}}</td>
-                                            @endforeach
-                                           
-                                       </tr>
+                                            {{$data['phone']}}
+                                           </td>
+                                        </tr>
                                        @endforeach
                                     </tbody>
                                 </table>

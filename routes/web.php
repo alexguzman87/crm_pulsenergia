@@ -10,6 +10,7 @@ use App\Http\Controllers\TaskCotroller;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\NotesController;
+use App\Http\Controllers\OportunityController;
 use App\Http\Controllers\SaveFilesController;
 use App\Http\Controllers\WordpressFormController;
 use PHPUnit\TextUI\XmlConfiguration\CodeCoverage\Report\Php;
@@ -66,8 +67,20 @@ Route::put('config_origin_update/{origin}',[ConfigController::class,'update'])->
 Route::delete('config_origin_delete/{origin}',[ConfigController::class,'destroy'])->name('config_origin_delete');
 
 
+//OPORTUNITIES
+Route::get('oportunity',[OportunityController::class,'index'])->middleware('auth')->name('oportunity');
+Route::get('oportunity_create',[OportunityController::class,'create'])->middleware('auth');
+Route::post('oportunity_create',[OportunityController::class,'store'])->middleware('auth');
+Route::get('oportunity_edit/{oportunity}',[OportunityController::class,'edit'])->middleware('auth')->name('oportunity_edit');
+Route::put('oportunity_edit/{oportunity}',[OportunityController::class,'update'])->middleware('auth')->name('oportunity_update');
+Route::delete('oportunity_delete/{oportunity}',[OportunityController::class,'destroy'])->middleware('auth')->name('oportunity_delete');
+
+Route::put('oportunity_change_status/{oportunity}',[OportunityController::class,'updateStatus'])->middleware('auth')->name('oportunity_change_status');
+
+
+
+
 Route::view('leads', 'leadsWeb.contacts-list');
-Route::view('oportunity', 'oportunity.apps-kanban-board');
 Route::view('leadsWeb', 'viewName');
 
 
