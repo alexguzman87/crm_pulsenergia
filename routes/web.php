@@ -78,10 +78,15 @@ Route::delete('oportunity_delete/{oportunity}',[OportunityController::class,'des
 Route::put('oportunity_change_status/{oportunity}',[OportunityController::class,'updateStatus'])->middleware('auth')->name('oportunity_change_status');
 
 
+//Wordpress Form
+route::get('leadsWeb', [WordpressFormController::class,'ShowForm'])->name('leadsWeb');
+
+
+
+
 
 
 Route::view('leads', 'leadsWeb.contacts-list');
-Route::view('leadsWeb', 'viewName');
 
 
 
@@ -103,7 +108,6 @@ Route::post('task_create',[TaskCotroller::class,'store']);
 Route::get('contact_edit/{contact}',[ContactController::class,'edit'])->name('contact_edit');
 Route::put('contact_edit/{contact}',[ContactController::class,'update'])->name('contact_update');
 
-route::get('contact_web', [WordpressFormController::class,'ShowForm'])->name('formulario');
 
 Route::get('send-mail', [MailController::class, 'index'])->name('send-mail');
 

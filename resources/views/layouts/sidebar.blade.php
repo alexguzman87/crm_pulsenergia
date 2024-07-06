@@ -60,7 +60,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="leads">
+                    <a href="leadsWeb">
                         <i class="bx bx-mail-send nav-icon"></i>
                         <span class="menu-item" data-key="t-dashboard">LEAD WEB</span>
                     </a>

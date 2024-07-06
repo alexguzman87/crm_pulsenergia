@@ -15,7 +15,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <h5 class="card-title">Contact List <span class="text-muted fw-normal ms-2">(834)</span></h5>
+                            <h5 class="card-title">Leads Web <span class="text-muted fw-normal ms-2">{{$form->count()}}</span></h5>
                         </div>
                     </div><!-- end col -->
 
@@ -94,54 +94,73 @@
                     <table class="table align-middle table-nowrap table-check">
                         <thead>
                             <tr>
-                                <th scope="col" style="width: 50px;">
-                                    <div class="form-check font-size-16">
-                                        <input type="checkbox" class="form-check-input" id="checkAll">
-                                        <label class="form-check-label" for="checkAll"></label>
-                                    </div>
-                                </th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Position</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Project</th>
-                                <th scope="col">Tags</th>
-                                <th style="width: 80px; min-width: 80px;">Action</th>
+                                <th scope="col">Solicitud</th>
+                                <th scope="col">Apellido</th>
+                                <th scope="col">Correo Electrónico</th>
+                                <th scope="col">Teléfono</th>
+                                <th scope="col">Estado</th>
+                                <th scope="col">Mensaje</th>
+                                <th style="width: 80px; min-width: 80px;">Acción</th>
                             </tr><!-- end tr -->
                         </thead><!-- end thead -->
+                        {{--
+                            <span class="badge badge-soft-warning mb-0">FOTOVOLTAICA</span> ***FONDO AMARILLO***
+                            <span class="badge badge-soft-info mb-0">INGENIERÍA Y PROYECTOS</span> ***FONDO AZUL******
+                            <span class="badge badge-soft-primary mb-0">AEROTERMIA</span> ***FONDO MORADO******
+                            <span class="badge badge-soft-success mb-0">INSTALACIÓN ELECTRICA</span> ***FONDO VERDE******
+                            <span class="badge badge-soft-danger mb-0">CLIMATIZACIÓN</span> ***FONDO ROJO******
+                            <span class="badge badge-soft-secondary mb-0">ESTUDIO DE FACTURA</span> ***FONDO GRIS******
+                            <span class="badge badge-soft-light mb-0">ENERGÍAS RENOVABLES</span> ***FONDO GRIS******
+                            <span class="badge badge-soft-dark mb-0">OTRA</span> ***FONDO GRIS******
+
+
+                        --}}
+                        
+                        
                         <tbody>
-                            <tr>
-                                <th scope="row">
-                                    <div class="form-check font-size-16">
-                                        <input type="checkbox" class="form-check-input" id="contacusercheck1">
-                                        <label class="form-check-label" for="contacusercheck1"></label>
-                                    </div>
-                                </th>
-                                <td>
-                                    <img src="{{URL::asset('assets/images/users/avatar-1.jpg')}}" alt="" class="avatar-sm rounded-circle me-2">
-                                    <a href="pages-profile" class="text-body fw-medium">Donald Risher</a>
-                                </td>
-                                <td><span class="badge badge-soft-warning mb-0">UI/UX Designer</span></td>
-                                <td>DonaldRisher@Vuesy.com</td>
-                                <td>235</td>
-                                <td>
-                                    <div class="d-flex gap-2">
-                                        <a href="#" class="badge badge-soft-primary">Photoshop</a>
-                                        <a href="#" class="badge badge-soft-primary">illustrator</a>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <i class="uil uil-ellipsis-h"></i>
-                                        </button>
-                                        <ul class="dropdown-menu dropdown-menu-end">
-                                            <li><a class="dropdown-item" href="#">Action</a></li>
-                                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr><!-- end tr -->
+                            @foreach ($data as $i => $k)
+                                       <tr>
+                                            <td>
+                                                @if($k['solution']=='Fotovoltaica')
+                                                <span class="badge badge-soft-warning mb-0">FOTOVOLTAICA</span>
+                                                @elseif($k['solution']=='Engineering and projects'||$k['solution']=='Ingeniería y proyectos')
+                                                <span class="badge badge-soft-info mb-0">INGENIERÍA Y PROYECTOS</span>
+                                                @elseif($k['solution']=='Aerothermal'||$k['solution']=='Aerotermia')
+                                                <span class="badge badge-soft-primary mb-0">AEROTERMIA</span>
+                                                @elseif($k['solution']=='Climatización')
+                                                <span class="badge badge-soft-danger mb-0">CLIMATIZACIÓN</span>
+                                                @elseif($k['solution']=='Instalación eléctrica'||$k['solution']=='Electrical installation')
+                                                <span class="badge badge-soft-success mb-0">INSTALACIÓN ELECTRICA</span>
+                                                @elseif($k['solution']=='Other'||$k['solution']=='Otro')
+                                                <span class="badge badge-soft-dark mb-0">OTRA</span>
+                                                @elseif($k['solution']=='Energía renovables'||$k['solution']=='Renewable energy')
+                                                <span class="badge badge-soft-light mb-0">ENERGÍAS RENOVABLES</span>
+                                                @elseif($k['solution']=='Invoice study'||$k['solution']=='Estudio de factura')
+                                                <span class="badge badge-soft-secondary mb-0">ESTUDIO DE FACTURA</span>
+                                                @else
+                                                {{($k['solution'])}}
+                                                @endif           
+                                            
+                                            </td>
+                                            <td>{{$k['first_name']}} {{$k['last_name']}}</td>
+                                            <td>{{$k['email']}}</td>                                        
+                                            <td>{{$k['phone']}}</td>
+                                            <td>{{$k['state']}}</td>
+                                            <td style="white-space: normal;">{{$k['message']}}</td>
+                                            <td>
+                                                <div class="d-flex gap-2">
+                                                    <a href="{{--route('lead_edit', $c->id)--}}"><button type="submit" title="EDITAR LEAD" class="btn btn-primary"><i class="fas fa-pencil-alt"></i></button></a>
+                                                    <form action="{{--route('lead_delete', $c->id)--}}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" title="BORRAR USUARIO" class="btn btn-primary"><i class="bx bx-x-circle"></i></button>
+                                                    </form>  
+                                                </div>
+                                            </td>
+                                        </tr>
+                            @endforeach                            
+
+                            {{--EJEMPLO DE TABLA
                             <tr>
                                 <th scope="row">
                                     <div class="form-check font-size-16">
@@ -176,312 +195,18 @@
                                     </div>
                                 </td>
                             </tr><!-- end tr -->
-                            <tr>
-                                <th scope="row">
-                                    <div class="form-check font-size-16">
-                                        <input type="checkbox" class="form-check-input" id="contacusercheck3">
-                                        <label class="form-check-label" for="contacusercheck3"></label>
-                                    </div>
-                                </th>
-                                <td>
-                                    <img src="{{URL::asset('assets/images/users/avatar-3.jpg')}}" alt="" class="avatar-sm rounded-circle me-2">
-                                    <a href="pages-profile" class="text-body fw-medium">Philip Theroux</a>
-                                </td>
-                                <td><span class="badge badge-soft-primary mb-0">Backend Developer</span></td>
-                                <td>PhilipTheroux@Vuesy.com</td>
-                                <td>562</td>
-                                <td>
-                                    <div class="d-flex gap-2">
-                                        <a href="#" class="badge badge-soft-primary font-size-11">Php</a>
-                                        <a href="#" class="badge badge-soft-primary font-size-11">Java</a>
-                                        <a href="#" class="badge badge-soft-primary font-size-11">Python</a>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <i class="uil uil-ellipsis-h"></i>
-                                        </button>
-                                        <ul class="dropdown-menu dropdown-menu-end">
-                                            <li><a class="dropdown-item" href="#">Action</a></li>
-                                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr>
-                            <!-- end tr -->
-                            <tr>
-                                <th scope="row">
-                                    <div class="form-check font-size-16">
-                                        <input type="checkbox" class="form-check-input" id="contacusercheck4">
-                                        <label class="form-check-label" for="contacusercheck4"></label>
-                                    </div>
-                                </th>
-                                <td>
-                                    <img src="{{URL::asset('assets/images/users/avatar-4.jpg')}}" alt="" class="avatar-sm rounded-circle me-2">
-                                    <a href="pages-profile" class="text-body fw-medium">Justin McClain</a>
-                                </td>
-                                <td><span class="badge badge-soft-success mb-0">Full Stack Developer</span></td>
-                                <td>JustinMcClain@Vuesy.com</td>
-                                <td>325</td>
-                                <td>
-                                    <div class="d-flex gap-2">
-                                        <a href="#" class="badge badge-soft-primary font-size-11">Ruby</a>
-                                        <a href="#" class="badge badge-soft-primary font-size-11">Php</a>
-                                        <a href="#" class="badge badge-soft-primary font-size-11">2 + more</a>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <i class="uil uil-ellipsis-h"></i>
-                                        </button>
-                                        <ul class="dropdown-menu dropdown-menu-end">
-                                            <li><a class="dropdown-item" href="#">Action</a></li>
-                                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr><!-- end tr -->
-                            <tr>
-                                <th scope="row">
-                                    <div class="form-check font-size-16">
-                                        <input type="checkbox" class="form-check-input" id="contacusercheck5">
-                                        <label class="form-check-label" for="contacusercheck5"></label>
-                                    </div>
-                                </th>
-                                <td>
-                                    <img src="{{URL::asset('assets/images/users/avatar-5.jpg')}}" alt="" class="avatar-sm rounded-circle me-2">
-                                    <a href="pages-profile" class="text-body fw-medium">Sharon Carver</a>
-                                </td>
-                                <td><span class="badge badge-soft-info mb-0">Frontend Developer</span></td>
-                                <td>SharonCarver@Vuesy.com</td>
-                                <td>475</td>
-                                <td>
-                                    <div class="d-flex gap-2">
-                                        <a href="#" class="badge badge-soft-primary font-size-11">Html</a>
-                                        <a href="#" class="badge badge-soft-primary font-size-11">Css</a>
-                                        <a href="#" class="badge badge-soft-primary font-size-11">2 + more</a>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <i class="uil uil-ellipsis-h"></i>
-                                        </button>
-                                        <ul class="dropdown-menu dropdown-menu-end">
-                                            <li><a class="dropdown-item" href="#">Action</a></li>
-                                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr><!-- end tr -->
-                            <tr>
-                                <th scope="row">
-                                    <div class="form-check font-size-16">
-                                        <input type="checkbox" class="form-check-input" id="contacusercheck6">
-                                        <label class="form-check-label" for="contacusercheck6"></label>
-                                    </div>
-                                </th>
-                                <td>
-                                    <img src="{{URL::asset('assets/images/users/avatar-6.jpg')}}" alt="" class="avatar-sm rounded-circle me-2">
-                                    <a href="pages-profile" class="text-body fw-medium">Jody Tondreau</a>
-                                </td>
-                                <td><span class="badge badge-soft-warning mb-0">UI/UX Designer</span></td>
-                                <td>JodyTondreau@Vuesy.com</td>
-                                <td>521</td>
-                                <td>
-                                    <div class="d-flex gap-2">
-                                        <a href="#" class="badge badge-soft-primary font-size-11">Photoshop</a>
-                                        <a href="#" class="badge badge-soft-primary font-size-11">illustrator</a>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <i class="uil uil-ellipsis-h"></i>
-                                        </button>
-                                        <ul class="dropdown-menu dropdown-menu-end">
-                                            <li><a class="dropdown-item" href="#">Action</a></li>
-                                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr><!-- end tr -->
-                            <tr>
-                                <th scope="row">
-                                    <div class="form-check font-size-16">
-                                        <input type="checkbox" class="form-check-input" id="contacusercheck7">
-                                        <label class="form-check-label" for="contacusercheck7"></label>
-                                    </div>
-                                </th>
-                                <td>
-                                    <img src="{{URL::asset('assets/images/users/avatar-7.jpg')}}" alt="" class="avatar-sm rounded-circle me-2">
-                                    <a href="pages-profile" class="text-body fw-medium">Dennis Goulet</a>
-                                </td>
-                                <td><span class="badge badge-soft-info mb-0">Graphic Designer</span></td>
-                                <td>DennisGoulet@Vuesy.com</td>
-                                <td>623</td>
-                                <td>
-                                    <div class="d-flex gap-2">
-                                        <a href="#" class="badge badge-soft-primary font-size-11">Photoshop</a>
-                                        <a href="#" class="badge badge-soft-primary font-size-11">illustrator</a>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <i class="uil uil-ellipsis-h"></i>
-                                        </button>
-                                        <ul class="dropdown-menu dropdown-menu-end">
-                                            <li><a class="dropdown-item" href="#">Action</a></li>
-                                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr><!-- end tr -->
-                            <tr>
-                                <th scope="row">
-                                    <div class="form-check font-size-16">
-                                        <input type="checkbox" class="form-check-input" id="contacusercheck8">
-                                        <label class="form-check-label" for="contacusercheck8"></label>
-                                    </div>
-                                </th>
-                                <td>
-                                    <img src="{{URL::asset('assets/images/users/avatar-8.jpg')}}" alt="" class="avatar-sm rounded-circle me-2">
-                                    <a href="pages-profile" class="text-body fw-medium">Cecelia Farrell</a>
-                                </td>
-                                <td><span class="badge badge-soft-danger mb-0">Angular Developer</span></td>
-                                <td>CeceliaFarrell@Vuesy.com</td>
-                                <td>325</td>
-                                <td>
-                                    <div class="d-flex gap-2">
-                                        <a href="#" class="badge badge-soft-primary font-size-11">Php</a>
-                                        <a href="#" class="badge badge-soft-primary font-size-11">Javascript</a>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <i class="uil uil-ellipsis-h"></i>
-                                        </button>
-                                        <ul class="dropdown-menu dropdown-menu-end">
-                                            <li><a class="dropdown-item" href="#">Action</a></li>
-                                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr><!-- end tr -->
-                            <tr>
-                                <th scope="row">
-                                    <div class="form-check font-size-16">
-                                        <input type="checkbox" class="form-check-input" id="contacusercheck9">
-                                        <label class="form-check-label" for="contacusercheck9"></label>
-                                    </div>
-                                </th>
-                                <td>
-                                    <img src="{{URL::asset('assets/images/users/avatar-9.jpg')}}" alt="" class="avatar-sm rounded-circle me-2">
-                                    <a href="pages-profile" class="text-body fw-medium">Peter Dryer</a>
-                                </td>
-                                <td><span class="badge badge-soft-info mb-0">Web Designer</span></td>
-                                <td>PeterDryer@Vuesy.com</td>
-                                <td>231</td>
-                                <td>
-                                    <div class="d-flex gap-2">
-                                        <a href="#" class="badge badge-soft-primary font-size-11">Html</a>
-                                        <a href="#" class="badge badge-soft-primary font-size-11">Css</a>
-                                        <a href="#" class="badge badge-soft-primary font-size-11">2 + more</a>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <i class="uil uil-ellipsis-h"></i>
-                                        </button>
-                                        <ul class="dropdown-menu dropdown-menu-end">
-                                            <li><a class="dropdown-item" href="#">Action</a></li>
-                                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr><!-- end tr -->
-                            <tr>
-                                <th scope="row">
-                                    <div class="form-check font-size-16">
-                                        <input type="checkbox" class="form-check-input" id="contacusercheck10">
-                                        <label class="form-check-label" for="contacusercheck10"></label>
-                                    </div>
-                                </th>
-                                <td>
-                                    <img src="{{URL::asset('assets/images/users/avatar-4.jpg')}}" alt="" class="avatar-sm rounded-circle me-2">
-                                    <a href="pages-profile" class="text-body fw-medium">Gerald Moyer</a>
-                                </td>
-                                <td><span class="badge badge-soft-warning mb-0">Backend Developer</span></td>
-                                <td>GeraldMoyer@Vuesy.com</td>
-                                <td>321</td>
-                                <td>
-                                    <div class="d-flex gap-2">
-                                        <a href="#" class="badge badge-soft-primary font-size-11">Php</a>
-                                        <a href="#" class="badge badge-soft-primary font-size-11">Javascript</a>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <i class="uil uil-ellipsis-h"></i>
-                                        </button>
-                                        <ul class="dropdown-menu dropdown-menu-end">
-                                            <li><a class="dropdown-item" href="#">Action</a></li>
-                                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr><!-- end tr -->
+                            --}}
+                            
+
                         </tbody><!-- end tbody -->
                     </table><!-- end table -->
                 </div><!-- end table responsive -->
 
                 <div class="row g-0 text-center text-sm-start">
-                    <div class="col-sm-6">
-                        <div>
-                            <p class="mb-sm-0">Showing 1 to 10 of 57 entries</p>
-                        </div>
-                    </div>
-                    <!-- end col -->
-                    <div class="col-sm-6">
-                        <ul class="pagination pagination-rounded justify-content-center justify-content-sm-end mb-sm-0">
-                            <li class="page-item disabled">
-                                <a href="#" class="page-link"><i class="mdi mdi-chevron-left"></i></a>
-                            </li>
-                            <li class="page-item">
-                                <a href="#" class="page-link">1</a>
-                            </li>
-                            <li class="page-item active">
-                                <a href="#" class="page-link">2</a>
-                            </li>
-                            <li class="page-item">
-                                <a href="#" class="page-link">3</a>
-                            </li>
-                            <li class="page-item">
-                                <a href="#" class="page-link">4</a>
-                            </li>
-                            <li class="page-item">
-                                <a href="#" class="page-link">5</a>
-                            </li>
-                            <li class="page-item">
-                                <a href="#" class="page-link"><i class="mdi mdi-chevron-right"></i></a>
-                            </li>
-                        </ul><!-- end ul -->
-                    </div><!-- end col -->
-                </div><!-- end row -->
+                    <div>{{$formCount->links('layouts.pagination')}}</div>
+                </div><!-- end row -->  
+                <div id="gridjs-temp" class="gridjs-temp"></div>
+                @include('layouts.message')
 
             </div><!-- end card body -->
         </div><!-- end card -->

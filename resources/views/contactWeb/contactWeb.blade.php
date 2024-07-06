@@ -39,12 +39,12 @@
                                 <table role="grid" class="gridjs-table" style="height: auto; text-align: center;">
                                     <thead class="gridjs-thead">
                                         <tr class="gridjs-tr">
-                                            <th>ID</th>
+                                            <th>Solicitud</th>
                                             <th>Nombre</th>
-                                            <th>Correo</th>
+                                            <th>Apellido</th>
+                                            <th>Email</th>
                                             <th>Teléfono</th>
-                                            <th>Ciclo</th>
-                                            <th>Asunto</th>
+                                            <th>Estado</th>
                                             <th>Mensaje</th>
                                         </tr>
                                     </thead>
@@ -52,11 +52,16 @@
                                         @foreach ($data as $i => $k)
                                        <tr>
                                             <td>
-                                            {{$data['name']}}
-                                           </td>                                        
-                                           <td>
-                                            {{$data['phone']}}
-                                           </td>
+                                            @if($k['first_name']=='alex')Hoooooolaaaaa{{--$k['first_name']--}}
+                                            @elseif()
+                                            @endif
+                                            </td>
+                                            <td>{{$k['last_name']}}</td>
+                                            <td>{{$k['email']}}</td>                                        
+                                            <td>{{$k['phone']}}</td>
+                                            <td>{{$k['solution']}}</td>
+                                            <td>{{$k['state']}}</td>
+                                            <td>{{$k['message']}}</td>
                                         </tr>
                                        @endforeach
                                     </tbody>
