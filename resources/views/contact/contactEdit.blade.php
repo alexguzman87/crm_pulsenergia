@@ -1,5 +1,5 @@
 @extends('layouts.vertical-master-layout')
-@section('title')Contactos @endsection
+@section('title')LEADS | @endsection
 @section('content')
 {{-- breadcrumbs  --}}
     @section('breadcrumb')
@@ -231,9 +231,9 @@
                                             <div class="mb-3">
                                                 <select class="form-control" name="status">
                                                     <option value="" disabled selected>Estado</option>
-                                                    <option value="Alta">Por Asignar</option>
-                                                    <option value="Media">En Proceso</option>
-                                                    <option value="Baja">Realizado</option>
+                                                    <option value="Por Asignar">Por Asignar</option>
+                                                    <option value="En Proceso">En Proceso</option>
+                                                    <option value="Realizado">Realizado</option>
                                                 </select>                                    
                                             </div>
                                         </div>

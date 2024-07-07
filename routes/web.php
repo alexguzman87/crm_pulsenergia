@@ -70,6 +70,7 @@ Route::delete('config_origin_delete/{origin}',[ConfigController::class,'destroy'
 //OPORTUNITIES
 Route::get('oportunity',[OportunityController::class,'index'])->middleware('auth')->name('oportunity');
 Route::get('oportunity_create',[OportunityController::class,'create'])->middleware('auth');
+Route::get('oportunity_show_user/{user}',[OportunityController::class,'show'])->middleware('auth')->name('oportunity_show_user');
 Route::post('oportunity_create',[OportunityController::class,'store'])->middleware('auth');
 Route::get('oportunity_edit/{oportunity}',[OportunityController::class,'edit'])->middleware('auth')->name('oportunity_edit');
 Route::put('oportunity_edit/{oportunity}',[OportunityController::class,'update'])->middleware('auth')->name('oportunity_update');
@@ -80,6 +81,9 @@ Route::put('oportunity_change_status/{oportunity}',[OportunityController::class,
 
 //Wordpress Form
 route::get('leadsWeb', [WordpressFormController::class,'ShowForm'])->name('leadsWeb');
+
+//generalTask
+Route::get('general_task',[TaskCotroller::class,'index'])->middleware('auth')->name('general_task');
 
 
 

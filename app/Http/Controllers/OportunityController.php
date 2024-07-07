@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\OportunityRequest;
 use App\Models\Oportunity;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -15,26 +16,31 @@ class OportunityController extends Controller
         $proposal=Oportunity::where('status','proposal' )->get();
         $need=Oportunity::where('status','need' )->get();
         $sale=Oportunity::where('status','sale' )->get();
-        $lost=Oportunity::where('status','lost' )->get();        
-
-/*
-        $contact = Contact::orderBy('id')
-            ->name($request->search_name)
-            ->email($request->search_email)
-            ->id($request->search_id)
-            ->phone($request->search_phone)
-            ->date($request->search_created_at)
-            ->paginate(25);
-        //where('id', 'Like', "%$request->$search_id%")*/
-
-                
-        return view('oportunity.index',compact('oportunity','proposal','need','sale','lost'));
+        $lost=Oportunity::where('status','lost' )->get();
+        $user=User::all();
+                               
+        return view('oportunity.index',compact('oportunity','proposal','need','sale','lost','user'));
 
     }
 
     public function create()
     {
         return view('oportunity.create');
+    }
+
+    public function show($id)
+    {    
+        $user=User::all();
+        
+        $oportunity_user=Oportunity::where('id_user',$id)->get();
+
+        $oportunity=Oportunity::where('status','oportunity')->where('id_user',$id)->get();
+        $proposal=Oportunity::where('status','proposal')->where('id_user',$id)->get();
+        $need=Oportunity::where('status','need')->where('id_user',$id)->get();
+        $sale=Oportunity::where('status','sale')->where('id_user',$id)->get();
+        $lost=Oportunity::where('status','lost')->where('id_user',$id)->get();
+
+        return view ('oportunity.show', compact('oportunity_user', 'oportunity','proposal','need','sale','lost','user'));
     }
 
     public function store(OportunityRequest $request)

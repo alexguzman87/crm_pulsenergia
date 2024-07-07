@@ -48,7 +48,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="/general_task">
                         <i class="bx bx-chat nav-icon"></i>
                         <span class="menu-item" data-key="t-dashboard">TAREAS</span>
                     </a>
@@ -60,7 +60,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="leadsWeb">
+                    <a href="/leadsWeb">
                         <i class="bx bx-mail-send nav-icon"></i>
                         <span class="menu-item" data-key="t-dashboard">LEAD WEB</span>
                     </a>

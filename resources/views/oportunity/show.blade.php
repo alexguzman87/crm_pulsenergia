@@ -30,6 +30,15 @@
                     </div>
                     <div class="col-auto ms-sm-auto">
                         <div class="avatar-group justify-content-sm-end">
+                            <div class="avatar-group-item">
+                                <a href="/oportunity" title="ALL">
+                                    <div class="avatar">
+                                        <div class="avatar-title rounded-circle bg-primary">
+                                            <i class="uil-backward"></i>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div><!-- end avatar group item -->
                             @foreach ($user as $u)
                                 <div class="avatar-group-item">
                                     <a href="javascript: void(0);" class="d-block" data-bs-toggle="tooltip" data-placement="top" title="{{strtoupper($u->name)}}">
@@ -126,7 +135,7 @@
                                                     <a href="javascript: void(0);">
                                                         <div class="avatar-sm">
                                                             <div class="avatar-title rounded-circle bg-danger">
-                                                                <a href="{{route('oportunity_show_user', $o->id_user)}}" style="border: none; width: 100%; color: white; background-color: transparent; text-align: center;">{{strtoupper(substr($o->user->name,0,3))}}</a>
+                                                                <a href="{{route('oportunity_show_user', $o->user->id)}}" style="border: none; width: 100%; color: white; background-color: transparent; text-align: center;">{{strtoupper(substr($o->user->name,0,3))}}</a>
                                                             </div>
                                                         </div>
                                                     </a>
@@ -222,7 +231,7 @@
                                                     <a href="javascript: void(0);" class="d-block" data-bs-toggle="tooltip" data-bs-placement="top" title="Emily Surface">
                                                         <div class="avatar-sm">
                                                             <div class="avatar-title rounded-circle bg-danger">
-                                                                <a href="{{route('oportunity_show_user', $o->id_user)}}" style="border: none; width: 100%; color: white; background-color: transparent; text-align: center;">{{strtoupper(substr($o->user->name,0,3))}}</a>
+                                                                <a href="{{route('oportunity_show_user', $o->user->id)}}" style="border: none; width: 100%; color: white; background-color: transparent; text-align: center;">{{strtoupper(substr($o->user->name,0,3))}}</a>
                                                             </div>
                                                         </div>
                                                     </a>
@@ -230,7 +239,15 @@
                                             </div>
                                             <div class="flex-shrink-0 ms-2">
                                                 <ul class="list-inline mb-0">
-                                                    <a href="" class="text-muted font-size-13"><i class="mdi mdi-pencil-outline me-1"></i>Editar</a>
+                                                    <li class="list-inline-item">
+                                                        <a href="" class="text-muted font-size-13"><i class="mdi mdi-comment-text-outline me-1"></i>Task</a>
+                                                    </li>
+                                                    <li class="list-inline-item">
+                                                        <a href="" class="text-muted font-size-13"><i class="mdi mdi-comment-text-outline me-1"></i>Notas</a>
+                                                    </li>
+                                                    <li class="list-inline-item ms-1">
+                                                        <a href="" class="text-muted font-size-13"><i class="mdi mdi-link-variant me-1"></i>Archivos</a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -316,7 +333,7 @@
                                                     <a href="javascript: void(0);" class="d-block" data-bs-toggle="tooltip" data-bs-placement="top" title="Emily Surface">
                                                         <div class="avatar-sm">
                                                             <div class="avatar-title rounded-circle bg-danger">
-                                                                <a href="{{route('oportunity_show_user', $o->id_user)}}" style="border: none; width: 100%; color: white; background-color: transparent; text-align: center;">{{strtoupper(substr($o->user->name,0,3))}}</a>
+                                                                <a href="{{route('oportunity_show_user', $o->user->id)}}" style="border: none; width: 100%; color: white; background-color: transparent; text-align: center;">{{strtoupper(substr($o->user->name,0,3))}}</a>
                                                             </div>
                                                         </div>
                                                     </a>
@@ -418,7 +435,7 @@
                                                     <a href="javascript: void(0);" class="d-block" data-bs-toggle="tooltip" data-bs-placement="top" title="Emily Surface">
                                                         <div class="avatar-sm">
                                                             <div class="avatar-title rounded-circle bg-danger">
-                                                                <a href="{{route('oportunity_show_user', $o->id_user)}}" style="border: none; width: 100%; color: white; background-color: transparent; text-align: center;">{{strtoupper(substr($o->user->name,0,3))}}</a>
+                                                                <a href="{{route('oportunity_show_user', $o->user->id)}}" style="border: none; width: 100%; color: white; background-color: transparent; text-align: center;">{{strtoupper(substr($o->user->name,0,3))}}</a>
                                                             </div>
                                                         </div>
                                                     </a>
@@ -520,7 +537,7 @@
                                                     <a href="javascript: void(0);" class="d-block" data-bs-toggle="tooltip" data-bs-placement="top" title="Emily Surface">
                                                         <div class="avatar-sm">
                                                             <div class="avatar-title rounded-circle bg-danger">
-                                                                <a href="{{route('oportunity_show_user', $o->id_user)}}" style="border: none; width: 100%; color: white; background-color: transparent; text-align: center;">{{strtoupper(substr($o->user->name,0,3))}}</a>
+                                                                <a href="{{route('oportunity_show_user', $o->user->id)}}" style="border: none; width: 100%; color: white; background-color: transparent; text-align: center;">{{strtoupper(substr($o->user->name,0,3))}}</a>
                                                             </div>
                                                         </div>
                                                     </a>
@@ -561,6 +578,5 @@
 <!-- dragula plugins -->
 <script src="{{ URL::asset('assets/libs/dragula/dragula.min.js') }}"></script>
 <script src="{{ URL::asset('assets/js/pages/kanbanboard.init.js') }}"></script>
-<script src="{{ URL::asset('assets/js/app.js') }}"></script>
 
 @endsection

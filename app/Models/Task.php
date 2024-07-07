@@ -25,4 +25,8 @@ class Task extends Model
         return $this->belongsTo('App\Models\User','id_user','id');
     }
     
+    public function contact(){
+        return $this->belongsTo('App\Models\Contact','id_contact','id');
+    }
+
 }

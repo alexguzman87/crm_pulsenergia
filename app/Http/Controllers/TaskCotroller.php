@@ -11,6 +11,14 @@ use Illuminate\Support\Facades\Session;
 class TaskCotroller extends Controller
 {
 
+    public function index(){
+        $task = Task::all();
+
+        $task = Task::orderby('assigned_date')->paginate(25);
+
+        return view ('generalTask.generalTask',compact('task'));
+    }
+
     public function store(TaskCreateRequest $request)
     {
         $Task=new Task();
