@@ -13,6 +13,7 @@ class Note extends Model
     
     protected $fillable = [
         'id_contact',
+        'id_oportunity',
         'notes'
     ];
     

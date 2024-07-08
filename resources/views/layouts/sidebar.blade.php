@@ -74,9 +74,21 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/config_origin">
-                        <i class="bx bx-table nav-icon"></i>
+                    <a href="/config_lead_origin">
+                        <i class="bx bx-list-plus nav-icon"></i>
+                        <span class="menu-item" data-key="t-dashboard">ORIGEN DE LEADS</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/config_type_lead">
+                        <i class="bx bx-list-plus nav-icon"></i>
                         <span class="menu-item" data-key="t-dashboard">TIPOS DE LEADS</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/config_level_lead">
+                        <i class="bx bx-list-plus nav-icon"></i>
+                        <span class="menu-item" data-key="t-dashboard">NIVEL DE LEADS</span>
                     </a>
                 </li>
                 @endif

@@ -20,63 +20,63 @@
                 <form action="/oportunity_create" method="POST">
                         @csrf
                         <div class="mb-3">
-                            <input type="text" name="title" class="form-control" placeholder="Titulo...">
+                            <input type="text" name="title" class="form-control" placeholder="Titulo..." value="{{ old('title') }}">
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <input type="text" name="contact_name" class="form-control" placeholder="Nombre del contacto...">
+                                    <input type="text" name="contact_name" class="form-control" placeholder="Nombre del contacto..." value="{{ old('contact_name') }}">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <input type="text" name="organization" class="form-control" placeholder="Organización...">                                    
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <input type="email" name="email" class="form-control" placeholder="Correo Electrónico...">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <input type="number" name="phone" class="form-control" placeholder="Teléfono...">                                    
+                                    <input type="text" name="organization" class="form-control" placeholder="Organización..."  value="{{ old('organization') }}">                                    
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <input type="text" name="country" class="form-control" placeholder="País...">
+                                    <input type="email" name="email" class="form-control" placeholder="Correo Electrónico..."  value="{{ old('email') }}">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <input type="text" name="state" class="form-control" placeholder="Estado / Provincia/ Región...">                                    
+                                    <input type="number" name="phone" class="form-control" placeholder="Teléfono..." value="{{ old('phone') }}">                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <input type="text" name="country" class="form-control" placeholder="País..." value="{{ old('country') }}">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <input type="text" name="state" class="form-control" placeholder="Estado / Provincia/ Región..." value="{{ old('state') }}">                                    
                                 </div>
                             </div>
                         </div>
                         <div class="mb-3">
-                            <input type="text" name="address" class="form-control" placeholder="Dirección...">
+                            <input type="text" name="address" class="form-control" placeholder="Dirección..." value="{{ old('address') }}">
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <input type="text" name="city" class="form-control" placeholder="Ciudad...">
+                                    <input type="text" name="city" class="form-control" placeholder="Ciudad..." value="{{ old('city') }}">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <input type="number" name="postal_code" class="form-control" placeholder="Código Postal...">                                    
+                                    <input type="number" name="postal_code" class="form-control" placeholder="Código Postal..." value="{{ old('postal_code') }}">                                    
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <select name="status" class="form-select">
+                                    <select name="status" class="form-select" value="{{ old('status') }}">
                                         <option value="oportunity">Oportunidad</option>
                                         <option value="proposal">En Propuesta</option>
                                         <option value="need">Necesito Apoyo</option>
@@ -87,7 +87,7 @@
                             </div><!-- end col -->
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <select name="type" class="form-select">
+                                    <select name="type" class="form-select" value="{{ old('type') }}">
                                         <option value="" selected disabled hidden>Tipo</option>
                                         <option value="residential">Residencial</option>
                                         <option value="industrial">Industrial</option>
@@ -99,29 +99,22 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <input type="number" name="budget" class="form-control" placeholder="Presupuesto...">
+                                    <input type="number" name="budget" class="form-control" placeholder="Presupuesto..." value="{{ old('budget') }}">
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <input type="text" name="currency" class="form-control" placeholder="Moneda...">                                    
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
                             <div class="col-md-3">
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label">Probabilidad: <output id="value"></output>%</label>
                                 </div>
                             </div><!-- end row -->
-                            <div class="col-md-9">
+                            <div class="col-md-3">
                                 <div class="mb-3">
-                                    <input id="pi_input" name="probability" class="form-range mt-2" type="range" min="0" max="100" step="10"/>
+                                    <input id="pi_input" name="probability" class="form-range mt-2" type="range" min="0" max="100" step="10" value="{{ old('probability') }}"/>
                                 </div>
                             </div><!-- end col -->
                         </div><!-- end row -->
                         <div class="mb-3">
-                            <textarea name="description" class="form-control" cols="30" rows="10" placeholder="Descripción..."></textarea>
+                            <textarea name="description" class="form-control" cols="30" rows="10" placeholder="Descripción..." value="{{ old('description') }}"></textarea>
                         </div>
                         <div class="mt-4">
                             <a href="/oportunity"><button type="button" class="btn btn-light w-sm" data-bs-dismiss="modal">Cancelar</button></a>

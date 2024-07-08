@@ -26,7 +26,6 @@ class Oportunity extends Model
         'status',
         'type',
         'budget',
-        'currency',
         'probability',
         'description'
     ];

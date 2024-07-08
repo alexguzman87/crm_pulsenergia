@@ -94,6 +94,7 @@
                     <table class="table align-middle table-nowrap table-check">
                         <thead>
                             <tr>
+                                <th scope="col">ID</th>
                                 <th scope="col">Solicitud</th>
                                 <th scope="col">Apellido</th>
                                 <th scope="col">Correo Electrónico</th>
@@ -120,6 +121,7 @@
                         <tbody>
                             @foreach ($data as $i => $k)
                                        <tr>
+                                            <td>{{$i}}</td>
                                             <td>
                                                 @if($k['solution']=='Fotovoltaica')
                                                 <span class="badge badge-soft-warning mb-0">FOTOVOLTAICA</span>

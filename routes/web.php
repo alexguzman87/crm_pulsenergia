@@ -50,33 +50,54 @@ Route::get('lead_create',[ContactController::class,'create'])->middleware('auth'
 Route::post('lead_create',[ContactController::class,'store'])->middleware('auth');
 Route::get('lead_edit/{lead}',[ContactController::class,'edit'])->middleware('auth')->name('lead_edit');
 Route::put('lead_edit/{lead}',[ContactController::class,'update'])->middleware('auth')->name('lead_update');
+Route::put('lead_edit_user/{oportunity}',[ContactController::class,'updateUser'])->middleware('auth')->name('lead_edit_user');
 Route::delete('lead_delete/{lead}',[ContactController::class,'destroy'])->middleware('auth')->name('lead_delete');
 
 //CONFIGURACIONES
 
-//Routes Notes and Task
-Route::post('task_create',[TaskCotroller::class,'store']);
-Route::post('notes_create',[NotesController::class,'store']);
-
-
-//ORIGIN
-Route::get('config_origin',[ConfigController::class, 'index'])->name('config_origin');
-Route::post('config_origin_create',[ConfigController::class,'store'])->name('config_origin_create');
-Route::get('config_origin_edit/{origin}',[ConfigController::class,'edit'])->name('config_origin_edit');
-Route::put('config_origin_update/{origin}',[ConfigController::class,'update'])->name('config_origin_update');
-Route::delete('config_origin_delete/{origin}',[ConfigController::class,'destroy'])->name('config_origin_delete');
+//Routes Notes - Task - Files
+Route::post('task_lead_create',[TaskCotroller::class,'store_lead'])->middleware('auth')->name('task_lead_create');
+Route::post('task_oportunity_create',[TaskCotroller::class,'store_oportunity'])->middleware('auth')->name('task_oportunity_create');
+Route::post('notes_lead_create',[NotesController::class,'store_lead'])->middleware('auth')->name('notes_lead_create');
+Route::post('notes_oportunity_create',[NotesController::class,'store_oportunity'])->middleware('auth')->name('notes_oportunity_create');
+Route::post('store_file_lead',[SaveFilesController::class, 'store_file_lead'])->middleware('auth')->name('store_file_lead');
+Route::get('download_file_lead/{file}',[SaveFilesController::class, 'download_file_lead'])->middleware('auth')->name('download_file_lead');
+Route::post('store_file_oportunity',[SaveFilesController::class, 'store_file_oportunity'])->middleware('auth')->name('store_file_oportunity');
+Route::get('download_file_oportunity/{file}',[SaveFilesController::class, 'download_file_oportunity'])->middleware('auth')->name('download_file_oportunity');
 
 
 //OPORTUNITIES
 Route::get('oportunity',[OportunityController::class,'index'])->middleware('auth')->name('oportunity');
 Route::get('oportunity_create',[OportunityController::class,'create'])->middleware('auth');
-Route::get('oportunity_show_user/{user}',[OportunityController::class,'show'])->middleware('auth')->name('oportunity_show_user');
 Route::post('oportunity_create',[OportunityController::class,'store'])->middleware('auth');
+Route::get('oportunity_show_user/{user}',[OportunityController::class,'show'])->middleware('auth')->name('oportunity_show_user');
 Route::get('oportunity_edit/{oportunity}',[OportunityController::class,'edit'])->middleware('auth')->name('oportunity_edit');
 Route::put('oportunity_edit/{oportunity}',[OportunityController::class,'update'])->middleware('auth')->name('oportunity_update');
+Route::put('oportunity_edit_user/{oportunity}',[OportunityController::class,'updateUser'])->middleware('auth')->name('oportunity_edit_user');
 Route::delete('oportunity_delete/{oportunity}',[OportunityController::class,'destroy'])->middleware('auth')->name('oportunity_delete');
-
 Route::put('oportunity_change_status/{oportunity}',[OportunityController::class,'updateStatus'])->middleware('auth')->name('oportunity_change_status');
+
+
+//CONFIG - ORIGIN
+Route::get('config_lead_origin',[ConfigController::class, 'index_origin'])->name('config_lead_origin');
+Route::post('config_lead_origin_create',[ConfigController::class,'store_origin'])->name('config_lead_origin_create');
+Route::get('config_lead_origin_edit/{origin}',[ConfigController::class,'edit_origin'])->name('config_lead_origin_edit');
+Route::put('config_lead_origin_update/{origin}',[ConfigController::class,'update_origin'])->name('config_lead_origin_update');
+Route::delete('config_lead_origin_delete/{origin}',[ConfigController::class,'destroy_origin'])->name('config_lead_origin_delete');
+
+//CONFIG - TypeLead
+Route::get('config_type_lead',[ConfigController::class, 'index_type'])->name('config_type_lead');
+Route::post('config_type_lead_create',[ConfigController::class,'store_type'])->name('config_type_lead_create');
+Route::get('config_type_lead_edit/{origin}',[ConfigController::class,'edit_type'])->name('config_type_lead_edit');
+Route::put('config_type_lead_update/{origin}',[ConfigController::class,'update_type'])->name('config_type_lead_update');
+Route::delete('config_type_lead_delete/{origin}',[ConfigController::class,'destroy_type'])->name('config_type_lead_delete');
+
+//CONFIG - TypeLead
+Route::get('config_level_lead',[ConfigController::class, 'index_level'])->name('config_level_lead');
+Route::post('config_level_lead_create',[ConfigController::class,'store_level'])->name('config_level_lead_create');
+Route::get('config_level_lead_edit/{origin}',[ConfigController::class,'edit_level'])->name('config_level_lead_edit');
+Route::put('config_level_lead_update/{origin}',[ConfigController::class,'update_level'])->name('config_level_lead_update');
+Route::delete('config_level_lead_delete/{origin}',[ConfigController::class,'destroy_level'])->name('config_level_lead_delete');
 
 
 //Wordpress Form
@@ -120,9 +141,7 @@ Route::get('user_export',[UserController::class, 'export'])->name('user_export')
 
 
 
-Route::get('loadFile',[SaveFilesController::class, 'loadFile'])->name('loadFile');
-Route::post('storeFile',[SaveFilesController::class, 'storeFile'])->name('storeFile');
-Route::get('downloadFile/{file}',[SaveFilesController::class, 'downloadFile'])->name('downloadFile');
+
 
 
 route::view('icons1','templates.icons-boxicons');

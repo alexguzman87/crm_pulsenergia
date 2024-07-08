@@ -1,5 +1,5 @@
 @extends('layouts.vertical-master-layout')
-@section('title')ORIGEN | @endsection
+@section('title')NIVEL | @endsection
 @section('css')
 <link href="{{ URL::asset('assets/libs/gridjs/gridjs.min.css') }}" rel="stylesheet" type="text/css" />
 @endsection
@@ -8,7 +8,7 @@
     @section('breadcrumb')
         @component('components.breadcrumb')
             @slot('li_1') Inicio @endslot
-            @slot('title') Origen Lead  @endslot
+            @slot('title') Nivel Lead  @endslot
         @endcomponent
     @endsection
 
@@ -20,16 +20,16 @@
                     
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <h5 class="card-title"> Origen<span class="text-muted fw-normal ms-2">{{$origin->count()}}</span></h5>
+                            <h5 class="card-title"> Nivel<span class="text-muted fw-normal ms-2">{{$level->count()}}</span></h5>
                         </div>
                     </div><!-- end col -->
                 </div>
                 <div class="row">
                     <div class="col-md-11">
                         <div class="d-flex flex-wrap align-items-start justify-content-md-star mt-2 mt-md-0 gap-2 mb-3">
-                            <form method="POST" action="/config_lead_origin_create">
+                            <form method="POST" action="/config_level_lead_create">
                                 @csrf
-                                <input type="text" name="name" placeholder="Agregar Origen de Lead..." aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
+                                <input type="text" name="name" placeholder="Agregar Niveles de Lead..." aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
                                 <button type="submit" name="send" title="AGREGAR" class="btn btn-primary"><i class="bx bx-save"></i></button>
                             </form>
                         </div>
@@ -45,14 +45,14 @@
                             </tr><!-- end tr -->
                         </thead><!-- end thead -->
                         <tbody>
-                            @foreach ( $origin as $o )
+                            @foreach ( $level as $l )
                             <tr>
-                                <td>{{$o->name}}</td>
+                                <td>{{$l->name}}</td>
                                 <td>
                                     <div class="d-flex gap-2">
-                                        <a href="{{route('config_lead_origin_edit', $o->id)}}"><button type="submit" title="EDITAR" class="btn btn-primary"><i class="bx bx-edit-alt"></i></button></a>
-                                        <form action="{{route('config_lead_origin_delete', $o->id)}}" method="POST">
-                                            @csrf
+                                        <a href="{{route('config_level_lead_edit', $l->id)}}"><button type="submit" title="EDITAR" class="btn btn-primary"><i class="bx bx-edit-alt"></i></button></a>
+                                        <form action="{{route('config_level_lead_delete', $l->id)}}" method="POST">
+                                            @csrf   
                                             @method('DELETE')
                                             <button type="submit" title="BORRAR" class="btn btn-primary"><i class="bx bx-x-circle"></i></button>
                                         </form>  
@@ -65,7 +65,7 @@
                     </table><!-- end table -->
                 </div><!-- end table responsive -->
                 <div class="row g-0 text-center text-sm-start">
-                    <div>{{$origin->links('layouts.pagination')}}</div>
+                    <div>{{$level->links('layouts.pagination')}}</div>
                 </div><!-- end row -->  
                 <div id="gridjs-temp" class="gridjs-temp"></div>
                 @include('layouts.message')

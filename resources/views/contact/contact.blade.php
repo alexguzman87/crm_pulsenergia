@@ -195,7 +195,7 @@
                                 <td>{{$c->second_phone}}</td>
                                 <td>
                                     <div class="d-flex gap-2">
-                                        <a href="{{route('lead_edit', $c->id)}}"><button type="submit" title="EDITAR LEAD" class="btn btn-primary"><i class="fas fa-pencil-alt"></i></button></a>
+                                        <a href="{{route('lead_edit', $c->id)}}"><button type="submit" title="EDITAR LEAD" class="btn btn-primary"><i class="uil-eye"></i></button></a>
                                         <form action="{{route('lead_delete', $c->id)}}" method="POST">
                                             @csrf
                                             @method('DELETE')

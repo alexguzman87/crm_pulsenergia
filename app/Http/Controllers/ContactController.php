@@ -166,27 +166,22 @@ class ContactController extends Controller
 
         Session::flash('success_green','Los datos del Lead han sido modificados con éxito');
         
-        return redirect()->back();
+        return redirect()->back();               
+       
+    }
 
-        /*
-        if($request->hasFile('image')){
-            if (!$request->hasFile('image')||$client->image==null)
-            {
-                    $file=$request->file('image');
-                    $extension = $file->getClientOriginalExtension();
-                    $filename = time()."_".$client->identification_number.".".$extension;
-                    $file->move('images/',$filename);
-                    $client->image=$filename;
-                }else{
-                    unlink(public_path('images/'.$client -> image));
-                    $file=$request->file('image');
-                    $extension = $file->getClientOriginalExtension();
-                    $filename = time()."_".$client->identification_number.".".$extension;
-                    $file->move('images/',$filename);
-                    $client->image=$filename;
-                }
-        }*/
-                
+
+    public function updateUser(Request $request, $id)
+    {
+        $contact=Contact::findOrFail($id);
+
+        $contact->id_user=$request->input('id_user');        
+
+        $contact->update();
+
+        Session::flash('success_green','Se ha asignado un Responsable');
+        
+        return redirect()->back();                
        
     }
 

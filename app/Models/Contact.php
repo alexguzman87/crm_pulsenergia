@@ -12,6 +12,7 @@ class Contact extends Model
     protected $table = 'contacts';
     
     protected $fillable = [
+        'id_user',
         'name',
         'email',
         'second_email',
@@ -59,6 +60,10 @@ class Contact extends Model
 
     public function origin(){
         return $this->belongsTo('App\Models\Origin','id_origins','id');
+    }
+
+    public function user(){
+        return $this->belongsTo('App\Models\User','id_user','id');
     }
 
 }

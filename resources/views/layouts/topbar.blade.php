@@ -78,7 +78,7 @@
             </div>
             -->
             <div class="dropdown d-inline-block">
-                <button type="button" class="btn header-item noti-icon" id="page-header-notifications-dropdown"
+                {{--<button type="button" class="btn header-item noti-icon" id="page-header-notifications-dropdown"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="bx bx-bell icon-sm"></i>
                     <span class="noti-dot bg-danger rounded-pill">3</span>
@@ -170,7 +170,7 @@
                             <i class="uil-arrow-circle-right me-1"></i> <span>View More..</span>
                         </a>
                     </div>
-                </div>
+                </div>--}}
             </div>
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item noti-icon right-bar-toggle" id="right-bar-toggle">

@@ -14,6 +14,7 @@ class Task extends Model
     protected $fillable = [
         'task',
         'id_user',
+        'id_oportunity',
         'id_contact',
         'priority',
         'status',
@@ -29,4 +30,7 @@ class Task extends Model
         return $this->belongsTo('App\Models\Contact','id_contact','id');
     }
 
+    public function oportunity(){
+        return $this->belongsTo('App\Models\Oportunity','id_oportunity','id');
+    }
 }

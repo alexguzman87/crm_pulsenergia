@@ -5,17 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class FileSave extends Model
+class LevelLead extends Model
 {
     use HasFactory;
 
-    protected $table = 'file_saves';
+    protected $table = 'level_leads';
     
     protected $fillable = [
-        'id_contact',
-        'id_oportunity',
-        'fileName',
-        'file',
+        'name'
     ];
-
 }

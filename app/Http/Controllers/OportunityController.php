@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\OportunityRequest;
+use App\Models\FileSave;
+use App\Models\Note;
 use App\Models\Oportunity;
+use App\Models\Task;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -28,21 +31,6 @@ class OportunityController extends Controller
         return view('oportunity.create');
     }
 
-    public function show($id)
-    {    
-        $user=User::all();
-        
-        $oportunity_user=Oportunity::where('id_user',$id)->get();
-
-        $oportunity=Oportunity::where('status','oportunity')->where('id_user',$id)->get();
-        $proposal=Oportunity::where('status','proposal')->where('id_user',$id)->get();
-        $need=Oportunity::where('status','need')->where('id_user',$id)->get();
-        $sale=Oportunity::where('status','sale')->where('id_user',$id)->get();
-        $lost=Oportunity::where('status','lost')->where('id_user',$id)->get();
-
-        return view ('oportunity.show', compact('oportunity_user', 'oportunity','proposal','need','sale','lost','user'));
-    }
-
     public function store(OportunityRequest $request)
     {       
         $oportunity=new Oportunity();
@@ -59,7 +47,6 @@ class OportunityController extends Controller
         $oportunity->status=$request->input('status');
         $oportunity->type=$request->input('type');
         $oportunity->budget=$request->input('budget');
-        $oportunity->currency=$request->input('currency');
         $oportunity->probability=$request->input('probability');
         $oportunity->description=$request->input('description');
         
@@ -68,6 +55,37 @@ class OportunityController extends Controller
         Session::flash('success_green','Los datos de la Oportunidad han sido agregados con éxito');
         
         return redirect('oportunity');
+
+    }
+
+    public function show($id)
+    {    
+        $user=User::all();
+        
+        $oportunity_user=Oportunity::where('id_user',$id)->get();
+
+        $oportunity=Oportunity::where('status','oportunity')->where('id_user',$id)->get();
+        $proposal=Oportunity::where('status','proposal')->where('id_user',$id)->get();
+        $need=Oportunity::where('status','need')->where('id_user',$id)->get();
+        $sale=Oportunity::where('status','sale')->where('id_user',$id)->get();
+        $lost=Oportunity::where('status','lost')->where('id_user',$id)->get();
+
+        return view ('oportunity.show', compact('oportunity_user', 'oportunity','proposal','need','sale','lost','user'));
+    }
+
+    public function edit($id)
+    {
+        $oportunity=Oportunity::findOrFail($id);
+
+        $task = Task::where('id_oportunity', $id)->get();
+
+        $user = User::all();
+
+        $notes = Note::where('id_oportunity', $id)->get();
+
+        $file = FileSave::where('id_oportunity', $id)->get();
+
+        return view ('oportunity.Edit', compact('oportunity', 'user', 'task','notes','file'));
 
     }
 
@@ -83,84 +101,46 @@ class OportunityController extends Controller
 
     }
 
-
-    public function edit($id)
+    public function update(OportunityRequest $request, $id)
     {
-        $contact=Contact::findOrFail($id);
+        $oportunity=Oportunity::findOrFail($id);
 
-        $task = Task::where('id_contact', $id)->get();
+        $oportunity->title=$request->input('title');
+        $oportunity->contact_name=$request->input('contact_name');
+        $oportunity->organization=$request->input('organization');
+        $oportunity->email=$request->input('email');
+        $oportunity->phone=$request->input('phone');
+        $oportunity->country=$request->input('country');
+        $oportunity->state=$request->input('state');
+        $oportunity->address=$request->input('address');
+        $oportunity->city=$request->input('city');
+        $oportunity->postal_code=$request->input('postal_code');
+        $oportunity->status=$request->input('status');
+        $oportunity->type=$request->input('type');
+        $oportunity->budget=$request->input('budget');
+        $oportunity->probability=$request->input('probability');
+        $oportunity->description=$request->input('description');
+        
 
-        $user = User::all();
-
-        $origin = Origin::all();
-
-        $notes = Note::where('id_contact', $id)->get();
-
-        $file = FileSave::where('id_contact', $id)->get();
-
-        return view ('contact.contactEdit', compact('contact', 'task', 'user','origin','file','notes'));
-
-    }
-
-    public function update(ContactEditRequest $request, $id)
-    {
-        $contact=Contact::findOrFail($id);
-
-        $contact->name=$request->input('name');
-        $contact->email=$request->input('email');
-        $contact->second_email=$request->input('second_email');
-        $contact->phone=$request->input('phone');
-        $contact->second_phone=$request->input('second_phone');
-        $contact->country=$request->input('country');
-        $contact->state=$request->input('state');
-        $contact->address=$request->input('address');
-        $contact->city=$request->input('city');
-        $contact->postal_code=$request->input('postal_code');
-        $contact->id_origins=$request->input('id_origins');
-        $contact->lead_level=$request->input('lead_level');
-        if($request->hasFile('image')){
-            if (!$request->hasFile('image')||$contact->image==null)
-            {
-                    $file=$request->file('image');
-                    $extension = $file->getClientOriginalExtension();
-                    $filename = time()."_".$contact->id.".".$extension;
-                    $file->move('images/',$filename);
-                    $contact->image=$filename;
-                }else{
-                    unlink(public_path('images/'.$contact -> image));
-                    $file=$request->file('image');
-                    $extension = $file->getClientOriginalExtension();
-                    $filename = time()."_".$contact->id."_".$contact->name."_".$extension;
-                    $file->move('images/',$filename);
-                    $contact->image=$filename;
-                }
-        }
-
-        $contact->update();
+        $oportunity->update();
 
         Session::flash('success_green','Los datos del Lead han sido modificados con éxito');
         
-        return redirect()->back();
+        return redirect()->back();                
+       
+    }
 
-        /*
-        if($request->hasFile('image')){
-            if (!$request->hasFile('image')||$client->image==null)
-            {
-                    $file=$request->file('image');
-                    $extension = $file->getClientOriginalExtension();
-                    $filename = time()."_".$client->identification_number.".".$extension;
-                    $file->move('images/',$filename);
-                    $client->image=$filename;
-                }else{
-                    unlink(public_path('images/'.$client -> image));
-                    $file=$request->file('image');
-                    $extension = $file->getClientOriginalExtension();
-                    $filename = time()."_".$client->identification_number.".".$extension;
-                    $file->move('images/',$filename);
-                    $client->image=$filename;
-                }
-        }*/
-                
+    public function updateUser(Request $request, $id)
+    {
+        $oportunity=Oportunity::findOrFail($id);
+
+        $oportunity->id_user=$request->input('id_user');        
+
+        $oportunity->update();
+
+        Session::flash('success_green','Se ha asignado un Responsable');
+        
+        return redirect()->back();                
        
     }
 

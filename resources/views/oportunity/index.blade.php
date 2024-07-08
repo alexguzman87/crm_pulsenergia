@@ -28,6 +28,7 @@
                             </div>
                         </div>
                     </div>
+                    @if(auth()->user()->type_user=='admin')
                     <div class="col-auto ms-sm-auto">
                         <div class="avatar-group justify-content-sm-end">
                             @foreach ($user as $u)
@@ -43,6 +44,7 @@
                             @endforeach
                         </div><!-- end avatar-group -->
                     </div>
+                    @endif
                     <!--end col-->
                 </div>
                 <!--end row-->
@@ -125,9 +127,11 @@
                                                 <div class="avatar-group-item">
                                                     <a href="javascript: void(0);">
                                                         <div class="avatar-sm">
-                                                            <div class="avatar-title rounded-circle bg-danger">
-                                                                <a href="{{route('oportunity_show_user', $o->id_user)}}" style="border: none; width: 100%; color: white; background-color: transparent; text-align: center;">{{strtoupper(substr($o->user->name,0,3))}}</a>
-                                                            </div>
+                                                            @if ($o->id_user)
+                                                                <div class="avatar-title rounded-circle bg-danger">
+                                                                    <a href="{{route('oportunity_show_user', $o->id_user)}}" style="border: none; width: 100%; color: white; background-color: transparent; text-align: center;">{{strtoupper(substr($o->user->name,0,3))}}</a>     
+                                                                </div>
+                                                            @endif
                                                         </div>
                                                     </a>
                                                 </div>
@@ -135,7 +139,7 @@
                                             <div class="flex-shrink-0 ms-2">
                                                 <ul class="list-inline mb-0">
                                                     <li class="list-inline-item">
-                                                        <a href="" class="text-muted font-size-13"><i class="mdi mdi-pencil-outline me-1"></i>Editar</a>
+                                                        <a href="/oportunity_edit/{{$o->id}}" class="text-muted font-size-13"><i class="mdi mdi-pencil-outline me-1"></i>Editar</a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -219,18 +223,22 @@
                                         <div class="card-footer py-2 bg-transparent border-top d-flex align-items-center">
                                             <div class="flex-grow-1">
                                                 <div class="avatar-group-item">
-                                                    <a href="javascript: void(0);" class="d-block" data-bs-toggle="tooltip" data-bs-placement="top" title="Emily Surface">
+                                                    <a href="javascript: void(0);">
                                                         <div class="avatar-sm">
-                                                            <div class="avatar-title rounded-circle bg-danger">
-                                                                <a href="{{route('oportunity_show_user', $o->id_user)}}" style="border: none; width: 100%; color: white; background-color: transparent; text-align: center;">{{strtoupper(substr($o->user->name,0,3))}}</a>
-                                                            </div>
+                                                            @if ($o->id_user)
+                                                                <div class="avatar-title rounded-circle bg-danger">
+                                                                    <a href="{{route('oportunity_show_user', $o->id_user)}}" style="border: none; width: 100%; color: white; background-color: transparent; text-align: center;">{{strtoupper(substr($o->user->name,0,3))}}</a>     
+                                                                </div>
+                                                            @endif
                                                         </div>
                                                     </a>
                                                 </div>
                                             </div>
                                             <div class="flex-shrink-0 ms-2">
                                                 <ul class="list-inline mb-0">
-                                                    <a href="" class="text-muted font-size-13"><i class="mdi mdi-pencil-outline me-1"></i>Editar</a>
+                                                    <li class="list-inline-item">
+                                                        <a href="/oportunity_edit/{{$o->id}}" class="text-muted font-size-13"><i class="mdi mdi-pencil-outline me-1"></i>Editar</a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -313,11 +321,13 @@
                                         <div class="card-footer py-2 bg-transparent border-top d-flex align-items-center">
                                             <div class="flex-grow-1">
                                                 <div class="avatar-group-item">
-                                                    <a href="javascript: void(0);" class="d-block" data-bs-toggle="tooltip" data-bs-placement="top" title="Emily Surface">
+                                                    <a href="javascript: void(0);">
                                                         <div class="avatar-sm">
-                                                            <div class="avatar-title rounded-circle bg-danger">
-                                                                <a href="{{route('oportunity_show_user', $o->id_user)}}" style="border: none; width: 100%; color: white; background-color: transparent; text-align: center;">{{strtoupper(substr($o->user->name,0,3))}}</a>
-                                                            </div>
+                                                            @if ($o->id_user)
+                                                                <div class="avatar-title rounded-circle bg-danger">
+                                                                    <a href="{{route('oportunity_show_user', $o->id_user)}}" style="border: none; width: 100%; color: white; background-color: transparent; text-align: center;">{{strtoupper(substr($o->user->name,0,3))}}</a>     
+                                                                </div>
+                                                            @endif
                                                         </div>
                                                     </a>
                                                 </div>
@@ -325,13 +335,7 @@
                                             <div class="flex-shrink-0 ms-2">
                                                 <ul class="list-inline mb-0">
                                                     <li class="list-inline-item">
-                                                        <a href="" class="text-muted font-size-13"><i class="mdi mdi-comment-text-outline me-1"></i>Task</a>
-                                                    </li>
-                                                    <li class="list-inline-item">
-                                                        <a href="" class="text-muted font-size-13"><i class="mdi mdi-comment-text-outline me-1"></i>Notas</a>
-                                                    </li>
-                                                    <li class="list-inline-item ms-1">
-                                                        <a href="" class="text-muted font-size-13"><i class="mdi mdi-link-variant me-1"></i>Archivos</a>
+                                                        <a href="/oportunity_edit/{{$o->id}}" class="text-muted font-size-13"><i class="mdi mdi-pencil-outline me-1"></i>Editar</a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -415,11 +419,13 @@
                                         <div class="card-footer py-2 bg-transparent border-top d-flex align-items-center">
                                             <div class="flex-grow-1">
                                                 <div class="avatar-group-item">
-                                                    <a href="javascript: void(0);" class="d-block" data-bs-toggle="tooltip" data-bs-placement="top" title="Emily Surface">
+                                                    <a href="javascript: void(0);">
                                                         <div class="avatar-sm">
-                                                            <div class="avatar-title rounded-circle bg-danger">
-                                                                <a href="{{route('oportunity_show_user', $o->id_user)}}" style="border: none; width: 100%; color: white; background-color: transparent; text-align: center;">{{strtoupper(substr($o->user->name,0,3))}}</a>
-                                                            </div>
+                                                            @if ($o->id_user)
+                                                                <div class="avatar-title rounded-circle bg-danger">
+                                                                    <a href="{{route('oportunity_show_user', $o->id_user)}}" style="border: none; width: 100%; color: white; background-color: transparent; text-align: center;">{{strtoupper(substr($o->user->name,0,3))}}</a>     
+                                                                </div>
+                                                            @endif
                                                         </div>
                                                     </a>
                                                 </div>
@@ -427,13 +433,7 @@
                                             <div class="flex-shrink-0 ms-2">
                                                 <ul class="list-inline mb-0">
                                                     <li class="list-inline-item">
-                                                        <a href="" class="text-muted font-size-13"><i class="mdi mdi-comment-text-outline me-1"></i>Task</a>
-                                                    </li>
-                                                    <li class="list-inline-item">
-                                                        <a href="" class="text-muted font-size-13"><i class="mdi mdi-comment-text-outline me-1"></i>Notas</a>
-                                                    </li>
-                                                    <li class="list-inline-item ms-1">
-                                                        <a href="" class="text-muted font-size-13"><i class="mdi mdi-link-variant me-1"></i>Archivos</a>
+                                                        <a href="/oportunity_edit/{{$o->id}}" class="text-muted font-size-13"><i class="mdi mdi-pencil-outline me-1"></i>Editar</a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -517,11 +517,13 @@
                                         <div class="card-footer py-2 bg-transparent border-top d-flex align-items-center">
                                             <div class="flex-grow-1">
                                                 <div class="avatar-group-item">
-                                                    <a href="javascript: void(0);" class="d-block" data-bs-toggle="tooltip" data-bs-placement="top" title="Emily Surface">
+                                                    <a href="javascript: void(0);">
                                                         <div class="avatar-sm">
-                                                            <div class="avatar-title rounded-circle bg-danger">
-                                                                <a href="{{route('oportunity_show_user', $o->id_user)}}" style="border: none; width: 100%; color: white; background-color: transparent; text-align: center;">{{strtoupper(substr($o->user->name,0,3))}}</a>
-                                                            </div>
+                                                            @if ($o->id_user)
+                                                                <div class="avatar-title rounded-circle bg-danger">
+                                                                    <a href="{{route('oportunity_show_user', $o->id_user)}}" style="border: none; width: 100%; color: white; background-color: transparent; text-align: center;">{{strtoupper(substr($o->user->name,0,3))}}</a>     
+                                                                </div>
+                                                            @endif
                                                         </div>
                                                     </a>
                                                 </div>
@@ -529,13 +531,7 @@
                                             <div class="flex-shrink-0 ms-2">
                                                 <ul class="list-inline mb-0">
                                                     <li class="list-inline-item">
-                                                        <a href="" class="text-muted font-size-13"><i class="mdi mdi-comment-text-outline me-1"></i>Task</a>
-                                                    </li>
-                                                    <li class="list-inline-item">
-                                                        <a href="" class="text-muted font-size-13"><i class="mdi mdi-comment-text-outline me-1"></i>Notas</a>
-                                                    </li>
-                                                    <li class="list-inline-item ms-1">
-                                                        <a href="" class="text-muted font-size-13"><i class="mdi mdi-link-variant me-1"></i>Archivos</a>
+                                                        <a href="/oportunity_edit/{{$o->id}}" class="text-muted font-size-13"><i class="mdi mdi-pencil-outline me-1"></i>Editar</a>
                                                     </li>
                                                 </ul>
                                             </div>

@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Session;
 class SaveFilesController extends Controller
 {
 
-    public function storeFile(SaveFileRequest $request){
+    public function store_file_lead(SaveFileRequest $request){
 
         $file=new FileSave;
         $file->id_contact=$request->input('id_contact');
@@ -30,20 +30,39 @@ class SaveFilesController extends Controller
         Session::flash('success_green','Se ha agregado un archivo con éxito');
 
         return redirect()->back();       
-        
-        
-        /*if($request->isMethod('POST')){
-            $file = $request->file('file');
-            $contactName = $request->input('contact_name');
-            $fileName = $request->input('fileName');
-            $date = now()->format('Ymd-His');
-            $file->storeAs('',$date.".".$contactName.".".$fileName.".".$file->extension(),'public');
-        };*/
 
     }
 
-    public function downloadFile($id){
+    public function download_file_lead($id){
         $id = public_path('files/'.$id);
         return response()->download($id);
     }
+
+    public function store_file_oportunity(SaveFileRequest $request){
+
+        $file=new FileSave;
+        $file->id_oportunity=$request->input('id_oportunity');
+        $file->fileName=$request->input('fileName');
+        $oportunityId=$request->input('id_oportunity');
+        if($request->hasFile('file')){
+            $fileUpdate=$request->file('file');
+            $extension = $fileUpdate->getClientOriginalName();
+            $date = now()->format('Ymd_His');
+            $filename = $date."_".$oportunityId."_".$extension;
+            $fileUpdate->move('files/',$filename);
+            $file->file=$filename;
+        }
+        $file->save();
+
+        Session::flash('success_green','Se ha agregado un archivo con éxito');
+
+        return redirect()->back();       
+
+    }
+
+    public function download_file_oportunity($id){
+        $id = public_path('files/'.$id);
+        return response()->download($id);
+    }
+
 }

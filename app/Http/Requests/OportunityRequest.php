@@ -37,7 +37,6 @@ class OportunityRequest extends FormRequest
             'status'=>'required',
             'type'=>'required',
             'budget'=>'required',
-            'currency'=>'required',
             'probability'=>'required',
             'description'=>'required'
         ];
@@ -58,7 +57,6 @@ class OportunityRequest extends FormRequest
             'status.required'=>'Debes añadir un Status',
             'type.required'=>'Debes añadir un tipo',
             'budget.required'=>'Debes añadir un presupuesto',
-            'currency.required'=>'Debes añadir una moneda',
             'probability.required'=>'Debes añadir una probabilidad',
             'description.required'=>'Debes añadir una descripción'
         ];    

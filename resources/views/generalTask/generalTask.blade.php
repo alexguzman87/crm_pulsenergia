@@ -94,10 +94,11 @@
                     <table class="table align-middle table-nowrap table-check">
                         <thead>
                             <tr>
+                                <th scope="col">Origen</th>
                                 <th scope="col">Prioridad</th>
                                 <th scope="col">Estado</th> 
                                 <th scope="col">Encargado</th>
-                                <th scope="col">Lead</th>
+                                <th scope="col">Nombre</th>
                                 <th scope="col">Tarea</th>
                                 <th scope="col">Fecha de asignado</th>
                                 <th scope="col">Fecha de realizado</th>
@@ -122,6 +123,13 @@
                             @foreach ($task as $t)
                                        <tr>
                                             <td>
+                                                @if($t->task_origin == 'lead')
+                                                    <span class="badge badge-soft-primary font-size-11">Lead</span>
+                                                @elseif($t->task_origin == 'oportunity')
+                                                <span class="badge badge-soft-secondary font-size-11">Oportunidad</span>
+                                                @endif
+                                            </td>
+                                            <td>
                                                 @if ($t->priority='Alta')
                                                     <span class="badge badge-soft-danger mb-0">ALTA</span>
                                                 @elseif($t->priority='Media')
@@ -131,7 +139,7 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                @if ($t->status='Por Asignar')
+                                                @if ($t->status='Asignado')
                                                     <span class="badge badge-soft-danger mb-0">POR ASIGNAR</span>
                                                 @elseif($t->status='En Proceso')
                                                     <span class="badge badge-soft-warning mb-0">EN PROCESO</span>
@@ -140,7 +148,13 @@
                                                 @endif
                                             </td>    
                                             <td>{{strtoupper($t->user->name)}}</td>
-                                            <td>{{strtoupper($t->contact->name)}}</td>
+                                            <td>
+                                                @if ($t->task_origin == 'lead')
+                                                    {{strtoupper($t->contact->name)}}
+                                                @elseif($t->task_origin == 'oportunity')
+                                                    {{strtoupper($t->oportunity->contact_name)}}
+                                                @endif
+                                                </td>
                                             <td>{{$t->task}}</td>                                            
                                             <td>{{$t->assigned_date}}</td>
                                             <td>{{$t->done_date}}</td>

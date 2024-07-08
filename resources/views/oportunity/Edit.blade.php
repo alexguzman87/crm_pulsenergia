@@ -4,62 +4,49 @@
 {{-- breadcrumbs  --}}
     @section('breadcrumb')
         @component('components.breadcrumb')
-            @slot('li_1') Contactos @endslot
+            @slot('li_1') Oportunidad @endslot
             @slot('title') Editar @endslot
         @endcomponent
     @endsection
 
 <div class="row">
     <div class="col-xxl-3 col-lg-4">
+        {{--INFORMACIÓN GENERAL--}}
         <div class="card">
             <div class="card-body p-0">
-                <div class="mt-n5 position-relative">
-                    <div class="text-center">
-                        <img src="{{URL::asset('images/'.$contact->image)}}" alt="" class="avatar-xl rounded-circle img-thumbnail">
-
-                        <div class="mt-3">
-                            <h5 class="mb-1">{{$contact->name}}</h5>
-                        </div>
-
-                    </div>
-                </div>
-
                 <div class="p-4 mt-2">
-                    <h5 class="font-size-16">Información:</h5>
+                    <h5 class="font-size-16">INFORMACIÓN:</h5>
 
                     <div class="mt-4">
                         <p class="text-muted mb-1">Nombre:</p>
-                        <h5 class="font-size-14 text-truncate">{{$contact->name}}</h5>
+                        <h5 class="font-size-14 text-truncate">{{$oportunity->title}}</h5>
                     </div>
 
                     <div class="mt-4">
-                        <p class="text-muted mb-1">Correo Electrónico:</p>
-                        <h5 class="font-size-14 text-truncate">{{$contact->email}}</h5>
+                        <p class="text-muted mb-1">Organización:</p>
+                        <h5 class="font-size-14 text-truncate">{{$oportunity->organization}}</h5>
                     </div>
 
                     <div class="mt-4">
-                        
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <p class="text-muted mb-1">Teléfono:</p>
-                                    <h5 class="font-size-14 text-truncate">{{$contact->phone}}</h5>
+                                    <p class="text-muted mb-1">Correo Electrónico:</p>
+                                    <h5 class="font-size-14 text-truncate">{{$oportunity->email}}</h5>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <p class="text-muted mb-1">Teléfono Secundario:</p>
-                                    <h5 class="font-size-14 text-truncate">{{$contact->second_phone}}</h5>                                </div>
+                                    <p class="text-muted mb-1">Teléfono:</p>
+                                    <h5 class="font-size-14 text-truncate">{{$oportunity->phone}}</h5>
+                                </div>
                             </div>
                         </div>
                     </div>
-
-                </div>
-
+                </div>                
             </div>
-            <!-- end card body -->
         </div>
-        
+        {{--ASIGNAR USUARIO--}}
         @if(auth()->user()->type_user=='admin')
         <div class="card">
             <div class="card-body p-0">
@@ -68,8 +55,8 @@
 
                     <div class="mt-4">
                         <p class="text-muted mb-1">Nombre:</p>
-                        @if($contact->id_user)
-                        <h5 class="font-size-14 text-truncate">{{$contact->user->name}}</h5>
+                        @if($oportunity->id_user)
+                        <h5 class="font-size-14 text-truncate">{{$oportunity->user->name}}</h5>
                         @else
                         <h5 class="font-size-14 text-truncate">No asignado</h5>
                         @endif
@@ -78,7 +65,7 @@
                     <div class="mt-4">
                         <p class="text-muted mb-1">Asignar Responsable:</p>
                         <div class="mt-4">
-                            <form action="/lead_edit_user/{{$contact->id}}" method="POST" enctype="multipart/form-data">
+                            <form action="/oportunity_edit_user/{{$oportunity->id}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                     <div class="row">
@@ -94,7 +81,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="mb-3">
-                                                @if($contact->id_user)
+                                                @if($oportunity->id_user)
                                                 <button type="submit" class="btn btn-primary w-sm">Modificar</button>
                                                 @else
                                                 <button type="submit" class="btn btn-primary w-sm">Asignar</button>
@@ -110,7 +97,6 @@
             </div>
         </div>
         @endif
-
     </div>
     <!-- end col -->
 
@@ -152,97 +138,118 @@
                     </li>
                 </ul>
 
-                <!-- Tab panes -->
+                
                 <div class="tab-content p-3 text-muted">
+                    
+                    {{--EDITAR--}}
                     <div class="tab-pane active" id="navtabs-profile" role="tabpanel">                    
                         <div class="card-body">
-                            <form action="/lead_edit/{{$contact->id}}" method="POST" enctype="multipart/form-data">
+                            <form action="/oportunity_edit/{{$oportunity->id}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                     <div class="modal-body p-4">
                                         <div class="mb-3">
-                                                <input type="text" name="name" class="form-control" value="{{$contact->name}}" placeholder="Nombre Completo">
+                                            <input type="text" name="title" class="form-control" placeholder="Titulo..." value="{{$oportunity->title}}">
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <input type="email" name="email" class="form-control" value="{{$contact->email}}" placeholder="Correo Electrónico">
+                                                    <input type="text" name="contact_name" class="form-control" placeholder="Nombre del contacto..." value="{{$oportunity->contact_name}}">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <input type="email" name="second_email" class="form-control" value="{{$contact->second_email}}" placeholder="Correo Electrónico Secundario">                                    
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="mb-3">
-                                                    <input type="number" name="phone" class="form-control" value="{{$contact->phone}}" placeholder="Teléfono">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="mb-3">
-                                                    <input type="number" name="second_phone" class="form-control" value="{{$contact->second_phone}}" placeholder="Teléfono Secundario">                                    
+                                                    <input type="text" name="organization" class="form-control" placeholder="Organización..."  value="{{$oportunity->organization}}">                                    
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <input type="text" name="country" name="email" class="form-control" value="{{$contact->country}}" placeholder="País de origen...">
+                                                    <input type="email" name="email" class="form-control" placeholder="Correo Electrónico..."  value="{{$oportunity->email}}">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <input type="text" name="state" class="form-control" value="{{$contact->state}}" placeholder="Provincia de Origen...">                                    
-                                                </div>
-                                            </div>
-                                            <div class="mb-3">
-                                                <input type="text" name="address" class="form-control" value="{{$contact->address}}" placeholder="Dirección">
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="mb-3">
-                                                    <input type="text" name="city" class="form-control" value="{{$contact->city}}" placeholder="Ciudad">                                    
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="mb-3">
-                                                    <input type="number" name="postal_code" value="{{$contact->postal_code}}" class="form-control" placeholder="Código Postal">                                    
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="mb-3">
-                                                    <select name="id_origins" class="form-select">
-                                                        <option value="{{$contact->id_origins}}">{{$contact->origin->name}}</option>
-                                                        @foreach ($origin as $o)
-                                                            <option value="{{$o->id}}">{{$o->name}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="mb-3">
-                                                    <select name="lead_level" class="form-select">
-                                                        <option value="{{$contact->lead_level}}">{{$contact->lead_level}}</option>
-                                                        <option value="Desconocido">Desconocido</option>
-                                                        <option value="Poco Probable">Poco Probable</option>
-                                                        <option value="Probable">Probable</option>
-                                                        <option value="Muy Probable">Muy Probable</option>
-                                                    </select>
+                                                    <input type="number" name="phone" class="form-control" placeholder="Teléfono..." value="{{$oportunity->phone}}">                                    
                                                 </div>
                                             </div>
                                         </div>
-                                    
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <input type="text" name="country" class="form-control" placeholder="País..." value="{{$oportunity->country}}">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <input type="text" name="state" class="form-control" placeholder="Estado / Provincia/ Región..." value="{{$oportunity->state}}">                                    
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="mb-3">
-                                            <label for="formFile" class="form-label">Subir imagen de perfil (Opcional)</label>
-                                            <input class="form-control" name="image" type="file" id="formFile">
+                                            <input type="text" name="address" class="form-control" placeholder="Dirección..." value="{{$oportunity->address}}">
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <input type="text" name="city" class="form-control" placeholder="Ciudad..." value="{{$oportunity->city}}">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <input type="number" name="postal_code" class="form-control" placeholder="Código Postal..." value="{{$oportunity->postal_code}}">                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <select name="status" class="form-select" value="{{$oportunity->status}}">
+                                                        <option value="oportunity">Oportunidad</option>
+                                                        <option value="proposal">En Propuesta</option>
+                                                        <option value="need">Necesito Apoyo</option>
+                                                        <option value="sale">Venta Exitosa</option>
+                                                        <option value="lost">Pérdido</option>
+                                                    </select> 
+                                                </div>
+                                            </div><!-- end col -->
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <select name="type" class="form-select" value="{{$oportunity->type}}">
+                                                        <option value="" selected disabled hidden>Tipo</option>
+                                                        <option value="residential">Residencial</option>
+                                                        <option value="industrial">Industrial</option>
+                                                        <option value="commercial">Comercial</option>
+                                                    </select> 
+                                                </div>
+                                            </div><!-- end row -->
+                                        </div><!-- end row -->
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <input type="number" name="budget" class="form-control" placeholder="Presupuesto..." value="{{$oportunity->budget}}">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="mb-3">
+                                                    <label for="formFile" class="form-label">Probabilidad: <output id="value"></output>%</label>
+                                                </div>
+                                            </div><!-- end row -->
+                                            <div class="col-md-3">
+                                                <div class="mb-3">
+                                                    <input id="pi_input" name="probability" class="form-range mt-2" type="range" min="0" max="100" step="10" value="{{$oportunity->probability}}"/>
+                                                </div>
+                                            </div><!-- end col -->
+                                        </div><!-- end row -->
+                                        <div class="mb-3">
+                                            <textarea name="description" class="form-control" cols="30" rows="10" placeholder="Descripción..." value="{{$oportunity->description}}"></textarea>
                                         </div>
                                     </div>
                                     <!-- end modalbody -->
                                     <div class="modal-footer">
                                         <a href="/lead"><button type="button" class="btn btn-light w-sm" data-bs-dismiss="modal">Cancelar</button></a>
-                                        <button type="submit" class="btn btn-primary w-sm">Modificar Lead</button>
+                                        <button type="submit" class="btn btn-primary w-sm">Modificar Oportunidad</button>
                                     </div>
                                 @include('layouts.message')
                             </form><!-- end form -->    
@@ -252,12 +259,12 @@
                     {{--TASK--}}
                     <div class="tab-pane" id="navtabs-task" role="tabpanel">
                         <div class="card-body">
-                            <form action="/task_lead_create" method="POST">
+                            <form action="/task_oportunity_create" method="POST">
                                 @csrf
                                     <div class="mb-3">
-                                        <input type="hidden" name="id_contact" value={{$contact->id}}>
-                                        <input type="hidden" name="task_origin" value='lead'>
-                                        <input type="hidden" name="id_user" value={{$contact->user->id}}>
+                                        <input type="hidden" name="id_oportunity" value={{$oportunity->id}}>
+                                        <input type="hidden" name="task_origin" value='oportunity'>
+                                        <input type="hidden" name="id_user" value={{$oportunity->user->id}}>
                                         <input type="text" name="task" class="form-control" placeholder="Nombre de la Tarea...">
                                     </div>
                                     <div class="row">
@@ -290,11 +297,15 @@
                                                 <input type="date" name="done_date" class="form-control" placeholder="Realizado el..." value="<?php echo date('Y-m-d'); ?>" min="<?php echo date('Y-m-d'); ?>">                                                                     
                                             </div>
                                         </div>
-                                        <div class="modal-footer">
+                                        <div class="col-md-2">
                                             <div class="mb-3">
                                                 <a href="/lead"><button type="button" class="btn btn-light w-sm" data-bs-dismiss="modal">Cancelar</button></a>
-                                                <button type="submit" class="btn btn-primary w-md">Agregar Tarea</button>                                            </div>
                                             </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                                <div class="mb-3">
+                                                    <button type="submit" class="btn btn-primary w-md">Agregar Tarea</button>                                            </div>
+                                                </div>  
                                         </div>
                                     @include('layouts.message')
                             </form>
@@ -310,13 +321,13 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ( $task as $c )
+                                        @foreach ($task as $t)
                                             <tr>
-                                                <td>{{$c->task}}</td>
-                                                <td>{{$c->priority}}</td>
-                                                <td>{{$c->status}}</td>
-                                                <td>{{ date('d-M-y', strtotime($c->assigned_date)) }}</td>
-                                                <td>{{ date('d-M-y', strtotime($c->done_date)) }}</td>
+                                                <td>{{$t->task}}</td>
+                                                <td>{{$t->priority}}</td>
+                                                <td>{{$t->status}}</td>
+                                                <td>{{ date('d-M-y', strtotime($t->assigned_date)) }}</td>
+                                                <td>{{ date('d-M-y', strtotime($t->done_date)) }}</td>
                                         @endforeach
                                     </tbody>
                                 </table>
@@ -327,16 +338,16 @@
 
                     {{--Notas--}}
                     <div class="tab-pane" id="navtabs-notes" role="tabpanel">
-                        <form action="/notes_lead_create" method="POST">
+                        <form action="/notes_oportunity_create" method="POST">
                             @csrf
                                 <div class="mb-3">
-                                    <input type="hidden" name="task_origin" value='lead'>
-                                    <input type="hidden" value={{$contact->id}} name="id_contact">
-                                    <textarea name="notes" placeholder="Escribe aquí las notas..." class="form-control" cols="30" rows="10" value="{{$contact->notes}}"></textarea>
+                                    <input type="hidden" name="task_origin" value='oportunity'>
+                                    <input type="hidden" name="id_oportunity" value={{$oportunity->id}}>
+                                    <textarea name="notes" placeholder="Escribe aquí las notas..." class="form-control" cols="30" rows="10"></textarea>
                                 </div>
                                 <div class="modal-footer">
                                     <div class="mt-4">
-                                        <a href="/lead"><button type="button" class="btn btn-light w-sm" data-bs-dismiss="modal">Cancelar</button></a>
+                                        <a href="#"><button type="button" class="btn btn-light w-sm" data-bs-dismiss="modal">Cancelar</button></a>
                                         <button type="submit" class="btn btn-primary w-md">Agregar Notas</button>
                                     </div>
                                 </div>
@@ -350,9 +361,9 @@
                                     </tr><!-- end tr -->
                                 </thead><!-- end thead -->
                                 <tbody>
-                                    @foreach ( $notes as $n )
+                                    @foreach ($notes as $n )
                                     <tr>
-                                        <td>{{ date('d-M-y', strtotime($n->created_at)) }}</td>
+                                        <td>{{date('d-M-y', strtotime($n->created_at))}}</td>
                                         <td>{{$n->notes}}</td>
                                     </tr><!-- end tr --> 
                                     @endforeach
@@ -369,11 +380,11 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <div>
-                                            <form action="/store_file_lead" class="dropzone" method="POST" enctype="multipart/form-data">
+                                            <form action="/store_file_oportunity" class="dropzone" method="POST" enctype="multipart/form-data">
                                                 @csrf
                                                 <div class="mb-3">
-                                                    <input type="hidden" name="id_contact" class="form-control" value="{{$contact->id}}">
-                                                    <input type="hidden" name="task_origin" value='lead'>
+                                                    <input type="hidden" name="task_origin" value='oportunity'>
+                                                    <input type="hidden" name="id_oportunity" value={{$oportunity->id}}>
                                                     <input name="fileName" type="text" class="form-control" placeholder="Nombre / Descripción del archivo">
                                                 </div>
                                                 <div class="fallback">
@@ -387,7 +398,7 @@
                                                 </div>
                                                 <div class="modal-footer">
                                                     <div class="mt-4">
-                                                        <a href="/lead"><button type="button" class="btn btn-light w-sm" data-bs-dismiss="modal">Cancelar</button></a>
+                                                        <a href="/oportunity"><button type="button" class="btn btn-light w-sm" data-bs-dismiss="modal">Cancelar</button></a>
                                                         <button type="submit" class="btn btn-primary">Guardar Archivo</button>
                                                     </div>
                                                 </div>
@@ -410,7 +421,7 @@
                                                             <td>{{$c->fileName}}</td>
                                                             <td>{{$c->file}}</td>
                                                             <td>{{ date('d-M-y', strtotime($c->created_at)) }}</td>
-                                                            <td><a href="/download_file_lead/{{$c->file}}"><button type="submit" title="DESCARGAR ARCHIVO" class="btn btn-primary"><i class="bx bx-download"></i></button></a></td>                                                           
+                                                            <td><a href="/download_file_oportunity/{{$c->file}}"><button type="submit" title="DESCARGAR ARCHIVO" class="btn btn-primary"><i class="bx bx-download"></i></button></a></td>                                                           
                                                     @endforeach
                                                 </tbody>
                                             </table>
@@ -429,7 +440,7 @@
                                         <input type="hidden" name="email_user" class="form-control" value="{{auth()->user()->email}}">
                                     </div>
                                     <div class="mb-3">
-                                        <input type="hidden" name="email" class="form-control" value="{{$contact->email}}">
+                                        <input type="hidden" name="email" class="form-control" value="{{$oportunity->title}}">
                                     </div>
                                     <div class="mb-3">
                                         <input type="text" name="title" class="form-control" placeholder="Asunto">
@@ -463,6 +474,14 @@
 @section('script')
 
 <!-- ckeditor -->
+<script>
+    const value = document.querySelector("#value");
+        const input = document.querySelector("#pi_input");
+        value.textContent = input.value;
+        input.addEventListener("input", (event) => {
+          value.textContent = event.target.value;
+        });
+        </script>
 <script src="{{ URL::asset('assets/libs/@ckeditor/@ckeditor.min.js') }}"></script>
 <!-- quill js -->
 <!-- init js -->
