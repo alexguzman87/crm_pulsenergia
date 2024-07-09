@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class OportunityRequest extends FormRequest
+class OportunityEditRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,7 +27,7 @@ class OportunityRequest extends FormRequest
             'title'=>'required',
             'contact_name'=>'required',
             'organization'=>'required',
-            'email'=>'required|email|unique:App\Models\Oportunity,email',
+            'email'=>'required',
             'phone'=>'required',
             'country'=>'required',
             'state'=>'required',
@@ -50,7 +50,6 @@ class OportunityRequest extends FormRequest
             'contact_name.required'=>'Debes añadir un nombre de contacto',
             'organization.required'=>'Debes añadir una organización',
             'email.required'=>'Debes añadir un correo electrónico',
-            'email.unique'=>'El Correo Electrónico ya está siendo usado',
             'phone.required'=>'Debes añadir un teléfono',
             'country.required'=>'Debes añadir un país',
             'state.required'=>'Debes añadir un estado',

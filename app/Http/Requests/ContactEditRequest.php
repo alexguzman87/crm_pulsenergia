@@ -27,7 +27,14 @@ class ContactEditRequest extends FormRequest
             'name'=>'required',
             'email'=>'required|email',
             'phone'=>'required|numeric|digits_between:8,20',
+            'country'=>'required',
+            'state'=>'required',
+            'address'=>'required',
+            'city'=>'required',
+            'postal_code'=>'required',
             'id_origins'=>'required',
+            'id_type'=>'required',
+            'id_level'=>'required'
         ];
     }
 
@@ -39,7 +46,14 @@ class ContactEditRequest extends FormRequest
             'phone'=>'El Teléfono es requerido',
             'phone.numeric'=>'El Teléfono solo debe tener números',
             'phone.digits_between'=>'El Teléfono debe ser mayor a 8 números y menor a 20 números',
-            'id_origins.required'=>'El Origen es requerido',
+            'country.required'=>'El País es requerido',
+            'state.required'=>'El Estado o Región es requerida',
+            'address.required'=>'La Direcció es requerida',
+            'city.required'=>'La Ciudad es requerida',
+            'postalCode.required'=>'El Código Postal es requerido',
+            'id_origins.required'=>'El Origen del Lead es requerido',
+            'id_level.required'=>'El Nivel del Lead es requerido',
+            'id_type.required'=>'El Tipo del Lead es requerido',
         ];    
     }
 }

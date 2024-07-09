@@ -120,6 +120,12 @@
                                                                 <input type="hidden" name="status" value="lost">
                                                                 <button style="border: none; width: 100%; color: #ef7564; background-color: white;" type="submit">PÉRDIDO</button>                                                            
                                                             </form>
+                                                            <form action="{{route('oportunity_delete', $o->id)}}" method="POST">
+                                                                @csrf
+                                                                @method('PUT')
+                                                                <input type="hidden" name="status" value="lost">
+                                                                <button style="border: none; width: 100%; color: #000000; background-color: white;" type="submit">ELIMINAR</button>                                                            
+                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -215,6 +221,12 @@
                                                                 @method('PUT')
                                                                 <input type="hidden" name="status" value="lost">
                                                                 <button style="border: none; width: 100%; color: #ef7564; background-color: white;" type="submit">PÉRDIDO</button>                                                            
+                                                            </form>
+                                                            <form action="{{route('oportunity_delete', $o->id)}}" method="POST">
+                                                                @csrf
+                                                                @method('PUT')
+                                                                <input type="hidden" name="status" value="lost">
+                                                                <button style="border: none; width: 100%; color: #000000; background-color: white;" type="submit">ELIMINAR</button>                                                            
                                                             </form>
                                                         </div>
                                                     </div>
@@ -318,6 +330,12 @@
                                                                 <input type="hidden" name="status" value="lost">
                                                                 <button style="border: none; width: 100%; color: #ef7564; background-color: white;" type="submit">PÉRDIDO</button>                                                            
                                                             </form>
+                                                            <form action="{{route('oportunity_delete', $o->id)}}" method="POST">
+                                                                @csrf
+                                                                @method('PUT')
+                                                                <input type="hidden" name="status" value="lost">
+                                                                <button style="border: none; width: 100%; color: #000000; background-color: white;" type="submit">ELIMINAR</button>                                                            
+                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -420,6 +438,12 @@
                                                                 <input type="hidden" name="status" value="lost">
                                                                 <button style="border: none; width: 100%; color: #ef7564; background-color: white;" type="submit">PÉRDIDO</button>                                                            
                                                             </form>
+                                                            <form action="{{route('oportunity_delete', $o->id)}}" method="POST">
+                                                                @csrf
+                                                                @method('PUT')
+                                                                <input type="hidden" name="status" value="lost">
+                                                                <button style="border: none; width: 100%; color: #000000; background-color: white;" type="submit">ELIMINAR</button>                                                            
+                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -521,6 +545,12 @@
                                                                 @method('PUT')
                                                                 <input type="hidden" name="status" value="lost">
                                                                 <button style="border: none; width: 100%; color: #ef7564; background-color: white;" type="submit">PÉRDIDO</button>                                                            
+                                                            </form>
+                                                            <form action="{{route('oportunity_delete', $o->id)}}" method="POST">
+                                                                @csrf
+                                                                @method('PUT')
+                                                                <input type="hidden" name="status" value="lost">
+                                                                <button style="border: none; width: 100%; color: #000000; background-color: white;" type="submit">ELIMINAR</button>                                                            
                                                             </form>
                                                         </div>
                                                     </div>

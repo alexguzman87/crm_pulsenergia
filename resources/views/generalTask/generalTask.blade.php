@@ -130,22 +130,74 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                @if ($t->priority='Alta')
-                                                    <span class="badge badge-soft-danger mb-0">ALTA</span>
-                                                @elseif($t->priority='Media')
-                                                    <span class="badge badge-soft-warning mb-0">MEDIA</span>
-                                                @elseif($t->priority='Baja')
-                                                    <span class="badge badge-soft-success mb-0">BAJA</span>
-                                                @endif
+                                                <div class="dropdown">
+                                                    <a class="btn btn-link text-dark dropdown-toggle shadow-none" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                        <i>
+                                                            @if ($t->priority=='Alta')
+                                                            <span class="badge badge-soft-danger mb-0">ALTA</span>
+                                                            @elseif($t->priority=='Media')
+                                                            <span class="badge badge-soft-warning mb-0">MEDIA</span>
+                                                            @elseif($t->priority=='Baja')
+                                                            <span class="badge badge-soft-success mb-0">BAJA</span>
+                                                            @endif
+                                                        </i>
+                                                    </a>
+                                                    <ul class="dropdown-menu dropdown-menu-center">
+                                                        <form action="{{route('task_change_priority', $t->id)}}" method="POST">
+                                                            @csrf
+                                                            @method('PUT')
+                                                            <input type="hidden" name="priority" value="Alta">
+                                                            <button style="border: none; width: 100%; color: #ef7564; background-color: white;" type="submit">ALTA</button>                                                            
+                                                        </form>
+                                                        <form action="{{route('task_change_priority', $t->id)}}" method="POST">
+                                                            @csrf
+                                                            @method('PUT')
+                                                            <input type="hidden" name="priority" value="Media">
+                                                            <button style="border: none; width: 100%; color: #ffb968; background-color: white;" type="submit">MEDIA</button>                                                            
+                                                        </form>
+                                                        <form action="{{route('task_change_priority', $t->id)}}" method="POST">
+                                                            @csrf
+                                                            @method('PUT')
+                                                            <input type="hidden" name="priority" value="Baja">
+                                                            <button style="border: none; width: 100%; color: #7bc86c; background-color: white;" type="submit">BAJA</button>                                                            
+                                                        </form>
+                                                    </ul>
+                                                </div><!-- end dropdown -->
                                             </td>
                                             <td>
-                                                @if ($t->status='Asignado')
-                                                    <span class="badge badge-soft-danger mb-0">POR ASIGNAR</span>
-                                                @elseif($t->status='En Proceso')
-                                                    <span class="badge badge-soft-warning mb-0">EN PROCESO</span>
-                                                @elseif($t->status='Realizado')
-                                                    <span class="badge badge-soft-success mb-0">REALIZADO</span>
-                                                @endif
+                                                <div class="dropdown">
+                                                    <a class="btn btn-link text-dark dropdown-toggle shadow-none" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                        <i>
+                                                            @if ($t->status=='Asignado')
+                                                            <span class="badge badge-soft-danger mb-0">ASIGNADO</span>
+                                                            @elseif($t->status=='En Proceso')
+                                                            <span class="badge badge-soft-warning mb-0">EN PROCESO</span>
+                                                            @elseif($t->status=='Realizado')
+                                                            <span class="badge badge-soft-success mb-0">REALIZADO</span>
+                                                            @endif
+                                                        </i>
+                                                    </a>
+                                                    <ul class="dropdown-menu dropdown-menu-center">
+                                                        <form action="{{route('task_change_status', $t->id)}}" method="POST">
+                                                            @csrf
+                                                            @method('PUT')
+                                                            <input type="hidden" name="status" value="Asignado">
+                                                            <button style="border: none; width: 100%; color: #ef7564; background-color: white;" type="submit">ASIGNADO</button>                                                            
+                                                        </form>
+                                                        <form action="{{route('task_change_status', $t->id)}}" method="POST">
+                                                            @csrf
+                                                            @method('PUT')
+                                                            <input type="hidden" name="status" value="En Proceso">
+                                                            <button style="border: none; width: 100%; color: #ffb968; background-color: white;" type="submit">EN PROCESO</button>                                                            
+                                                        </form>
+                                                        <form action="{{route('task_change_status', $t->id)}}" method="POST">
+                                                            @csrf
+                                                            @method('PUT')
+                                                            <input type="hidden" name="status" value="Realizado">
+                                                            <button style="border: none; width: 100%; color: #7bc86c; background-color: white;" type="submit">REALIZADO</button>                                                            
+                                                        </form>
+                                                    </ul>
+                                                </div><!-- end dropdown -->
                                             </td>    
                                             <td>{{strtoupper($t->user->name)}}</td>
                                             <td>
@@ -160,7 +212,7 @@
                                             <td>{{$t->done_date}}</td>
                                             <td>
                                                 <div class="d-flex gap-2">
-                                                    <a href="{{--route('lead_edit', $c->id)--}}"><button type="submit" title="EDITAR LEAD" class="btn btn-primary"><i class="fas fa-pencil-alt"></i></button></a>
+                                                    <a href={{route('task_edit', $t->id)}}><button title="EDITAR OPORTUNIDAD" class="btn btn-primary"><i class="fas fa-pencil-alt"></i></button></a>
                                                     <form action="{{--route('lead_delete', $c->id)--}}" method="POST">
                                                         @csrf
                                                         @method('DELETE')

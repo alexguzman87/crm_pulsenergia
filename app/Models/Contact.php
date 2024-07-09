@@ -24,7 +24,8 @@ class Contact extends Model
         'city',
         'postal_code',
         'id_origins',
-        'lead_level',
+        'id_type',
+        'id_level',
         'image',
     ];
 
@@ -65,5 +66,15 @@ class Contact extends Model
     public function user(){
         return $this->belongsTo('App\Models\User','id_user','id');
     }
+
+    public function type(){
+        return $this->belongsTo('App\Models\TypesLead','id_type','id');
+    }
+
+    public function level(){
+        return $this->belongsTo('App\Models\LevelLead','id_level','id');
+    }
+
+
 
 }

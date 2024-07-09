@@ -33,7 +33,8 @@ class ContactRequest extends FormRequest
             'city'=>'required',
             'postal_code'=>'required',
             'id_origins'=>'required',
-            'lead_level'=>'required',
+            'id_type'=>'required',
+            'id_level'=>'required',
         ];
     }
 
@@ -52,7 +53,8 @@ class ContactRequest extends FormRequest
             'city.required'=>'La Ciudad es requerida',
             'postalCode.required'=>'El Código Postal es requerido',
             'id_origins.required'=>'El Origen del Lead es requerido',
-            'lead_level.required'=>'El Nivel del Lead es requerido',
+            'id_level.required'=>'El Nivel del Lead es requerido',
+            'id_type.required'=>'El Tipo del Lead es requerido',
         ];    
     }
 

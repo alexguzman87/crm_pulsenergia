@@ -126,12 +126,14 @@
                             <span class="d-none d-sm-block">Editar</span>
                         </a>
                     </li>
+                    @if($contact->id_user)
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="tab" href="#navtabs-task" role="tab">
                             <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
                             <span class="d-none d-sm-block">Tareas</span>
                         </a>
                     </li>
+                    @endif
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="tab" href="#navtabs-notes" role="tab">
                             <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
@@ -211,26 +213,29 @@
                                                     <input type="number" name="postal_code" value="{{$contact->postal_code}}" class="form-control" placeholder="Código Postal">                                    
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <div class="mb-3">
+                                            <div class="col">
                                                     <select name="id_origins" class="form-select">
                                                         <option value="{{$contact->id_origins}}">{{$contact->origin->name}}</option>
                                                         @foreach ($origin as $o)
                                                             <option value="{{$o->id}}">{{$o->name}}</option>
                                                         @endforeach
                                                     </select>
-                                                </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <div class="mb-3">
-                                                    <select name="lead_level" class="form-select">
-                                                        <option value="{{$contact->lead_level}}">{{$contact->lead_level}}</option>
-                                                        <option value="Desconocido">Desconocido</option>
-                                                        <option value="Poco Probable">Poco Probable</option>
-                                                        <option value="Probable">Probable</option>
-                                                        <option value="Muy Probable">Muy Probable</option>
+                                            <div class="col">
+                                                    <select name="id_level" class="form-select">
+                                                        <option value="{{$contact->id_level}}">{{$contact->level->name}}</option>
+                                                        @foreach ($level as $l)
+                                                            <option value="{{$l->id}}">{{$l->name}}</option>
+                                                        @endforeach
                                                     </select>
-                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                    <select name="id_type" class="form-select">
+                                                        <option value="{{$contact->id_type}}">{{$contact->type->name}}</option>
+                                                        @foreach ($type as $t)
+                                                            <option value="{{$t->id}}">{{$t->name}}</option>
+                                                        @endforeach
+                                                    </select>
                                             </div>
                                         </div>
                                     
@@ -250,6 +255,7 @@
                     </div>
 
                     {{--TASK--}}
+                    @if($contact->id_user)
                     <div class="tab-pane" id="navtabs-task" role="tabpanel">
                         <div class="card-body">
                             <form action="/task_lead_create" method="POST">
@@ -310,19 +316,88 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ( $task as $c )
+                                        @foreach ( $task as $t )
                                             <tr>
-                                                <td>{{$c->task}}</td>
-                                                <td>{{$c->priority}}</td>
-                                                <td>{{$c->status}}</td>
-                                                <td>{{ date('d-M-y', strtotime($c->assigned_date)) }}</td>
-                                                <td>{{ date('d-M-y', strtotime($c->done_date)) }}</td>
+                                                <td>{{$t->task}}</td>
+                                                <td>
+                                                    <div class="dropdown">
+                                                        <a class="btn btn-link text-dark dropdown-toggle shadow-none" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                            <i>
+                                                                @if ($t->priority=='Alta')
+                                                                <span class="badge badge-soft-danger mb-0">ALTA</span>
+                                                                @elseif($t->priority=='Media')
+                                                                <span class="badge badge-soft-warning mb-0">MEDIA</span>
+                                                                @elseif($t->priority=='Baja')
+                                                                <span class="badge badge-soft-success mb-0">BAJA</span>
+                                                                @endif
+                                                            </i>
+                                                        </a>
+                                                        <ul class="dropdown-menu dropdown-menu-center">
+                                                            <form action="{{route('task_change_priority', $t->id)}}" method="POST">
+                                                                @csrf
+                                                                @method('PUT')
+                                                                <input type="hidden" name="priority" value="Alta">
+                                                                <button style="border: none; width: 100%; color: #ef7564; background-color: white;" type="submit">ALTA</button>                                                            
+                                                            </form>
+                                                            <form action="{{route('task_change_priority', $t->id)}}" method="POST">
+                                                                @csrf
+                                                                @method('PUT')
+                                                                <input type="hidden" name="priority" value="Media">
+                                                                <button style="border: none; width: 100%; color: #ffb968; background-color: white;" type="submit">MEDIA</button>                                                            
+                                                            </form>
+                                                            <form action="{{route('task_change_priority', $t->id)}}" method="POST">
+                                                                @csrf
+                                                                @method('PUT')
+                                                                <input type="hidden" name="priority" value="Baja">
+                                                                <button style="border: none; width: 100%; color: #7bc86c; background-color: white;" type="submit">BAJA</button>                                                            
+                                                            </form>
+                                                        </ul>
+                                                    </div><!-- end dropdown -->
+                                                </td>
+                                                <td>
+                                                    <div class="dropdown">
+                                                        <a class="btn btn-link text-dark dropdown-toggle shadow-none" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                            <i>
+                                                                @if ($t->status=='Asignado')
+                                                                <span class="badge badge-soft-danger mb-0">ASIGNADO</span>
+                                                                @elseif($t->status=='En Proceso')
+                                                                <span class="badge badge-soft-warning mb-0">EN PROCESO</span>
+                                                                @elseif($t->status=='Realizado')
+                                                                <span class="badge badge-soft-success mb-0">REALIZADO</span>
+                                                                @endif
+                                                            </i>
+                                                        </a>
+                                                        <ul class="dropdown-menu dropdown-menu-center">
+                                                            <form action="{{route('task_change_status', $t->id)}}" method="POST">
+                                                                @csrf
+                                                                @method('PUT')
+                                                                <input type="hidden" name="status" value="Asignado">
+                                                                <button style="border: none; width: 100%; color: #ef7564; background-color: white;" type="submit">ASIGNADO</button>                                                            
+                                                            </form>
+                                                            <form action="{{route('task_change_status', $t->id)}}" method="POST">
+                                                                @csrf
+                                                                @method('PUT')
+                                                                <input type="hidden" name="status" value="En Proceso">
+                                                                <button style="border: none; width: 100%; color: #ffb968; background-color: white;" type="submit">EN PROCESO</button>                                                            
+                                                            </form>
+                                                            <form action="{{route('task_change_status', $t->id)}}" method="POST">
+                                                                @csrf
+                                                                @method('PUT')
+                                                                <input type="hidden" name="status" value="Realizado">
+                                                                <button style="border: none; width: 100%; color: #7bc86c; background-color: white;" type="submit">REALIZADO</button>                                                            
+                                                            </form>
+                                                        </ul>
+                                                    </div><!-- end dropdown -->
+                                                </td>
+                                                <td>{{ date('d-M-y', strtotime($t->assigned_date)) }}</td>
+                                                <td>{{ date('d-M-y', strtotime($t->done_date)) }}</td>
                                         @endforeach
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div><!-- end tab pane -->
+                    @endif
 
 
                     {{--Notas--}}

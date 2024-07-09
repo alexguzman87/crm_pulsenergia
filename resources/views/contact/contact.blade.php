@@ -26,9 +26,11 @@
 
                     <div class="col-md-6">
                         <div class="d-flex flex-wrap align-items-start justify-content-md-end mt-2 mt-md-0 gap-2 mb-3">
+                            @if(auth()->user()->type_user=='admin')
                             <div>
                                 <a href="/contact_export"><button type="submit" title="EXPORTAR EXCEL" name="send" class="btn btn-primary"><i class="bx bx-download"></i></button></a>
                             </div>
+                            @endif
                             <div>
                                 <a href="#" class="btn btn-primary" title="AGREGAR LEAD" data-bs-toggle="modal" data-bs-target="#addLeadModal"><i class="bx bx-user-plus"></i></a>
                             </div>
@@ -70,76 +72,79 @@
                             @csrf
                                 <div class="modal-body p-4">
                                     <div class="mb-3">
-                                            <input type="text" name="name" class="form-control" placeholder="Nombre Completo">
+                                            <input type="text" name="name" class="form-control" placeholder="Nombre Completo" value="{{ old('name') }}">
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="mb-3">
-                                                <input type="email" name="email" class="form-control" placeholder="Correo Electrónico">
+                                                <input type="email" name="email" class="form-control" placeholder="Correo Electrónico" value="{{ old('email') }}">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="mb-3">
-                                                <input type="email" name="second_email" class="form-control" placeholder="Correo Electrónico Secundario">                                    
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="mb-3">
-                                                <input type="number" name="phone" class="form-control" placeholder="Teléfono">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="mb-3">
-                                                <input type="number" name="second_phone" class="form-control" placeholder="Teléfono Secundario">                                    
+                                                <input type="email" name="second_email" class="form-control" placeholder="Correo Electrónico Secundario" value="{{ old('second_email') }}">                                    
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="mb-3">
-                                                <input type="text" name="country" name="email" class="form-control" placeholder="País de origen...">
+                                                <input type="number" name="phone" class="form-control" placeholder="Teléfono" value="{{ old('phone') }}">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="mb-3">
-                                                <input type="text" name="state" class="form-control" placeholder="Provincia de Origen...">                                    
+                                                <input type="number" name="second_phone" class="form-control" placeholder="Teléfono Secundario" value="{{ old('second_phone') }}">                                    
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <input type="text" name="country" name="email" class="form-control" placeholder="País de origen..." value="{{ old('country') }}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <input type="text" name="state" class="form-control" placeholder="Provincia de Origen..." value="{{ old('state') }}">                                    
                                             </div>
                                         </div>
                                         <div class="mb-3">
-                                            <input type="text" name="address" class="form-control" placeholder="Dirección">
+                                            <input type="text" name="address" class="form-control" placeholder="Dirección" value="{{ old('address') }}">
                                         </div>
                                         <div class="col-md-6">
                                             <div class="mb-3">
-                                                <input type="text" name="city" class="form-control" placeholder="Ciudad">                                    
+                                                <input type="text" name="city" class="form-control" placeholder="Ciudad" value="{{ old('city') }}">                                    
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="mb-3">
-                                                <input type="number" name="postal_code" class="form-control" placeholder="Código Postal">                                    
+                                                <input type="number" name="postal_code" class="form-control" placeholder="Código Postal" value="{{ old('postal_code') }}">                                    
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="mb-3">
-                                                <select name="id_origins" class="form-select">
-                                                    <option value="" selected disabled hidden>Origen del Lead</option>
-                                                    @foreach ($origin as $o)
-                                                        <option value="{{$o->id}}">{{$o->name}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
+                                        <div class="col">
+                                            <select name="id_origins" class="form-select">
+                                                <option value="" selected disabled hidden>Origen del Lead</option>
+                                                @foreach ($origin as $o)
+                                                    <option value="{{$o->id}}">{{$o->name}}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="mb-3">
-                                                <select name="lead_level" class="form-select">
-                                                    <option value="" selected disabled hidden>Nivel del Lead</option>
-                                                    <option value="admin">Desconocido</option>
-                                                    <option value="analyst">Poco Probable</option>
-                                                    <option value="analyst">Probable</option>
-                                                    <option value="general">Muy Probable</option>
-                                                </select>
-                                            </div>
+                                        <div class="col">
+                                            <select name="id_level" class="form-select">
+                                                <option value="" selected disabled hidden>Nivel del Lead</option>
+                                                @foreach ($level as $l)
+                                                    <option value="{{$l->id}}">{{$l->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="col">
+                                            <select name="id_type" class="form-select">
+                                                <option value="" selected disabled hidden>Tipo del Lead</option>
+                                                @foreach ($type as $t)
+                                                    <option value="{{$t->id}}">{{$t->name}}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
                                 

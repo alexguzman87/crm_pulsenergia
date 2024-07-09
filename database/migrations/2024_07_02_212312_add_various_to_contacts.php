@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('city',150)->nullable()->after('second_phone');
             $table->string('state',150)->nullable()->after('second_phone');
             $table->string('postal_code',150)->nullable()->after('second_phone');
-            $table->string('lead_level',150)->nullable()->after('second_phone');
         });
     }
 
@@ -38,7 +37,6 @@ return new class extends Migration
             $table->dropColumn('city');
             $table->dropColumn('state');
             $table->dropColumn('postalCode');
-            $table->dropColumn('lead_level');
         });
     }
 };

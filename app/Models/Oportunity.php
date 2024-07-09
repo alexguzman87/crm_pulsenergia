@@ -13,6 +13,9 @@ class Oportunity extends Model
     
     protected $fillable = [
         'id_user',
+        'id_origins',
+        'id_type',
+        'id_level',
         'title',
         'contact_name',
         'organization',
@@ -33,6 +36,20 @@ class Oportunity extends Model
     public function user(){
         return $this->belongsTo('App\Models\User','id_user','id');
     }
+
+    public function origin(){
+        return $this->belongsTo('App\Models\Origin','id_origins','id');
+    }
+
+    public function type(){
+        return $this->belongsTo('App\Models\TypesLead','id_type','id');
+    }
+
+    public function level(){
+        return $this->belongsTo('App\Models\LevelLead','id_level','id');
+    }
+
+
 }
 
 

@@ -74,7 +74,12 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-3">
+                                <div class="mb-3">
+                                    <input type="number" name="budget" class="form-control" placeholder="Presupuesto..." value="{{ old('budget') }}">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
                                 <div class="mb-3">
                                     <select name="status" class="form-select" value="{{ old('status') }}">
                                         <option value="oportunity">Oportunidad</option>
@@ -85,23 +90,6 @@
                                     </select> 
                                 </div>
                             </div><!-- end col -->
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <select name="type" class="form-select" value="{{ old('type') }}">
-                                        <option value="" selected disabled hidden>Tipo</option>
-                                        <option value="residential">Residencial</option>
-                                        <option value="industrial">Industrial</option>
-                                        <option value="commercial">Comercial</option>
-                                    </select> 
-                                </div>
-                            </div><!-- end row -->
-                        </div><!-- end row -->
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <input type="number" name="budget" class="form-control" placeholder="Presupuesto..." value="{{ old('budget') }}">
-                                </div>
-                            </div>
                             <div class="col-md-3">
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label">Probabilidad: <output id="value"></output>%</label>
@@ -112,6 +100,38 @@
                                     <input id="pi_input" name="probability" class="form-range mt-2" type="range" min="0" max="100" step="10" value="{{ old('probability') }}"/>
                                 </div>
                             </div><!-- end col -->
+                        </div><!-- end row -->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <select name="id_origins" class="form-select">
+                                        <option value="" selected disabled hidden>Origen Oportunidad</option>
+                                        @foreach ($origin as $o)
+                                            <option value="{{$o->id}}">{{$o->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div><!-- end row -->
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <select name="id_level" class="form-select">
+                                        <option value="" selected disabled hidden>Nivel Oportunidad</option>
+                                        @foreach ($level as $l)
+                                            <option value="{{$l->id}}">{{$l->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div><!-- end row -->
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <select name="id_type" class="form-select">
+                                        <option value="" selected disabled hidden>Tipo Oportunidad</option>
+                                        @foreach ($type as $t)
+                                            <option value="{{$t->id}}">{{$t->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div><!-- end row -->
                         </div><!-- end row -->
                         <div class="mb-3">
                             <textarea name="description" class="form-control" cols="30" rows="10" placeholder="Descripción..." value="{{ old('description') }}"></textarea>

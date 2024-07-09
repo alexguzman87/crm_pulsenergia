@@ -68,9 +68,11 @@ Route::get('download_file_oportunity/{file}',[SaveFilesController::class, 'downl
 
 //OPORTUNITIES
 Route::get('oportunity',[OportunityController::class,'index'])->middleware('auth')->name('oportunity');
+Route::get('oportunity_list',[OportunityController::class,'index_list'])->middleware('auth')->name('oportunity_list');
 Route::get('oportunity_create',[OportunityController::class,'create'])->middleware('auth');
 Route::post('oportunity_create',[OportunityController::class,'store'])->middleware('auth');
 Route::get('oportunity_show_user/{user}',[OportunityController::class,'show'])->middleware('auth')->name('oportunity_show_user');
+Route::get('oportunity_show_list/{user}',[OportunityController::class,'show_list'])->middleware('auth')->name('oportunity_show_list');
 Route::get('oportunity_edit/{oportunity}',[OportunityController::class,'edit'])->middleware('auth')->name('oportunity_edit');
 Route::put('oportunity_edit/{oportunity}',[OportunityController::class,'update'])->middleware('auth')->name('oportunity_update');
 Route::put('oportunity_edit_user/{oportunity}',[OportunityController::class,'updateUser'])->middleware('auth')->name('oportunity_edit_user');
@@ -105,6 +107,10 @@ route::get('leadsWeb', [WordpressFormController::class,'ShowForm'])->name('leads
 
 //generalTask
 Route::get('general_task',[TaskCotroller::class,'index'])->middleware('auth')->name('general_task');
+Route::get('task_edit/{task}',[TaskCotroller::class,'edit_task'])->name('task_edit');
+Route::put('task_update/{task}',[TaskCotroller::class,'update_task'])->name('task_update');
+Route::put('task_change_status/{task}',[TaskCotroller::class,'update_status'])->middleware('auth')->name('task_change_status');
+Route::put('task_change_priority/{task}',[TaskCotroller::class,'update_priority'])->middleware('auth')->name('task_change_priority');
 
 
 

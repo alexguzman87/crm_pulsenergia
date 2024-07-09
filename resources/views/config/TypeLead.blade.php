@@ -29,7 +29,7 @@
                         <div class="d-flex flex-wrap align-items-start justify-content-md-star mt-2 mt-md-0 gap-2 mb-3">
                             <form method="POST" action="/config_type_lead_create">
                                 @csrf
-                                <input type="text" name="name" placeholder="Agregar Origen de Lead..." aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
+                                <input type="text" name="name" placeholder="Agregar Tipos de Lead..." aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
                                 <button type="submit" name="send" title="AGREGAR" class="btn btn-primary"><i class="bx bx-save"></i></button>
                             </form>
                         </div>

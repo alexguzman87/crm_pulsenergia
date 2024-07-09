@@ -27,7 +27,6 @@ return new class extends Migration
             $table->string('city')->nullable();            
             $table->string('postal_code')->nullable();
             $table->enum('status', ['oportunity','proposal','need','sale','lost',]);            
-            $table->enum('type', ['residential','industrial','commercial',]);            
             $table->string('budget')->nullable();            
             $table->string('currency')->nullable();            
             $table->string('probability')->nullable();            

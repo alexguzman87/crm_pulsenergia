@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\OportunityRequest;
+use App\Http\Requests\OportunityEditRequest;
 use App\Models\FileSave;
+use App\Models\LevelLead;
 use App\Models\Note;
 use App\Models\Oportunity;
+use App\Models\Origin;
 use App\Models\Task;
+use App\Models\TypesLead;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -26,9 +30,28 @@ class OportunityController extends Controller
 
     }
 
+    public function index_list(Request $request)
+    {
+        $oportunity=Oportunity::all();
+
+        $oportunity = Oportunity::orderBy('id')->paginate(25);
+
+        $user=User::all();
+                               
+        return view('oportunity.index_list',compact('oportunity', 'user'));
+
+    }
+
+
     public function create()
     {
-        return view('oportunity.create');
+        $origin=Origin::all();
+
+        $type=TypesLead::all();
+
+        $level=LevelLead::all();
+        
+        return view('oportunity.create', compact('origin', 'type', 'level'));
     }
 
     public function store(OportunityRequest $request)
@@ -45,10 +68,12 @@ class OportunityController extends Controller
         $oportunity->city=$request->input('city');
         $oportunity->postal_code=$request->input('postal_code');
         $oportunity->status=$request->input('status');
-        $oportunity->type=$request->input('type');
         $oportunity->budget=$request->input('budget');
         $oportunity->probability=$request->input('probability');
         $oportunity->description=$request->input('description');
+        $oportunity->id_origins=$request->input('id_origins');
+        $oportunity->id_level=$request->input('id_level');
+        $oportunity->id_type=$request->input('id_type');
         
         $oportunity->save();
 
@@ -73,6 +98,18 @@ class OportunityController extends Controller
         return view ('oportunity.show', compact('oportunity_user', 'oportunity','proposal','need','sale','lost','user'));
     }
 
+    public function show_list($id)
+    {    
+        $user=User::all();
+        
+        $oportunity=Oportunity::where('id_user',$id)->get();
+
+        $oportunity_user=Oportunity::orderBy('id')->paginate(25);
+
+        return view ('oportunity.show_list', compact('oportunity', 'oportunity_user', 'user'));
+    }
+
+
     public function edit($id)
     {
         $oportunity=Oportunity::findOrFail($id);
@@ -85,7 +122,13 @@ class OportunityController extends Controller
 
         $file = FileSave::where('id_oportunity', $id)->get();
 
-        return view ('oportunity.Edit', compact('oportunity', 'user', 'task','notes','file'));
+        $origin=Origin::all();
+
+        $type=TypesLead::all();
+
+        $level=LevelLead::all();
+
+        return view ('oportunity.Edit', compact('oportunity', 'user', 'task','notes','file', 'origin', 'type', 'level'));
 
     }
 
@@ -101,7 +144,7 @@ class OportunityController extends Controller
 
     }
 
-    public function update(OportunityRequest $request, $id)
+    public function update(OportunityEditRequest $request, $id)
     {
         $oportunity=Oportunity::findOrFail($id);
 
@@ -116,15 +159,16 @@ class OportunityController extends Controller
         $oportunity->city=$request->input('city');
         $oportunity->postal_code=$request->input('postal_code');
         $oportunity->status=$request->input('status');
-        $oportunity->type=$request->input('type');
         $oportunity->budget=$request->input('budget');
         $oportunity->probability=$request->input('probability');
         $oportunity->description=$request->input('description');
-        
+        $oportunity->id_origins=$request->input('id_origins');
+        $oportunity->id_level=$request->input('id_level');
+        $oportunity->id_type=$request->input('id_type');        
 
         $oportunity->update();
 
-        Session::flash('success_green','Los datos del Lead han sido modificados con éxito');
+        Session::flash('success_green','Los datos de la Oportunidad han sido modificados con éxito');
         
         return redirect()->back();                
        
@@ -147,10 +191,10 @@ class OportunityController extends Controller
 
     public function destroy($id)
     {
-        $contact=Contact::find($id);
-        $contact->delete();
+        $oportunity=Oportunity::find($id);
+        $oportunity->delete();
 
-        Session::flash('danger_red','Los datos del Lead han sido eliminado con éxito');
+        Session::flash('danger_red','Los datos de la Oportunidad han sido eliminados con éxito');
 
         return redirect()->back();
     }

@@ -11,7 +11,9 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\FileSave;
+use App\Models\LevelLead;
 use App\Models\Note;
+use App\Models\TypesLead;
 
 class ContactController extends Controller
 {
@@ -24,6 +26,10 @@ class ContactController extends Controller
     {
         $origin=Origin::orderBy('name')->get();
 
+        $type=LevelLead::orderBy('name')->get();
+
+        $level=TypesLead::orderBy('name')->get();
+
         $contact = Contact::orderBy('id')
             ->name($request->search_name)
             ->email($request->search_email)
@@ -34,7 +40,7 @@ class ContactController extends Controller
         //where('id', 'Like', "%$request->$search_id%")
 
                 
-        return view('contact.contact',compact('contact','origin'));
+        return view('contact.contact',compact('contact','origin','type','level'));
 
     }
 
@@ -68,7 +74,8 @@ class ContactController extends Controller
         $contact->city=$request->input('city');
         $contact->postal_code=$request->input('postal_code');
         $contact->id_origins=$request->input('id_origins');
-        $contact->lead_level=$request->input('lead_level');
+        $contact->id_level=$request->input('id_level');
+        $contact->id_type=$request->input('id_type');
         if($request->hasFile('image')){
             $file=$request->file('image');
             $extension = $file->getClientOriginalExtension();
@@ -113,11 +120,15 @@ class ContactController extends Controller
 
         $origin = Origin::all();
 
+        $level=LevelLead::all();
+
+        $type=TypesLead::all();
+
         $notes = Note::where('id_contact', $id)->get();
 
         $file = FileSave::where('id_contact', $id)->get();
 
-        return view ('contact.contactEdit', compact('contact', 'task', 'user','origin','file','notes'));
+        return view ('contact.contactEdit', compact('contact', 'task', 'user','origin','file','notes','type','level'));
 
     }
 
@@ -143,7 +154,8 @@ class ContactController extends Controller
         $contact->city=$request->input('city');
         $contact->postal_code=$request->input('postal_code');
         $contact->id_origins=$request->input('id_origins');
-        $contact->lead_level=$request->input('lead_level');
+        $contact->id_level=$request->input('id_level');
+        $contact->id_type=$request->input('id_type');
         if($request->hasFile('image')){
             if (!$request->hasFile('image')||$contact->image==null)
             {

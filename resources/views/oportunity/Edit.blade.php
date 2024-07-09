@@ -112,12 +112,14 @@
                             <span class="d-none d-sm-block">Editar</span>
                         </a>
                     </li>
+                    @if($oportunity->id_user)
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="tab" href="#navtabs-task" role="tab">
                             <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
                             <span class="d-none d-sm-block">Tareas</span>
                         </a>
                     </li>
+                    @endif
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="tab" href="#navtabs-notes" role="tab">
                             <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
@@ -203,9 +205,14 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-6">
+                                            <div class="col-md-3">
                                                 <div class="mb-3">
-                                                    <select name="status" class="form-select" value="{{$oportunity->status}}">
+                                                    <input type="number" name="budget" class="form-control" placeholder="Presupuesto..." value={{$oportunity->budget}}>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="mb-3">
+                                                    <select name="status" class="form-select" value={{$oportunity->status}}>
                                                         <option value="oportunity">Oportunidad</option>
                                                         <option value="proposal">En Propuesta</option>
                                                         <option value="need">Necesito Apoyo</option>
@@ -214,23 +221,6 @@
                                                     </select> 
                                                 </div>
                                             </div><!-- end col -->
-                                            <div class="col-md-6">
-                                                <div class="mb-3">
-                                                    <select name="type" class="form-select" value="{{$oportunity->type}}">
-                                                        <option value="" selected disabled hidden>Tipo</option>
-                                                        <option value="residential">Residencial</option>
-                                                        <option value="industrial">Industrial</option>
-                                                        <option value="commercial">Comercial</option>
-                                                    </select> 
-                                                </div>
-                                            </div><!-- end row -->
-                                        </div><!-- end row -->
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="mb-3">
-                                                    <input type="number" name="budget" class="form-control" placeholder="Presupuesto..." value="{{$oportunity->budget}}">
-                                                </div>
-                                            </div>
                                             <div class="col-md-3">
                                                 <div class="mb-3">
                                                     <label for="formFile" class="form-label">Probabilidad: <output id="value"></output>%</label>
@@ -238,17 +228,52 @@
                                             </div><!-- end row -->
                                             <div class="col-md-3">
                                                 <div class="mb-3">
-                                                    <input id="pi_input" name="probability" class="form-range mt-2" type="range" min="0" max="100" step="10" value="{{$oportunity->probability}}"/>
+                                                    <input id="pi_input" name="probability" class="form-range mt-2" type="range" min="0" max="100" step="10" value={{$oportunity->probability}}/>
                                                 </div>
                                             </div><!-- end col -->
                                         </div><!-- end row -->
+                                        <div class="row">
+                                        </div><!-- end row -->
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="mb-3">
+                                                    <select name="id_origins" class="form-select">
+                                                        <option value="{{$oportunity->id_origins}}">{{$oportunity->origin->name}}</option>
+                                                        @foreach ($origin as $o)
+                                                            <option value="{{$o->id}}">{{$o->name}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="mb-3">
+                                                    <select name="id_level" class="form-select">
+                                                        <option value="{{$oportunity->id_level}}">{{$oportunity->level->name}}</option>
+                                                        @foreach ($level as $l)
+                                                            <option value="{{$l->id}}">{{$l->name}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="mb-3">
+                                                    <select name="id_type" class="form-select">
+                                                        <option value="{{$oportunity->id_type}}">{{$oportunity->type->name}}</option>
+                                                        @foreach ($type as $t)
+                                                            <option value="{{$t->id}}">{{$t->name}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                         <div class="mb-3">
                                             <textarea name="description" class="form-control" cols="30" rows="10" placeholder="Descripción..." value="{{$oportunity->description}}"></textarea>
                                         </div>
                                     </div>
                                     <!-- end modalbody -->
                                     <div class="modal-footer">
-                                        <a href="/lead"><button type="button" class="btn btn-light w-sm" data-bs-dismiss="modal">Cancelar</button></a>
+                                        <a href="/oportunity"><button type="button" class="btn btn-light w-sm" data-bs-dismiss="modal">Cancelar</button></a>
                                         <button type="submit" class="btn btn-primary w-sm">Modificar Oportunidad</button>
                                     </div>
                                 @include('layouts.message')
@@ -257,6 +282,7 @@
                     </div>
 
                     {{--TASK--}}
+                    @if($oportunity->id_user)
                     <div class="tab-pane" id="navtabs-task" role="tabpanel">
                         <div class="card-body">
                             <form action="/task_oportunity_create" method="POST">
@@ -324,8 +350,76 @@
                                         @foreach ($task as $t)
                                             <tr>
                                                 <td>{{$t->task}}</td>
-                                                <td>{{$t->priority}}</td>
-                                                <td>{{$t->status}}</td>
+                                                <td>
+                                                    <div class="dropdown">
+                                                        <a class="btn btn-link text-dark dropdown-toggle shadow-none" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                            <i>
+                                                                @if ($t->priority=='Alta')
+                                                                <span class="badge badge-soft-danger mb-0">ALTA</span>
+                                                                @elseif($t->priority=='Media')
+                                                                <span class="badge badge-soft-warning mb-0">MEDIA</span>
+                                                                @elseif($t->priority=='Baja')
+                                                                <span class="badge badge-soft-success mb-0">BAJA</span>
+                                                                @endif
+                                                            </i>
+                                                        </a>
+                                                        <ul class="dropdown-menu dropdown-menu-center">
+                                                            <form action="{{route('task_change_priority', $t->id)}}" method="POST">
+                                                                @csrf
+                                                                @method('PUT')
+                                                                <input type="hidden" name="priority" value="Alta">
+                                                                <button style="border: none; width: 100%; color: #ef7564; background-color: white;" type="submit">ALTA</button>                                                            
+                                                            </form>
+                                                            <form action="{{route('task_change_priority', $t->id)}}" method="POST">
+                                                                @csrf
+                                                                @method('PUT')
+                                                                <input type="hidden" name="priority" value="Media">
+                                                                <button style="border: none; width: 100%; color: #ffb968; background-color: white;" type="submit">MEDIA</button>                                                            
+                                                            </form>
+                                                            <form action="{{route('task_change_priority', $t->id)}}" method="POST">
+                                                                @csrf
+                                                                @method('PUT')
+                                                                <input type="hidden" name="priority" value="Baja">
+                                                                <button style="border: none; width: 100%; color: #7bc86c; background-color: white;" type="submit">BAJA</button>                                                            
+                                                            </form>
+                                                        </ul>
+                                                    </div><!-- end dropdown -->
+                                                </td>
+                                                <td>
+                                                    <div class="dropdown">
+                                                        <a class="btn btn-link text-dark dropdown-toggle shadow-none" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                            <i>
+                                                                @if ($t->status=='Asignado')
+                                                                <span class="badge badge-soft-danger mb-0">ASIGNADO</span>
+                                                                @elseif($t->status=='En Proceso')
+                                                                <span class="badge badge-soft-warning mb-0">EN PROCESO</span>
+                                                                @elseif($t->status=='Realizado')
+                                                                <span class="badge badge-soft-success mb-0">REALIZADO</span>
+                                                                @endif
+                                                            </i>
+                                                        </a>
+                                                        <ul class="dropdown-menu dropdown-menu-center">
+                                                            <form action="{{route('task_change_status', $t->id)}}" method="POST">
+                                                                @csrf
+                                                                @method('PUT')
+                                                                <input type="hidden" name="status" value="Asignado">
+                                                                <button style="border: none; width: 100%; color: #ef7564; background-color: white;" type="submit">ASIGNADO</button>                                                            
+                                                            </form>
+                                                            <form action="{{route('task_change_status', $t->id)}}" method="POST">
+                                                                @csrf
+                                                                @method('PUT')
+                                                                <input type="hidden" name="status" value="En Proceso">
+                                                                <button style="border: none; width: 100%; color: #ffb968; background-color: white;" type="submit">EN PROCESO</button>                                                            
+                                                            </form>
+                                                            <form action="{{route('task_change_status', $t->id)}}" method="POST">
+                                                                @csrf
+                                                                @method('PUT')
+                                                                <input type="hidden" name="status" value="Realizado">
+                                                                <button style="border: none; width: 100%; color: #7bc86c; background-color: white;" type="submit">REALIZADO</button>                                                            
+                                                            </form>
+                                                        </ul>
+                                                    </div><!-- end dropdown -->
+                                                </td>
                                                 <td>{{ date('d-M-y', strtotime($t->assigned_date)) }}</td>
                                                 <td>{{ date('d-M-y', strtotime($t->done_date)) }}</td>
                                         @endforeach
@@ -334,6 +428,7 @@
                             </div>
                         </div>
                     </div><!-- end tab pane -->
+                    @endif
 
 
                     {{--Notas--}}
