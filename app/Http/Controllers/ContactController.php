@@ -166,7 +166,7 @@ class ContactController extends Controller
         $contact->id_level=$request->input('id_level');
         $contact->id_type=$request->input('id_type');
         if($request->hasFile('image')){
-            if (!$request->hasFile('image')||$contact->image==null)
+            if (!$request->hasFile('image')||$contact->image==null||$contact->image=='user/Sin-Perfil-Hombre.png')
             {
                     $file=$request->file('image');
                     $extension = $file->getClientOriginalExtension();

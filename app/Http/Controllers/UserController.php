@@ -133,7 +133,7 @@ class UserController extends Controller
         $user->name=$request->input('name');
         $user->type_user=$request->input('type_user');
         if($request->hasFile('image')){
-            if (!$request->hasFile('image')||$user->image==null)
+            if (!$request->hasFile('image')||$user->image==null||$user->image=='user/Sin-Perfil-Hombre.png')
             {
                     $file=$request->file('image');
                     $extension = $file->getClientOriginalExtension();
