@@ -1,11 +1,11 @@
 @extends('layouts.vertical-master-layout')
-@section('title')Registro @endsection
+@section('title')CREAR USUARIO @endsection
 @section('content')
 {{-- breadcrumbs  --}}
     @section('breadcrumb')
         @component('components.breadcrumb')
-            @slot('li_1') usuarios @endslot
-            @slot('title') Registro @endslot
+            @slot('li_1') Usuario @endslot
+            @slot('title') Crear Usuario @endslot
         @endcomponent
     @endsection
 
@@ -13,7 +13,7 @@
     <div class="col-xl-6">
         <div class="card card-h-100">
             <div class="card-header justify-content-between d-flex align-items-center">
-                <h4 class="card-title">Registro de usuarios</h4>
+                <h4 class="card-title">Crear usuario</h4>
             </div><!-- end card header -->
             <div class="card-body">
                 <div>

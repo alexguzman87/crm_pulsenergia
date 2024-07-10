@@ -31,11 +31,11 @@ class SendMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: new Address('atenea@mail.dev', 'Atenea'),
+            from: new Address('pulse@itglobalproject.com', 'PULSE ENERGIA'),
             replyTo: [
-                new Address('taylor@example.com', 'Taylor Otwell'),
+                new Address('pulse@itglobalproject.com', 'PULSE ENERGIA'),
             ],
-            subject: 'Tienes una nueva notificación',
+            subject: 'Tienes una nueva correo de Pulse Energia',
 
         );
     }

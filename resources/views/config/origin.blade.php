@@ -20,7 +20,7 @@
                     
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <h5 class="card-title"> Origen<span class="text-muted fw-normal ms-2">{{$origin->count()}}</span></h5>
+                            <h5 class="card-title"> Total Origen<span class="text-muted fw-normal ms-2">{{$origin->count()}}</span></h5>
                         </div>
                     </div><!-- end col -->
                 </div>

@@ -7,7 +7,7 @@
 {{-- breadcrumbs  --}}
     @section('breadcrumb')
         @component('components.breadcrumb')
-            @slot('li_1') Inicio @endslot
+            @slot('li_1') Tipos @endslot
             @slot('title') Tipos Lead  @endslot
         @endcomponent
     @endsection
@@ -20,7 +20,7 @@
                     
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <h5 class="card-title"> Tipos<span class="text-muted fw-normal ms-2">{{$type->count()}}</span></h5>
+                            <h5 class="card-title"> Total Tipos<span class="text-muted fw-normal ms-2">{{$type->count()}}</span></h5>
                         </div>
                     </div><!-- end col -->
                 </div>

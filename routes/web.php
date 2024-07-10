@@ -108,10 +108,10 @@ route::get('leadsWeb', [WordpressFormController::class,'ShowForm'])->name('leads
 //generalTask
 Route::get('general_task',[TaskCotroller::class,'index'])->middleware('auth')->name('general_task');
 Route::get('task_edit/{task}',[TaskCotroller::class,'edit_task'])->name('task_edit');
-Route::put('task_update/{task}',[TaskCotroller::class,'update_task'])->name('task_update');
+Route::put('task_update/{task}',[TaskCotroller::class,'task_update'])->name('task_update');
 Route::put('task_change_status/{task}',[TaskCotroller::class,'update_status'])->middleware('auth')->name('task_change_status');
 Route::put('task_change_priority/{task}',[TaskCotroller::class,'update_priority'])->middleware('auth')->name('task_change_priority');
-
+Route::delete('task_delete/{task}',[TaskCotroller::class,'destroy'])->middleware('auth')->name('task_delete');
 
 
 

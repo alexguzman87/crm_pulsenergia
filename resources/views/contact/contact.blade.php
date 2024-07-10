@@ -1,5 +1,5 @@
 @extends('layouts.vertical-master-layout')
-@section('title')LEADS | @endsection
+@section('title') EDITAR LEAD | @endsection
 @section('css')
 <link href="{{ URL::asset('assets/libs/gridjs/gridjs.min.css') }}" rel="stylesheet" type="text/css" />
 @endsection
@@ -7,8 +7,8 @@
 {{-- breadcrumbs  --}}
     @section('breadcrumb')
         @component('components.breadcrumb')
-            @slot('li_1') Inicio @endslot
-            @slot('title') Leads  @endslot
+            @slot('li_1') Leads @endslot
+            @slot('title') Listado Leads  @endslot
         @endcomponent
     @endsection
 
@@ -20,7 +20,7 @@
                     
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <h5 class="card-title">Leads registrados <span class="text-muted fw-normal ms-2">{{$contact->count()}}</span></h5>
+                            <h5 class="card-title">Total Leads <span class="text-muted fw-normal ms-2">{{$contact->count()}}</span></h5>
                         </div>
                     </div><!-- end col -->
 
@@ -32,139 +32,32 @@
                             </div>
                             @endif
                             <div>
-                                <a href="#" class="btn btn-primary" title="AGREGAR LEAD" data-bs-toggle="modal" data-bs-target="#addLeadModal"><i class="bx bx-user-plus"></i></a>
+                                <a href="/lead_create"><button type="submit" title="EXPORTAR EXCEL" name="send" class="btn btn-primary"><i class="bx bx-user-plus"></i></button></a>
                             </div>
                         </div>
                     </div><!-- end col -->
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <form method="GET" action="/contact">
+                        <form method="GET" action="/lead">
                             @csrf
-                            <input type="text" name="search_id" placeholder="Buscar ID..." aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
+                            <input type="text" name="search_id" placeholder="Buscar ID" aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
+                            <input type="text" name="search_name" placeholder="Buscar Nombre" aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
+                            <input type="text" name="search_email" placeholder="Buscar email" aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
+
                             <select style="width: 250px; border-color: var(--bs-input-border);background-color: var(--bs-input-bg);color: var(--bs-body-color); border: 1px solid #d2d6dc; border-radius: 5px; font-size: 14px; line-height: 1.45; outline: none; padding: 10px 13px;" class="gridjs-input gridjs-search-input" name="search_type">
-                                <option value="" disabled selected>Buscar tipo...</option>
-                                <option value="admin">Administrador</option>
-                                <option value="analyst">Analista</option>
-                                <option value="general">General</option>
+                                <option disabled selected>Buscar tipo...</option>
+                                    @foreach ($type as $t)
+                                        <option value={{$t->id}}>{{$t->name}}</option>  
+                                    @endforeach
                             </select> 
-                            <input type="text" name="search_name" placeholder="Buscar Nombre..." aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
-                            <input type="text" name="search_email" placeholder="Buscar email..." aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
-                            <input type="text" name="search_contactname" placeholder="Buscar Nombre de Usuario..." aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
+                            <input type="text" name="search_phone" placeholder="Buscar Telefono" aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
                             <button type="submit" name="send" title="FILTRAR" class="btn btn-primary"><i class="bx bx-send"></i></button>
                             <a href="/errase"><button type="submit" name="send" title="BORRAR FILTRO" class="btn btn-primary"><i class="bx bxs-eraser"></i></button></a>
                         </form>
                     </div>                    
                 </div><!-- end row -->
                 
-
-
-                <!-- addLeadModal -->
-                <div class="modal fade" id="addLeadModal" tabindex="-1" aria-labelledby="addContactModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="addLeadModalLabel">Registrar Nuevo Lead</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <!-- end modalheader -->
-                            <form action="/lead_create" method="POST" enctype="multipart/form-data">
-                            @csrf
-                                <div class="modal-body p-4">
-                                    <div class="mb-3">
-                                            <input type="text" name="name" class="form-control" placeholder="Nombre Completo" value="{{ old('name') }}">
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="mb-3">
-                                                <input type="email" name="email" class="form-control" placeholder="Correo Electrónico" value="{{ old('email') }}">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="mb-3">
-                                                <input type="email" name="second_email" class="form-control" placeholder="Correo Electrónico Secundario" value="{{ old('second_email') }}">                                    
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="mb-3">
-                                                <input type="number" name="phone" class="form-control" placeholder="Teléfono" value="{{ old('phone') }}">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="mb-3">
-                                                <input type="number" name="second_phone" class="form-control" placeholder="Teléfono Secundario" value="{{ old('second_phone') }}">                                    
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="mb-3">
-                                                <input type="text" name="country" name="email" class="form-control" placeholder="País de origen..." value="{{ old('country') }}">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="mb-3">
-                                                <input type="text" name="state" class="form-control" placeholder="Provincia de Origen..." value="{{ old('state') }}">                                    
-                                            </div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <input type="text" name="address" class="form-control" placeholder="Dirección" value="{{ old('address') }}">
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="mb-3">
-                                                <input type="text" name="city" class="form-control" placeholder="Ciudad" value="{{ old('city') }}">                                    
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="mb-3">
-                                                <input type="number" name="postal_code" class="form-control" placeholder="Código Postal" value="{{ old('postal_code') }}">                                    
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <select name="id_origins" class="form-select">
-                                                <option value="" selected disabled hidden>Origen del Lead</option>
-                                                @foreach ($origin as $o)
-                                                    <option value="{{$o->id}}">{{$o->name}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                        <div class="col">
-                                            <select name="id_level" class="form-select">
-                                                <option value="" selected disabled hidden>Nivel del Lead</option>
-                                                @foreach ($level as $l)
-                                                    <option value="{{$l->id}}">{{$l->name}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                        <div class="col">
-                                            <select name="id_type" class="form-select">
-                                                <option value="" selected disabled hidden>Tipo del Lead</option>
-                                                @foreach ($type as $t)
-                                                    <option value="{{$t->id}}">{{$t->name}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="mb-3">
-                                        <label for="formFile" class="form-label">Subir imagen de perfil (Opcional)</label>
-                                        <input class="form-control" name="image" type="file" id="formFile">
-                                    </div>
-                                </div>
-                                <!-- end modalbody -->
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-light w-sm" data-bs-dismiss="modal">Cancelar</button>
-                                    <button type="submit" class="btn btn-primary w-sm">Registrar Lead</button>
-                                </div>
-                            @include('layouts.message')
-                            </form><!-- end form -->
-                            <!-- end modalfooter -->                            
-                        </div><!-- end content -->
-                    </div>
-                </div>
-                <!-- end modal -->
 
                 <div class="table-responsive">
                     <table class="table align-middle table-nowrap table-check">

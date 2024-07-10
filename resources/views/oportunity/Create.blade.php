@@ -1,11 +1,11 @@
 @extends('layouts.vertical-master-layout')
-@section('title')    @endsection
+@section('title') CREAR OPORTUNIDAD | @endsection
 @section('content')
 {{-- breadcrumbs  --}}
     @section('breadcrumb')
         @component('components.breadcrumb')
             @slot('li_1') Oportunidad @endslot
-            @slot('title') Registro @endslot
+            @slot('title') Crear Oportunidad @endslot
         @endcomponent
     @endsection
 
@@ -13,70 +13,70 @@
     <div class="col-xl-6">
         <div class="card card-h-100">
             <div class="card-header justify-content-between d-flex align-items-center">
-                <h4 class="card-title">Registro de Oportunidad</h4>
+                <h4 class="card-title">Crear Oportunidad</h4>
             </div><!-- end card header -->
             <div class="card-body">
                 <div>
                 <form action="/oportunity_create" method="POST">
                         @csrf
                         <div class="mb-3">
-                            <input type="text" name="title" class="form-control" placeholder="Titulo..." value="{{ old('title') }}">
+                            <input type="text" name="title" class="form-control" placeholder="Titulo" value="{{ old('title') }}">
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <input type="text" name="contact_name" class="form-control" placeholder="Nombre del contacto..." value="{{ old('contact_name') }}">
+                                    <input type="text" name="contact_name" class="form-control" placeholder="Nombre del contacto" value="{{ old('contact_name') }}">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <input type="text" name="organization" class="form-control" placeholder="Organización..."  value="{{ old('organization') }}">                                    
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <input type="email" name="email" class="form-control" placeholder="Correo Electrónico..."  value="{{ old('email') }}">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <input type="number" name="phone" class="form-control" placeholder="Teléfono..." value="{{ old('phone') }}">                                    
+                                    <input type="text" name="organization" class="form-control" placeholder="Organización"  value="{{ old('organization') }}">                                    
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <input type="text" name="country" class="form-control" placeholder="País..." value="{{ old('country') }}">
+                                    <input type="email" name="email" class="form-control" placeholder="Correo Electrónico"  value="{{ old('email') }}">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <input type="text" name="state" class="form-control" placeholder="Estado / Provincia/ Región..." value="{{ old('state') }}">                                    
+                                    <input type="number" name="phone" class="form-control" placeholder="Teléfono" value="{{ old('phone') }}">                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <input type="text" name="country" class="form-control" placeholder="País" value="{{ old('country') }}">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <input type="text" name="state" class="form-control" placeholder="Estado / Provincia/ Región" value="{{ old('state') }}">                                    
                                 </div>
                             </div>
                         </div>
                         <div class="mb-3">
-                            <input type="text" name="address" class="form-control" placeholder="Dirección..." value="{{ old('address') }}">
+                            <input type="text" name="address" class="form-control" placeholder="Dirección" value="{{ old('address') }}">
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <input type="text" name="city" class="form-control" placeholder="Ciudad..." value="{{ old('city') }}">
+                                    <input type="text" name="city" class="form-control" placeholder="Ciudad" value="{{ old('city') }}">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <input type="number" name="postal_code" class="form-control" placeholder="Código Postal..." value="{{ old('postal_code') }}">                                    
+                                    <input type="number" name="postal_code" class="form-control" placeholder="Código Postal" value="{{ old('postal_code') }}">                                    
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="mb-3">
-                                    <input type="number" name="budget" class="form-control" placeholder="Presupuesto..." value="{{ old('budget') }}">
+                                    <input type="number" name="budget" class="form-control" placeholder="Presupuesto" value="{{ old('budget') }}">
                                 </div>
                             </div>
                             <div class="col-md-3">
@@ -134,11 +134,11 @@
                             </div><!-- end row -->
                         </div><!-- end row -->
                         <div class="mb-3">
-                            <textarea name="description" class="form-control" cols="30" rows="10" placeholder="Descripción..." value="{{ old('description') }}"></textarea>
+                            <textarea name="description" class="form-control" cols="30" rows="10" placeholder="Descripción" value="{{ old('description') }}"></textarea>
                         </div>
                         <div class="mt-4">
                             <a href="/oportunity"><button type="button" class="btn btn-light w-sm" data-bs-dismiss="modal">Cancelar</button></a>
-                            <button type="submit" class="btn btn-primary w-md">Registrar Usuarios</button>
+                            <button type="submit" class="btn btn-primary w-md">Crear Oportunidad</button>
                         </div>
                         @include('layouts.message')
                     </form><!-- end form -->

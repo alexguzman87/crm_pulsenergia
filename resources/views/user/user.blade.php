@@ -7,8 +7,8 @@
 {{-- breadcrumbs  --}}
     @section('breadcrumb')
         @component('components.breadcrumb')
-            @slot('li_1') Inicio @endslot
-            @slot('title') Usuarios  @endslot
+            @slot('li_1') Usuarios @endslot
+            @slot('title') Listado Usuarios  @endslot
         @endcomponent
     @endsection
 
@@ -20,7 +20,7 @@
                     
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <h5 class="card-title">Usuarios registrados <span class="text-muted fw-normal ms-2">{{$users->count()}}</span></h5>
+                            <h5 class="card-title">Total Usuarios<span class="text-muted fw-normal ms-2">{{$users->count()}}</span></h5>
                         </div>
                     </div><!-- end col -->
 

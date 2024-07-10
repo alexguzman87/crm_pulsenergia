@@ -1,5 +1,5 @@
 @extends('layouts.vertical-master-layout')
-@section('title')NIVEL LEAD @endsection
+@section('title')EDITAR NIVEL LEAD | @endsection
 @section('css')
 <link href="{{ URL::asset('assets/libs/gridjs/gridjs.min.css') }}" rel="stylesheet" type="text/css" />
 @endsection
@@ -7,8 +7,8 @@
 {{-- breadcrumbs  --}}
     @section('breadcrumb')
         @component('components.breadcrumb')
-            @slot('li_1') Inicio @endslot
-            @slot('title') Editar Nivel  @endslot
+            @slot('li_1') Nivel @endslot
+            @slot('title') Editar Nivel Lead  @endslot
         @endcomponent
     @endsection
 <div class="row">
@@ -29,6 +29,7 @@
                                             @method('PUT')
                                                 <input type="text" name="name" value="{{$level->name}}" aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
                                                 <button type="submit" name="send" title="MODIFICAR" class="btn btn-primary"><i class="bx bx-save"></i></button>
+                                                <a href="/config_level_lead"><button title="CANCELAR" class="btn btn-primary"><i class="bx bx-arrow-back"></i></button></a>
                                         </form>
                                     </div>
                                 </div>                                

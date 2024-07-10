@@ -7,7 +7,7 @@
 {{-- breadcrumbs  --}}
     @section('breadcrumb')
         @component('components.breadcrumb')
-            @slot('li_1') Inicio @endslot
+            @slot('li_1') Nivel @endslot
             @slot('title') Nivel Lead  @endslot
         @endcomponent
     @endsection
@@ -20,7 +20,7 @@
                     
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <h5 class="card-title"> Nivel<span class="text-muted fw-normal ms-2">{{$level->count()}}</span></h5>
+                            <h5 class="card-title"> Total Niveles<span class="text-muted fw-normal ms-2">{{$level->count()}}</span></h5>
                         </div>
                     </div><!-- end col -->
                 </div>

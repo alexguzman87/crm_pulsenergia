@@ -1,11 +1,11 @@
 @extends('layouts.vertical-master-layout')
-@section('title')LEADS | @endsection
+@section('title')EDITAR OPORTUNIDAD | @endsection
 @section('content')
 {{-- breadcrumbs  --}}
     @section('breadcrumb')
         @component('components.breadcrumb')
             @slot('li_1') Oportunidad @endslot
-            @slot('title') Editar @endslot
+            @slot('title') Editar Oportunidad @endslot
         @endcomponent
     @endsection
 
@@ -297,19 +297,19 @@
                                         <div class="col-md-2">
                                             <div class="mb-3">
                                                 <select class="form-control" name="priority">
-                                                    <option value="" disabled selected>Prioridad</option>
-                                                    <option value="Alta">Alta</option>
-                                                    <option value="Media">Media</option>
-                                                    <option value="Baja">Baja</option>
+                                                    <option value="" disabled selected>PRIORIDAD</option>
+                                                    <option value="alta" style="border: none; width: 100%; color: #ef7564; background-color: white;">ALTA</option>
+                                                    <option value="media" style="border: none; width: 100%; color: #ffb968; background-color: white;">MEDIA</option>
+                                                    <option value="baja" style="border: none; width: 100%; color: #7bc86c; background-color: white;">BAJA</option>
                                                 </select>                                    
                                             </div>
                                         </div>
                                         <div class="col-md-2">
                                             <div class="mb-3">
                                                 <select class="form-control" name="status">
-                                                    <option value="Asignado">Asignado</option>
-                                                    <option value="En Proceso">En Proceso</option>
-                                                    <option value="Realizado">Realizado</option>
+                                                    <option value="pendiente" style="border: none; width: 100%; color: #ef7564; background-color: white;">PENDIENTE</option>
+                                                    <option value="en_proceso" style="border: none; width: 100%; color: #ffb968; background-color: white;">EN PROCESO</option>
+                                                    <option value="hecho" style="border: none; width: 100%; color: #7bc86c; background-color: white;">HECHO</option>
                                                 </select>                                    
                                             </div>
                                         </div>
@@ -354,11 +354,11 @@
                                                     <div class="dropdown">
                                                         <a class="btn btn-link text-dark dropdown-toggle shadow-none" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                             <i>
-                                                                @if ($t->priority=='Alta')
+                                                                @if ($t->priority=='alta')
                                                                 <span class="badge badge-soft-danger mb-0">ALTA</span>
-                                                                @elseif($t->priority=='Media')
+                                                                @elseif($t->priority=='media')
                                                                 <span class="badge badge-soft-warning mb-0">MEDIA</span>
-                                                                @elseif($t->priority=='Baja')
+                                                                @elseif($t->priority=='baja')
                                                                 <span class="badge badge-soft-success mb-0">BAJA</span>
                                                                 @endif
                                                             </i>
@@ -367,19 +367,19 @@
                                                             <form action="{{route('task_change_priority', $t->id)}}" method="POST">
                                                                 @csrf
                                                                 @method('PUT')
-                                                                <input type="hidden" name="priority" value="Alta">
+                                                                <input type="hidden" name="priority" value="alta">
                                                                 <button style="border: none; width: 100%; color: #ef7564; background-color: white;" type="submit">ALTA</button>                                                            
                                                             </form>
                                                             <form action="{{route('task_change_priority', $t->id)}}" method="POST">
                                                                 @csrf
                                                                 @method('PUT')
-                                                                <input type="hidden" name="priority" value="Media">
+                                                                <input type="hidden" name="priority" value="media">
                                                                 <button style="border: none; width: 100%; color: #ffb968; background-color: white;" type="submit">MEDIA</button>                                                            
                                                             </form>
                                                             <form action="{{route('task_change_priority', $t->id)}}" method="POST">
                                                                 @csrf
                                                                 @method('PUT')
-                                                                <input type="hidden" name="priority" value="Baja">
+                                                                <input type="hidden" name="priority" value="baja">
                                                                 <button style="border: none; width: 100%; color: #7bc86c; background-color: white;" type="submit">BAJA</button>                                                            
                                                             </form>
                                                         </ul>
@@ -389,12 +389,12 @@
                                                     <div class="dropdown">
                                                         <a class="btn btn-link text-dark dropdown-toggle shadow-none" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                             <i>
-                                                                @if ($t->status=='Asignado')
-                                                                <span class="badge badge-soft-danger mb-0">ASIGNADO</span>
-                                                                @elseif($t->status=='En Proceso')
+                                                                @if ($t->status=='pendiente')
+                                                                <span class="badge badge-soft-danger mb-0">PENDIENTE</span>
+                                                                @elseif($t->status=='en_proceso')
                                                                 <span class="badge badge-soft-warning mb-0">EN PROCESO</span>
-                                                                @elseif($t->status=='Realizado')
-                                                                <span class="badge badge-soft-success mb-0">REALIZADO</span>
+                                                                @elseif($t->status=='hecho')
+                                                                <span class="badge badge-soft-success mb-0">HECHO</span>
                                                                 @endif
                                                             </i>
                                                         </a>
@@ -402,20 +402,20 @@
                                                             <form action="{{route('task_change_status', $t->id)}}" method="POST">
                                                                 @csrf
                                                                 @method('PUT')
-                                                                <input type="hidden" name="status" value="Asignado">
-                                                                <button style="border: none; width: 100%; color: #ef7564; background-color: white;" type="submit">ASIGNADO</button>                                                            
+                                                                <input type="hidden" name="status" value="pendiente">
+                                                                <button style="border: none; width: 100%; color: #ef7564; background-color: white;" type="submit">PENDIENTE</button>                                                            
                                                             </form>
                                                             <form action="{{route('task_change_status', $t->id)}}" method="POST">
                                                                 @csrf
                                                                 @method('PUT')
-                                                                <input type="hidden" name="status" value="En Proceso">
+                                                                <input type="hidden" name="status" value="en_proceso">
                                                                 <button style="border: none; width: 100%; color: #ffb968; background-color: white;" type="submit">EN PROCESO</button>                                                            
                                                             </form>
                                                             <form action="{{route('task_change_status', $t->id)}}" method="POST">
                                                                 @csrf
                                                                 @method('PUT')
-                                                                <input type="hidden" name="status" value="Realizado">
-                                                                <button style="border: none; width: 100%; color: #7bc86c; background-color: white;" type="submit">REALIZADO</button>                                                            
+                                                                <input type="hidden" name="status" value="hecho">
+                                                                <button style="border: none; width: 100%; color: #7bc86c; background-color: white;" type="submit">HECHO</button>                                                            
                                                             </form>
                                                         </ul>
                                                     </div><!-- end dropdown -->

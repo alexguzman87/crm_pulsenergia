@@ -62,7 +62,7 @@
                 <li>
                     <a href="/leadsWeb">
                         <i class="bx bx-mail-send nav-icon"></i>
-                        <span class="menu-item" data-key="t-dashboard">LEAD WEB</span>
+                        <span class="menu-item" data-key="t-dashboard">LEADS WEB</span>
                     </a>
                 </li>
                 @if(auth()->user()->type_user=='admin')

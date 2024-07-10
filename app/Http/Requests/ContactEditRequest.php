@@ -50,7 +50,7 @@ class ContactEditRequest extends FormRequest
             'state.required'=>'El Estado o Región es requerida',
             'address.required'=>'La Direcció es requerida',
             'city.required'=>'La Ciudad es requerida',
-            'postalCode.required'=>'El Código Postal es requerido',
+            'postal_code.required'=>'El Código Postal es requerido',
             'id_origins.required'=>'El Origen del Lead es requerido',
             'id_level.required'=>'El Nivel del Lead es requerido',
             'id_type.required'=>'El Tipo del Lead es requerido',

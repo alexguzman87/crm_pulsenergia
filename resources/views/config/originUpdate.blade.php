@@ -1,5 +1,5 @@
 @extends('layouts.vertical-master-layout')
-@section('title')Origen Lead @endsection
+@section('title')EDITAR ORIGEN LEAD | @endsection
 @section('css')
 <link href="{{ URL::asset('assets/libs/gridjs/gridjs.min.css') }}" rel="stylesheet" type="text/css" />
 @endsection
@@ -7,8 +7,8 @@
 {{-- breadcrumbs  --}}
     @section('breadcrumb')
         @component('components.breadcrumb')
-            @slot('li_1') Inicio @endslot
-            @slot('title') Origen Lead  @endslot
+            @slot('li_1') Origen @endslot
+            @slot('title') Editar Origen  @endslot
         @endcomponent
     @endsection
 <div class="row">
@@ -29,6 +29,7 @@
                                             @method('PUT')
                                                 <input type="text" name="name" value="{{$origin->name}}" aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
                                                 <button type="submit" name="send" title="MODIFICAR" class="btn btn-primary"><i class="bx bx-save"></i></button>
+                                                <a href="/config_lead_origin"><button title="CANCELAR" class="btn btn-primary"><i class="bx bx-arrow-back"></i></button></a>
                                         </form>
                                     </div>
                                 </div>                                

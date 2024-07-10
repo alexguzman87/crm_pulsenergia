@@ -14,6 +14,7 @@ use App\Models\FileSave;
 use App\Models\LevelLead;
 use App\Models\Note;
 use App\Models\TypesLead;
+use Illuminate\Support\Facades\DB;
 
 class ContactController extends Controller
 {
@@ -26,16 +27,17 @@ class ContactController extends Controller
     {
         $origin=Origin::orderBy('name')->get();
 
-        $type=LevelLead::orderBy('name')->get();
+        $level=LevelLead::orderBy('name')->get();
 
-        $level=TypesLead::orderBy('name')->get();
+        $type=TypesLead::orderBy('name')->get();
 
+        $contact = Contact::all();
+        
         $contact = Contact::orderBy('id')
+            ->id($request->search_id)    
             ->name($request->search_name)
             ->email($request->search_email)
-            ->id($request->search_id)
             ->phone($request->search_phone)
-            ->date($request->search_created_at)
             ->paginate(25);
         //where('id', 'Like', "%$request->$search_id%")
 
@@ -51,7 +53,14 @@ class ContactController extends Controller
      */
     public function create()
     {
-        return view('contact.contactCreate');
+
+        $origin=Origin::orderBy('name')->get();
+
+        $level=LevelLead::orderBy('name')->get();
+
+        $type=TypesLead::orderBy('name')->get();
+       
+        return view('contact.Create',compact('origin','type','level'));
     }
 
     /**
@@ -205,9 +214,10 @@ class ContactController extends Controller
      */
     public function destroy($id)
     {
-        $contact=Contact::find($id);
-        $contact->delete();
-
+        DB::table("contacts")->where('id',$id)->delete();
+        
+        DB::table("tasks")->where('id_contact',$id)->delete();
+        
         Session::flash('danger_red','Los datos del Lead han sido eliminado con éxito');
 
         return redirect()->back();

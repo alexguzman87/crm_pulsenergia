@@ -9,8 +9,8 @@
 {{-- breadcrumbs  --}}
     @section('breadcrumb')
         @component('components.breadcrumb')
-            @slot('li_1') OPORTUNIDADES @endslot
-            @slot('title')  @endslot
+            @slot('li_1') Oportunidades @endslot
+            @slot('title') Listado Oportunidades @endslot
         @endcomponent
     @endsection
 
@@ -80,7 +80,7 @@
                     <table class="table align-middle table-nowrap table-check">
                         <thead>
                             <tr>
-                                <th scope="col">Encargado</th>
+                                <th scope="col">Responsable</th>
                                 <th scope="col">Nombre de Contacto</th>
                                 <th scope="col">Correo</th> 
                                 <th scope="col">Teléfono</th>
@@ -107,6 +107,7 @@
                             @foreach ($oportunity as $o)
                                        <tr>
                                             <td>
+                                                @if ($o->id_user)
                                                 <a href="javascript: void(0);" class="d-block" data-bs-toggle="tooltip" data-placement="top" title="{{strtoupper($o->user->name)}}">
                                                     <div class="avatar">
                                                         <div class="avatar-title rounded-circle bg-primary">
@@ -114,6 +115,9 @@
                                                         </div>
                                                     </div>
                                                 </a>
+                                                @else
+                                                    <span class="badge badge-soft-danger mb-0">SIN COMERCIAL</span>
+                                                @endif
                                             </td>
                                             <td>
                                                 {{strtoupper($o->contact_name)}}

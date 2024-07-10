@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TaskCreateRequest;
+use App\Http\Requests\TaskEditRequest;
 use App\Models\Contact;
 use App\Models\Task;
 use Illuminate\Http\Request;
@@ -12,6 +13,7 @@ class TaskCotroller extends Controller
 {
 
     public function index(){
+        
         $task = Task::all();
 
         $task = Task::orderby('assigned_date')->paginate(25);
@@ -93,25 +95,34 @@ class TaskCotroller extends Controller
 
     }
 
-    public function update_task(TaskCreateRequest $request)
+    public function task_update(TaskEditRequest $request, $id)
     {
-        $Task=new Task();
-        $Task->id_user=$request->input('id_user');
-        $Task->id_oportunity=$request->input('id_oportunity');
-        $Task->task_origin=$request->input('task_origin');
-        $Task->task=$request->input('task');
-        $Task->priority=$request->input('priority');
-        $Task->status=$request->input('status');
-        $Task->assigned_date=$request->input('assigned_date');
-        $Task->done_date=$request->input('done_date');
+        $task=Task::findOrFail($id);
+        
+        $task->id_user=$request->input('id_user');
+        $task->id_oportunity=$request->input('id_oportunity');
+        $task->task_origin=$request->input('task_origin');
+        $task->task=$request->input('task');
+        $task->priority=$request->input('priority');
+        $task->status=$request->input('status');
+        $task->done_date=$request->input('done_date');
 
-        $Task->save();
+        $task->update();
 
         Session::flash('success_green','Se ha agregado una tarea con éxito');
 
-        return redirect()->back();
+        return redirect('general_task');
     }
 
+    public function destroy($id)
+    {
+        $task=Task::find($id);
+        $task->delete();
+
+        Session::flash('danger_red','Los datos de la Tarea han sido eliminados con éxito');
+
+        return redirect()->back();
+    }
 
 
 }

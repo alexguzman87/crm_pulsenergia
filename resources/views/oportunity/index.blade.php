@@ -9,8 +9,8 @@
 {{-- breadcrumbs  --}}
     @section('breadcrumb')
         @component('components.breadcrumb')
-            @slot('li_1') OPORTUNIDADES @endslot
-            @slot('title')  @endslot
+            @slot('li_1') Oportunidades @endslot
+            @slot('title') Listado Oportunidades @endslot
         @endcomponent
     @endsection
 
@@ -127,7 +127,7 @@
                                                             </form>
                                                             <form action="{{route('oportunity_delete', $o->id)}}" method="POST">
                                                                 @csrf
-                                                                @method('PUT')
+                                                                @method('DELETE')
                                                                 <input type="hidden" name="status" value="lost">
                                                                 <button style="border: none; width: 100%; color: #000000; background-color: white;" type="submit">BORRAR</button>                                                            
                                                             </form>
@@ -144,15 +144,18 @@
                                         <div class="card-footer py-2 bg-transparent border-top d-flex align-items-center">
                                             <div class="flex-grow-1">
                                                 <div class="avatar-group-item">
+                                                    @if ($o->id_user)
                                                     <a href="javascript: void(0);">
                                                         <div class="avatar-sm">
-                                                            @if ($o->id_user)
+                                                            
                                                                 <div class="avatar-title rounded-circle bg-danger">
                                                                     <a href="{{route('oportunity_show_user', $o->id_user)}}" style="border: none; width: 100%; color: white; background-color: transparent; text-align: center;">{{strtoupper(substr($o->user->name,0,3))}}</a>     
                                                                 </div>
-                                                            @endif
                                                         </div>
                                                     </a>
+                                                    @else
+                                                    <span class="badge badge-soft-danger mb-0">SIN COMERCIAL</span>
+                                                    @endif
                                                 </div>
                                             </div>
                                             <div class="flex-shrink-0 ms-2">
@@ -232,7 +235,7 @@
                                                             </form>
                                                             <form action="{{route('oportunity_delete', $o->id)}}" method="POST">
                                                                 @csrf
-                                                                @method('PUT')
+                                                                @method('DELETE')
                                                                 <input type="hidden" name="status" value="lost">
                                                                 <button style="border: none; width: 100%; color: #000000; background-color: white;" type="submit">BORRAR</button>                                                            
                                                             </form>
@@ -249,15 +252,18 @@
                                         <div class="card-footer py-2 bg-transparent border-top d-flex align-items-center">
                                             <div class="flex-grow-1">
                                                 <div class="avatar-group-item">
+                                                    @if ($o->id_user)
                                                     <a href="javascript: void(0);">
                                                         <div class="avatar-sm">
-                                                            @if ($o->id_user)
+                                                            
                                                                 <div class="avatar-title rounded-circle bg-danger">
                                                                     <a href="{{route('oportunity_show_user', $o->id_user)}}" style="border: none; width: 100%; color: white; background-color: transparent; text-align: center;">{{strtoupper(substr($o->user->name,0,3))}}</a>     
                                                                 </div>
-                                                            @endif
                                                         </div>
                                                     </a>
+                                                    @else
+                                                    <span class="badge badge-soft-danger mb-0">SIN COMERCIAL</span>
+                                                    @endif
                                                 </div>
                                             </div>
                                             <div class="flex-shrink-0 ms-2">
@@ -337,7 +343,7 @@
                                                             </form>
                                                             <form action="{{route('oportunity_delete', $o->id)}}" method="POST">
                                                                 @csrf
-                                                                @method('PUT')
+                                                                @method('DELETE')
                                                                 <input type="hidden" name="status" value="lost">
                                                                 <button style="border: none; width: 100%; color: #000000; background-color: white;" type="submit">BORRAR</button>                                                            
                                                             </form>
@@ -354,15 +360,18 @@
                                         <div class="card-footer py-2 bg-transparent border-top d-flex align-items-center">
                                             <div class="flex-grow-1">
                                                 <div class="avatar-group-item">
+                                                    @if ($o->id_user)
                                                     <a href="javascript: void(0);">
                                                         <div class="avatar-sm">
-                                                            @if ($o->id_user)
+                                                            
                                                                 <div class="avatar-title rounded-circle bg-danger">
                                                                     <a href="{{route('oportunity_show_user', $o->id_user)}}" style="border: none; width: 100%; color: white; background-color: transparent; text-align: center;">{{strtoupper(substr($o->user->name,0,3))}}</a>     
                                                                 </div>
-                                                            @endif
                                                         </div>
                                                     </a>
+                                                    @else
+                                                    <span class="badge badge-soft-danger mb-0">SIN COMERCIAL</span>
+                                                    @endif
                                                 </div>
                                             </div>
                                             <div class="flex-shrink-0 ms-2">
@@ -442,7 +451,7 @@
                                                             </form>
                                                             <form action="{{route('oportunity_delete', $o->id)}}" method="POST">
                                                                 @csrf
-                                                                @method('PUT')
+                                                                @method('DELETE')
                                                                 <input type="hidden" name="status" value="lost">
                                                                 <button style="border: none; width: 100%; color: #000000; background-color: white;" type="submit">BORRAR</button>                                                            
                                                             </form>
@@ -458,15 +467,18 @@
                                         <div class="card-footer py-2 bg-transparent border-top d-flex align-items-center">
                                             <div class="flex-grow-1">
                                                 <div class="avatar-group-item">
+                                                    @if ($o->id_user)
                                                     <a href="javascript: void(0);">
                                                         <div class="avatar-sm">
-                                                            @if ($o->id_user)
+                                                            
                                                                 <div class="avatar-title rounded-circle bg-danger">
                                                                     <a href="{{route('oportunity_show_user', $o->id_user)}}" style="border: none; width: 100%; color: white; background-color: transparent; text-align: center;">{{strtoupper(substr($o->user->name,0,3))}}</a>     
                                                                 </div>
-                                                            @endif
                                                         </div>
                                                     </a>
+                                                    @else
+                                                    <span class="badge badge-soft-danger mb-0">SIN COMERCIAL</span>
+                                                    @endif
                                                 </div>
                                             </div>
                                             <div class="flex-shrink-0 ms-2">
@@ -546,7 +558,7 @@
                                                             </form>
                                                             <form action="{{route('oportunity_delete', $o->id)}}" method="POST">
                                                                 @csrf
-                                                                @method('PUT')
+                                                                @method('DELETE')
                                                                 <input type="hidden" name="status" value="lost">
                                                                 <button style="border: none; width: 100%; color: #000000; background-color: white;" type="submit">BORRAR</button>                                                            
                                                             </form>
@@ -563,15 +575,18 @@
                                         <div class="card-footer py-2 bg-transparent border-top d-flex align-items-center">
                                             <div class="flex-grow-1">
                                                 <div class="avatar-group-item">
+                                                    @if ($o->id_user)
                                                     <a href="javascript: void(0);">
                                                         <div class="avatar-sm">
-                                                            @if ($o->id_user)
+                                                            
                                                                 <div class="avatar-title rounded-circle bg-danger">
                                                                     <a href="{{route('oportunity_show_user', $o->id_user)}}" style="border: none; width: 100%; color: white; background-color: transparent; text-align: center;">{{strtoupper(substr($o->user->name,0,3))}}</a>     
                                                                 </div>
-                                                            @endif
                                                         </div>
                                                     </a>
+                                                    @else
+                                                    <span class="badge badge-soft-danger mb-0">SIN COMERCIAL</span>
+                                                    @endif
                                                 </div>
                                             </div>
                                             <div class="flex-shrink-0 ms-2">

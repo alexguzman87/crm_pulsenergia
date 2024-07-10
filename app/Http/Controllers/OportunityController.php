@@ -13,6 +13,7 @@ use App\Models\Task;
 use App\Models\TypesLead;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class OportunityController extends Controller
@@ -191,8 +192,10 @@ class OportunityController extends Controller
 
     public function destroy($id)
     {
-        $oportunity=Oportunity::find($id);
-        $oportunity->delete();
+        
+        DB::table("oportunities")->where('id',$id)->delete();
+        
+        DB::table("tasks")->where('id_oportunity',$id)->delete();
 
         Session::flash('danger_red','Los datos de la Oportunidad han sido eliminados con éxito');
 
