@@ -14,11 +14,20 @@ class TaskCotroller extends Controller
 
     public function index(){
         
+        if(auth()->user()->type_user=='admin'){
+        
         $task = Task::all();
 
         $task = Task::orderby('assigned_date')->paginate(25);
 
         return view ('generalTask.generalTask',compact('task'));
+        
+        }else{
+
+            $task = Task::where('id_user',auth()->user()->id)->paginate(25);
+
+            return view ('generalTask.generalTask',compact('task'));
+        }
     }
 
     public function store_lead(TaskCreateRequest $request)

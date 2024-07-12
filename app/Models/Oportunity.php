@@ -30,7 +30,8 @@ class Oportunity extends Model
         'type',
         'budget',
         'probability',
-        'description'
+        'description',
+        'id_contact'
     ];
 
     public function user(){
@@ -47,6 +48,10 @@ class Oportunity extends Model
 
     public function level(){
         return $this->belongsTo('App\Models\LevelLead','id_level','id');
+    }
+
+    public function contact(){
+        return $this->belongsTo('App\Models\Contact','id_contact','id');
     }
 
 

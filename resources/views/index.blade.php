@@ -10,7 +10,9 @@
         @endcomponent
     @endsection    
  <div class="row">
-   <div class="col-xl-8">
+
+    {{-- ********* GRAFICO DE AREAS****
+    <div class="col-xl-8">
         <div class="card">
             <div class="card-body pb-2">
                 <div class="d-flex align-items-start mb-4 mb-xl-0">
@@ -84,13 +86,15 @@
             </div>
         </div>
     </div>
+    
 
+    ***GRAFICO DE TORTAS***
     <div class="col-xl-4">
         <div class="card">
             <div class="card-body">
                 <div class="d-flex align-items-start">
                     <div class="flex-grow-1">
-                        <h5 class="card-title mb-2">Order Stats</h5>
+                        <h5 class="card-title mb-2">Tareas</h5>
                     </div>
                     <div class="flex-shrink-0">
                         <div class="dropdown">
@@ -115,7 +119,7 @@
                         <p class="mb-0"><i class="mdi mdi-square-rounded font-size-10 text-primary me-2"></i>Order Completed</p>
                         <div>
                             <span class="pe-5">56,236</span>
-                            <span class="badge bg-primary"> + 0.2% </span>
+                            <span class="badge bg-primary"> + 0.1% </span>
                         </div>
                     </div>
                     <div class="order-wid-list d-flex justify-content-between border-bottom">
@@ -139,6 +143,7 @@
     </div>
 </div>
 
+***Cuadro RRSS***
 <div class="row">
     <div class="col-xl-7">
         <div class="row">
@@ -611,6 +616,8 @@
     </div>
 </div>
 
+
+***MAPA***
 <div class="row">
     <div class="col-xl-4">
         <div class="card">
@@ -644,6 +651,7 @@
         </div>
     </div>
 
+    ***RECIENTES ORDENES***
     <div class="col-xl-8">
         <div class="card">
             <div class="card-body pb-3">
@@ -872,6 +880,7 @@
         </div>
     </div>
 </div>
+--}}
 
 @endsection
 

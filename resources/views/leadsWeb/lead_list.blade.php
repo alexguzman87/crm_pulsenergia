@@ -38,7 +38,7 @@
                     <table class="table align-middle table-nowrap table-check">
                         <thead>
                             <tr>
-                                <th scope="col">ID</th>
+                                <th scope="col">Origen</th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Correo Electrónico</th>
                                 <th scope="col">Teléfono</th>
@@ -65,7 +65,17 @@
                         <tbody>
                             @foreach ($form as $f)
                                        <tr>
-                                            <td>{{$f->entry_id}}</td>
+                                            <td>
+                                                @if($f->form_id==2136)
+                                                    <span class="badge badge-soft-warning mb-0">Presupuesto Ingles</span>
+                                                @elseif($f->form_id==2127)
+                                                    <span class="badge badge-soft-primary mb-0">Contacto Ingles</span>
+                                                @elseif($f->form_id==2140)
+                                                    <span class="badge badge-soft-success mb-0">Presupuesto Español</span>
+                                                @elseif($f->form_id==190)
+                                                    <span class="badge badge-soft-info mb-0">Contacto Español</span>
+                                                @endif
+                                            </td>
 
                                             @foreach (json_decode($f->fields) as $i)
                                             <td> {{$i->value}}</td>

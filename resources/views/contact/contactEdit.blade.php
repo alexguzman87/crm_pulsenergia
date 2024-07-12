@@ -264,37 +264,29 @@
                                         <input type="hidden" name="id_contact" value={{$contact->id}}>
                                         <input type="hidden" name="task_origin" value='lead'>
                                         <input type="hidden" name="id_user" value={{$contact->user->id}}>
-                                        <input type="text" name="task" class="form-control" placeholder="Nombre de la Tarea...">
+                                        <input type="text" name="task" class="form-control" placeholder="Descripción de la Tarea...">
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-2">
-                                            <div class="mb-3">
-                                                <select class="form-control" name="priority">
-                                                    <option value="" disabled selected>PRIORIDAD</option>
-                                                    <option value="alta" style="border: none; width: 100%; color: #ef7564; background-color: white;">ALTA</option>
-                                                    <option value="media" style="border: none; width: 100%; color: #ffb968; background-color: white;">MEDIA</option>
-                                                    <option value="baja" style="border: none; width: 100%; color: #7bc86c; background-color: white;">BAJA</option>
-                                                </select>                                    
-                                            </div>
+                                        <div class="col">
+                                            <select class="form-control" name="priority">
+                                                <option value="" disabled selected>PRIORIDAD</option>
+                                                <option value="alta" style="border: none; width: 100%; color: #ef7564; background-color: white;">ALTA</option>
+                                                <option value="media" style="border: none; width: 100%; color: #ffb968; background-color: white;">MEDIA</option>
+                                                <option value="baja" style="border: none; width: 100%; color: #7bc86c; background-color: white;">BAJA</option>
+                                            </select>                                    
                                         </div>
-                                        <div class="col-md-2">
-                                            <div class="mb-3">
-                                                <select class="form-control" name="status">
-                                                    <option value="pendiente" style="border: none; width: 100%; color: #ef7564; background-color: white;">PENDIENTE</option>
-                                                    <option value="en_proceso" style="border: none; width: 100%; color: #ffb968; background-color: white;">EN PROCESO</option>
-                                                    <option value="hecho" style="border: none; width: 100%; color: #7bc86c; background-color: white;">HECHO</option>
-                                                </select>                                    
-                                            </div>
+                                        <div class="col">
+                                            <select class="form-control" name="status">
+                                                <option value="pendiente" style="border: none; width: 100%; color: #ef7564; background-color: white;">PENDIENTE</option>
+                                                <option value="en_proceso" style="border: none; width: 100%; color: #ffb968; background-color: white;">EN PROCESO</option>
+                                                <option value="hecho" style="border: none; width: 100%; color: #7bc86c; background-color: white;">HECHO</option>
+                                            </select>                                    
                                         </div>
-                                        <div class="col-md-2">
-                                            <div class="mb-3">
-                                                <input type="date" name="assigned_date" class="form-control" placeholder="Asignado el..." value="<?php echo date('Y-m-d'); ?>" min="<?php echo date('Y-m-d'); ?>">                                                                       
-                                            </div>
+                                        <div class="col">
+                                            <input type="date" name="assigned_date" class="form-control" placeholder="Asignado el..." value="<?php echo date('Y-m-d'); ?>" min="<?php echo date('Y-m-d'); ?>">                                                                       
                                         </div>
-                                        <div class="col-md-2">
-                                            <div class="mb-3">
-                                                <input type="date" name="done_date" class="form-control" placeholder="Realizado el..." value="<?php echo date('Y-m-d'); ?>" min="<?php echo date('Y-m-d'); ?>">                                                                     
-                                            </div>
+                                        <div class="col">
+                                            <input type="date" name="done_date" class="form-control" placeholder="Realizado el..." value="<?php echo date('Y-m-d'); ?>" min="<?php echo date('Y-m-d'); ?>">                                                                     
                                         </div>
                                         <div class="modal-footer">
                                             <div class="mb-3">

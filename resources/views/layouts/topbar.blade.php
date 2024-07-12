@@ -215,38 +215,38 @@
                             <div class="row row-cols-xxl-6 row-cols-md-3 row-cols-1 g-0">
                                 <div class="col">
                                     <div class="mt-md-0 py-3 px-4 mx-2">
-                                        <p class="text-white-50 mb-2 text-truncate">Campaign Sent </p>
-                                        <h3 class="text-white mb-0">197</h3>
+                                        <p class="text-white-50 mb-2 text-truncate">Tareas en Proceso </p>
+                                        <h3 class="text-white mb-0">{{$task_process}}</h3>
                                     </div>
                                 </div> 
                                 <div class="col">
                                     <div class="mt-3 mt-md-0 py-3 px-4 mx-2">
-                                        <p class="text-white-50 mb-2 text-truncate">Annual Profit</p>
-                                        <h3 class="text-white mb-0">$489.4k</h3>
+                                        <p class="text-white-50 mb-2 text-truncate">Tareas Pendientes</p>
+                                        <h3 class="text-white mb-0">{{$task_toDo}}</h3>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="mt-3 mt-md-0 py-3 px-4 mx-2">
-                                        <p class="text-white-50 mb-2 text-truncate">Lead Coversation</p>
-                                        <h3 class="text-white mb-0">32.89%</h3>
+                                        <p class="text-white-50 mb-2 text-truncate">Presupuestos</p>
+                                        <h3 class="text-white mb-0">{{number_format($budget,2,",",".")}}</h3>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="mt-3 mt-md-0 py-3 px-4 mx-2">
-                                        <p class="text-white-50 mb-2 text-truncate">Sales Forecast</p>
-                                        <h3 class="text-white mb-0">75.35%</h3>
+                                        <p class="text-white-50 mb-2 text-truncate">Ventas Exitosas</p>
+                                        <h3 class="text-white mb-0">{{number_format($sales,2,",",".")}}</h3>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="mt-3 mt-lg-0 py-3 px-4 mx-2">
-                                        <p class="text-white-50 mb-2 text-truncate">Daily Average Income</p>
-                                        <h3 class="text-white mb-0">$1,596.5</h3>
+                                        <p class="text-white-50 mb-2 text-truncate">Leads</p>
+                                        <h3 class="text-white mb-0">{{$lead}}</h3>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="mt-3 mt-lg-0 py-3 px-4 mx-2">
-                                        <p class="text-white-50 mb-2 text-truncate">Annual Deals</p>
-                                        <h3 class="text-white mb-0">2,659</h3>
+                                        <p class="text-white-50 mb-2 text-truncate">Leads Muy Probables</p>
+                                        <h3 class="text-white mb-0">{{$lead_very_likely}}</h3>
                                     </div>
                                 </div>
                             </div>

@@ -91,7 +91,7 @@
                                                 <div class="flex-shrink-0 ms-2">
                                                     <div class="dropdown">
                                                         <a href="#" class="dropdown-toggle font-size-16 text-muted" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                            Estado
+                                                            Asignar Estado
                                                         </a>
 
                                                         <div class="dropdown-menu dropdown-menu-end">
@@ -199,7 +199,7 @@
                                                 <div class="flex-shrink-0 ms-2">
                                                     <div class="dropdown">
                                                         <a href="#" class="dropdown-toggle font-size-16 text-muted" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                            Estado
+                                                            Asignar Estado
                                                         </a>
 
                                                         <div class="dropdown-menu dropdown-menu-end">
@@ -307,7 +307,7 @@
                                                 <div class="flex-shrink-0 ms-2">
                                                     <div class="dropdown">
                                                         <a href="#" class="dropdown-toggle font-size-16 text-muted" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                            Estado
+                                                            Asignar Estado
                                                         </a>
 
                                                         <div class="dropdown-menu dropdown-menu-end">
@@ -415,7 +415,7 @@
                                                 <div class="flex-shrink-0 ms-2">
                                                     <div class="dropdown">
                                                         <a href="#" class="dropdown-toggle font-size-16 text-muted" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                            Estado
+                                                            Asignar Estado
                                                         </a>
 
                                                         <div class="dropdown-menu dropdown-menu-end">
@@ -522,7 +522,7 @@
                                                 <div class="flex-shrink-0 ms-2">
                                                     <div class="dropdown">
                                                         <a href="#" class="dropdown-toggle font-size-16 text-muted" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                            Estado
+                                                            Asignar Estado
                                                         </a>
 
                                                         <div class="dropdown-menu dropdown-menu-end">

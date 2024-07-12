@@ -41,12 +41,22 @@
                         <i class="bx bx-book nav-icon"></i> <span>LEADS</span>
                     </a>
                 </li>-->
+                
+                @if(auth()->user()->type_user=='admin')
                 <li>
                     <a href="/lead">
                         <i class="bx bx-user nav-icon"></i>
                         <span class="menu-item" data-key="t-dashboard">LEADS</span>
                     </a>
                 </li>
+                @else
+                <li>
+                    <a href="/lead_show_user/{{auth()->user()->id}}">
+                        <i class="bx bxl-trello nav-icon"></i>
+                        <span class="menu-item" data-key="t-dashboard">LEADS</span>
+                    </a>
+                </li>
+                @endif
                 <li>
                     <a href="/general_task">
                         <i class="bx bx-chat nav-icon"></i>

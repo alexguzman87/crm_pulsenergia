@@ -20,8 +20,20 @@
                     <form action="/lead_create" method="POST" enctype="multipart/form-data">
                         @csrf
                             <div class="modal-body p-4">
+                                @if (auth()->user()->type_user=='admin')
                                 <div class="mb-3">
-                                        <input type="text" name="name" class="form-control" placeholder="Nombre Completo" value="{{ old('name') }}">
+                                    <select name="id_user" class="form-select">
+                                        <option value="" selected disabled hidden>Responsable</option>
+                                        @foreach ($user as $u)
+                                            <option value="{{$u->id}}">{{$u->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div> 
+                                @else
+                                    <input type="hidden" name="id_user" class="form-control" value={{auth()->user()->id}}>
+                                @endif
+                                <div class="mb-3">
+                                    <input type="text" name="name" class="form-control" placeholder="Nombre Completo" value="{{ old('name') }}">
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">

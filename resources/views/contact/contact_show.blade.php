@@ -63,7 +63,6 @@
                     <table class="table align-middle table-nowrap table-check">
                         <thead>
                             <tr>
-                                <th scope="col">Responsable</th>
                                 <th scope="col">Imagen</th>
                                 <th scope="col">Contacto</th>
                                 <th scope="col">Origen</th>
@@ -78,13 +77,6 @@
                         <tbody>
                             @foreach ( $contact as $c )
                             <tr>
-                                <td>
-                                    @if($c->id_user)
-                                    <span class="badge badge-soft-success mb-0">{{strtoupper($c->user->name)}}</span>
-                                    @else
-                                    <span class="badge badge-soft-danger mb-0">SIN ASIGNAR</span> 
-                                    @endif
-                                </td>
                                 <td>
                                     @if($c->image)<img src={{URL::asset('images/'.$c->image)}} alt="" class="avatar-sm rounded-circle me-2">
                                     @else<img src={{URL::asset('images/Sin-Perfil-Hombre.png')}} alt="" class="avatar-sm rounded-circle me-2">
@@ -104,8 +96,8 @@
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" title="BORRAR USUARIO" class="btn btn-primary"><i class="bx bx-x-circle"></i></button>
-                                        </form>
-                                        <a href={{route('convert_to_oportunity', $c->id)}}><button type="submit" title="CONVERTIR A OPORTUNIDAD" class="btn btn-primary"><i class="uil-arrow-up-right"></i></button></a>    
+                                        </form> 
+                                        <a href={{route('convert_to_oportunity', $c->id)}}><button type="submit" title="CONVERTIR A OPORTUNIDAD" class="btn btn-primary"><i class="uil-arrow-up-right"></i></button></a> 
                                     </div>
                                 </td>
                                 
@@ -212,7 +204,7 @@
                     </table><!-- end table -->
                 </div><!-- end table responsive -->
                 <div class="row g-0 text-center text-sm-start">
-                    <div>{{$contact->links('layouts.pagination')}}</div>
+                    <div>{{$contact_user->links('layouts.pagination')}}</div>
                 </div><!-- end row -->  
                 <div id="gridjs-temp" class="gridjs-temp"></div>
                 @include('layouts.message')
@@ -228,7 +220,6 @@
 <!-- gridjs js -->
 <script src="{{ URL::asset('assets/libs/gridjs/gridjs.min.js') }}"></script>
 <script src="{{ URL::asset('assets/js/pages/gridjs.init.js') }}"></script>
-<script src="{{ URL::asset('assets/js/app.js') }}"></script>
 
 
 

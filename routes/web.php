@@ -5,6 +5,7 @@ use App\Http\Controllers\BasicController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ConfigController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ConvertController;
 use App\Http\Controllers\LeadController;
 use App\Http\Controllers\TaskCotroller;
 use App\Http\Controllers\UserController;
@@ -46,6 +47,7 @@ Route::delete('user_delete/{user}',[UserController::class,'destroy'])->middlewar
 
 //Routes Leads
 Route::get('lead',[ContactController::class,'index'])->middleware('auth');
+Route::get('lead_show_user/{user}',[ContactController::class,'show'])->middleware('auth')->name('lead_show_user');
 Route::get('lead_create',[ContactController::class,'create'])->middleware('auth');
 Route::post('lead_create',[ContactController::class,'store'])->middleware('auth');
 Route::get('lead_edit/{lead}',[ContactController::class,'edit'])->middleware('auth')->name('lead_edit');
@@ -78,6 +80,11 @@ Route::put('oportunity_edit/{oportunity}',[OportunityController::class,'update']
 Route::put('oportunity_edit_user/{oportunity}',[OportunityController::class,'updateUser'])->middleware('auth')->name('oportunity_edit_user');
 Route::delete('oportunity_delete/{oportunity}',[OportunityController::class,'destroy'])->middleware('auth')->name('oportunity_delete');
 Route::put('oportunity_change_status/{oportunity}',[OportunityController::class,'updateStatus'])->middleware('auth')->name('oportunity_change_status');
+
+
+//CONVERT LEAD TO OPORTUNITY
+Route::get('convert_to_oportunity/{lead}',[ConvertController::class,'show'])->middleware('auth')->name('convert_to_oportunity');
+Route::post('convert_lead_to_oportunity',[ConvertController::class,'convert'])->middleware('auth')->name('convert_lead_to_oportunity');
 
 
 //CONFIG - ORIGIN

@@ -1,11 +1,11 @@
 @extends('layouts.vertical-master-layout')
-@section('title') CREAR OPORTUNIDAD | @endsection
+@section('title') CONVERTIR A OPORTUNIDAD | @endsection
 @section('content')
 {{-- breadcrumbs  --}}
     @section('breadcrumb')
         @component('components.breadcrumb')
             @slot('li_1') Oportunidad @endslot
-            @slot('title') Crear Oportunidad @endslot
+            @slot('title') Generar Oportunidad @endslot
         @endcomponent
     @endsection
 
@@ -13,11 +13,11 @@
     <div class="col-xl-6">
         <div class="card card-h-100">
             <div class="card-header justify-content-between d-flex align-items-center">
-                <h4 class="card-title">Crear Oportunidad</h4>
+                <h4 class="card-title">Generar Oportunidad</h4>
             </div><!-- end card header -->
             <div class="card-body">
                 <div>
-                <form action="/oportunity_create" method="POST">
+                <form action="{{route('convert_lead_to_oportunity')}}" method="POST">
                         @csrf
                         @if (auth()->user()->type_user=='admin')
                         <div class="mb-3">
@@ -32,12 +32,13 @@
                             <input type="hidden" name="id_user" class="form-control" value={{auth()->user()->id}}>
                         @endif
                         <div class="mb-3">
+                            <input type="hidden" name="id_contact" class="form-control" placeholder="Titulo" value="{{$contact->id}}">
                             <input type="text" name="title" class="form-control" placeholder="Titulo" value="{{ old('title') }}">
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <input type="text" name="contact_name" class="form-control" placeholder="Nombre del contacto" value="{{ old('contact_name') }}">
+                                    <input type="text" name="contact_name" class="form-control" placeholder="Nombre del contacto" value="{{$contact->name}}">
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -49,39 +50,39 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <input type="email" name="email" class="form-control" placeholder="Correo Electrónico"  value="{{ old('email') }}">
+                                    <input type="email" name="email" class="form-control" placeholder="Correo Electrónico"  value="{{$contact->email}}">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <input type="number" name="phone" class="form-control" placeholder="Teléfono" value="{{ old('phone') }}">                                    
+                                    <input type="number" name="phone" class="form-control" placeholder="Teléfono" value="{{$contact->phone}}">                                    
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <input type="text" name="country" class="form-control" placeholder="País" value="{{ old('country') }}">
+                                    <input type="text" name="country" class="form-control" placeholder="País" value="{{$contact->country}}">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <input type="text" name="state" class="form-control" placeholder="Estado / Provincia/ Región" value="{{ old('state') }}">                                    
+                                    <input type="text" name="state" class="form-control" placeholder="Estado / Provincia/ Región" value="{{$contact->state}}">                                    
                                 </div>
                             </div>
                         </div>
                         <div class="mb-3">
-                            <input type="text" name="address" class="form-control" placeholder="Dirección" value="{{ old('address') }}">
+                            <input type="text" name="address" class="form-control" placeholder="Dirección" value="{{$contact->address}}">
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <input type="text" name="city" class="form-control" placeholder="Ciudad" value="{{ old('city') }}">
+                                    <input type="text" name="city" class="form-control" placeholder="Ciudad" value="{{$contact->city}}">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <input type="number" name="postal_code" class="form-control" placeholder="Código Postal" value="{{ old('postal_code') }}">                                    
+                                    <input type="number" name="postal_code" class="form-control" placeholder="Código Postal" value="{{$contact->postal_code}}">                                    
                                 </div>
                             </div>
                         </div>
@@ -93,7 +94,7 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="mb-3">
-                                    <select name="status" class="form-select" value="{{ old('status') }}">
+                                    <select name="status" class="form-select" value="">
                                         <option value="oportunity">Oportunidad</option>
                                         <option value="proposal">En Propuesta</option>
                                         <option value="need">Necesito Apoyo</option>
@@ -172,6 +173,5 @@ const value = document.querySelector("#value");
       value.textContent = event.target.value;
     });
     </script>
-<script src="{{ URL::asset('assets/js/app.js') }}"></script>
 
 @endsection

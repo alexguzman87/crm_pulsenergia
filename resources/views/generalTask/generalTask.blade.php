@@ -101,8 +101,8 @@
                                 <th scope="col">Responsable</th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Tarea</th>
-                                <th scope="col">Fecha de asignado</th>
-                                <th scope="col">Fecha de realizado</th>
+                                <th scope="col">Fecha Inicio</th>
+                                <th scope="col">Fecha Realizado</th>
                                 <th style="width: 80px; min-width: 80px;">Acción</th>
                             </tr><!-- end tr -->
                         </thead><!-- end thead -->

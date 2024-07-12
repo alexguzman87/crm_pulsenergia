@@ -25,7 +25,10 @@
                             @method('PUT')
                                 <div class="modal-body p-4">
                                     <div class="mb-3">
-                                        <label class="form-label" for="formrow-firstname-input">Nombre de la tarea</label>
+                                        <label class="form-label" for="formrow-firstname-input">RESPONSABLE: {{strtoupper($task->user->name)}}</label>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="formrow-firstname-input">DESCRIPCIÓN DE LA TAREA</label>
                                         <input type="hidden" name="id_oportunity" value={{$task->id}}>
                                         <input type="hidden" name="task_origin" value='{{$task->task_origin}}'>
                                         <input type="hidden" name="id_user" value={{$task->id_user}}>
@@ -34,7 +37,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="mb-3">
-                                                <label class="form-label" for="formrow-firstname-input">Prioridad</label>
+                                                <label class="form-label" for="formrow-firstname-input">PRIORIDAD</label>
                                                 <select class="form-control" name="priority">
                                                     <option value="" disabled selected>PRIORIDAD</option>
                                                     <option value="alta" style="border: none; width: 100%; color: #ef7564; background-color: white;">ALTA</option>
@@ -45,7 +48,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="mb-3">
-                                                <label class="form-label" for="formrow-firstname-input">Estado</label>
+                                                <label class="form-label" for="formrow-firstname-input">ESTADO</label>
                                                 <select class="form-control" name="status">
                                                     <option value=""disabled selected>ESTADO</option>
                                                     <option value="pendiente" style="border: none; width: 100%; color: #ef7564; background-color: white;">PENDIENTE</option>
@@ -58,14 +61,14 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="mb-3">
-                                                <label class="form-label" for="formrow-firstname-input">Asignado el: {{date("d/m/Y", strtotime($task->assigned_date))}}</label>
+                                                <label class="form-label" for="formrow-firstname-input">FECHA INICIO: {{date("d/m/Y", strtotime($task->assigned_date))}}</label>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="mb-3">
-                                                <label class="form-label" for="formrow-firstname-input">Realizado el</label>
+                                                <label class="form-label" for="formrow-firstname-input">FECHA FIN</label>
                                                 <input type="date" name="done_date" class="form-control" placeholder="Realizado el..." value="<?php echo date('Y-m-d'); ?>" min="<?php echo date('Y-m-d'); ?>">                                                                     
                                             </div>
                                         </div>

@@ -28,8 +28,8 @@
                             </div>
                         </div>
                     </div>
-                    @if(auth()->user()->type_user=='admin')
                     <div class="col-auto ms-sm-auto">
+                        @if(auth()->user()->type_user=='admin')
                         <div class="avatar-group justify-content-sm-end">
                             <div class="avatar-group-item">
                                 <a href="/oportunity" title="ALL">
@@ -100,7 +100,7 @@
                                                 <div class="flex-shrink-0 ms-2">
                                                     <div class="dropdown">
                                                         <a href="#" class="dropdown-toggle font-size-16 text-muted" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                            Estado
+                                                            Asignar Estado
                                                         </a>
 
                                                         <div class="dropdown-menu dropdown-menu-end">
@@ -164,7 +164,7 @@
                                             <div class="flex-shrink-0 ms-2">
                                                 <ul class="list-inline mb-0">
                                                     <li class="list-inline-item">
-                                                        <a href="" class="text-muted font-size-13"><i class="mdi mdi-pencil-outline me-1"></i>Editar</a>
+                                                        <a href="/oportunity_edit/{{$o->id}}" class="text-muted font-size-13"><i class="mdi mdi-pencil-outline me-1"></i>Editar</a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -202,7 +202,7 @@
                                                 <div class="flex-shrink-0 ms-2">
                                                     <div class="dropdown">
                                                         <a href="#" class="dropdown-toggle font-size-16 text-muted" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                            Estado
+                                                            Asignar Estado
                                                         </a>
 
                                                         <div class="dropdown-menu dropdown-menu-end">
@@ -266,14 +266,8 @@
                                             <div class="flex-shrink-0 ms-2">
                                                 <ul class="list-inline mb-0">
                                                     <li class="list-inline-item">
-                                                        <a href="" class="text-muted font-size-13"><i class="mdi mdi-comment-text-outline me-1"></i>Task</a>
-                                                    </li>
-                                                    <li class="list-inline-item">
-                                                        <a href="" class="text-muted font-size-13"><i class="mdi mdi-comment-text-outline me-1"></i>Notas</a>
-                                                    </li>
-                                                    <li class="list-inline-item ms-1">
-                                                        <a href="" class="text-muted font-size-13"><i class="mdi mdi-link-variant me-1"></i>Archivos</a>
-                                                    </li>
+                                                        <a href="/oportunity_edit/{{$o->id}}" class="text-muted font-size-13"><i class="mdi mdi-pencil-outline me-1"></i>Editar</a>
+                                                    </li>  
                                                 </ul>
                                             </div>
                                         </div>
@@ -310,7 +304,7 @@
                                                 <div class="flex-shrink-0 ms-2">
                                                     <div class="dropdown">
                                                         <a href="#" class="dropdown-toggle font-size-16 text-muted" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                            Estado
+                                                            Asignar Estado
                                                         </a>
 
                                                         <div class="dropdown-menu dropdown-menu-end">
@@ -374,13 +368,7 @@
                                             <div class="flex-shrink-0 ms-2">
                                                 <ul class="list-inline mb-0">
                                                     <li class="list-inline-item">
-                                                        <a href="" class="text-muted font-size-13"><i class="mdi mdi-comment-text-outline me-1"></i>Task</a>
-                                                    </li>
-                                                    <li class="list-inline-item">
-                                                        <a href="" class="text-muted font-size-13"><i class="mdi mdi-comment-text-outline me-1"></i>Notas</a>
-                                                    </li>
-                                                    <li class="list-inline-item ms-1">
-                                                        <a href="" class="text-muted font-size-13"><i class="mdi mdi-link-variant me-1"></i>Archivos</a>
+                                                        <a href="/oportunity_edit/{{$o->id}}" class="text-muted font-size-13"><i class="mdi mdi-pencil-outline me-1"></i>Editar</a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -418,7 +406,7 @@
                                                 <div class="flex-shrink-0 ms-2">
                                                     <div class="dropdown">
                                                         <a href="#" class="dropdown-toggle font-size-16 text-muted" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                            Estado
+                                                            Asignar Estado
                                                         </a>
 
                                                         <div class="dropdown-menu dropdown-menu-end">
@@ -482,13 +470,7 @@
                                             <div class="flex-shrink-0 ms-2">
                                                 <ul class="list-inline mb-0">
                                                     <li class="list-inline-item">
-                                                        <a href="" class="text-muted font-size-13"><i class="mdi mdi-comment-text-outline me-1"></i>Task</a>
-                                                    </li>
-                                                    <li class="list-inline-item">
-                                                        <a href="" class="text-muted font-size-13"><i class="mdi mdi-comment-text-outline me-1"></i>Notas</a>
-                                                    </li>
-                                                    <li class="list-inline-item ms-1">
-                                                        <a href="" class="text-muted font-size-13"><i class="mdi mdi-link-variant me-1"></i>Archivos</a>
+                                                        <a href="/oportunity_edit/{{$o->id}}" class="text-muted font-size-13"><i class="mdi mdi-pencil-outline me-1"></i>Editar</a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -526,7 +508,7 @@
                                                 <div class="flex-shrink-0 ms-2">
                                                     <div class="dropdown">
                                                         <a href="#" class="dropdown-toggle font-size-16 text-muted" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                            Estado
+                                                            Asignar Estado
                                                         </a>
 
                                                         <div class="dropdown-menu dropdown-menu-end">
@@ -590,13 +572,7 @@
                                             <div class="flex-shrink-0 ms-2">
                                                 <ul class="list-inline mb-0">
                                                     <li class="list-inline-item">
-                                                        <a href="" class="text-muted font-size-13"><i class="mdi mdi-comment-text-outline me-1"></i>Task</a>
-                                                    </li>
-                                                    <li class="list-inline-item">
-                                                        <a href="" class="text-muted font-size-13"><i class="mdi mdi-comment-text-outline me-1"></i>Notas</a>
-                                                    </li>
-                                                    <li class="list-inline-item ms-1">
-                                                        <a href="" class="text-muted font-size-13"><i class="mdi mdi-link-variant me-1"></i>Archivos</a>
+                                                        <a href="/oportunity_edit/{{$o->id}}" class="text-muted font-size-13"><i class="mdi mdi-pencil-outline me-1"></i>Editar</a>
                                                     </li>
                                                 </ul>
                                             </div>

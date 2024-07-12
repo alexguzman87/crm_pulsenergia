@@ -23,6 +23,11 @@
                     </div>
 
                     <div class="mt-4">
+                        <p class="text-muted mb-1">Lead Asociado:</p>
+                        <h5 class="font-size-14 text-truncate">@if($oportunity->id_contact){{$oportunity->contact->name}}@else No existe Lead Asociado @endif</h5>
+                    </div>
+
+                    <div class="mt-4">
                         <p class="text-muted mb-1">Organización:</p>
                         <h5 class="font-size-14 text-truncate">{{$oportunity->organization}}</h5>
                     </div>
@@ -291,47 +296,36 @@
                                         <input type="hidden" name="id_oportunity" value={{$oportunity->id}}>
                                         <input type="hidden" name="task_origin" value='oportunity'>
                                         <input type="hidden" name="id_user" value={{$oportunity->user->id}}>
-                                        <input type="text" name="task" class="form-control" placeholder="Nombre de la Tarea...">
+                                        <input type="text" name="task" class="form-control" placeholder="Descripción de la Tarea...">
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-2">
-                                            <div class="mb-3">
-                                                <select class="form-control" name="priority">
-                                                    <option value="" disabled selected>PRIORIDAD</option>
-                                                    <option value="alta" style="border: none; width: 100%; color: #ef7564; background-color: white;">ALTA</option>
-                                                    <option value="media" style="border: none; width: 100%; color: #ffb968; background-color: white;">MEDIA</option>
-                                                    <option value="baja" style="border: none; width: 100%; color: #7bc86c; background-color: white;">BAJA</option>
-                                                </select>                                    
-                                            </div>
+                                        <div class="col">
+                                            <select class="form-control" name="priority">
+                                                <option value="" disabled selected>PRIORIDAD</option>
+                                                <option value="alta" style="border: none; width: 100%; color: #ef7564; background-color: white;">ALTA</option>
+                                                <option value="media" style="border: none; width: 100%; color: #ffb968; background-color: white;">MEDIA</option>
+                                                <option value="baja" style="border: none; width: 100%; color: #7bc86c; background-color: white;">BAJA</option>
+                                            </select>                                    
                                         </div>
-                                        <div class="col-md-2">
-                                            <div class="mb-3">
-                                                <select class="form-control" name="status">
-                                                    <option value="pendiente" style="border: none; width: 100%; color: #ef7564; background-color: white;">PENDIENTE</option>
-                                                    <option value="en_proceso" style="border: none; width: 100%; color: #ffb968; background-color: white;">EN PROCESO</option>
-                                                    <option value="hecho" style="border: none; width: 100%; color: #7bc86c; background-color: white;">HECHO</option>
-                                                </select>                                    
-                                            </div>
+                                        <div class="col">
+                                            <select class="form-control" name="status">
+                                                <option value="pendiente" style="border: none; width: 100%; color: #ef7564; background-color: white;">PENDIENTE</option>
+                                                <option value="en_proceso" style="border: none; width: 100%; color: #ffb968; background-color: white;">EN PROCESO</option>
+                                                <option value="hecho" style="border: none; width: 100%; color: #7bc86c; background-color: white;">HECHO</option>
+                                            </select>                                    
                                         </div>
-                                        <div class="col-md-2">
-                                            <div class="mb-3">
+                                        <div class="col">
                                                 <input type="date" name="assigned_date" class="form-control" placeholder="Asignado el..." value="<?php echo date('Y-m-d'); ?>" min="<?php echo date('Y-m-d'); ?>">                                                                       
-                                            </div>
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col">
+                                            <input type="date" name="done_date" class="form-control" placeholder="Realizado el..." value="<?php echo date('Y-m-d'); ?>" min="<?php echo date('Y-m-d'); ?>">                                                                     
+                                        </div>
+                                        <div class="modal-footer">
                                             <div class="mb-3">
-                                                <input type="date" name="done_date" class="form-control" placeholder="Realizado el..." value="<?php echo date('Y-m-d'); ?>" min="<?php echo date('Y-m-d'); ?>">                                                                     
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="mb-3">
-                                                <a href="/lead"><button type="button" class="btn btn-light w-sm" data-bs-dismiss="modal">Cancelar</button></a>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                                <div class="mb-3">
-                                                    <button type="submit" class="btn btn-primary w-md">Agregar Tarea</button>                                            </div>
-                                                </div>  
+                                                    <a href="/lead"><button type="button" class="btn btn-light w-sm" data-bs-dismiss="modal">Cancelar</button></a>
+                                                    <button type="submit" class="btn btn-primary w-md">Agregar Tarea</button>                                            
+                                                </div>
+                                            </div> 
                                         </div>
                                     @include('layouts.message')
                             </form>

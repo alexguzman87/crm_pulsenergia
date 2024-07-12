@@ -63,8 +63,10 @@ class ContactController extends Controller
         $level=LevelLead::orderBy('name')->get();
 
         $type=TypesLead::orderBy('name')->get();
+
+        $user=User::all();
        
-        return view('contact.Create',compact('origin','type','level'));
+        return view('contact.Create',compact('origin','type','level','user'));
     }
 
     /**
@@ -77,6 +79,7 @@ class ContactController extends Controller
     {       
         $contact=new Contact();
         $contact->name=$request->input('name');
+        $contact->id_user=$request->input('id_user');
         $contact->email=$request->input('email');
         $contact->second_email=$request->input('second_email');
         $contact->phone=$request->input('phone');
@@ -102,7 +105,12 @@ class ContactController extends Controller
 
         $contact->save();
         
-        return redirect('lead');
+        if(auth()->user()->type_user=='admin'){
+            return redirect('lead');
+        }else{
+            return redirect()->route('lead_show_user', auth()->user()->id);
+        }
+        
     }
 
     /**
@@ -113,8 +121,16 @@ class ContactController extends Controller
      */
     public function show($id)
     {
-        /*$client=Client::findOrFail($id);
-        return view ('clients.show_client', compact('client'));*/
+        $user=User::all();
+
+        $type=TypesLead::all();
+        
+        $contact=Contact::where('id_user',$id)->get();
+
+        $contact_user=Contact::orderBy('id')->paginate(25);
+
+        return view ('contact.contact_show', compact('user', 'contact', 'contact_user','type'));
+
     }
 
     /**

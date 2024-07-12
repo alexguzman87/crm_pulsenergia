@@ -24,7 +24,25 @@
                                     @foreach ($form as $f)
                                         @foreach (json_decode($f->fields) as $i)
                                         <div class="mb-3">
-                                        <input type="text" name={{$i->name}} class="form-control" placeholder="Correo Electrónico" value={{$i->value}}>    
+                                        <label class="form-label" for="formrow-firstname-input">
+                                            @if($i->name=='name') Nombre
+                                            @elseif($i->name=='email') Correo
+                                            @elseif($i->name=='phone') Teléfono
+                                            @elseif($i->name=='solucion') Solución
+                                            @elseif($i->name=='state') Origen
+                                            @elseif($i->name=='mensaje') Mensaje
+                                            @endif
+                                        </label>
+                                        <input type="text" name={{$i->name}} class="form-control" 
+                                            placeholder=
+                                                @if($i->name=='name') Nombre
+                                                @elseif($i->name=='email') Correo
+                                                @elseif($i->name=='phone') Teléfono
+                                                @elseif($i->name=='solucion') Solución
+                                                @elseif($i->name=='state') Origen
+                                                @elseif($i->name=='mensaje') Mensaje
+                                                @endif
+                                            value={{$i->value}}>    
                                     </div>
                                         @endforeach
                                     @endforeach
@@ -58,7 +76,7 @@
                             </div>
                             <!-- end modalbody -->
                             <div class="modal-footer">
-                                <a href="/lead"><button type="button" class="btn btn-light w-sm" data-bs-dismiss="modal">Cancelar</button></a>
+                                <a href="/leadsWeb"><button type="button" class="btn btn-light w-sm" data-bs-dismiss="modal">Cancelar</button></a>
                                 <button type="submit" class="btn btn-primary w-sm">Convertir a Lead</button>
                             </div>
                         @include('layouts.message')

@@ -51,8 +51,10 @@ class OportunityController extends Controller
         $type=TypesLead::all();
 
         $level=LevelLead::all();
+
+        $user=User::all();
         
-        return view('oportunity.create', compact('origin', 'type', 'level'));
+        return view('oportunity.create', compact('origin', 'type', 'level','user'));
     }
 
     public function store(OportunityRequest $request)
@@ -61,6 +63,7 @@ class OportunityController extends Controller
         $oportunity->title=$request->input('title');
         $oportunity->contact_name=$request->input('contact_name');
         $oportunity->organization=$request->input('organization');
+        $oportunity->id_user=$request->input('id_user');
         $oportunity->email=$request->input('email');
         $oportunity->phone=$request->input('phone');
         $oportunity->country=$request->input('country');
@@ -80,8 +83,11 @@ class OportunityController extends Controller
 
         Session::flash('success_green','Los datos de la Oportunidad han sido agregados con éxito');
         
-        return redirect('oportunity');
-
+        if(auth()->user()->type_user=='admin'){
+            return redirect('oportunity');
+        }else{
+            return redirect()->route('oportunity_show_user', auth()->user()->id);
+        }
     }
 
     public function show($id)
