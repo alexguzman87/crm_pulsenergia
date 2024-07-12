@@ -53,12 +53,21 @@
                         <span class="menu-item" data-key="t-dashboard">TAREAS</span>
                     </a>
                 </li>
+                @if(auth()->user()->type_user=='admin')
                 <li>
                     <a href="/oportunity">
                         <i class="bx bxl-trello nav-icon"></i>
                         <span class="menu-item" data-key="t-dashboard">OPORTUNIDADES</span>
                     </a>
                 </li>
+                @else
+                <li>
+                    <a href="/oportunity_show_user/{{auth()->user()->id}}">
+                        <i class="bx bxl-trello nav-icon"></i>
+                        <span class="menu-item" data-key="t-dashboard">OPORTUNIDADES</span>
+                    </a>
+                </li>
+                @endif
                 <li>
                     <a href="/leadsWeb">
                         <i class="bx bx-mail-send nav-icon"></i>

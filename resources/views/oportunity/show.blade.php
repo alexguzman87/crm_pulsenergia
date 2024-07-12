@@ -28,6 +28,7 @@
                             </div>
                         </div>
                     </div>
+                    @if(auth()->user()->type_user=='admin')
                     <div class="col-auto ms-sm-auto">
                         <div class="avatar-group justify-content-sm-end">
                             <div class="avatar-group-item">
@@ -51,6 +52,19 @@
                                 </div><!-- end avatar group item -->
                             @endforeach
                         </div><!-- end avatar-group -->
+                        @endif
+                        <div class="d-flex flex-wrap align-items-start justify-content-md-end mt-2 mt-md-0 gap-2 mb-3">
+                            <div>
+                                <ul class="nav nav-pills">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/oportunity_show_list/{{auth()->user()->id}}" data-bs-toggle="tooltip" data-bs-placement="top" title="Lista"><i class="uil uil-list-ul"></i></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/oportunity_show_user/{{auth()->user()->id}}" data-bs-toggle="tooltip" data-bs-placement="top" title="Tablero"><i class="uil uil-apps"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                     <!--end col-->
                 </div>

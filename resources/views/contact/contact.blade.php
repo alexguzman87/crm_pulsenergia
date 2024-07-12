@@ -28,7 +28,7 @@
                         <div class="d-flex flex-wrap align-items-start justify-content-md-end mt-2 mt-md-0 gap-2 mb-3">
                             @if(auth()->user()->type_user=='admin')
                             <div>
-                                <a href="/contact_export"><button type="submit" title="EXPORTAR EXCEL" name="send" class="btn btn-primary"><i class="bx bx-download"></i></button></a>
+                                <a href="/lead_export"><button type="submit" title="EXPORTAR EXCEL" name="send" class="btn btn-primary"><i class="bx bx-download"></i></button></a>
                             </div>
                             @endif
                             <div>

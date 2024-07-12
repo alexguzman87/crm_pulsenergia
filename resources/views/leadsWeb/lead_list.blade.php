@@ -25,11 +25,7 @@
                                 @if(auth()->user()->type_user=='admin')
                                 <ul class="nav nav-pills">
                                     <li class="nav-item">
-                                        <a href="/contact_export"><button type="submit" title="EXPORTAR EXCEL" name="send" class="btn btn-primary"><i class="bx bx-download"></i></button></a>
-                                    </li>
-                                    <li><a href="">&nbsp;</a></li>
-                                    <li class="nav-item">
-                                        <a href="/lead_create"><button type="submit" title="AGREGAR LEAD" name="send" class="btn btn-primary"><i class="bx bx-user-plus"></i></button></a>
+                                    {{--<a href="/contact_export"><button type="submit" title="EXPORTAR EXCEL" name="send" class="btn btn-primary"><i class="bx bx-download"></i></button></a>--}}
                                     </li>
                                 </ul>
                                 @endif
@@ -43,11 +39,11 @@
                         <thead>
                             <tr>
                                 <th scope="col">ID</th>
-                                <th scope="col">Solicitud</th>
-                                <th scope="col">Apellido</th>
+                                <th scope="col">Nombre</th>
                                 <th scope="col">Correo Electrónico</th>
                                 <th scope="col">Teléfono</th>
-                                <th scope="col">Estado</th>
+                                <th scope="col">Solución</th>
+                                <th scope="col">Provincia</th>
                                 <th scope="col">Mensaje</th>
                                 <th style="width: 80px; min-width: 80px;">Acción</th>
                             </tr><!-- end tr -->
@@ -67,48 +63,21 @@
                         
                         
                         <tbody>
-                            @foreach ($data as $i => $k)
+                            @foreach ($form as $f)
                                        <tr>
-                                            <td>{{$i    }}</td>
-                                            <td>
-                                                @if($k['solution']=='Fotovoltaica')
-                                                <span class="badge badge-soft-warning mb-0">FOTOVOLTAICA</span>
-                                                @elseif($k['solution']=='Engineering and projects'||$k['solution']=='Ingeniería y proyectos')
-                                                <span class="badge badge-soft-info mb-0">INGENIERÍA Y PROYECTOS</span>
-                                                @elseif($k['solution']=='Aerothermal'||$k['solution']=='Aerotermia')
-                                                <span class="badge badge-soft-primary mb-0">AEROTERMIA</span>
-                                                @elseif($k['solution']=='Climatización')
-                                                <span class="badge badge-soft-danger mb-0">CLIMATIZACIÓN</span>
-                                                @elseif($k['solution']=='Instalación eléctrica'||$k['solution']=='Electrical installation')
-                                                <span class="badge badge-soft-success mb-0">INSTALACIÓN ELECTRICA</span>
-                                                @elseif($k['solution']=='Other'||$k['solution']=='Otro')
-                                                <span class="badge badge-soft-dark mb-0">OTRA</span>
-                                                @elseif($k['solution']=='Energía renovables'||$k['solution']=='Renewable energy')
-                                                <span class="badge badge-soft-light mb-0">ENERGÍAS RENOVABLES</span>
-                                                @elseif($k['solution']=='Invoice study'||$k['solution']=='Estudio de factura')
-                                                <span class="badge badge-soft-secondary mb-0">ESTUDIO DE FACTURA</span>
-                                                @else
-                                                {{($k['solution'])}}
-                                                @endif           
-                                            
-                                            </td>
-                                            <td>{{$k['first_name']}} {{$k['last_name']}}</td>
-                                            <td>{{$k['email']}}</td>                                        
-                                            <td>{{$k['phone']}}</td>
-                                            <td>{{$k['state']}}</td>
-                                            <td style="white-space: normal;">{{$k['message']}}</td>
+                                            <td>{{$f->entry_id}}</td>
+
+                                            @foreach (json_decode($f->fields) as $i)
+                                            <td> {{$i->value}}</td>
+                                            @endforeach
+
                                             <td>
                                                 <div class="d-flex gap-2">
-                                                    <a href="{{--route('lead_edit', $c->id)--}}"><button type="submit" title="EDITAR LEAD" class="btn btn-primary"><i class="fas fa-pencil-alt"></i></button></a>
-                                                    <form action="{{--route('lead_delete', $c->id)--}}" method="POST">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" title="BORRAR USUARIO" class="btn btn-primary"><i class="bx bx-x-circle"></i></button>
-                                                    </form>  
+                                                    <a href={{route('convert_to_lead', $f->entry_id)}}><button type="submit" title="CONVERTIR A LEAD" class="btn btn-primary"><i class="uil-arrow-up-right"></i></button></a>  
                                                 </div>
                                             </td>
                                         </tr>
-                            @endforeach                            
+                            @endforeach                        
 
                             {{--EJEMPLO DE TABLA
                             <tr>
@@ -153,7 +122,7 @@
                 </div><!-- end table responsive -->
 
                 <div class="row g-0 text-center text-sm-start">
-                    <div>{{$formCount->links('layouts.pagination')}}</div>
+                    <div>{{$form->links('layouts.pagination')}}</div>
                 </div><!-- end row -->  
                 <div id="gridjs-temp" class="gridjs-temp"></div>
                 @include('layouts.message')

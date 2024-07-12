@@ -10,7 +10,7 @@
     @endsection
 
 <div class="row">
-    <div class="col-xl-6">
+    <div class="col-xl-9">
         <div class="card card-h-100">
             <div class="card-header justify-content-between d-flex align-items-center">
                 <h4 class="card-title">Agregar Lead</h4>

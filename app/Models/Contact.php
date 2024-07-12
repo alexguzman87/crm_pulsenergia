@@ -53,6 +53,12 @@ class Contact extends Model
 
     }
 
+    public function scopeId_type ($query, $id_type){
+        if ($id_type)
+        return $query->where('id_type', 'Like', "%$id_type%");
+
+    }
+
     public function scopeDate ($query, $created_at){
         if ($created_at)
         return $query->where('created_at', 'Like', "%$created_at%");

@@ -15,6 +15,9 @@ use App\Models\LevelLead;
 use App\Models\Note;
 use App\Models\TypesLead;
 use Illuminate\Support\Facades\DB;
+use App\Exports\LeadsExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 class ContactController extends Controller
 {
@@ -38,6 +41,7 @@ class ContactController extends Controller
             ->name($request->search_name)
             ->email($request->search_email)
             ->phone($request->search_phone)
+            ->id_type($request->search_type)
             ->paginate(25);
         //where('id', 'Like', "%$request->$search_id%")
 
@@ -217,9 +221,18 @@ class ContactController extends Controller
         DB::table("contacts")->where('id',$id)->delete();
         
         DB::table("tasks")->where('id_contact',$id)->delete();
+       
+        DB::table("notes")->where('id_contact',$id)->delete();
+
+        DB::table("file_saves")->where('id_contact',$id)->delete();
         
         Session::flash('danger_red','Los datos del Lead han sido eliminado con éxito');
 
         return redirect()->back();
+    }
+
+    public function export() 
+    {
+        return Excel::download(new LeadsExport, 'leads.xlsx');
     }
 }

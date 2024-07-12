@@ -104,6 +104,8 @@ Route::delete('config_level_lead_delete/{origin}',[ConfigController::class,'dest
 
 //Wordpress Form
 route::get('leadsWeb', [WordpressFormController::class,'ShowForm'])->name('leadsWeb');
+Route::get('convert_to_lead/{lead}',[WordpressFormController::class,'show'])->middleware('auth')->name('convert_to_lead');
+
 
 //generalTask
 Route::get('general_task',[TaskCotroller::class,'index'])->middleware('auth')->name('general_task');
@@ -113,7 +115,10 @@ Route::put('task_change_status/{task}',[TaskCotroller::class,'update_status'])->
 Route::put('task_change_priority/{task}',[TaskCotroller::class,'update_priority'])->middleware('auth')->name('task_change_priority');
 Route::delete('task_delete/{task}',[TaskCotroller::class,'destroy'])->middleware('auth')->name('task_delete');
 
+//XPORT
 
+Route::get('lead_export',[LeadController::class, 'export'])->name('lead_export');
+Route::get('user_export',[UserController::class, 'export'])->name('user_export');
 
 
 
@@ -142,8 +147,7 @@ Route::put('contact_edit/{contact}',[ContactController::class,'update'])->name('
 
 Route::get('send-mail', [MailController::class, 'index'])->name('send-mail');
 
-Route::get('lead_export',[LeadController::class, 'export'])->name('lead_export');
-Route::get('user_export',[UserController::class, 'export'])->name('user_export');
+
 
 
 
