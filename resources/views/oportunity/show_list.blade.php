@@ -28,8 +28,8 @@
                             </div>
                         </div>
                     </div>
-                    @if(auth()->user()->type_user=='admin')
                     <div class="col-auto ms-sm-auto">
+                        @if(auth()->user()->type_user=='admin')
                         <div class="avatar-group justify-content-sm-end">
                             <div class="avatar-group-item">
                                 <a href="/oportunity_list" title="ALL">

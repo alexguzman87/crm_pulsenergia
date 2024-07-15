@@ -1,6 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Charts\MonthlyUsersChart;
+use App\Charts\OportunityChart;
+use App\Charts\TaskPieChart;
 use App\Models\Contact;
 use App\Models\Lead;
 use App\Models\Oportunity;
@@ -8,15 +12,16 @@ use App\Models\Task;
 
 use Illuminate\Http\Request;
 
-class basicController extends Controller
+class BasicController extends Controller
 {
-    public function home (){
+    public function home (TaskPieChart $chart, OportunityChart $chartBar){
         
 
         if(auth()->user()->type_user=='admin'){
         
             $task_process=Task::where('status','en_proceso')->count();
             $task_toDo=Task::where('status','pendiente')->count();
+            $task_do=Task::where('status','hecho')->count();
             $lead = Contact::all()->count();
             $lead_very_likely = Contact::where('id_level','5')->count();
             $budget = Oportunity::sum('budget');
@@ -24,7 +29,7 @@ class basicController extends Controller
             //$lastContactDays7 = Contact::where('created_at', '>=', now()->subDays(7))->count();
             //$lastTaskDays7 = Task::where('created_at', '>=', now()->subDays(7))->count();
 
-            return view ('index', compact('task_process', 'task_toDo', 'lead', 'lead_very_likely','budget','sales'));
+            return view ('index', compact('task_process', 'task_toDo', 'task_do', 'lead', 'lead_very_likely','budget','sales'),['chart' => $chart->build()], ['chartBar' => $chartBar->build()]);
             
         }else{
             $task_process=Task::where('id_user',auth()->user()->id)->where('status','en_proceso')->count();

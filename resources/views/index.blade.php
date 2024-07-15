@@ -10,6 +10,137 @@
         @endcomponent
     @endsection    
  <div class="row">
+    <div class="col-xl-8">
+        <div class="card">
+            <div class="card-body pb-2">
+                <div class="d-flex align-items-start mb-4 mb-xl-0">
+                    <div class="flex-grow-1">
+                        <h5 class="card-title">Invoice Overview</h5>
+                    </div>
+                    <div class="flex-shrink-0">
+                        <div class="dropdown">
+                            <a class="dropdown-toggle text-reset" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="fw-semibold">Sort By:</span> <span class="text-muted">Yearly<i class="mdi mdi-chevron-down ms-1"></i></span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <a class="dropdown-item" href="#">Yearly</a>
+                                <a class="dropdown-item" href="#">Monthly</a>
+                                <a class="dropdown-item" href="#">Weekly</a>
+                                <a class="dropdown-item" href="#">Today</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row align-items-center">
+                    <div class="col-xl-4">
+                        <div class="card bg-light mb-0">
+                            <div class="card-body">
+                                <div class="py-2">
+                                    <h5>Total Revenue:</h5>
+                                    <h2 class="mt-4 pt-1 mb-1">$9,542,00</h2>
+                                    <p class="text-muted font-size-15 text-truncate">From Jan 20,2022 to July,2022</p>
+
+                                    <div class="d-flex mt-4 align-items-center">
+                                        <div id="mini-1" data-colors='["--bs-success"]' class="apex-charts"></div>
+                                        <div class="ms-3">
+                                            <span class="badge bg-danger"><i class="mdi mdi-arrow-down me-1"></i>16.3%</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mt-4">
+                                        <div class="col">
+                                            <div class="d-flex mt-2">
+                                                <i class="mdi mdi-square-rounded font-size-10 text-success mt-1"></i>
+                                                <div class="flex-grow-1 ms-2 ps-1">
+                                                    <h5 class="mb-1">3,526,56</h5>
+                                                    <p class="text-muted text-truncate mb-0">Net Profit</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="d-flex mt-2">
+                                                <i class="mdi mdi-square-rounded font-size-10 text-primary mt-1"></i>
+                                                <div class="flex-grow-1 ms-2 ps-1">
+                                                    <h5 class="mb-1">5,324,85</h5>
+                                                    <p class="text-muted text-truncate mb-0">Net Revenue</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-xl-8">
+                        <div>
+                            <div id="column_chart" data-colors='["--bs-primary", "--bs-primary-rgb, 0.2"]' class="apex-charts" dir="ltr"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="col-xl-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex align-items-start">
+                    <div class="flex-grow-1">
+                        <h5 class="card-title mb-2">Tareas</h5>
+                    </div>
+                    <div class="flex-shrink-0">
+                        <div class="dropdown">
+                            <a class="dropdown-toggle text-muted" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Monthly<i class="mdi mdi-chevron-down ms-1"></i>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <a class="dropdown-item" href="#">Yearly</a>
+                                <a class="dropdown-item" href="#">Monthly</a>
+                                <a class="dropdown-item" href="#">Weekly</a>
+                                <a class="dropdown-item" href="#">Today</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>{!! $chart->container() !!}</div>
+
+                <div class="mt-1 px-2">
+                    <div class="order-wid-list d-flex justify-content-between border-bottom">
+                        <p class="mb-0"><i class="mdi mdi-square-rounded font-size-10 text-success me-2"></i>Hecho</p>
+                        <div>
+                            <span class="pe-5">{{$task_do}}</span>
+                            <span class="badge bg-success"> + 0.1% </span>
+                        </div>
+                    </div>
+                    <div class="order-wid-list d-flex justify-content-between border-bottom">
+                        <p class="mb-0"><i class="mdi mdi-square-rounded font-size-10 text-warning me-2"></i>En Proceso</p>
+                        <div>
+                            <span class="pe-5">{{$task_process}}</span>
+                            <span class="badge bg-warning"> - 0.7% </span>
+                        </div>
+                    </div>
+                    <div class="order-wid-list d-flex justify-content-between">
+                        <p class="mb-0"><i class="mdi mdi-square-rounded font-size-10 text-danger me-2"></i>Pendiente</p>
+                        <div>
+                            <span class="pe-5">{{$task_toDo}}</span>
+                            <span class="badge bg-danger"> + 0.4% </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
     {{-- ********* GRAFICO DE AREAS****
     <div class="col-xl-8">
@@ -886,6 +1017,10 @@
 
 @section('script')
 <!-- apexcharts -->
+
+<script src="{{ $chart->cdn() }}"></script>
+
+{{ $chart->script() }}
 
 <script src="{{ URL::asset('assets/libs/apexcharts/apexcharts.min.js') }}"></script>
 <!-- Vector map-->
