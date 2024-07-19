@@ -28,7 +28,7 @@ use PHPUnit\TextUI\XmlConfiguration\CodeCoverage\Report\Php;
 */
 
 Route::get('/', [BasicController::class, 'home'])->name('home')->middleware('auth');
-Route::view('home', 'index')->name('home')->middleware('auth');
+Route::get('home', [BasicController::class, 'home'])->name('home')->middleware('auth');
 
 //Routes Login
 Route::get('/login', [AuthController::class,'show']);

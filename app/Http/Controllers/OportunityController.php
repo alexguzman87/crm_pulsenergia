@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\OportunityRequest;
 use App\Http\Requests\OportunityEditRequest;
+use App\Models\Country;
 use App\Models\FileSave;
 use App\Models\LevelLead;
 use App\Models\Note;
 use App\Models\Oportunity;
 use App\Models\Origin;
+use App\Models\State;
 use App\Models\Task;
 use App\Models\TypesLead;
 use App\Models\User;
@@ -53,8 +55,12 @@ class OportunityController extends Controller
         $level=LevelLead::all();
 
         $user=User::all();
+
+        $country = Country::all();
+
+        $state = State::orderBy('name')->get();
         
-        return view('oportunity.create', compact('origin', 'type', 'level','user'));
+        return view('oportunity.create', compact('origin', 'type', 'level','user','country','state'));
     }
 
     public function store(OportunityRequest $request)

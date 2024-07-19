@@ -12,10 +12,10 @@
  <div class="row">
     <div class="col-xl-8">
         <div class="card">
-            <div class="card-body pb-2">
+            <div class="card-body">
+                {{--
                 <div class="d-flex align-items-start mb-4 mb-xl-0">
                     <div class="flex-grow-1">
-                        <h5 class="card-title">Invoice Overview</h5>
                     </div>
                     <div class="flex-shrink-0">
                         <div class="dropdown">
@@ -30,55 +30,10 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>--}}
 
                 <div class="row align-items-center">
-                    <div class="col-xl-4">
-                        <div class="card bg-light mb-0">
-                            <div class="card-body">
-                                <div class="py-2">
-                                    <h5>Total Revenue:</h5>
-                                    <h2 class="mt-4 pt-1 mb-1">$9,542,00</h2>
-                                    <p class="text-muted font-size-15 text-truncate">From Jan 20,2022 to July,2022</p>
-
-                                    <div class="d-flex mt-4 align-items-center">
-                                        <div id="mini-1" data-colors='["--bs-success"]' class="apex-charts"></div>
-                                        <div class="ms-3">
-                                            <span class="badge bg-danger"><i class="mdi mdi-arrow-down me-1"></i>16.3%</span>
-                                        </div>
-                                    </div>
-
-                                    <div class="row mt-4">
-                                        <div class="col">
-                                            <div class="d-flex mt-2">
-                                                <i class="mdi mdi-square-rounded font-size-10 text-success mt-1"></i>
-                                                <div class="flex-grow-1 ms-2 ps-1">
-                                                    <h5 class="mb-1">3,526,56</h5>
-                                                    <p class="text-muted text-truncate mb-0">Net Profit</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="d-flex mt-2">
-                                                <i class="mdi mdi-square-rounded font-size-10 text-primary mt-1"></i>
-                                                <div class="flex-grow-1 ms-2 ps-1">
-                                                    <h5 class="mb-1">5,324,85</h5>
-                                                    <p class="text-muted text-truncate mb-0">Net Revenue</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="col-xl-8">
-                        <div>
-                            <div id="column_chart" data-colors='["--bs-primary", "--bs-primary-rgb, 0.2"]' class="apex-charts" dir="ltr"></div>
-                        </div>
-                    </div>
+                    <div>{!! $chartBar->container() !!}</div>
                 </div>
 
             </div>
@@ -89,6 +44,7 @@
     <div class="col-xl-4">
         <div class="card">
             <div class="card-body">
+                {{--
                 <div class="d-flex align-items-start">
                     <div class="flex-grow-1">
                         <h5 class="card-title mb-2">Tareas</h5>
@@ -107,7 +63,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>--}}
 
                 <div>{!! $chart->container() !!}</div>
 
@@ -116,21 +72,21 @@
                         <p class="mb-0"><i class="mdi mdi-square-rounded font-size-10 text-success me-2"></i>Hecho</p>
                         <div>
                             <span class="pe-5">{{$task_do}}</span>
-                            <span class="badge bg-success"> + 0.1% </span>
+                            <span class="badge bg-success"> {{$task_do/($task_do + $task_process + $task_toDo)*100}} % </span>
                         </div>
                     </div>
                     <div class="order-wid-list d-flex justify-content-between border-bottom">
                         <p class="mb-0"><i class="mdi mdi-square-rounded font-size-10 text-warning me-2"></i>En Proceso</p>
                         <div>
                             <span class="pe-5">{{$task_process}}</span>
-                            <span class="badge bg-warning"> - 0.7% </span>
+                            <span class="badge bg-warning"> {{$task_process/($task_do + $task_process + $task_toDo)*100}} % </span>
                         </div>
                     </div>
                     <div class="order-wid-list d-flex justify-content-between">
                         <p class="mb-0"><i class="mdi mdi-square-rounded font-size-10 text-danger me-2"></i>Pendiente</p>
                         <div>
                             <span class="pe-5">{{$task_toDo}}</span>
-                            <span class="badge bg-danger"> + 0.4% </span>
+                            <span class="badge bg-danger"> {{$task_toDo/($task_do + $task_process + $task_toDo)*100}} % </span>
                         </div>
                     </div>
                 </div>
@@ -138,6 +94,152 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="row">
+    <div class="col-xl-4">
+        <div class="card">
+            <div class="card-body">
+                <div>{!! $chartRegion->container() !!}</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-xl-8">
+        <div class="card">
+            <div class="card-body">
+                <div class="flex-grow-1">
+                    <h5 class="card-title mb-2" style="color: #ADB5BD">Tareas próximas a vencerse</h5>
+                </div>
+                <div class="table-responsive">
+                    <table class="table align-middle table-nowrap table-check">
+                        <thead>
+                            <tr>
+                                <th style="width: 15%; min-width: 80px;">Responsable</th>
+                                <th style="width: 5%; min-width: 80px;">Origen</th>
+                                <th style="width: 5%; min-width: 80px;">Prioridad</th>
+                                <th style="width: 5%; min-width: 80px;">Estado</th> 
+                                <th style="width: 15%; min-width: 80px;">Cliente</th>
+                                <th style="width: 55%; min-width: 80px;">Tarea</th>
+                            </tr><!-- end tr -->
+                        </thead><!-- end thead -->
+                        {{--
+                            <span class="badge badge-soft-warning mb-0">MEDIA</span> ***FONDO AMARILLO***
+                            <span class="badge badge-soft-info mb-0">INGENIERÍA Y PROYECTOS</span> ***FONDO AZUL******
+                            <span class="badge badge-soft-primary mb-0">AEROTERMIA</span> ***FONDO MORADO******
+                            <span class="badge badge-soft-success mb-0">BAJA</span> ***FONDO VERDE******
+                            <span class="badge badge-soft-danger mb-0">ALTA</span> ***FONDO ROJO******
+                            <span class="badge badge-soft-secondary mb-0">ESTUDIO DE FACTURA</span> ***FONDO GRIS******
+                            <span class="badge badge-soft-light mb-0">ENERGÍAS RENOVABLES</span> ***FONDO GRIS******
+                            <span class="badge badge-soft-dark mb-0">OTRA</span> ***FONDO GRIS******
+
+
+                        --}}
+                        
+                        
+                        <tbody>
+                            @foreach ($task as $t)
+                                       <tr>
+                                            <td>
+                                                @if($t->user->image)<img src={{URL::asset('images/'.$t->user->image)}} alt="" class="avatar-sm rounded-circle me-2">
+                                                @else<img src={{URL::asset('images/user/Sin-Perfil-Hombre.png')}} alt="" class="avatar-sm rounded-circle me-2">
+                                                @endif
+                                                {{strtoupper($t->user->name)}}
+                                            </td>    
+                                            <td>
+                                                @if($t->task_origin == 'lead')
+                                                    <span class="badge badge-soft-primary font-size-11">Lead</span>
+                                                @elseif($t->task_origin == 'oportunity')
+                                                <span class="badge badge-soft-secondary font-size-11">Oportunidad</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <div class="dropdown">
+                                                    <a class="btn btn-link text-dark dropdown-toggle shadow-none" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                        <i>
+                                                            @if ($t->priority=='alta')
+                                                            <span class="badge badge-soft-danger mb-0">ALTA</span>
+                                                            @elseif($t->priority=='media')
+                                                            <span class="badge badge-soft-warning mb-0">MEDIA</span>
+                                                            @elseif($t->priority=='baja')
+                                                            <span class="badge badge-soft-success mb-0">BAJA</span>
+                                                            @endif
+                                                        </i>
+                                                    </a>
+                                                    <ul class="dropdown-menu dropdown-menu-center">
+                                                        <form action="{{route('task_change_priority', $t->id)}}" method="POST">
+                                                            @csrf
+                                                            @method('PUT')
+                                                            <input type="hidden" name="priority" value="alta">
+                                                            <button style="border: none; width: 100%; color: #ef7564; background-color: white;" type="submit">ALTA</button>                                                            
+                                                        </form>
+                                                        <form action="{{route('task_change_priority', $t->id)}}" method="POST">
+                                                            @csrf
+                                                            @method('PUT')
+                                                            <input type="hidden" name="priority" value="media">
+                                                            <button style="border: none; width: 100%; color: #ffb968; background-color: white;" type="submit">MEDIA</button>                                                            
+                                                        </form>
+                                                        <form action="{{route('task_change_priority', $t->id)}}" method="POST">
+                                                            @csrf
+                                                            @method('PUT')
+                                                            <input type="hidden" name="priority" value="baja">
+                                                            <button style="border: none; width: 100%; color: #7bc86c; background-color: white;" type="submit">BAJA</button>                                                            
+                                                        </form>
+                                                    </ul>
+                                                </div><!-- end dropdown -->
+                                            </td>
+                                            <td>
+                                                <div class="dropdown">
+                                                    <a class="btn btn-link text-dark dropdown-toggle shadow-none" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                        <i>
+                                                            @if ($t->status=='pendiente')
+                                                            <span class="badge badge-soft-danger mb-0">PENDIENTE</span>
+                                                            @elseif($t->status=='en_proceso')
+                                                            <span class="badge badge-soft-warning mb-0">EN PROCESO</span>
+                                                            @elseif($t->status=='hecho')
+                                                            <span class="badge badge-soft-success mb-0">HECHO</span>
+                                                            @endif
+                                                        </i>
+                                                    </a>
+                                                    <ul class="dropdown-menu dropdown-menu-center">
+                                                        <form action="{{route('task_change_status', $t->id)}}" method="POST">
+                                                            @csrf
+                                                            @method('PUT')
+                                                            <input type="hidden" name="status" value="pendiente">
+                                                            <button style="border: none; width: 100%; color: #ef7564; background-color: white;" type="submit">PENDIENTE</button>                                                            
+                                                        </form>
+                                                        <form action="{{route('task_change_status', $t->id)}}" method="POST">
+                                                            @csrf
+                                                            @method('PUT')
+                                                            <input type="hidden" name="status" value="en_proceso">
+                                                            <button style="border: none; width: 100%; color: #ffb968; background-color: white;" type="submit">EN PROCESO</button>                                                            
+                                                        </form>
+                                                        <form action="{{route('task_change_status', $t->id)}}" method="POST">
+                                                            @csrf
+                                                            @method('PUT')
+                                                            <input type="hidden" name="status" value="hecho">
+                                                            <button style="border: none; width: 100%; color: #7bc86c; background-color: white;" type="submit">HECHO</button>                                                            
+                                                        </form>
+                                                    </ul>
+                                                </div><!-- end dropdown -->
+                                            </td>    
+                                            <td>
+                                                @if ($t->task_origin == 'lead')
+                                                    {{strtoupper($t->contact->name)}}
+                                                @elseif($t->task_origin == 'oportunity')
+                                                    {{strtoupper($t->oportunity->contact_name)}}
+                                                @endif
+                                                </td>
+                                            <td>{{$t->task}}</td>                                            
+                                        </tr>
+                            @endforeach
+                        </tbody><!-- end tbody -->
+                    </table><!-- end table -->
+                </div><!-- end table responsive -->
+
+            </div>
+        </div>
+    </div>    
 </div>
 
 
@@ -1021,6 +1123,15 @@
 <script src="{{ $chart->cdn() }}"></script>
 
 {{ $chart->script() }}
+
+<script src="{{ $chartBar->cdn() }}"></script>
+
+{{ $chartBar->script() }}
+
+<script src="{{ $chartRegion->cdn() }}"></script>
+
+{{ $chartRegion->script() }}
+
 
 <script src="{{ URL::asset('assets/libs/apexcharts/apexcharts.min.js') }}"></script>
 <!-- Vector map-->

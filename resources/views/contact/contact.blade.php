@@ -63,21 +63,21 @@
                     <table class="table align-middle table-nowrap table-check">
                         <thead>
                             <tr>
+                                <th scope="col">ID</th>
                                 <th scope="col">Responsable</th>
                                 <th scope="col">Imagen</th>
-                                <th scope="col">Contacto</th>
+                                <th scope="col">Creado</th>
                                 <th scope="col">Origen</th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Email</th>
-                                <th scope="col">Email 2</th>
                                 <th scope="col">Teléfono</th>
-                                <th scope="col">Teléfono 2</th>
                                 <th style="width: 80px; min-width: 80px;">Acción</th>
                             </tr><!-- end tr -->
                         </thead><!-- end thead -->
                         <tbody>
                             @foreach ( $contact as $c )
                             <tr>
+                                <td>{{$c->id}}</td>
                                 <td>
                                     @if($c->id_user)
                                     <span class="badge badge-soft-success mb-0">{{strtoupper($c->user->name)}}</span>
@@ -94,16 +94,14 @@
                                 <td>{{$c->origin->name}}</td>
                                 <td>{{$c->name}}</td>
                                 <td>{{$c->email}}</td>
-                                <td>{{$c->second_email}}</td>
                                 <td>{{$c->phone}}</td>
-                                <td>{{$c->second_phone}}</td>
                                 <td>
                                     <div class="d-flex gap-2">
                                         <a href="{{route('lead_edit', $c->id)}}"><button type="submit" title="EDITAR LEAD" class="btn btn-primary"><i class="uil-eye"></i></button></a>
                                         <form action="{{route('lead_delete', $c->id)}}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" title="BORRAR USUARIO" class="btn btn-primary"><i class="bx bx-x-circle"></i></button>
+                                            <button type="submit" title="BORRAR LEAD" class="btn btn-primary"><i class="bx bx-x-circle"></i></button>
                                         </form>
                                         <a href={{route('convert_to_oportunity', $c->id)}}><button type="submit" title="CONVERTIR A OPORTUNIDAD" class="btn btn-primary"><i class="uil-arrow-up-right"></i></button></a>    
                                     </div>

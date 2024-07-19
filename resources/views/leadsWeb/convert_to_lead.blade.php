@@ -42,22 +42,16 @@
                                                 @elseif($i->name=='state') Origen
                                                 @elseif($i->name=='mensaje') Mensaje
                                                 @endif
-                                            value={{$i->value}}>    
+                                            value={{$i->value}}
+                                            required>    
                                     </div>
                                         @endforeach
                                     @endforeach
                                 </div>
                                 <div class="row">
+                                    <input type="hidden" value="1" name="id_origins">
                                     <div class="col">
-                                        <select name="id_origins" class="form-select">
-                                            <option value="" selected disabled hidden>Origen del Lead</option>
-                                            @foreach ($origin as $o)
-                                                <option value="{{$o->id}}">{{$o->name}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <div class="col">
-                                        <select name="id_level" class="form-select">
+                                        <select name="id_level" class="form-select" required>
                                             <option value="" selected disabled hidden>Nivel del Lead</option>
                                             @foreach ($level as $l)
                                                 <option value="{{$l->id}}">{{$l->name}}</option>
@@ -65,7 +59,7 @@
                                         </select>
                                     </div>
                                     <div class="col">
-                                        <select name="id_type" class="form-select">
+                                        <select name="id_type" class="form-select" required>
                                             <option value="" selected disabled hidden>Tipo del Lead</option>
                                             @foreach ($type as $t)
                                                 <option value="{{$t->id}}">{{$t->name}}</option>

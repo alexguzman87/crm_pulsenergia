@@ -32,13 +32,13 @@
                                         <input type="hidden" name="id_oportunity" value={{$task->id}}>
                                         <input type="hidden" name="task_origin" value='{{$task->task_origin}}'>
                                         <input type="hidden" name="id_user" value={{$task->id_user}}>
-                                        <input type="text" name="task" class="form-control" placeholder="Nombre de la Tarea" value="{{$task->task}}">
+                                        <input type="text" name="task" class="form-control" placeholder="Nombre de la Tarea" value="{{$task->task}}" required>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="mb-3">
                                                 <label class="form-label" for="formrow-firstname-input">PRIORIDAD</label>
-                                                <select class="form-control" name="priority">
+                                                <select class="form-control" name="priority" required>
                                                     <option value="" disabled selected>PRIORIDAD</option>
                                                     <option value="alta" style="border: none; width: 100%; color: #ef7564; background-color: white;">ALTA</option>
                                                     <option value="media" style="border: none; width: 100%; color: #ffb968; background-color: white;">MEDIA</option>
@@ -49,7 +49,7 @@
                                         <div class="col-md-6">
                                             <div class="mb-3">
                                                 <label class="form-label" for="formrow-firstname-input">ESTADO</label>
-                                                <select class="form-control" name="status">
+                                                <select class="form-control" name="status" required>
                                                     <option value=""disabled selected>ESTADO</option>
                                                     <option value="pendiente" style="border: none; width: 100%; color: #ef7564; background-color: white;">PENDIENTE</option>
                                                     <option value="en_proceso" style="border: none; width: 100%; color: #ffb968; background-color: white;">EN PROCESO</option>

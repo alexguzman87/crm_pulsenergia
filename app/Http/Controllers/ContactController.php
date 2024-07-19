@@ -16,8 +16,9 @@ use App\Models\Note;
 use App\Models\TypesLead;
 use Illuminate\Support\Facades\DB;
 use App\Exports\LeadsExport;
+use App\Models\Country;
+use App\Models\State;
 use Maatwebsite\Excel\Facades\Excel;
-
 
 class ContactController extends Controller
 {
@@ -64,9 +65,13 @@ class ContactController extends Controller
 
         $type=TypesLead::orderBy('name')->get();
 
+        $country = Country::all();
+
+        $state = State::orderBy('name')->get();
+
         $user=User::all();
        
-        return view('contact.Create',compact('origin','type','level','user'));
+        return view('contact.Create',compact('origin','type','level','user', 'country','state'));
     }
 
     /**

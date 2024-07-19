@@ -33,68 +33,68 @@
                         @endif
                         <div class="mb-3">
                             <input type="hidden" name="id_contact" class="form-control" placeholder="Titulo" value="{{$contact->id}}">
-                            <input type="text" name="title" class="form-control" placeholder="Titulo" value="{{ old('title') }}">
+                            <input type="text" name="title" class="form-control" placeholder="Titulo" value="{{ old('title') }}" required>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <input type="text" name="contact_name" class="form-control" placeholder="Nombre del contacto" value="{{$contact->name}}">
+                                    <input type="text" name="contact_name" class="form-control" placeholder="Nombre del contacto" value="{{$contact->name}}" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <input type="text" name="organization" class="form-control" placeholder="Organización"  value="{{ old('organization') }}">                                    
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <input type="email" name="email" class="form-control" placeholder="Correo Electrónico"  value="{{$contact->email}}">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <input type="number" name="phone" class="form-control" placeholder="Teléfono" value="{{$contact->phone}}">                                    
+                                    <input type="text" name="organization" class="form-control" placeholder="Organización"  value="{{ old('organization') }}" required>                                    
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <input type="text" name="country" class="form-control" placeholder="País" value="{{$contact->country}}">
+                                    <input type="email" name="email" class="form-control" placeholder="Correo Electrónico"  value="{{$contact->email}}" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <input type="text" name="state" class="form-control" placeholder="Estado / Provincia/ Región" value="{{$contact->state}}">                                    
+                                    <input type="number" name="phone" class="form-control" placeholder="Teléfono" value="{{$contact->phone}}" required>                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <input type="text" name="country" class="form-control" placeholder="País" value="{{$contact->country}}" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <input type="text" name="state" class="form-control" placeholder="Estado / Provincia/ Región" value="{{$contact->state}}" required>                                    
                                 </div>
                             </div>
                         </div>
                         <div class="mb-3">
-                            <input type="text" name="address" class="form-control" placeholder="Dirección" value="{{$contact->address}}">
+                            <input type="text" name="address" class="form-control" placeholder="Dirección" value="{{$contact->address}}" required>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <input type="text" name="city" class="form-control" placeholder="Ciudad" value="{{$contact->city}}">
+                                    <input type="text" name="city" class="form-control" placeholder="Ciudad" value="{{$contact->city}}" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <input type="number" name="postal_code" class="form-control" placeholder="Código Postal" value="{{$contact->postal_code}}">                                    
+                                    <input type="number" name="postal_code" class="form-control" placeholder="Código Postal" value="{{$contact->postal_code}}" required>                                    
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="mb-3">
-                                    <input type="number" name="budget" class="form-control" placeholder="Presupuesto" value="{{ old('budget') }}">
+                                    <input type="number" name="budget" class="form-control" placeholder="Presupuesto" value="{{ old('budget') }}" required>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="mb-3">
-                                    <select name="status" class="form-select" value="">
+                                    <select name="status" class="form-select" value="" required>
                                         <option value="oportunity">Oportunidad</option>
                                         <option value="proposal">En Propuesta</option>
                                         <option value="need">Necesito Apoyo</option>
@@ -117,7 +117,7 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="mb-3">
-                                    <select name="id_origins" class="form-select">
+                                    <select name="id_origins" class="form-select" required>
                                         <option value="" selected disabled hidden>Origen Oportunidad</option>
                                         @foreach ($origin as $o)
                                             <option value="{{$o->id}}">{{$o->name}}</option>
@@ -127,7 +127,7 @@
                             </div><!-- end row -->
                             <div class="col-md-4">
                                 <div class="mb-3">
-                                    <select name="id_level" class="form-select">
+                                    <select name="id_level" class="form-select" required>
                                         <option value="" selected disabled hidden>Nivel Oportunidad</option>
                                         @foreach ($level as $l)
                                             <option value="{{$l->id}}">{{$l->name}}</option>
@@ -137,7 +137,7 @@
                             </div><!-- end row -->
                             <div class="col-md-4">
                                 <div class="mb-3">
-                                    <select name="id_type" class="form-select">
+                                    <select name="id_type" class="form-select" required>
                                         <option value="" selected disabled hidden>Tipo Oportunidad</option>
                                         @foreach ($type as $t)
                                             <option value="{{$t->id}}">{{$t->name}}</option>
@@ -147,7 +147,7 @@
                             </div><!-- end row -->
                         </div><!-- end row -->
                         <div class="mb-3">
-                            <textarea name="description" class="form-control" cols="30" rows="10" placeholder="Descripción" value="{{ old('description') }}"></textarea>
+                            <textarea name="description" class="form-control" cols="30" rows="10" placeholder="Descripción" value="{{ old('description') }}" required></textarea>
                         </div>
                         <div class="mt-4">
                             <a href="/oportunity"><button type="button" class="btn btn-light w-sm" data-bs-dismiss="modal">Cancelar</button></a>

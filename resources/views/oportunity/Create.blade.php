@@ -32,68 +32,81 @@
                             <input type="hidden" name="id_user" class="form-control" value={{auth()->user()->id}}>
                         @endif
                         <div class="mb-3">
-                            <input type="text" name="title" class="form-control" placeholder="Titulo" value="{{ old('title') }}">
+                            <input type="text" name="title" class="form-control" placeholder="Titulo" value="{{ old('title') }}" required>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <input type="text" name="contact_name" class="form-control" placeholder="Nombre del contacto" value="{{ old('contact_name') }}">
+                                    <input type="text" name="contact_name" class="form-control" placeholder="Nombre del contacto" value="{{ old('contact_name') }}" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <input type="text" name="organization" class="form-control" placeholder="Organización"  value="{{ old('organization') }}">                                    
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <input type="email" name="email" class="form-control" placeholder="Correo Electrónico"  value="{{ old('email') }}">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <input type="number" name="phone" class="form-control" placeholder="Teléfono" value="{{ old('phone') }}">                                    
+                                    <input type="text" name="organization" class="form-control" placeholder="Organización"  value="{{ old('organization') }}" required>                                    
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <input type="text" name="country" class="form-control" placeholder="País" value="{{ old('country') }}">
+                                    <input type="email" name="email" class="form-control" placeholder="Correo Electrónico"  value="{{ old('email') }}" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <input type="text" name="state" class="form-control" placeholder="Estado / Provincia/ Región" value="{{ old('state') }}">                                    
+                                    <input type="number" name="phone" class="form-control" placeholder="Teléfono" value="{{ old('phone') }}" required>                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">                                            
+                                    <select name="country" class="form-select" id="country" onchange="" required>
+                                        <option value="" selected disabled hidden>País</option>
+                                        @foreach ($country as $c)
+                                            <option value="{{$c->name}}">{{$c->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    {{--Aqui esta el codigo de españa complementado con el script--}}
+                                    <select name="state" Style="display:none" class="form-select" id="spain" onchange="" required>
+                                        <option value="" selected disabled hidden>Provincia</option>
+                                        @foreach ($state as $s)
+                                            <option value="{{$s->name}}">{{$s->name}}</option>
+                                        @endforeach
+                                    </select>
+                                    {{--Aqui esta el input de no ser españa--}}
+                                    <input type="text" id="non_spain" Style="display:none" name="state" class="form-control" placeholder="Provincia" value="{{ old('state') }}" required>                                    
                                 </div>
                             </div>
                         </div>
                         <div class="mb-3">
-                            <input type="text" name="address" class="form-control" placeholder="Dirección" value="{{ old('address') }}">
+                            <input type="text" name="address" class="form-control" placeholder="Dirección" value="{{ old('address') }}"  required>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <input type="text" name="city" class="form-control" placeholder="Ciudad" value="{{ old('city') }}">
+                                    <input type="text" name="city" class="form-control" placeholder="Ciudad" value="{{ old('city') }}" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <input type="number" name="postal_code" class="form-control" placeholder="Código Postal" value="{{ old('postal_code') }}">                                    
+                                    <input type="number" name="postal_code" class="form-control" placeholder="Código Postal" value="{{ old('postal_code') }}" required>                                    
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="mb-3">
-                                    <input type="number" name="budget" class="form-control" placeholder="Presupuesto" value="{{ old('budget') }}">
+                                    <input type="number" name="budget" class="form-control" placeholder="Presupuesto" value="{{ old('budget') }}" required>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="mb-3">
-                                    <select name="status" class="form-select" value="{{ old('status') }}">
+                                    <select name="status" class="form-select" value="{{ old('status') }}" required>
                                         <option value="oportunity">Oportunidad</option>
                                         <option value="proposal">En Propuesta</option>
                                         <option value="need">Necesito Apoyo</option>
@@ -109,14 +122,14 @@
                             </div><!-- end row -->
                             <div class="col-md-3">
                                 <div class="mb-3">
-                                    <input id="pi_input" name="probability" class="form-range mt-2" type="range" min="0" max="100" step="10" value="{{ old('probability') }}"/>
+                                    <input id="pi_input" name="probability" class="form-range mt-2" type="range" min="0" max="100" step="10" value="{{ old('probability') }}" required/>
                                 </div>
                             </div><!-- end col -->
                         </div><!-- end row -->
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="mb-3">
-                                    <select name="id_origins" class="form-select">
+                                    <select name="id_origins" class="form-select" required>
                                         <option value="" selected disabled hidden>Origen Oportunidad</option>
                                         @foreach ($origin as $o)
                                             <option value="{{$o->id}}">{{$o->name}}</option>
@@ -126,7 +139,7 @@
                             </div><!-- end row -->
                             <div class="col-md-4">
                                 <div class="mb-3">
-                                    <select name="id_level" class="form-select">
+                                    <select name="id_level" class="form-select" required>
                                         <option value="" selected disabled hidden>Nivel Oportunidad</option>
                                         @foreach ($level as $l)
                                             <option value="{{$l->id}}">{{$l->name}}</option>
@@ -136,7 +149,7 @@
                             </div><!-- end row -->
                             <div class="col-md-4">
                                 <div class="mb-3">
-                                    <select name="id_type" class="form-select">
+                                    <select name="id_type" class="form-select" required>
                                         <option value="" selected disabled hidden>Tipo Oportunidad</option>
                                         @foreach ($type as $t)
                                             <option value="{{$t->id}}">{{$t->name}}</option>
@@ -146,7 +159,7 @@
                             </div><!-- end row -->
                         </div><!-- end row -->
                         <div class="mb-3">
-                            <textarea name="description" class="form-control" cols="30" rows="10" placeholder="Descripción" value="{{ old('description') }}"></textarea>
+                            <textarea name="description" class="form-control" cols="30" rows="10" placeholder="Descripción" value="{{ old('description') }}" required></textarea>
                         </div>
                         <div class="mt-4">
                             <a href="/oportunity"><button type="button" class="btn btn-light w-sm" data-bs-dismiss="modal">Cancelar</button></a>
@@ -165,13 +178,38 @@
 @section('script')
 
 <script>
-const value = document.querySelector("#value");
+    const value = document.querySelector("#value");
     const input = document.querySelector("#pi_input");
     value.textContent = input.value;
     input.addEventListener("input", (event) => {
       value.textContent = event.target.value;
     });
-    </script>
+
+    var spain = document.getElementById('spain');
+    var non_spain = document.getElementById('non_spain');
+    var country = document.getElementById("country");
+    
+    
+    country.addEventListener("change", () => {
+      if (country.value === "España") {
+        spain.style.display = 'initial';
+        non_spain.style.display = 'none';
+        non_spain.removeAttribute("required");
+        non_spain.removeAttribute("name");
+        spain.setAttribute("name", "state");
+        spain.required = true;
+      } else {
+        non_spain.style.display = 'initial';
+        spain.style.display = 'none';
+        spain.removeAttribute("required");
+        spain.removeAttribute("name");
+        non_spain.setAttribute("name", "state");
+        non_spain.required = true;
+      }
+    });
+
+</script>
+
 <script src="{{ URL::asset('assets/js/app.js') }}"></script>
 
 @endsection

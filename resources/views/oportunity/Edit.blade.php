@@ -296,11 +296,11 @@
                                         <input type="hidden" name="id_oportunity" value={{$oportunity->id}}>
                                         <input type="hidden" name="task_origin" value='oportunity'>
                                         <input type="hidden" name="id_user" value={{$oportunity->user->id}}>
-                                        <input type="text" name="task" class="form-control" placeholder="Descripción de la Tarea...">
+                                        <input type="text" name="task" class="form-control" placeholder="Descripción de la Tarea..." required>
                                     </div>
                                     <div class="row">
                                         <div class="col">
-                                            <select class="form-control" name="priority">
+                                            <select class="form-control" name="priority" required>
                                                 <option value="" disabled selected>PRIORIDAD</option>
                                                 <option value="alta" style="border: none; width: 100%; color: #ef7564; background-color: white;">ALTA</option>
                                                 <option value="media" style="border: none; width: 100%; color: #ffb968; background-color: white;">MEDIA</option>
@@ -432,7 +432,7 @@
                                 <div class="mb-3">
                                     <input type="hidden" name="task_origin" value='oportunity'>
                                     <input type="hidden" name="id_oportunity" value={{$oportunity->id}}>
-                                    <textarea name="notes" placeholder="Escribe aquí las notas..." class="form-control" cols="30" rows="10"></textarea>
+                                    <textarea name="notes" placeholder="Escribe aquí las notas..." class="form-control" cols="30" rows="10" required></textarea>
                                 </div>
                                 <div class="modal-footer">
                                     <div class="mt-4">
@@ -474,10 +474,10 @@
                                                 <div class="mb-3">
                                                     <input type="hidden" name="task_origin" value='oportunity'>
                                                     <input type="hidden" name="id_oportunity" value={{$oportunity->id}}>
-                                                    <input name="fileName" type="text" class="form-control" placeholder="Nombre / Descripción del archivo">
+                                                    <input name="fileName" type="text" class="form-control" placeholder="Nombre / Descripción del archivo" required>
                                                 </div>
                                                 <div class="fallback">
-                                                    <input name="file" type="file" multiple="multiple">
+                                                    <input name="file" type="file" multiple="multiple" required>
                                                 </div>
                                                 <div class="dz-message needsclick text-center">
                                                     <div class="mb-3">
@@ -532,10 +532,10 @@
                                         <input type="hidden" name="email" class="form-control" value="{{$oportunity->title}}">
                                     </div>
                                     <div class="mb-3">
-                                        <input type="text" name="title" class="form-control" placeholder="Asunto">
+                                        <input type="text" name="title" class="form-control" placeholder="Asunto" required>
                                     </div>
                                     <div class="mb-3">
-                                        <textarea name="body" id=""  class="form-control" placeholder="Escribe aquí tu mensaje" cols="20" rows="5"></textarea>
+                                        <textarea name="body" id=""  class="form-control" placeholder="Escribe aquí tu mensaje" cols="20" rows="5" required></textarea>
                                     </div>
                                     <!--<div class="card-body">
                                         <div id="ckeditor-classic" name="body"></div>

@@ -102,7 +102,7 @@
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Tarea</th>
                                 <th scope="col">Fecha Inicio</th>
-                                <th scope="col">Fecha Realizado</th>
+                                <th scope="col">Fecha Fin</th>
                                 <th style="width: 80px; min-width: 80px;">Acción</th>
                             </tr><!-- end tr -->
                         </thead><!-- end thead -->
