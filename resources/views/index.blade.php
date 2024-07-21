@@ -72,21 +72,21 @@
                         <p class="mb-0"><i class="mdi mdi-square-rounded font-size-10 text-success me-2"></i>Hecho</p>
                         <div>
                             <span class="pe-5">{{$task_do}}</span>
-                            <span class="badge bg-success"> {{$task_do/($task_do + $task_process + $task_toDo)*100}} % </span>
+                            <span class="badge bg-success"> @if ($task_sum!=0) {{$task_do/($task_sum)*100}}@else 0 % @endif</span>
                         </div>
                     </div>
                     <div class="order-wid-list d-flex justify-content-between border-bottom">
                         <p class="mb-0"><i class="mdi mdi-square-rounded font-size-10 text-warning me-2"></i>En Proceso</p>
                         <div>
                             <span class="pe-5">{{$task_process}}</span>
-                            <span class="badge bg-warning"> {{$task_process/($task_do + $task_process + $task_toDo)*100}} % </span>
+                            <span class="badge bg-warning"> @if ($task_sum!=0) {{$task_process/($task_sum)*100}}@else 0 % @endif</span>
                         </div>
                     </div>
                     <div class="order-wid-list d-flex justify-content-between">
                         <p class="mb-0"><i class="mdi mdi-square-rounded font-size-10 text-danger me-2"></i>Pendiente</p>
                         <div>
                             <span class="pe-5">{{$task_toDo}}</span>
-                            <span class="badge bg-danger"> {{$task_toDo/($task_do + $task_process + $task_toDo)*100}} % </span>
+                            <span class="badge bg-danger"> @if ($task_sum!=0) {{$task_toDo/($task_sum)*100}}@else 0 % @endif</span>
                         </div>
                     </div>
                 </div>

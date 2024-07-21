@@ -25,6 +25,7 @@ class BasicController extends Controller
             $task_process=Task::where('status','en_proceso')->count();
             $task_toDo=Task::where('status','pendiente')->count();
             $task_do = Task::where('status','hecho')->count();
+            $task_sum = $task_process + $task_toDo + $task_do;
             $lead = Contact::all()->count();
             $lead_very_likely = Contact::where('id_level','5')->count();
             $budget = Oportunity::sum('budget');
@@ -32,13 +33,14 @@ class BasicController extends Controller
             //$lastContactDays7 = Contact::where('created_at', '>=', now()->subDays(7))->count();
             //$lastTaskDays7 = Task::where('created_at', '>=', now()->subDays(7))->count();
 
-            return view ('index', compact('task_process', 'task_toDo', 'task_do', 'lead', 'lead_very_likely','budget','sales', 'task'), ['chart' => $chart->build(),'chartBar' => $chartBar->build(), 'chartRegion' => $chartRegion->build()],);
+            return view ('index', compact('task_process', 'task_toDo', 'task_do', 'lead', 'lead_very_likely','budget','sales', 'task', 'task_sum'), ['chart' => $chart->build(),'chartBar' => $chartBar->build(), 'chartRegion' => $chartRegion->build()],);
             
         }else{
             $task=Task::where('id_user',auth()->user()->id)->where('done_date', '>=', now()->subDays(7))->get();
             $task_process=Task::where('id_user',auth()->user()->id)->where('status','en_proceso')->count();
             $task_toDo=Task::where('id_user',auth()->user()->id)->where('status','pendiente')->count();
             $task_do = Task::where('id_user',auth()->user()->id)->where('status','hecho')->count();
+            $task_sum = $task_process + $task_toDo + $task_do;
             $lead = Contact::where('id_user',auth()->user()->id)->count();
             $lead_very_likely = Contact::where('id_user',auth()->user()->id)->where('id_level','5')->count();
             $budget = Oportunity::where('id_user',auth()->user()->id)->sum('budget');
@@ -46,7 +48,7 @@ class BasicController extends Controller
             //$lastContactDays7 = Contact::where('created_at', '>=', now()->subDays(7))->count();
             //$lastTaskDays7 = Task::where('created_at', '>=', now()->subDays(7))->count();
 
-            return view ('index', compact('task_process', 'task_toDo', 'task_do', 'lead', 'lead_very_likely','budget','sales', 'task'), ['chart' => $chart->build_id(auth()->user()->id),'chartBar' => $chartBar->build_id(auth()->user()->id), 'chartRegion' => $chartRegion->build_id(auth()->user()->id)]);
+            return view ('index', compact('task_process', 'task_toDo', 'task_do', 'lead', 'lead_very_likely','budget','sales', 'task', 'task_sum'), ['chart' => $chart->build_id(auth()->user()->id),'chartBar' => $chartBar->build_id(auth()->user()->id), 'chartRegion' => $chartRegion->build_id(auth()->user()->id)]);
         }    
     }
     

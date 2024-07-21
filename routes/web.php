@@ -15,6 +15,7 @@ use App\Http\Controllers\OportunityController;
 use App\Http\Controllers\SaveFilesController;
 use App\Http\Controllers\WordpressFormController;
 use PHPUnit\TextUI\XmlConfiguration\CodeCoverage\Report\Php;
+use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -155,7 +156,12 @@ Route::put('contact_edit/{contact}',[ContactController::class,'update'])->name('
 Route::get('send-mail', [MailController::class, 'index'])->name('send-mail');
 
 
-
+Route::get('/optimize-clear', function(){
+    Artisan::call('optimize:clear');
+    Artisan::call('cache:clear');
+    Artisan::call('view:clear');
+    echo 'Cache cleared successfully!';
+});
 
 
 
