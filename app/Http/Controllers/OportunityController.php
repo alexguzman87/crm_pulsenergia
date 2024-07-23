@@ -141,7 +141,11 @@ class OportunityController extends Controller
 
         $level=LevelLead::all();
 
-        return view ('oportunity.Edit', compact('oportunity', 'user', 'task','notes','file', 'origin', 'type', 'level'));
+        $country = Country::all();
+
+        $state = State::all();
+
+        return view ('oportunity.Edit', compact('oportunity', 'user', 'task','notes','file', 'origin', 'type', 'level', 'state', 'country'));
 
     }
 

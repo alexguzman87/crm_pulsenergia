@@ -27,10 +27,10 @@
                                         <form action="/config_type_lead_update/{{$type->id}}" method="POST">
                                             @csrf
                                             @method('PUT')
-                                                <input type="text" name="name" value="{{$type->name}}" aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
-                                                <button type="submit" name="send" title="MODIFICAR" class="btn btn-primary"><i class="bx bx-save"></i></button>
-                                                <a href="/config_type_lead"><button title="CANCELAR" class="btn btn-primary"><i class="bx bx-arrow-back"></i></button></a>
+                                                <input type="text" name="name" value="{{$type->name}}" aria-label="Type a keyword..." class="gridjs-input gridjs-search-input" required>
+                                                <button type="submit" name="send" title="MODIFICAR TIPO" class="btn btn-primary"><i class="bx bx-save"></i></button>
                                         </form>
+                                        <a href="/config_type_lead"><button title="CANCELAR" class="btn btn-primary"><i class="bx bx-arrow-back"></i></button></a>
                                     </div>
                                 </div>                                
                             </div> 

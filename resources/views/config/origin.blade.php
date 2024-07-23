@@ -22,18 +22,10 @@
                         <div class="mb-3">
                             <h5 class="card-title"> Total Origen<span class="text-muted fw-normal ms-2">{{$origin->count()}}</span></h5>
                         </div>
-                    </div><!-- end col -->
-                </div>
-                <div class="row">
-                    <div class="col-md-11">
-                        <div class="d-flex flex-wrap align-items-start justify-content-md-star mt-2 mt-md-0 gap-2 mb-3">
-                            <form method="POST" action="/config_lead_origin_create">
-                                @csrf
-                                <input type="text" name="name" placeholder="Agregar Origen de Lead..." aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
-                                <button type="submit" name="send" title="AGREGAR" class="btn btn-primary"><i class="bx bx-save"></i></button>
-                            </form>
+                        <div class="mb-3">
+                            <a href="/config_lead_origin_create"><button type="submit" name="send" title="AGREGAR ORIGEN" class="btn btn-primary"><i class="bx bx-save"></i> Agregar Origen</button></a>
                         </div>
-                    </div>                                
+                    </div><!-- end col -->
                 </div>
 
                 <div class="table-responsive">

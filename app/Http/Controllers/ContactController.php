@@ -162,7 +162,11 @@ class ContactController extends Controller
 
         $file = FileSave::where('id_contact', $id)->get();
 
-        return view ('contact.contactEdit', compact('contact', 'task', 'user','origin','file','notes','type','level'));
+        $country = Country::all();
+
+        $state = State::all();
+
+        return view ('contact.contactEdit', compact('contact', 'task', 'user','origin','file','notes','type','level', 'country', 'state'));
 
     }
 

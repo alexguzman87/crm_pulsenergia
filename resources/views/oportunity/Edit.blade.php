@@ -156,68 +156,81 @@
                                 @method('PUT')
                                     <div class="modal-body p-4">
                                         <div class="mb-3">
-                                            <input type="text" name="title" class="form-control" placeholder="Titulo..." value="{{$oportunity->title}}">
+                                            <input type="text" name="title" class="form-control" placeholder="Titulo..." value="{{$oportunity->title}}" required>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <input type="text" name="contact_name" class="form-control" placeholder="Nombre del contacto..." value="{{$oportunity->contact_name}}">
+                                                    <input type="text" name="contact_name" class="form-control" placeholder="Nombre del contacto..." value="{{$oportunity->contact_name}}" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <input type="text" name="organization" class="form-control" placeholder="Organización..."  value="{{$oportunity->organization}}">                                    
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="mb-3">
-                                                    <input type="email" name="email" class="form-control" placeholder="Correo Electrónico..."  value="{{$oportunity->email}}">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="mb-3">
-                                                    <input type="number" name="phone" class="form-control" placeholder="Teléfono..." value="{{$oportunity->phone}}">                                    
+                                                    <input type="text" name="organization" class="form-control" placeholder="Organización..."  value="{{$oportunity->organization}}" required>                                    
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <input type="text" name="country" class="form-control" placeholder="País..." value="{{$oportunity->country}}">
+                                                    <input type="email" name="email" class="form-control" placeholder="Correo Electrónico..."  value="{{$oportunity->email}}" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <input type="text" name="state" class="form-control" placeholder="Estado / Provincia/ Región..." value="{{$oportunity->state}}">                                    
+                                                    <input type="text" onkeypress="return valideKey(event);" name="phone" class="form-control" placeholder="Teléfono..." value="{{$oportunity->phone}}" required>                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <select name="country" class="form-select" id="country" required>
+                                                        <option value="{{$oportunity->country}}">{{$oportunity->country}}</option>
+                                                        @foreach ($country as $c)
+                                                            <option value="{{$c->name}}">{{$c->name}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    {{--Aqui esta el codigo de españa complementado con el script--}}
+                                                    <select name="state" Style="display:none" class="form-select" id="spain" onchange="" required>
+                                                        <option value="{{$oportunity->state}}">{{$oportunity->state}}</option>
+                                                        @foreach ($state as $s)
+                                                            <option value={{$s->name}}>{{$s->name}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    {{--Aqui esta el input de no ser españa--}}
+                                                    <input type="text" id="non_spain" Style="display:none" name="state" class="form-control" placeholder="Provincia" value="{{$oportunity->state}}" required>                                    
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="mb-3">
-                                            <input type="text" name="address" class="form-control" placeholder="Dirección..." value="{{$oportunity->address}}">
+                                            <input type="text" name="address" class="form-control" placeholder="Dirección..." value="{{$oportunity->address}}" required>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <input type="text" name="city" class="form-control" placeholder="Ciudad..." value="{{$oportunity->city}}">
+                                                    <input type="text" name="city" class="form-control" placeholder="Ciudad..." value="{{$oportunity->city}}" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <input type="number" name="postal_code" class="form-control" placeholder="Código Postal..." value="{{$oportunity->postal_code}}">                                    
+                                                    <input type="text" onkeypress="return valideKey(event);" minlength="5" maxlength="5" name="postal_code" class="form-control" placeholder="Código Postal..." value="{{$oportunity->postal_code}}" required>                                    
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-3">
                                                 <div class="mb-3">
-                                                    <input type="number" name="budget" class="form-control" placeholder="Presupuesto..." value={{$oportunity->budget}}>
+                                                    <input type="text" onkeypress="return valideKey(event);" name="budget" class="form-control" placeholder="Presupuesto..." value={{$oportunity->budget}} required>
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
                                                 <div class="mb-3">
-                                                    <select name="status" class="form-select" value={{$oportunity->status}}>
+                                                    <select name="status" class="form-select" value={{$oportunity->status}} required>
                                                         <option value="oportunity">Oportunidad</option>
                                                         <option value="proposal">En Propuesta</option>
                                                         <option value="need">Necesito Apoyo</option>
@@ -233,7 +246,7 @@
                                             </div><!-- end row -->
                                             <div class="col-md-3">
                                                 <div class="mb-3">
-                                                    <input id="pi_input" name="probability" class="form-range mt-2" type="range" min="0" max="100" step="10" value={{$oportunity->probability}}/>
+                                                    <input id="pi_input" name="probability" class="form-range mt-2" type="range" min="0" max="100" step="10" value={{$oportunity->probability}} required/>
                                                 </div>
                                             </div><!-- end col -->
                                         </div><!-- end row -->
@@ -242,7 +255,7 @@
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <div class="mb-3">
-                                                    <select name="id_origins" class="form-select">
+                                                    <select name="id_origins" class="form-select" required>
                                                         <option value="{{$oportunity->id_origins}}">{{$oportunity->origin->name}}</option>
                                                         @foreach ($origin as $o)
                                                             <option value="{{$o->id}}">{{$o->name}}</option>
@@ -252,7 +265,7 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="mb-3">
-                                                    <select name="id_level" class="form-select">
+                                                    <select name="id_level" class="form-select" required>
                                                         <option value="{{$oportunity->id_level}}">{{$oportunity->level->name}}</option>
                                                         @foreach ($level as $l)
                                                             <option value="{{$l->id}}">{{$l->name}}</option>
@@ -262,7 +275,7 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="mb-3">
-                                                    <select name="id_type" class="form-select">
+                                                    <select name="id_type" class="form-select" required>
                                                         <option value="{{$oportunity->id_type}}">{{$oportunity->type->name}}</option>
                                                         @foreach ($type as $t)
                                                             <option value="{{$t->id}}">{{$t->name}}</option>
@@ -273,7 +286,7 @@
                                         </div>
 
                                         <div class="mb-3">
-                                            <textarea name="description" class="form-control" cols="30" rows="10" placeholder="Descripción..." value="{{$oportunity->description}}"></textarea>
+                                            <textarea name="description" class="form-control" cols="30" rows="10" placeholder="Descripción..." value="{{$oportunity->description}}" required></textarea>
                                         </div>
                                     </div>
                                     <!-- end modalbody -->
@@ -562,15 +575,75 @@
 
 @section('script')
 
+
+
 <!-- ckeditor -->
 <script>
     const value = document.querySelector("#value");
-        const input = document.querySelector("#pi_input");
+    const input = document.querySelector("#pi_input");
         value.textContent = input.value;
         input.addEventListener("input", (event) => {
           value.textContent = event.target.value;
         });
-        </script>
+
+        var spain = document.getElementById('spain');
+    var non_spain = document.getElementById('non_spain');
+    var country = document.getElementById("country");
+    
+    function valideKey(evt){
+    
+    // code is the decimal ASCII representation of the pressed key.
+    var code = (evt.which) ? evt.which : evt.keyCode;
+    
+    if(code==8) { // backspace.
+      return true;
+    } else if(code>=48 && code<=57) { // is a number.
+      return true;
+    } else{ // other keys.
+      return false;
+    }
+}
+
+
+    window.addEventListener("load", () => {
+        if(country.value === "España") {
+        spain.style.display = 'initial';
+        non_spain.style.display = 'none';
+        non_spain.removeAttribute("required");
+        non_spain.removeAttribute("name");
+        spain.required = true;
+        }else{
+        non_spain.style.display = 'initial';
+        spain.style.display = 'none';
+        spain.removeAttribute("required");
+        spain.removeAttribute("name");
+        non_spain.required = true; 
+        }
+    });
+
+    
+    country.addEventListener("change", () => {
+      if (country.value === "España") {
+        spain.style.display = 'initial';
+        non_spain.style.display = 'none';
+        non_spain.removeAttribute("required");
+        non_spain.removeAttribute("name");
+        spain.setAttribute("name", "state");
+        spain.required = true;
+      } else {
+        non_spain.style.display = 'initial';
+        spain.style.display = 'none';
+        spain.removeAttribute("required");
+        spain.removeAttribute("name");
+        non_spain.setAttribute("name", "state");
+        non_spain.required = true;
+      }
+    });
+
+
+
+
+</script>
 <script src="{{ URL::asset('assets/libs/@ckeditor/@ckeditor.min.js') }}"></script>
 <!-- quill js -->
 <!-- init js -->

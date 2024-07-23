@@ -17,7 +17,7 @@ class RegionLeadChart
     public function build(): \ArielMejiaDev\LarapexCharts\HorizontalBar
     {
         return $this->chartRegion->horizontalBarChart()
-            ->setTitle('Lead de Madrid o Valencia.')
+            ->setTitle('Leads por Provincia.')
             ->setColors(['#008FFB', '#00E396'])
             ->addData('Madrid', [Contact::where('state','Madrid')->count()])
             ->addData('València', [Contact::where('state','València')->count()])

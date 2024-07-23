@@ -163,58 +163,71 @@
                                 @method('PUT')
                                     <div class="modal-body p-4">
                                         <div class="mb-3">
-                                                <input type="text" name="name" class="form-control" value="{{$contact->name}}" placeholder="Nombre Completo">
+                                                <input type="text" name="name" class="form-control" value="{{$contact->name}}" placeholder="Nombre Completo" required>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <input type="email" name="email" class="form-control" value="{{$contact->email}}" placeholder="Correo Electrónico">
+                                                    <input type="email" name="email" class="form-control" value="{{$contact->email}}" placeholder="Correo Electrónico" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <input type="email" name="second_email" class="form-control" value="{{$contact->second_email}}" placeholder="Correo Electrónico Secundario">                                    
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="mb-3">
-                                                    <input type="number" name="phone" class="form-control" value="{{$contact->phone}}" placeholder="Teléfono">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="mb-3">
-                                                    <input type="number" name="second_phone" class="form-control" value="{{$contact->second_phone}}" placeholder="Teléfono Secundario">                                    
+                                                    <input type="email" name="second_email" class="form-control" value="{{$contact->second_email}}" placeholder="Correo Electrónico Secundario" >                                    
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <input type="text" name="country" name="email" class="form-control" value="{{$contact->country}}" placeholder="País de origen...">
+                                                    <input type="text" onkeypress="return valideKey(event);" name="phone" class="form-control" value="{{$contact->phone}}" placeholder="Teléfono" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <input type="text" name="state" class="form-control" value="{{$contact->state}}" placeholder="Provincia de Origen...">                                    
+                                                    <input type="text" onkeypress="return valideKey(event);" name="second_phone" class="form-control" value="{{$contact->second_phone}}" placeholder="Teléfono Secundario">                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <select name="country" class="form-select" id="country" required>
+                                                        <option value="{{$contact->country}}">{{$contact->country}}</option>
+                                                        @foreach ($country as $c)
+                                                            <option value="{{$c->name}}">{{$c->name}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    {{--Aqui esta el codigo de españa complementado con el script--}}
+                                                    <select name="state" Style="display:none" class="form-select" id="spain" onchange="" required>
+                                                        <option value="{{$contact->state}}">{{$contact->state}}</option>
+                                                        @foreach ($state as $s)
+                                                            <option value={{$s->name}}>{{$s->name}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    {{--Aqui esta el input de no ser españa--}}
+                                                    <input type="text" id="non_spain" Style="display:none" name="state" class="form-control" placeholder="Provincia" value="{{$contact->state}}" required>                                    
                                                 </div>
                                             </div>
                                             <div class="mb-3">
-                                                <input type="text" name="address" class="form-control" value="{{$contact->address}}" placeholder="Dirección">
+                                                <input type="text" name="address" class="form-control" value="{{$contact->address}}" placeholder="Dirección" required>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <input type="text" name="city" class="form-control" value="{{$contact->city}}" placeholder="Ciudad">                                    
+                                                    <input type="text" name="city" class="form-control" value="{{$contact->city}}" placeholder="Ciudad" required>                                    
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <input type="number" name="postal_code" value="{{$contact->postal_code}}" class="form-control" placeholder="Código Postal">                                    
+                                                    <input type="text" onkeypress="return valideKey(event);" minlength="5" maxlength="5" name="postal_code" value="{{$contact->postal_code}}" class="form-control" placeholder="Código Postal" required>                                    
                                                 </div>
                                             </div>
                                             <div class="col">
-                                                    <select name="id_origins" class="form-select">
+                                                    <select name="id_origins" class="form-select" required>
                                                         <option value="{{$contact->id_origins}}">{{$contact->origin->name}}</option>
                                                         @foreach ($origin as $o)
                                                             <option value="{{$o->id}}">{{$o->name}}</option>
@@ -222,7 +235,7 @@
                                                     </select>
                                             </div>
                                             <div class="col">
-                                                    <select name="id_level" class="form-select">
+                                                    <select name="id_level" class="form-select" required>
                                                         <option value="{{$contact->id_level}}">{{$contact->level->name}}</option>
                                                         @foreach ($level as $l)
                                                             <option value="{{$l->id}}">{{$l->name}}</option>
@@ -230,7 +243,7 @@
                                                     </select>
                                             </div>
                                             <div class="col">
-                                                    <select name="id_type" class="form-select">
+                                                    <select name="id_type" class="form-select" required>
                                                         <option value="{{$contact->id_type}}">{{$contact->type->name}}</option>
                                                         @foreach ($type as $t)
                                                             <option value="{{$t->id}}">{{$t->name}}</option>
@@ -528,6 +541,63 @@
 @endsection
 
 @section('script')
+
+<script>
+
+    var spain = document.getElementById('spain');
+    var non_spain = document.getElementById('non_spain');
+    var country = document.getElementById("country");
+    
+    function valideKey(evt){
+    
+    // code is the decimal ASCII representation of the pressed key.
+    var code = (evt.which) ? evt.which : evt.keyCode;
+    
+    if(code==8) { // backspace.
+      return true;
+    } else if(code>=48 && code<=57) { // is a number.
+      return true;
+    } else{ // other keys.
+      return false;
+    }
+}
+
+    window.addEventListener("load", () => {
+        if(country.value === "España") {
+        spain.style.display = 'initial';
+        non_spain.style.display = 'none';
+        non_spain.removeAttribute("required");
+        non_spain.removeAttribute("name");
+        spain.required = true;
+        }else{
+        non_spain.style.display = 'initial';
+        spain.style.display = 'none';
+        spain.removeAttribute("required");
+        spain.removeAttribute("name");
+        non_spain.required = true; 
+        }
+    });
+
+    
+    country.addEventListener("change", () => {
+      if (country.value === "España") {
+        spain.style.display = 'initial';
+        non_spain.style.display = 'none';
+        non_spain.removeAttribute("required");
+        non_spain.removeAttribute("name");
+        spain.setAttribute("name", "state");
+        spain.required = true;
+      } else {
+        non_spain.style.display = 'initial';
+        spain.style.display = 'none';
+        spain.removeAttribute("required");
+        spain.removeAttribute("name");
+        non_spain.setAttribute("name", "state");
+        non_spain.required = true;
+      }
+    });
+
+</script>
 
 <!-- ckeditor -->
 <script src="{{ URL::asset('assets/libs/@ckeditor/@ckeditor.min.js') }}"></script>

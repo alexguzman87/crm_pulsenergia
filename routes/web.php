@@ -90,21 +90,24 @@ Route::post('convert_lead_to_oportunity',[ConvertController::class,'convert'])->
 
 //CONFIG - ORIGIN
 Route::get('config_lead_origin',[ConfigController::class, 'index_origin'])->name('config_lead_origin');
-Route::post('config_lead_origin_create',[ConfigController::class,'store_origin'])->name('config_lead_origin_create');
+Route::get('config_lead_origin_create',[ConfigController::class,'create_origin']);
+Route::post('config_lead_origin_create',[ConfigController::class,'store_origin']);
 Route::get('config_lead_origin_edit/{origin}',[ConfigController::class,'edit_origin'])->name('config_lead_origin_edit');
 Route::put('config_lead_origin_update/{origin}',[ConfigController::class,'update_origin'])->name('config_lead_origin_update');
 Route::delete('config_lead_origin_delete/{origin}',[ConfigController::class,'destroy_origin'])->name('config_lead_origin_delete');
 
 //CONFIG - TypeLead
 Route::get('config_type_lead',[ConfigController::class, 'index_type'])->name('config_type_lead');
+Route::get('config_type_lead_create',[ConfigController::class,'create_type']);
 Route::post('config_type_lead_create',[ConfigController::class,'store_type'])->name('config_type_lead_create');
 Route::get('config_type_lead_edit/{origin}',[ConfigController::class,'edit_type'])->name('config_type_lead_edit');
 Route::put('config_type_lead_update/{origin}',[ConfigController::class,'update_type'])->name('config_type_lead_update');
 Route::delete('config_type_lead_delete/{origin}',[ConfigController::class,'destroy_type'])->name('config_type_lead_delete');
 
-//CONFIG - TypeLead
+//CONFIG - LevelLead
 Route::get('config_level_lead',[ConfigController::class, 'index_level'])->name('config_level_lead');
-Route::post('config_level_lead_create',[ConfigController::class,'store_level'])->name('config_level_lead_create');
+Route::get('config_level_lead_create',[ConfigController::class,'create_level']);
+Route::post('config_level_lead_create',[ConfigController::class,'store_level']);
 Route::get('config_level_lead_edit/{origin}',[ConfigController::class,'edit_level'])->name('config_level_lead_edit');
 Route::put('config_level_lead_update/{origin}',[ConfigController::class,'update_level'])->name('config_level_lead_update');
 Route::delete('config_level_lead_delete/{origin}',[ConfigController::class,'destroy_level'])->name('config_level_lead_delete');

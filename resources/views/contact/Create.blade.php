@@ -50,12 +50,12 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="mb-3">
-                                            <input type="number" name="phone" class="form-control" placeholder="Teléfono" value="{{ old('phone') }}" required>
+                                            <input type="text" onkeypress="return valideKey(event);" name="phone" class="form-control" placeholder="Teléfono" value="{{ old('phone') }}" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="mb-3">
-                                            <input type="number" name="second_phone" class="form-control" placeholder="Teléfono Secundario" value="{{ old('second_phone') }}">                                    
+                                            <input type="text" onkeypress="return valideKey(event);" name="second_phone" class="form-control" placeholder="Teléfono Secundario" value="{{ old('second_phone') }}">                                    
                                         </div>
                                     </div>
                                 </div>
@@ -63,7 +63,7 @@
                                     <div class="col-md-6">
                                         <div class="mb-3">                                            
                                             <select name="country" class="form-select" id="country" onchange="" required>
-                                                <option value="" selected disabled hidden>País</option>
+                                                <option value="España">España</option>
                                                 @foreach ($country as $c)
                                                     <option value="{{$c->name}}">{{$c->name}}</option>
                                                 @endforeach
@@ -93,7 +93,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="mb-3">
-                                            <input type="number" name="postal_code" minlength="3" class="form-control" placeholder="Código Postal" value="{{ old('postal_code') }}" required>                                    
+                                            <input type="text" name="postal_code" minlength="5" maxlength="5" onkeypress="return valideKey(event);" class="form-control" placeholder="Código Postal" value="{{ old('postal_code') }}" required>                                    
                                         </div>
                                     </div>
                                     <div class="col">
@@ -147,24 +147,49 @@
     var non_spain = document.getElementById('non_spain');
     var country = document.getElementById("country");
     
+    function valideKey(evt){
     
-        country.addEventListener("change", () => {
-          if (country.value === "España") {
-            spain.style.display = 'initial';
-            non_spain.style.display = 'none';
-            non_spain.removeAttribute("required");
-            non_spain.removeAttribute("name");
-            spain.setAttribute("name", "state");
-            spain.required = true;
-          } else {
-            non_spain.style.display = 'initial';
-            spain.style.display = 'none';
-            spain.removeAttribute("required");
-            spain.removeAttribute("name");
-            non_spain.setAttribute("name", "state");
-            non_spain.required = true;
-          }
-        });
+    // code is the decimal ASCII representation of the pressed key.
+    var code = (evt.which) ? evt.which : evt.keyCode;
+    
+    if(code==8) { // backspace.
+      return true;
+    } else if(code>=48 && code<=57) { // is a number.
+      return true;
+    } else{ // other keys.
+      return false;
+    }
+}
+
+
+    window.addEventListener("load", () => {
+        if(country.value === "España") {
+        spain.style.display = 'initial';
+        non_spain.style.display = 'none';
+        non_spain.removeAttribute("required");
+        non_spain.removeAttribute("name");
+        spain.required = true;
+        }
+    });
+
+    
+    country.addEventListener("change", () => {
+      if (country.value === "España") {
+        spain.style.display = 'initial';
+        non_spain.style.display = 'none';
+        non_spain.removeAttribute("required");
+        non_spain.removeAttribute("name");
+        spain.setAttribute("name", "state");
+        spain.required = true;
+      } else {
+        non_spain.style.display = 'initial';
+        spain.style.display = 'none';
+        spain.removeAttribute("required");
+        spain.removeAttribute("name");
+        non_spain.setAttribute("name", "state");
+        non_spain.required = true;
+      }
+    });
 
 </script>
 @endsection

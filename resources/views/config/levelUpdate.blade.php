@@ -27,10 +27,10 @@
                                         <form action="/config_level_lead_update/{{$level->id}}" method="POST">
                                             @csrf
                                             @method('PUT')
-                                                <input type="text" name="name" value="{{$level->name}}" aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
-                                                <button type="submit" name="send" title="MODIFICAR" class="btn btn-primary"><i class="bx bx-save"></i></button>
-                                                <a href="/config_level_lead"><button title="CANCELAR" class="btn btn-primary"><i class="bx bx-arrow-back"></i></button></a>
+                                                <input type="text" name="name" value="{{$level->name}}" aria-label="Type a keyword..." class="gridjs-input gridjs-search-input" required>
+                                                <button type="submit" name="send" title="MODIFICAR NIVEL" class="btn btn-primary"><i class="bx bx-save"></i></button>
                                         </form>
+                                        <a href="/config_level_lead"><button title="CANCELAR" class="btn btn-primary"><i class="bx bx-arrow-back"></i></button></a>
                                     </div>
                                 </div>                                
                             </div> 

@@ -25,6 +25,12 @@ class ConfigController extends Controller
 
     }
 
+    public function create_origin() {
+        $origin = Origin::all();
+
+        return view('config.originCreate',compact('origin'));
+    }
+
     public function store_origin(Request $request)
     {
         $origin=new Origin();
@@ -34,7 +40,7 @@ class ConfigController extends Controller
         
         Session::flash('cliente_creado','El cliente ha sido registrado con éxito');
 
-        return redirect()->back();
+        return redirect("config_lead_origin");
     }
 
     public function edit_origin($id)
@@ -50,7 +56,7 @@ class ConfigController extends Controller
         
         $origin->update();
         
-        return redirect("config_lead_origin");;                
+        return redirect("config_lead_origin");                
        
     }
 
@@ -85,6 +91,14 @@ class ConfigController extends Controller
 
     }
 
+    public function create_level(){
+
+        $level = LevelLead::all();
+
+        return view('config.levelCreate',compact('level'));
+        
+    }
+
     public function store_level(Request $request)
     {
         $level=new LevelLead();
@@ -94,7 +108,7 @@ class ConfigController extends Controller
         
         Session::flash('cliente_creado','El cliente ha sido registrado con éxito');
 
-        return redirect()->back();
+        return redirect("config_level_lead");
     }
 
     public function edit_level($id)
@@ -110,7 +124,7 @@ class ConfigController extends Controller
         
         $level->update();
         
-        return redirect("config_level_lead");;                
+        return redirect("config_level_lead");                
        
     }
 
@@ -145,6 +159,14 @@ class ConfigController extends Controller
 
     }
 
+    public function create_type(){
+
+        $type = TypesLead::all();
+
+        return view('config.typeCreate',compact('type'));
+        
+    }
+
     public function store_type(Request $request)
     {
         $type=new TypesLead();
@@ -154,7 +176,8 @@ class ConfigController extends Controller
         
         Session::flash('cliente_creado','El cliente ha sido registrado con éxito');
 
-        return redirect()->back();
+        return redirect("config_type_lead");
+
     }
 
     public function edit_type($id)
@@ -170,7 +193,7 @@ class ConfigController extends Controller
         
         $type->update();
         
-        return redirect("config_type_lead");;                
+        return redirect("config_type_lead");                
        
     }
 
