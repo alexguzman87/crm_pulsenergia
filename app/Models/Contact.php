@@ -21,6 +21,7 @@ class Contact extends Model
         'country',
         'state',
         'address',
+        'street',
         'city',
         'postal_code',
         'id_origins',

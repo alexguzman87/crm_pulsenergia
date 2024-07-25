@@ -91,6 +91,7 @@ class ContactController extends Controller
         $contact->second_phone=$request->input('second_phone');
         $contact->country=$request->input('country');
         $contact->state=$request->input('state');
+        $contact->street=$request->input('street');
         $contact->address=$request->input('address');
         $contact->city=$request->input('city');
         $contact->postal_code=$request->input('postal_code');
@@ -189,6 +190,7 @@ class ContactController extends Controller
         $contact->country=$request->input('country');
         $contact->state=$request->input('state');
         $contact->address=$request->input('address');
+        $contact->street=$request->input('street');
         $contact->city=$request->input('city');
         $contact->postal_code=$request->input('postal_code');
         $contact->id_origins=$request->input('id_origins');

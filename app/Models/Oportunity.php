@@ -24,6 +24,7 @@ class Oportunity extends Model
         'country',
         'state',
         'address',
+        'street',
         'city',
         'postal_code',
         'status',

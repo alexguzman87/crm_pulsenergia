@@ -156,29 +156,29 @@
                                 @method('PUT')
                                     <div class="modal-body p-4">
                                         <div class="mb-3">
-                                            <input type="text" name="title" class="form-control" placeholder="Titulo..." value="{{$oportunity->title}}" required>
+                                            <input type="text" name="title" class="form-control" placeholder="Titulo" value="{{$oportunity->title}}" required>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <input type="text" name="contact_name" class="form-control" placeholder="Nombre del contacto..." value="{{$oportunity->contact_name}}" required>
+                                                    <input type="text" name="contact_name" class="form-control" placeholder="Nombre del contacto" value="{{$oportunity->contact_name}}" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <input type="text" name="organization" class="form-control" placeholder="Organización..."  value="{{$oportunity->organization}}" required>                                    
+                                                    <input type="text" name="organization" class="form-control" placeholder="Organización"  value="{{$oportunity->organization}}" required>                                    
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <input type="email" name="email" class="form-control" placeholder="Correo Electrónico..."  value="{{$oportunity->email}}" required>
+                                                    <input type="email" name="email" class="form-control" placeholder="Correo Electrónico"  value="{{$oportunity->email}}" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <input type="text" onkeypress="return valideKey(event);" name="phone" class="form-control" placeholder="Teléfono..." value="{{$oportunity->phone}}" required>                                    
+                                                    <input type="text" onkeypress="return valideKey(event);" name="phone" class="form-control" placeholder="Teléfono" value="{{$oportunity->phone}}" required>                                    
                                                 </div>
                                             </div>
                                         </div>
@@ -207,25 +207,34 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="mb-3">
-                                            <input type="text" name="address" class="form-control" placeholder="Dirección..." value="{{$oportunity->address}}" required>
-                                        </div>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <input type="text" name="city" class="form-control" placeholder="Ciudad..." value="{{$oportunity->city}}" required>
+                                                    <input type="text" name="city" class="form-control" placeholder="Ciudad" value="{{$oportunity->city}}" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <input type="text" onkeypress="return valideKey(event);" minlength="5" maxlength="5" name="postal_code" class="form-control" placeholder="Código Postal..." value="{{$oportunity->postal_code}}" required>                                    
+                                                    <input type="text" name="street" class="form-control" placeholder="Calle / Avenida" value="{{$oportunity->street}}" required>                                    
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="row">
+                                            <div class="col-md-9">
+                                                <div class="mb-3">
+                                                    <input type="text" name="address" class="form-control" placeholder="Dirección" value="{{$oportunity->address}}" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="mb-3">
+                                                    <input type="text" onkeypress="return valideKey(event);" minlength="5" maxlength="5" name="postal_code" class="form-control" placeholder="Código Postal" value="{{$oportunity->postal_code}}" required>                                    
+                                                </div>
+                                            </div>
+                                        </div>                                        
                                         <div class="row">
                                             <div class="col-md-3">
                                                 <div class="mb-3">
-                                                    <input type="text" onkeypress="return valideKey(event);" name="budget" class="form-control" placeholder="Presupuesto..." value={{$oportunity->budget}} required>
+                                                    <input type="text" onkeypress="return valideKey(event);" name="budget" class="form-control" placeholder="Presupuesto" value={{$oportunity->budget}} required>
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
@@ -286,7 +295,7 @@
                                         </div>
 
                                         <div class="mb-3">
-                                            <textarea name="description" class="form-control" cols="30" rows="10" placeholder="Descripción..." value="{{$oportunity->description}}" required></textarea>
+                                            <textarea name="description" class="form-control" cols="30" rows="10" placeholder="Descripción" value="{{$oportunity->description}}" required></textarea>
                                         </div>
                                     </div>
                                     <!-- end modalbody -->

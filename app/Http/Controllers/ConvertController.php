@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\OportunityRequest;
 use App\Models\Contact;
+use App\Models\Country;
 use App\Models\LevelLead;
 use App\Models\Oportunity;
 use App\Models\Origin;
+use App\Models\State;
 use App\Models\Task;
 use App\Models\TypesLead;
 use App\Models\User;
@@ -30,7 +32,11 @@ class ConvertController extends Controller
 
         $contact_user = Contact::orderBy('id')->paginate(25);
 
-        return view ('convert.create', compact('user', 'contact', 'contact_user','type', 'origin','level'));
+        $country = Country::all();
+
+        $state = State::all();
+
+        return view ('convert.create', compact('user', 'contact', 'contact_user','type', 'origin','level', 'country', 'state'));
 
     }
 

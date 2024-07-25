@@ -13,16 +13,16 @@
     <div class="col-xxl-3 col-lg-4">
         <div class="card">
             <div class="card-body p-0">
+                {{-- *** AQUI IRIA EL AVATAR DE LA IMAGEN
                 <div class="mt-n5 position-relative">
                     <div class="text-center">
                         <img src="{{URL::asset('images/'.$contact->image)}}" alt="" class="avatar-xl rounded-circle img-thumbnail">
-
                         <div class="mt-3">
                             <h5 class="mb-1">{{$contact->name}}</h5>
                         </div>
-
                     </div>
                 </div>
+                --}}
 
                 <div class="p-4 mt-2">
                     <h5 class="font-size-16">Información:</h5>
@@ -213,15 +213,22 @@
                                                     <input type="text" id="non_spain" Style="display:none" name="state" class="form-control" placeholder="Provincia" value="{{$contact->state}}" required>                                    
                                                 </div>
                                             </div>
-                                            <div class="mb-3">
-                                                <input type="text" name="address" class="form-control" value="{{$contact->address}}" placeholder="Dirección" required>
-                                            </div>
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <input type="text" name="city" class="form-control" value="{{$contact->city}}" placeholder="Ciudad" required>                                    
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <input type="text" name="street" class="form-control" placeholder="Calle / Avenida" value="{{$contact->street}}" required>                                    
+                                                </div>
+                                            </div> 
+                                            <div class="col-md-9">       
+                                                <div class="mb-3">
+                                                    <input type="text" name="address" class="form-control" value="{{$contact->address}}" placeholder="Dirección" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
                                                 <div class="mb-3">
                                                     <input type="text" onkeypress="return valideKey(event);" minlength="5" maxlength="5" name="postal_code" value="{{$contact->postal_code}}" class="form-control" placeholder="Código Postal" required>                                    
                                                 </div>
@@ -251,11 +258,11 @@
                                                     </select>
                                             </div>
                                         </div>
-                                    
+                                        {{-- *** ESTE ES EL INPUT PARA SUBIR LA IMAGEN***
                                         <div class="mb-3">
                                             <label for="formFile" class="form-label">Subir imagen de perfil (Opcional)</label>
                                             <input class="form-control" name="image" type="file" id="formFile">
-                                        </div>
+                                        </div>--}}
                                     </div>
                                     <!-- end modalbody -->
                                     <div class="modal-footer">

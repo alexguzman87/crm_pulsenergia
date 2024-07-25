@@ -75,6 +75,7 @@ class OportunityController extends Controller
         $oportunity->country=$request->input('country');
         $oportunity->state=$request->input('state');
         $oportunity->address=$request->input('address');
+        $oportunity->street=$request->input('street');
         $oportunity->city=$request->input('city');
         $oportunity->postal_code=$request->input('postal_code');
         $oportunity->status=$request->input('status');
@@ -173,6 +174,7 @@ class OportunityController extends Controller
         $oportunity->country=$request->input('country');
         $oportunity->state=$request->input('state');
         $oportunity->address=$request->input('address');
+        $oportunity->street=$request->input('street');
         $oportunity->city=$request->input('city');
         $oportunity->postal_code=$request->input('postal_code');
         $oportunity->status=$request->input('status');

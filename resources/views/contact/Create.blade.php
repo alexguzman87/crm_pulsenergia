@@ -83,15 +83,22 @@
                                             <input type="text" id="non_spain" Style="display:none" name="state" class="form-control" placeholder="Provincia" value="{{ old('state') }}" required>                                    
                                         </div>
                                     </div>
-                                    <div class="mb-3">
-                                        <input type="text" name="address" class="form-control" placeholder="Dirección" value="{{ old('address') }}" required>
-                                    </div>
                                     <div class="col-md-6">
                                         <div class="mb-3">
                                             <input type="text" name="city" class="form-control" placeholder="Ciudad" value="{{ old('city') }}" required>                                    
                                         </div>
                                     </div>
                                     <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <input type="text" name="street" class="form-control" placeholder="Calle / Avenida" value="{{ old('city') }}" required>                                    
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9">
+                                    <div class="mb-3">
+                                        <input type="text" name="address" class="form-control" placeholder="Dirección" value="{{ old('address') }}" required>
+                                    </div>
+                                    </div>
+                                    <div class="col-md-3">
                                         <div class="mb-3">
                                             <input type="text" name="postal_code" minlength="5" maxlength="5" onkeypress="return valideKey(event);" class="form-control" placeholder="Código Postal" value="{{ old('postal_code') }}" required>                                    
                                         </div>
@@ -121,11 +128,11 @@
                                         </select>
                                     </div>
                                 </div>
-                            
+                                {{-- ***ESTE ES EL INPUT PARA SUBIR LA IMAGEN***
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label">Subir imagen de perfil (Opcional)</label>
                                     <input class="form-control" name="image" type="file" id="formFile">
-                                </div>
+                                </div>--}}
                             </div>
                             <!-- end modalbody -->
                             <div class="modal-footer">

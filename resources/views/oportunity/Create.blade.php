@@ -10,7 +10,7 @@
     @endsection
 
 <div class="row">
-    <div class="col-xl-6">
+    <div class="col-xl-9">
         <div class="card card-h-100">
             <div class="card-header justify-content-between d-flex align-items-center">
                 <h4 class="card-title">Crear Oportunidad</h4>
@@ -83,9 +83,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="mb-3">
-                            <input type="text" name="address" class="form-control" placeholder="Dirección" value="{{ old('address') }}"  required>
-                        </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
@@ -93,6 +90,18 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
+                                <div class="mb-3">
+                                    <input type="text" name="street" class="form-control" placeholder="Calle / Avenida" value="{{ old('city') }}" required>                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="mb-3">
+                                    <input type="text" name="address" class="form-control" placeholder="Dirección" value="{{ old('address') }}"  required>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
                                 <div class="mb-3">
                                     <input type="text" onkeypress="return valideKey(event);" minlength="5" maxlength="5" name="postal_code" class="form-control" placeholder="Código Postal" value="{{ old('postal_code') }}" required>                                    
                                 </div>

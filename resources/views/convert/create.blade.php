@@ -10,7 +10,7 @@
     @endsection
 
 <div class="row">
-    <div class="col-xl-6">
+    <div class="col-xl-9">
         <div class="card card-h-100">
             <div class="card-header justify-content-between d-flex align-items-center">
                 <h4 class="card-title">Generar Oportunidad</h4>
@@ -55,24 +55,34 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <input type="number" name="phone" class="form-control" placeholder="Teléfono" value="{{$contact->phone}}" required>                                    
+                                    <input type="text" onkeypress="return valideKey(event);" name="phone" class="form-control" placeholder="Teléfono" value="{{$contact->phone}}" required>                                    
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <input type="text" name="country" class="form-control" placeholder="País" value="{{$contact->country}}" required>
+                                    <select name="country" class="form-select" id="country" onchange="" required>
+                                        <option value="{{$contact->country}}">{{$contact->country}}</option>
+                                        @foreach ($country as $c)
+                                            <option value="{{$c->name}}">{{$c->name}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <input type="text" name="state" class="form-control" placeholder="Estado / Provincia/ Región" value="{{$contact->state}}" required>                                    
+                                    {{--Aqui esta el codigo de españa complementado con el script--}}
+                                    <select name="state" Style="display:none" class="form-select" id="spain" onchange="" required>
+                                        <option value={{$contact->state}}>{{$contact->state}}</option>
+                                        @foreach ($state as $s)
+                                            <option value="{{$s->name}}">{{$s->name}}</option>
+                                        @endforeach
+                                    </select>
+                                    {{--Aqui esta el input de no ser españa--}}
+                                    <input type="text" id="non_spain" Style="display:none" name="state" class="form-control" placeholder="Provincia" value="{{$contact->state}}" required>                                    
                                 </div>
                             </div>
-                        </div>
-                        <div class="mb-3">
-                            <input type="text" name="address" class="form-control" placeholder="Dirección" value="{{$contact->address}}" required>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
@@ -82,7 +92,19 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <input type="number" name="postal_code" class="form-control" placeholder="Código Postal" value="{{$contact->postal_code}}" required>                                    
+                                    <input type="text" name="street" class="form-control" placeholder="Calle / Avenida" value="{{$contact->street}}" required>                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="mb-3">
+                                    <input type="text" name="address" class="form-control" placeholder="Dirección" value="{{$contact->address}}"  required>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mb-3">
+                                    <input type="text" onkeypress="return valideKey(event);" minlength="5" maxlength="5" name="postal_code" class="form-control" placeholder="Código Postal" value="{{$contact->postal_code}}" required>                                    
                                 </div>
                             </div>
                         </div>
@@ -172,6 +194,60 @@ const value = document.querySelector("#value");
     input.addEventListener("input", (event) => {
       value.textContent = event.target.value;
     });
-    </script>
+
+    function valideKey(evt){
+    
+    // code is the decimal ASCII representation of the pressed key.
+    var code = (evt.which) ? evt.which : evt.keyCode;
+    
+    if(code==8) { // backspace.
+      return true;
+    } else if(code>=48 && code<=57) { // is a number.
+      return true;
+    } else{ // other keys.
+      return false;
+    }
+    }
+
+    var spain = document.getElementById('spain');
+    var non_spain = document.getElementById('non_spain');
+    var country = document.getElementById("country");
+
+    window.addEventListener("load", () => {
+        if(country.value === "España") {
+        spain.style.display = 'initial';
+        non_spain.style.display = 'none';
+        non_spain.removeAttribute("required");
+        non_spain.removeAttribute("name");
+        spain.required = true;
+        }else{
+        non_spain.style.display = 'initial';
+        spain.style.display = 'none';
+        spain.removeAttribute("required");
+        spain.removeAttribute("name");
+        non_spain.required = true; 
+        }
+    });
+    
+    country.addEventListener("change", () => {
+      if (country.value === "España") {
+        spain.style.display = 'initial';
+        non_spain.style.display = 'none';
+        non_spain.removeAttribute("required");
+        non_spain.removeAttribute("name");
+        spain.setAttribute("name", "state");
+        spain.required = true;
+      } else {
+        non_spain.style.display = 'initial';
+        spain.style.display = 'none';
+        spain.removeAttribute("required");
+        spain.removeAttribute("name");
+        non_spain.setAttribute("name", "state");
+        non_spain.required = true;
+      }
+    });
+
+
+</script>
 
 @endsection
