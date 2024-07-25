@@ -295,7 +295,7 @@
                                         </div>
 
                                         <div class="mb-3">
-                                            <textarea name="description" class="form-control" cols="30" rows="10" placeholder="Descripción" value="{{$oportunity->description}}" required></textarea>
+                                            <textarea name="description" class="form-control" cols="30" rows="10" placeholder="Descripción" required>{{$oportunity->description}}</textarea>
                                         </div>
                                     </div>
                                     <!-- end modalbody -->
