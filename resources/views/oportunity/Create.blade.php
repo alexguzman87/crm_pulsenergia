@@ -168,7 +168,7 @@
                             </div><!-- end row -->
                         </div><!-- end row -->
                         <div class="mb-3">
-                            <textarea name="description" class="form-control" cols="30" rows="10" placeholder="Descripción" value="{{ old('description') }}" required></textarea>
+                            <textarea name="description" class="form-control" cols="30" rows="10" placeholder="Descripción" required>{{ old('description') }}</textarea>
                         </div>
                         <div class="mt-4">
                             <a href="/oportunity"><button type="button" class="btn btn-light w-sm" data-bs-dismiss="modal">Cancelar</button></a>

@@ -47,8 +47,10 @@ Route::put('user_edit_pass/{user}',[UserController::class,'update_pass'])->middl
 Route::delete('user_delete/{user}',[UserController::class,'destroy'])->middleware('auth')->name('user_delete');
 
 //Routes Leads
-Route::get('lead',[ContactController::class,'index'])->middleware('auth');
+Route::get('lead',[ContactController::class,'index_lead'])->middleware('auth');
+Route::get('client',[ContactController::class,'index_client'])->middleware('auth');
 Route::get('lead_show_user/{user}',[ContactController::class,'show'])->middleware('auth')->name('lead_show_user');
+Route::get('client_show_user/{user}',[ContactController::class,'show_client'])->middleware('auth')->name('client_show_user');
 Route::get('lead_create',[ContactController::class,'create'])->middleware('auth');
 Route::post('lead_create',[ContactController::class,'store'])->middleware('auth');
 Route::get('lead_edit/{lead}',[ContactController::class,'edit'])->middleware('auth')->name('lead_edit');
@@ -85,7 +87,7 @@ Route::put('oportunity_change_status/{oportunity}',[OportunityController::class,
 
 //CONVERT LEAD TO OPORTUNITY
 Route::get('convert_to_oportunity/{lead}',[ConvertController::class,'show'])->middleware('auth')->name('convert_to_oportunity');
-Route::post('convert_lead_to_oportunity',[ConvertController::class,'convert'])->middleware('auth')->name('convert_lead_to_oportunity');
+Route::post('convert_lead_to_oportunity/{lead}',[ConvertController::class,'convert'])->middleware('auth')->name('convert_lead_to_oportunity');
 
 
 //CONFIG - ORIGIN
@@ -138,7 +140,7 @@ Route::view('leads', 'leadsWeb.contacts-list');
 
 
 
-Route::get('client',[LeadController::class,'index']);
+
 Route::get('client_create',[LeadController::class,'create']);
 Route::post('client_create',[LeadController::class,'store']);
 Route::get('client_edit/{lead}',[LeadController::class,'edit'])->name('client_edit');

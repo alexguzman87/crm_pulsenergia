@@ -1,5 +1,5 @@
 @extends('layouts.vertical-master-layout')
-@section('title') EDITAR LEAD | @endsection
+@section('title') LEAD | @endsection
 @section('css')
 <link href="{{ URL::asset('assets/libs/gridjs/gridjs.min.css') }}" rel="stylesheet" type="text/css" />
 @endsection
@@ -63,41 +63,41 @@
                     <table class="table align-middle table-nowrap table-check">
                         <thead>
                             <tr>
-                                <th scope="col">Imagen</th>
-                                <th scope="col">Contacto</th>
+                                <th scope="col">ID</th>
+                                <th scope="col">Responsable</th>
+                                <th scope="col">Creado</th>
                                 <th scope="col">Origen</th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Email</th>
-                                <th scope="col">Email 2</th>
                                 <th scope="col">Teléfono</th>
-                                <th scope="col">Teléfono 2</th>
                                 <th style="width: 80px; min-width: 80px;">Acción</th>
                             </tr><!-- end tr -->
                         </thead><!-- end thead -->
                         <tbody>
                             @foreach ( $contact as $c )
                             <tr>
+                                <td>{{$c->id}}</td>
                                 <td>
-                                    @if($c->image)<img src={{URL::asset('images/'.$c->image)}} alt="" class="avatar-sm rounded-circle me-2">
-                                    @else<img src={{URL::asset('images/Sin-Perfil-Hombre.png')}} alt="" class="avatar-sm rounded-circle me-2">
+                                    @if($c->id_user)
+                                    <span class="badge badge-soft-success mb-0">{{strtoupper($c->user->name)}}</span>
+                                    @else
+                                    <span class="badge badge-soft-danger mb-0">SIN ASIGNAR</span> 
                                     @endif
                                 </td>
                                 <td>{{date("d/m/Y", strtotime($c->created_at))}}</td>
-                                <td>{{$c->origin->name}}</td>
+                                <td>@if ($c->id_origin){{$c->origin->name}}@else No indicado @endif</td>
                                 <td>{{$c->name}}</td>
                                 <td>{{$c->email}}</td>
-                                <td>{{$c->second_email}}</td>
                                 <td>{{$c->phone}}</td>
-                                <td>{{$c->second_phone}}</td>
                                 <td>
                                     <div class="d-flex gap-2">
                                         <a href="{{route('lead_edit', $c->id)}}"><button type="submit" title="EDITAR LEAD" class="btn btn-primary"><i class="uil-eye"></i></button></a>
                                         <form action="{{route('lead_delete', $c->id)}}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" title="BORRAR USUARIO" class="btn btn-primary"><i class="bx bx-x-circle"></i></button>
-                                        </form> 
-                                        <a href={{route('convert_to_oportunity', $c->id)}}><button type="submit" title="CONVERTIR A OPORTUNIDAD" class="btn btn-primary"><i class="uil-arrow-up-right"></i></button></a> 
+                                            <button type="submit" title="BORRAR LEAD" class="btn btn-primary"><i class="bx bx-x-circle"></i></button>
+                                        </form>
+                                        <a href={{route('convert_to_oportunity', $c->id)}}><button type="submit" title="CONVERTIR A OPORTUNIDAD" class="btn btn-primary"><i class="uil-arrow-up-right"></i></button></a>    
                                     </div>
                                 </td>
                                 
@@ -204,7 +204,7 @@
                     </table><!-- end table -->
                 </div><!-- end table responsive -->
                 <div class="row g-0 text-center text-sm-start">
-                    <div>{{$contact_user->links('layouts.pagination')}}</div>
+                    <div>{{$contact->links('layouts.pagination')}}</div>
                 </div><!-- end row -->  
                 <div id="gridjs-temp" class="gridjs-temp"></div>
                 @include('layouts.message')
@@ -220,6 +220,7 @@
 <!-- gridjs js -->
 <script src="{{ URL::asset('assets/libs/gridjs/gridjs.min.js') }}"></script>
 <script src="{{ URL::asset('assets/js/pages/gridjs.init.js') }}"></script>
+<script src="{{ URL::asset('assets/js/app.js') }}"></script>
 
 
 

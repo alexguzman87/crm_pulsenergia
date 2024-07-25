@@ -136,7 +136,7 @@
                                 <div class="mb-3">
                                 </div>
                                 <div class="mb-3">
-                                    <textarea name="notes" class="form-control" cols="30" rows="10" placeholder="Descripción" required></textarea>
+                                    <textarea name="notes" class="form-control" cols="30" rows="10" placeholder="Descripción" required>{{ old('notes') }}</textarea>
                                 </div>
                             </div>
                             <!-- end modalbody -->

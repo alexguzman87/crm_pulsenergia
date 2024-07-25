@@ -17,6 +17,7 @@ use App\Models\TypesLead;
 use Illuminate\Support\Facades\DB;
 use App\Exports\LeadsExport;
 use App\Models\Country;
+use App\Models\Oportunity;
 use App\Models\State;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -27,19 +28,19 @@ class ContactController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index_lead(Request $request)
     {
+        
         $origin=Origin::orderBy('name')->get();
 
         $level=LevelLead::orderBy('name')->get();
 
         $type=TypesLead::orderBy('name')->get();
 
-        $contact = Contact::all();
-        
-        $contact = Contact::orderBy('id')
+        $contact = Contact::where('type','lead')
+            ->orderBy('id')
             ->id($request->search_id)    
-            ->name($request->search_name)
+            ->name_lead($request->search_name)
             ->email($request->search_email)
             ->phone($request->search_phone)
             ->id_type($request->search_type)
@@ -47,7 +48,31 @@ class ContactController extends Controller
         //where('id', 'Like', "%$request->$search_id%")
 
                 
-        return view('contact.contact',compact('contact','origin','type','level'));
+        return view('contact.lead',compact('contact','origin','type','level'));
+
+    }
+
+    public function index_client(Request $request)
+    {
+        
+        $origin=Origin::orderBy('name')->get();
+
+        $level=LevelLead::orderBy('name')->get();
+
+        $type=TypesLead::orderBy('name')->get();
+
+        $contact = Contact::where('type','client')
+            ->orderBy('id')
+            ->id($request->search_id)    
+            ->name_client($request->search_name)
+            ->email($request->search_email)
+            ->phone($request->search_phone)
+            ->id_type($request->search_type)
+            ->paginate(25);
+        //where('id', 'Like', "%$request->$search_id%")
+
+                
+        return view('contact.client',compact('contact','origin','type','level'));
 
     }
 
@@ -132,11 +157,26 @@ class ContactController extends Controller
 
         $type=TypesLead::all();
         
-        $contact=Contact::where('id_user',$id)->get();
+        $contact=Contact::where('id_user',$id)->where('type','lead')->get();
 
         $contact_user=Contact::orderBy('id')->paginate(25);
 
-        return view ('contact.contact_show', compact('user', 'contact', 'contact_user','type'));
+        return view ('contact.lead_show', compact('user', 'contact', 'contact_user','type'));
+
+    }
+
+
+    public function show_client($id)
+    {
+        $user=User::all();
+
+        $type=TypesLead::all();
+        
+        $contact=Contact::where('id_user',$id)->where('type','client')->get();
+
+        $contact_user=Contact::orderBy('id')->paginate(25);
+
+        return view ('contact.client_show', compact('user', 'contact', 'contact_user','type'));
 
     }
 
@@ -168,7 +208,9 @@ class ContactController extends Controller
 
         $state = State::all();
 
-        return view ('contact.contactEdit', compact('contact', 'task', 'user','origin','file','notes','type','level', 'country', 'state'));
+        $oportunities = Oportunity::where('id_contact',$id)->get();
+
+        return view ('contact.contactEdit', compact('contact', 'task', 'user','origin','file','notes','type','level', 'country', 'state', 'oportunities'));
 
     }
 

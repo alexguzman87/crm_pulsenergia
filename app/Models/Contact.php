@@ -28,12 +28,18 @@ class Contact extends Model
         'id_type',
         'id_level',
         'image',
+        'type',
+        'notes',
     ];
 
-    public function scopeName ($query, $name){
+    public function scopeName_client ($query, $name){
         if ($name)
-        return $query->where('name', 'Like', "%$name%");
+        return $query->where('type','client')->where('name', 'Like', "%$name%");
+    }
 
+    public function scopeName_lead ($query, $name){
+        if ($name)
+        return $query->where('type','lead')->where('name', 'Like', "%$name%");
     }
 
     public function scopeEmail ($query, $email){
@@ -74,14 +80,12 @@ class Contact extends Model
         return $this->belongsTo('App\Models\User','id_user','id');
     }
 
-    public function type(){
+    public function type_lead(){
         return $this->belongsTo('App\Models\TypesLead','id_type','id');
     }
 
     public function level(){
         return $this->belongsTo('App\Models\LevelLead','id_level','id');
     }
-
-
 
 }

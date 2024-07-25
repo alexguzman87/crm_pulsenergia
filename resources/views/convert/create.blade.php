@@ -17,7 +17,7 @@
             </div><!-- end card header -->
             <div class="card-body">
                 <div>
-                <form action="{{route('convert_lead_to_oportunity')}}" method="POST">
+                <form action="/convert_lead_to_oportunity/{{$contact->id}}" method="POST">
                         @csrf
                         @if (auth()->user()->type_user=='admin')
                         <div class="mb-3">
@@ -111,7 +111,7 @@
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="mb-3">
-                                    <input type="number" name="budget" class="form-control" placeholder="Presupuesto" value="{{ old('budget') }}" required>
+                                    <input type="text" onkeypress="return valideKey(event);" name="budget" class="form-control" placeholder="Presupuesto" value="{{ old('budget') }}" required>
                                 </div>
                             </div>
                             <div class="col-md-3">

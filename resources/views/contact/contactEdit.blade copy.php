@@ -1,11 +1,11 @@
 @extends('layouts.vertical-master-layout')
-@section('title') EDITAR @if($contact->type=='client') CLIENTE @else LEAD @endif | @endsection
+@section('title') EDITAR LEADS | @endsection
 @section('content')
 {{-- breadcrumbs  --}}
     @section('breadcrumb')
         @component('components.breadcrumb')
             @slot('li_1') Leads @endslot
-            @slot('title') Editar @if($contact->type=='client') Cliente @else Lead @endif @endslot
+            @slot('title') Editar Leads @endslot
         @endcomponent
     @endsection
 
@@ -126,14 +126,6 @@
                             <span class="d-none d-sm-block">Editar</span>
                         </a>
                     </li>
-                    @if($contact->type == 'client')
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" href="#navtabs-oportunities" role="tab">
-                            <span class="d-block d-sm-none"><i class="far fa-envelope"></i></span>
-                            <span class="d-none d-sm-block">Oportunidades</span>
-                        </a>
-                    </li>
-                    @endif
                     @if($contact->id_user)
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="tab" href="#navtabs-task" role="tab">
@@ -286,96 +278,6 @@
                             </form><!-- end form -->    
                         </div>
                     </div>
-
-
-                    {{--OPORTUNIDADES--}}
-                    <div class="tab-pane" id="navtabs-oportunities" role="tabpanel">
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table align-middle table-nowrap table-check">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Titulo</th>
-                                            <th scope="col">Organizacion</th>
-                                            <th scope="col">Presupuesto</th>
-                                            <th scope="col">Estado</th>
-                                            <th scope="col">Descripción</th>
-                                            <th scope="col"></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ( $oportunities as $o )
-                                            <tr>
-                                                <td>{{$o->title}}</td>
-                                                <td>{{$o->organization}}</td>
-                                                <td>{{$o->budget}}</td>
-                                                <td>
-
-                                                    <div class="dropdown">
-                                                        <a class="btn btn-link text-dark dropdown-toggle shadow-none" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <i>
-                                                                @if ($o->status=='oportunity')
-                                                                <span style="color: #298fca">OPORTUNIDAD</span>
-                                                                @elseif($o->status=='proposal')
-                                                                <span style="color: #cd8de5">EN PROPUESTA</span>
-                                                                @elseif($o->status=='need')
-                                                                <span style="color: #ffb968">NECESITO APOYO</span>
-                                                                @elseif($o->status=='sale')
-                                                                <span style="color: #7bc86c">VENTA EXITOSA</span>
-                                                                @elseif($o->status=='lost')
-                                                                <span style="color: #ef7564">PÉRDIDO</span>
-                                                                @endif
-                                                            </i>
-                                                        </a>
-                                                        <ul class="dropdown-menu dropdown-menu-center">
-                                                            <form action="{{route('oportunity_change_status', $o->id)}}" method="POST">
-                                                                @csrf
-                                                                @method('PUT')
-                                                                <input type="hidden" name="status" value="oportunity">
-                                                                <button style="border: none; width: 100%; color: #298fca; background-color: white;" type="submit">OPORTUNIDAD</button>                                                            
-                                                            </form>
-                                                            <form action="{{route('oportunity_change_status', $o->id)}}" method="POST">
-                                                                @csrf
-                                                                @method('PUT')
-                                                                <input type="hidden" name="status" value="proposal">
-                                                                <button style="border: none; width: 100%; color: #cd8de5; background-color: white;" type="submit">EN PROPUESTA</button>                                                            
-                                                            </form>
-                                                            <form action="{{route('oportunity_change_status', $o->id)}}" method="POST">
-                                                                @csrf
-                                                                @method('PUT')
-                                                                <input type="hidden" name="status" value="need">
-                                                                <button style="border: none; width: 100%; color: #ffb968; background-color: white;" type="submit">NECESITO APOYO</button>                                                            
-                                                            </form>
-                                                            <form action="{{route('oportunity_change_status', $o->id)}}" method="POST">
-                                                                @csrf
-                                                                @method('PUT')
-                                                                <input type="hidden" name="status" value="sale">
-                                                                <button style="border: none; width: 100%; color: #7bc86c; background-color: white;" type="submit">VENTA EXITOSA</button>                                                            
-                                                            </form>
-                                                            <form action="{{route('oportunity_change_status', $o->id)}}" method="POST">
-                                                                @csrf
-                                                                @method('PUT')
-                                                                <input type="hidden" name="status" value="lost">
-                                                                <button style="border: none; width: 100%; color: #ef7564; background-color: white;" type="submit">PÉRDIDO</button>                                                            
-                                                            </form>
-                                                            <form action="{{route('oportunity_delete', $o->id)}}" method="POST">
-                                                                @csrf
-                                                                @method('DELETE')
-                                                                <input type="hidden" name="status" value="lost">
-                                                                <button style="border: none; width: 100%; color: #000000; background-color: white;" type="submit">BORRAR</button>                                                            
-                                                            </form>
-                                                        </ul>
-                                                    </div><!-- end dropdown -->
-                                                </td>
-                                                <td>{{$o->description}}</td>
-                                                <td><a href="/oportunity_edit/{{$o->id}}"><button type="submit" title="EDITAR OPORTUNIDAD" class="btn btn-primary"><i class="uil-eye"></i></button></td>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div><!-- end tab pane -->
-
 
                     {{--TASK--}}
                     @if($contact->id_user)

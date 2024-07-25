@@ -45,15 +45,30 @@
                 @if(auth()->user()->type_user=='admin')
                 <li>
                     <a href="/lead">
-                        <i class="bx bx-user nav-icon"></i>
+                        <i class="bx bx-user-circle"></i>
                         <span class="menu-item" data-key="t-dashboard">LEADS</span>
                     </a>
                 </li>
                 @else
                 <li>
                     <a href="/lead_show_user/{{auth()->user()->id}}">
-                        <i class="bx bxl-trello nav-icon"></i>
+                        <i class="bx bx-user-circle"></i>
                         <span class="menu-item" data-key="t-dashboard">LEADS</span>
+                    </a>
+                </li>
+                @endif
+                @if(auth()->user()->type_user=='admin')
+                <li>
+                    <a href="/client">
+                        <i class="bx bx-user-check"></i>
+                        <span class="menu-item" data-key="t-dashboard">CLIENTES</span>
+                    </a>
+                </li>
+                @else
+                <li>
+                    <a href="/client_show_user/{{auth()->user()->id}}">
+                        <i class="bx bx-user-check"></i>
+                        <span class="menu-item" data-key="t-dashboard">CLIENTES</span>
                     </a>
                 </li>
                 @endif
