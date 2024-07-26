@@ -45,14 +45,14 @@
                 @if(auth()->user()->type_user=='admin')
                 <li>
                     <a href="/lead">
-                        <i class="bx bx-user-circle"></i>
+                        <i class="bx bx-user-circle nav-icon"></i>
                         <span class="menu-item" data-key="t-dashboard">LEADS</span>
                     </a>
                 </li>
                 @else
                 <li>
                     <a href="/lead_show_user/{{auth()->user()->id}}">
-                        <i class="bx bx-user-circle"></i>
+                        <i class="bx bx-user-circle nav-icon"></i>
                         <span class="menu-item" data-key="t-dashboard">LEADS</span>
                     </a>
                 </li>
@@ -60,14 +60,14 @@
                 @if(auth()->user()->type_user=='admin')
                 <li>
                     <a href="/client">
-                        <i class="bx bx-user-check"></i>
+                        <i class="bx bx-user-check nav-icon"></i>
                         <span class="menu-item" data-key="t-dashboard">CLIENTES</span>
                     </a>
                 </li>
                 @else
                 <li>
                     <a href="/client_show_user/{{auth()->user()->id}}">
-                        <i class="bx bx-user-check"></i>
+                        <i class="bx bx-user-check nav-icon"></i>
                         <span class="menu-item" data-key="t-dashboard">CLIENTES</span>
                     </a>
                 </li>
@@ -78,6 +78,22 @@
                         <span class="menu-item" data-key="t-dashboard">TAREAS</span>
                     </a>
                 </li>
+                
+                @if(auth()->user()->type_user=='admin')
+                <li>
+                    <a href="/calendar">
+                        <i class="bx bx-calendar nav-icon"></i>
+                        <span class="menu-item" data-key="t-dashboard">CALENDARIO</span>
+                    </a>
+                </li>
+                @else
+                <li>
+                    <a href="/calendar/{{auth()->user()->id}}">
+                        <i class="bx bx-calendar nav-icon"></i>
+                        <span class="menu-item" data-key="t-dashboard">CALENDARIO</span>
+                    </a>
+                </li>
+                @endif
                 @if(auth()->user()->type_user=='admin')
                 <li>
                     <a href="/oportunity">

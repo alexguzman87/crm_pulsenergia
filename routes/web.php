@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BasicController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\ConfigController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ConvertController;
@@ -133,6 +134,10 @@ Route::delete('task_delete/{task}',[TaskCotroller::class,'destroy'])->middleware
 Route::get('lead_export',[LeadController::class, 'export'])->name('lead_export');
 Route::get('user_export',[UserController::class, 'export'])->name('user_export');
 
+
+
+Route::get('calendar',[CalendarController::class,'index_calendar']);
+Route::get('calendar/{user}',[CalendarController::class,'index_calendar_user']);
 
 
 Route::view('leads', 'leadsWeb.contacts-list');
