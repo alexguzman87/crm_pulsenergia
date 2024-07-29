@@ -128,9 +128,9 @@
                     </li>
                     @if($contact->type == 'client')
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" href="#navtabs-oportunities" role="tab">
+                        <a class="nav-link" data-bs-toggle="tab" href="#navtabs-postsales" role="tab">
                             <span class="d-block d-sm-none"><i class="far fa-envelope"></i></span>
-                            <span class="d-none d-sm-block">Oportunidades</span>
+                            <span class="d-none d-sm-block">Post Ventas</span>
                         </a>
                     </li>
                     @endif
@@ -288,93 +288,54 @@
                     </div>
 
 
-                    {{--OPORTUNIDADES--}}
-                    <div class="tab-pane" id="navtabs-oportunities" role="tabpanel">
+                    {{--POSTSALES--}}
+                    @if($contact->id_user)
+                    <div class="tab-pane" id="navtabs-postsales" role="tabpanel">
                         <div class="card-body">
+                            <form action="/postsales_create" method="POST">
+                                @csrf
+                                    <div class="mb-3">
+                                        <select class="form-control" name="id_oportunity" required>
+                                                <option value="" disabled selected>OPORTUNIDAD</option>
+                                            @foreach ($oportunities as $o)
+                                                <option value={{$o->id}}>{{$o->title}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <input type="hidden" name="id_contact" value={{$contact->id}}>
+                                        <textarea name="notes" placeholder="Escribe aquí las notas de Ppostventa" class="form-control" cols="30" rows="10" required></textarea>
+                                    </div>
+                                    <div class="row">
+                                        <div class="modal-footer">
+                                            <div class="mb-3">
+                                                <a href="/lead"><button type="button" class="btn btn-light w-sm" data-bs-dismiss="modal">Cancelar</button></a>
+                                                <button type="submit" class="btn btn-primary w-md">Agregar Nota</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @include('layouts.message')
+                            </form>
                             <div class="table-responsive">
                                 <table class="table align-middle table-nowrap table-check">
                                     <thead>
                                         <tr>
-                                            <th scope="col">Titulo</th>
-                                            <th scope="col">Organizacion</th>
-                                            <th scope="col">Presupuesto</th>
-                                            <th scope="col">Estado</th>
-                                            <th scope="col">Descripción</th>
-                                            <th scope="col"></th>
+                                            <th style="width: 20%">Oportunidad</th>
+                                            <th style="width: 80%">Nota de Postventa</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ( $oportunities as $o )
+                                        @foreach ( $postsales as $p )
                                             <tr>
-                                                <td>{{$o->title}}</td>
-                                                <td>{{$o->organization}}</td>
-                                                <td>{{$o->budget}}</td>
-                                                <td>
-
-                                                    <div class="dropdown">
-                                                        <a class="btn btn-link text-dark dropdown-toggle shadow-none" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <i>
-                                                                @if ($o->status=='oportunity')
-                                                                <span style="color: #298fca">OPORTUNIDAD</span>
-                                                                @elseif($o->status=='proposal')
-                                                                <span style="color: #cd8de5">EN PROPUESTA</span>
-                                                                @elseif($o->status=='need')
-                                                                <span style="color: #ffb968">NECESITO APOYO</span>
-                                                                @elseif($o->status=='sale')
-                                                                <span style="color: #7bc86c">VENTA EXITOSA</span>
-                                                                @elseif($o->status=='lost')
-                                                                <span style="color: #ef7564">PÉRDIDO</span>
-                                                                @endif
-                                                            </i>
-                                                        </a>
-                                                        <ul class="dropdown-menu dropdown-menu-center">
-                                                            <form action="{{route('oportunity_change_status', $o->id)}}" method="POST">
-                                                                @csrf
-                                                                @method('PUT')
-                                                                <input type="hidden" name="status" value="oportunity">
-                                                                <button style="border: none; width: 100%; color: #298fca; background-color: white;" type="submit">OPORTUNIDAD</button>                                                            
-                                                            </form>
-                                                            <form action="{{route('oportunity_change_status', $o->id)}}" method="POST">
-                                                                @csrf
-                                                                @method('PUT')
-                                                                <input type="hidden" name="status" value="proposal">
-                                                                <button style="border: none; width: 100%; color: #cd8de5; background-color: white;" type="submit">EN PROPUESTA</button>                                                            
-                                                            </form>
-                                                            <form action="{{route('oportunity_change_status', $o->id)}}" method="POST">
-                                                                @csrf
-                                                                @method('PUT')
-                                                                <input type="hidden" name="status" value="need">
-                                                                <button style="border: none; width: 100%; color: #ffb968; background-color: white;" type="submit">NECESITO APOYO</button>                                                            
-                                                            </form>
-                                                            <form action="{{route('oportunity_change_status', $o->id)}}" method="POST">
-                                                                @csrf
-                                                                @method('PUT')
-                                                                <input type="hidden" name="status" value="sale">
-                                                                <button style="border: none; width: 100%; color: #7bc86c; background-color: white;" type="submit">VENTA EXITOSA</button>                                                            
-                                                            </form>
-                                                            <form action="{{route('oportunity_change_status', $o->id)}}" method="POST">
-                                                                @csrf
-                                                                @method('PUT')
-                                                                <input type="hidden" name="status" value="lost">
-                                                                <button style="border: none; width: 100%; color: #ef7564; background-color: white;" type="submit">PÉRDIDO</button>                                                            
-                                                            </form>
-                                                            <form action="{{route('oportunity_delete', $o->id)}}" method="POST">
-                                                                @csrf
-                                                                @method('DELETE')
-                                                                <input type="hidden" name="status" value="lost">
-                                                                <button style="border: none; width: 100%; color: #000000; background-color: white;" type="submit">BORRAR</button>                                                            
-                                                            </form>
-                                                        </ul>
-                                                    </div><!-- end dropdown -->
-                                                </td>
-                                                <td>{{$o->description}}</td>
-                                                <td><a href="/oportunity_edit/{{$o->id}}"><button type="submit" title="EDITAR OPORTUNIDAD" class="btn btn-primary"><i class="uil-eye"></i></button></td>
+                                                <td>{{$p->oportunity->title}}</td>
+                                                <td>{{$p->notes}}</td>
                                         @endforeach
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div><!-- end tab pane -->
+                    @endif
 
 
                     {{--TASK--}}
@@ -387,7 +348,7 @@
                                         <input type="hidden" name="id_contact" value={{$contact->id}}>
                                         <input type="hidden" name="task_origin" value='lead'>
                                         <input type="hidden" name="id_user" value={{$contact->user->id}}>
-                                        <input type="text" name="task" class="form-control" placeholder="Descripción de la Tarea..." required>
+                                        <input type="text" name="task" class="form-control" placeholder="Descripción de la Tarea" required>
                                     </div>
                                     <div class="row">
                                         <div class="col">
@@ -406,10 +367,10 @@
                                             </select>                                    
                                         </div>
                                         <div class="col">
-                                            <input type="date" name="assigned_date" class="form-control" placeholder="Asignado el..." value="<?php echo date('Y-m-d'); ?>" min="<?php echo date('Y-m-d'); ?>">                                                                       
+                                            <input type="date" name="assigned_date" class="form-control" placeholder="Asignado el" value="<?php echo date('Y-m-d'); ?>" min="<?php echo date('Y-m-d'); ?>">                                                                       
                                         </div>
                                         <div class="col">
-                                            <input type="date" name="done_date" class="form-control" placeholder="Realizado el..." value="<?php echo date('Y-m-d'); ?>" min="<?php echo date('Y-m-d'); ?>">                                                                     
+                                            <input type="date" name="done_date" class="form-control" placeholder="Realizado el" value="<?php echo date('Y-m-d'); ?>" min="<?php echo date('Y-m-d'); ?>">                                                                     
                                         </div>
                                         <div class="modal-footer">
                                             <div class="mb-3">
@@ -522,7 +483,7 @@
                                 <div class="mb-3">
                                     <input type="hidden" name="task_origin" value='lead'>
                                     <input type="hidden" value={{$contact->id}} name="id_contact">
-                                    <textarea name="notes" placeholder="Escribe aquí las notas..." class="form-control" cols="30" rows="10" value="{{$contact->notes}}" required></textarea>
+                                    <textarea name="notes" placeholder="Escribe aquí las notas" class="form-control" cols="30" rows="10" value="{{$contact->notes}}" required></textarea>
                                 </div>
                                 <div class="modal-footer">
                                     <div class="mt-4">

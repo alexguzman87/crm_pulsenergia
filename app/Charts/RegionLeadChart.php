@@ -20,7 +20,7 @@ class RegionLeadChart
             ->setTitle('Leads por Provincia.')
             ->setColors(['#008FFB', '#00E396'])
             ->addData('Madrid', [Contact::where('state','Madrid')->count()])
-            ->addData('València', [Contact::where('state','València')->count()])
+            ->addData('Valencia', [Contact::where('state','València')->count()])
             ->setXAxis(['']);
     }
 
@@ -30,7 +30,7 @@ class RegionLeadChart
             ->setTitle('Lead de Madrid o Valencia.')
             ->setColors(['#008FFB', '#00E396'])
             ->addData('Madrid', [Contact::where('id_user',$id)->where('state','Madrid')->count()])
-            ->addData('València', [Contact::where('id_user',$id)->where('state','València')->count()])
+            ->addData('Valencia', [Contact::where('id_user',$id)->where('state','València')->count()])
             ->setXAxis(['']);
     }
 }

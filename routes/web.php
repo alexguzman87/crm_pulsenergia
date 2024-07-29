@@ -13,6 +13,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\NotesController;
 use App\Http\Controllers\OportunityController;
+use App\Http\Controllers\PostsaleController;
 use App\Http\Controllers\SaveFilesController;
 use App\Http\Controllers\WordpressFormController;
 use PHPUnit\TextUI\XmlConfiguration\CodeCoverage\Report\Php;
@@ -133,6 +134,9 @@ Route::delete('task_delete/{task}',[TaskCotroller::class,'destroy'])->middleware
 
 Route::get('lead_export',[LeadController::class, 'export'])->name('lead_export');
 Route::get('user_export',[UserController::class, 'export'])->name('user_export');
+
+//POSTSALE
+Route::post('postsales_create',[PostsaleController::class,'store'])->name('postsales_create');
 
 
 

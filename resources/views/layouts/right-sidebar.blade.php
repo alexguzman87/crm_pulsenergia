@@ -14,18 +14,7 @@
             <hr class="m-0" />
 
             <div class="p-4">
-                <h6 class="mb-3">Plantilla</h6>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="layout"
-                        id="layout-vertical" value="vertical">
-                    <label class="form-check-label" for="layout-vertical">Vertical</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="layout"
-                        id="layout-horizontal" value="horizontal">
-                    <label class="form-check-label" for="layout-horizontal">Horizontal</label>
-                </div>
-
+                
                 <h6 class="mt-4 mb-3">Modo de plantilla</h6>
 
                 <div class="form-check form-check-inline">
@@ -102,19 +91,6 @@
                     <label class="form-check-label" for="sidebar-color-brand">Marca</label>
                 </div>
             </div>
-
-                <h6 class="mt-4 mb-3">Dirección</h6>
-
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="layout-direction"
-                        id="layout-direction-ltr" value="ltr">
-                    <label class="form-check-label" for="layout-direction-ltr">Izquierda</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="layout-direction"
-                        id="layout-direction-rtl" value="rtl">
-                    <label class="form-check-label" for="layout-direction-rtl">Derecha</label>
-                </div>
 
             </div>
 

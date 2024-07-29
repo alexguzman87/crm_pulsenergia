@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\DB;
 use App\Exports\LeadsExport;
 use App\Models\Country;
 use App\Models\Oportunity;
+use App\Models\Postsales;
 use App\Models\State;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -210,7 +211,9 @@ class ContactController extends Controller
 
         $oportunities = Oportunity::where('id_contact',$id)->get();
 
-        return view ('contact.contactEdit', compact('contact', 'task', 'user','origin','file','notes','type','level', 'country', 'state', 'oportunities'));
+        $postsales = Postsales::where('id_contact',$id)->get();;
+
+        return view ('contact.contactEdit', compact('contact', 'task', 'user','origin','file','notes','type','level', 'country', 'state', 'oportunities', 'postsales'));
 
     }
 

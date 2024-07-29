@@ -71,7 +71,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <h5 class="card-title">TAREAS <span class="text-muted fw-normal ms-2">{{$oportunity->count()}}</span></h5>
+                            <h5 class="card-title">Total Oportunidades  <span class="text-muted fw-normal ms-2">{{$oportunity->count()}}</span></h5>
                         </div>
                     </div><!-- end col -->
                 </div><!-- end row -->
