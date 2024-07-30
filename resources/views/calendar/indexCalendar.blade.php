@@ -108,6 +108,9 @@
 @section('script')
 <script src="{{ URL::asset('assets/libs/fullcalendar/fullcalendar.min.js') }}"></script>
 <script src="{{ URL::asset('assets/js/pages/calendar.init.js') }}"></script>
+<script src="{{ URL::asset('assets/libs/gridjs/gridjs.min.js') }}"></script>
+<script src="{{ URL::asset('assets/js/pages/gridjs.init.js') }}"></script>
+<script src="{{ URL::asset('assets/js/app.js') }}"></script>
 
     <script>
 

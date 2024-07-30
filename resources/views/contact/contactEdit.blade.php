@@ -304,7 +304,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <input type="hidden" name="id_contact" value={{$contact->id}}>
-                                        <textarea name="notes" placeholder="Escribe aquí las notas de Ppostventa" class="form-control" cols="30" rows="10" required></textarea>
+                                        <textarea name="notes" placeholder="Escribe aquí las notas de Postventa" class="form-control" cols="30" rows="10" required></textarea>
                                     </div>
                                     <div class="row">
                                         <div class="modal-footer">

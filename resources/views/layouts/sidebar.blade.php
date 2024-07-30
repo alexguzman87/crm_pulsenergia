@@ -77,23 +77,13 @@
                         <i class="bx bx-chat nav-icon"></i>
                         <span class="menu-item" data-key="t-dashboard">TAREAS</span>
                     </a>
-                </li>
-                
-                @if(auth()->user()->type_user=='admin')
+                </li>               
                 <li>
                     <a href="/calendar">
                         <i class="bx bx-calendar nav-icon"></i>
                         <span class="menu-item" data-key="t-dashboard">CALENDARIO</span>
                     </a>
                 </li>
-                @else
-                <li>
-                    <a href="/calendar/{{auth()->user()->id}}">
-                        <i class="bx bx-calendar nav-icon"></i>
-                        <span class="menu-item" data-key="t-dashboard">CALENDARIO</span>
-                    </a>
-                </li>
-                @endif
                 @if(auth()->user()->type_user=='admin')
                 <li>
                     <a href="/oportunity">
