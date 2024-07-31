@@ -27,7 +27,7 @@ class UserRequest extends FormRequest
             'name'=>'required',
             'username'=>'required|unique:users',
             'type_user'=>'required',
-            'email'=>'required|unique:users',
+            'email'=>'unique:users',
             'password'=>'required',
         ];
     }
@@ -38,7 +38,7 @@ class UserRequest extends FormRequest
             'username.required'=>'El Nombre de Usuario es requerido',
             'username.unique'=>'El Nombre de Usuario ya está siendo usado',
             'type_user.required'=>'El Tipo de Usuario es requerido',
-            'email.required'=>'El Correo Electrónico es requerido',
+            //'email.required'=>'El Correo Electrónico es requerido',
             'email.unique'=>'El Correo Electrónico ya está siendo usado',
             'password.required'=>'La Contraseña es requerida',
             'image.required'=>'La Imagen es requerida',

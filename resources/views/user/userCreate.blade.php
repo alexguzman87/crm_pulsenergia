@@ -20,17 +20,17 @@
                 <form action="/user_create" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3">
-                            <input type="text" name="name" class="form-control" id="formrow-firstname-input" placeholder="Nombre Completo">
+                            <input type="text" name="name" class="form-control" id="formrow-firstname-input" placeholder="Nombre Completo" required>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <input type="Text" name="username" class="form-control" id="formrow-email-input" placeholder="Nombre de usuario">
+                                    <input type="Text" name="username" class="form-control" id="formrow-email-input" placeholder="Nombre de usuario" required>
                                 </div>
                             </div><!-- end col -->
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <select name="type_user" class="form-select">
+                                    <select name="type_user" class="form-select" required>
                                         <option value="" selected disabled hidden>Selecciona un perfil</option>
                                         <option value="admin">Administrador</option>
                                         <option value="analyst">Analista</option>
@@ -47,7 +47,7 @@
                             </div><!-- end col -->
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <input type="password" name="password" class="form-control" id="formrow-password-input" placeholder="Contraseña">
+                                    <input type="password" name="password" class="form-control" id="formrow-password-input" placeholder="Contraseña" required>
                                 </div>
                             </div><!-- end col -->
                         </div><!-- end row -->

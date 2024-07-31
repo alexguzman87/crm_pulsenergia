@@ -17,7 +17,7 @@ class UserEditRequest extends FormRequest
             'name'=>'required',
             'username'=>'required',
             'type_user'=>'required',
-            'email'=>'required',
+            //'email'=>'required',
         ];
     }
 
@@ -26,7 +26,7 @@ class UserEditRequest extends FormRequest
             'name.required'=>'El Nombre es requerido',
             'username.required'=>'El Nombre de Usuario es requerido',
             'type_user.required'=>'El Tipo de Usuario es requerido',
-            'email.required'=>'El Correo Electrónico es requerido',
+            //'email.required'=>'El Correo Electrónico es requerido',
         ];    
     }
 }

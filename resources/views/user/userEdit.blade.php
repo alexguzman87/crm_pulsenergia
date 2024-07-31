@@ -24,7 +24,7 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label" for="formrow-firstname-input">Nombre</label>
-                                    <input type="text" name="name" class="form-control" value="{{$user->name}}">
+                                    <input type="text" name="name" class="form-control" value="{{$user->name}}" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -38,13 +38,13 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label" for="formrow-firstname-input">Nombre de usuario</label>
-                                    <input type="text" name="username" class="form-control" value="{{$user->username}}">
+                                    <input type="text" name="username" class="form-control" value="{{$user->username}}" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label" for="formrow-firstname-input">Tipo de Usuario</label>
-                                    <select name="type_user" class="form-select">
+                                    <select name="type_user" class="form-select" required>
                                         <option value="{{$user->type_user}}">
                                             @if($user->type_user == 'admin') Administrador @endif
                                             @if($user->type_user == 'commercial') Comercial @endif
