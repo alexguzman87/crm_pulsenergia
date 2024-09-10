@@ -83,7 +83,8 @@ Route::middleware('auth')->group(function() {
     Route::get('client',[ContactController::class,'index_client'])->middleware('admin');
     Route::get('lead_show_user/{user}',[ContactController::class,'show'])->name('lead_show_user');
     Route::get('client_show_user/{user}',[ContactController::class,'show_client'])->name('client_show_user');
-    Route::get('lead_create',[ContactController::class,'create']);
+    Route::get('lead_create',[ContactController::class,'create'])->name('lead_create');
+    Route::get('client_create',[ContactController::class,'create'])->name('client_create');
     Route::post('lead_create',[ContactController::class,'store']);
     Route::get('lead_edit/{lead}',[ContactController::class,'edit'])->name('lead_edit');
     Route::put('lead_edit/{lead}',[ContactController::class,'update'])->name('lead_update');
@@ -142,8 +143,6 @@ Route::middleware('auth')->group(function() {
 
     Route::view('leads', 'leadsWeb.contacts-list');
     
-    Route::get('client_create',[LeadController::class,'create']);
-    Route::post('client_create',[LeadController::class,'store']);
     Route::get('client_edit/{lead}',[LeadController::class,'edit'])->name('client_edit');
     Route::get('client_edit_pass/{lead}',[LeadController::class,'edit_pass'])->name('client_edit_pass');
     Route::put('client_edit/{lead}',[LeadController::class,'update'])->name('client_update');

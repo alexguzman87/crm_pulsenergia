@@ -32,7 +32,7 @@
                             </div>
                             @endif
                             <div>
-                                <a href="/lead_create"><button type="submit" title="EXPORTAR EXCEL" name="send" class="btn btn-primary"><i class="bx bx-user-plus"></i></button></a>
+                                <a href="/client_create"><button type="submit" title="CREAR CLIENTE" name="send" class="btn btn-primary"><i class="bx bx-user-plus"></i></button></a>
                             </div>
                         </div>
                     </div><!-- end col -->

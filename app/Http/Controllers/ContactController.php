@@ -106,11 +106,12 @@ class ContactController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ContactRequest $request)
+    public function store(Request $request)
     {       
         $contact=new Contact();
         $contact->name=$request->input('name');
         $contact->id_user=$request->input('id_user');
+        $contact->type=$request->input('type');
         $contact->email=$request->input('email');
         $contact->second_email=$request->input('second_email');
         $contact->phone=$request->input('phone');
@@ -119,6 +120,7 @@ class ContactController extends Controller
         $contact->state=$request->input('state');
         $contact->street=$request->input('street');
         $contact->address=$request->input('address');
+        $contact->coordinate=$request->input('coordinate');
         $contact->city=$request->input('city');
         $contact->postal_code=$request->input('postal_code');
         $contact->id_origins=$request->input('id_origins');
@@ -224,7 +226,7 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ContactEditRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $contact=Contact::findOrFail($id);
 

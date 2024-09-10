@@ -166,7 +166,7 @@
                 <div class="tab-content p-3 text-muted">
                     <div class="tab-pane active" id="navtabs-profile" role="tabpanel">                    
                         <div class="card-body">
-                            <form action="/lead_edit/{{$contact->id}}" method="POST" enctype="multipart/form-data">
+                            <form action="/lead_edit/{{$contact->id}}" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
                                 @csrf
                                 @method('PUT')
                                     <div class="modal-body p-4">
@@ -176,7 +176,7 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <input type="email" name="email" class="form-control" value="{{$contact->email}}" placeholder="Correo Electrónico" required>
+                                                    <input type="email" name="email" class="form-control" value="{{$contact->email}}" placeholder="Correo Electrónico">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -200,7 +200,7 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <select name="country" class="form-select" id="country" required>
+                                                    <select name="country" class="form-select" id="country">
                                                         <option value="{{$contact->country}}">{{$contact->country}}</option>
                                                         @foreach ($country as $c)
                                                             <option value="{{$c->name}}">{{$c->name}}</option>
@@ -211,55 +211,68 @@
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     {{--Aqui esta el codigo de españa complementado con el script--}}
-                                                    <select name="state" Style="display:none" class="form-select" id="spain" onchange="" required>
+                                                    <select name="state" Style="display:none" class="form-select" id="spain" onchange="">
                                                         <option value="{{$contact->state}}">{{$contact->state}}</option>
                                                         @foreach ($state as $s)
                                                             <option value={{$s->name}}>{{$s->name}}</option>
                                                         @endforeach
                                                     </select>
                                                     {{--Aqui esta el input de no ser españa--}}
-                                                    <input type="text" id="non_spain" Style="display:none" name="state" class="form-control" placeholder="Provincia" value="{{$contact->state}}" required>                                    
+                                                    <input type="text" id="non_spain" Style="display:none" name="state" class="form-control" placeholder="Provincia" value="{{$contact->state}}">                                    
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <input type="text" name="city" class="form-control" value="{{$contact->city}}" placeholder="Ciudad" required>                                    
+                                                    <input type="text" name="city" class="form-control" value="{{$contact->city}}" placeholder="Ciudad">                                    
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <input type="text" name="street" class="form-control" placeholder="Calle / Avenida" value="{{$contact->street}}" required>                                    
+                                                    <input type="text" name="street" class="form-control" placeholder="Calle / Avenida" value="{{$contact->street}}">                                    
                                                 </div>
                                             </div> 
                                             <div class="col-md-9">       
                                                 <div class="mb-3">
-                                                    <input type="text" name="address" class="form-control" value="{{$contact->address}}" placeholder="Dirección" required>
+                                                    <input type="text" name="address" class="form-control" value="{{$contact->address}}" placeholder="Dirección">
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
                                                 <div class="mb-3">
-                                                    <input type="text" onkeypress="return valideKey(event);" minlength="5" maxlength="5" name="postal_code" value="{{$contact->postal_code}}" class="form-control" placeholder="Código Postal" required>                                    
+                                                    <input type="text" onkeypress="return valideKey(event);" minlength="5" maxlength="5" name="postal_code" value="{{$contact->postal_code}}" class="form-control" placeholder="Código Postal">                                    
                                                 </div>
                                             </div>
                                             <div class="col">
-                                                    <select name="id_origins" class="form-select" required>
-                                                        <option value="{{$contact->id_origins}}">{{$contact->origin->name}}</option>
+                                                    <select name="id_origins" class="form-select">
+                                                        @if($contact->id_origins)
+                                                            <option value="{{$contact->id_origins}}">{{$contact->origin->name}}</option>
+                                                        @else
+                                                            <option value="" selected disabled hidden>Origen del Lead</option>
+                                                        @endif
                                                         @foreach ($origin as $o)
                                                             <option value="{{$o->id}}">{{$o->name}}</option>
                                                         @endforeach
+                                                        
                                                     </select>
                                             </div>
                                             <div class="col">
-                                                    <select name="id_level" class="form-select" required>
-                                                        <option value="{{$contact->id_level}}">{{$contact->level->name}}</option>
+                                                    <select name="id_level" class="form-select">
+                                                        @if($contact->id_level)
+                                                            <option value="{{$contact->id_level}}">{{$contact->level->name}}</option>
+                                                        @else
+                                                            <option value="" selected disabled hidden>Nivel del Lead</option>
+                                                        @endif
                                                         @foreach ($level as $l)
                                                             <option value="{{$l->id}}">{{$l->name}}</option>
                                                         @endforeach
                                                     </select>
                                             </div>
                                             <div class="col">
-                                                    <select name="id_type" class="form-select" required>
-                                                        <option value="{{$contact->id_type}}">{{$contact->type_lead->name}}</option>
+                                                    <select name="id_type" class="form-select">
+                                                        @if($contact->id_type)
+                                                            <option value="{{$contact->id_type}}">{{$contact->type_lead->name}}</option>
+                                                        @else
+                                                            <option value="" selected disabled hidden>Tipo del Lead</option>
+                                                        @endif
                                                         @foreach ($type as $t)
                                                             <option value="{{$t->id}}">{{$t->name}}</option>
                                                         @endforeach
@@ -274,7 +287,7 @@
                                         <div class="mb-3">
                                         </div>
                                         <div class="mb-3">
-                                            <textarea name="notes" class="form-control" cols="30" rows="10" placeholder="Descripción" required>{{$contact->notes}}</textarea>
+                                            <textarea name="notes" class="form-control" cols="30" rows="10" placeholder="Descripción">{{$contact->notes}}</textarea>
                                         </div>        
                                     </div>
                                     <!-- end modalbody -->
@@ -613,6 +626,7 @@
 
 @section('script')
 
+<script src="{{ URL::asset('assets/js/pages/form-validation.init.js') }}"></script>
 <script>
 
     var spain = document.getElementById('spain');
@@ -639,13 +653,13 @@
         non_spain.style.display = 'none';
         non_spain.removeAttribute("required");
         non_spain.removeAttribute("name");
-        spain.required = true;
+        //spain.required = true;
         }else{
         non_spain.style.display = 'initial';
         spain.style.display = 'none';
         spain.removeAttribute("required");
         spain.removeAttribute("name");
-        non_spain.required = true; 
+        //non_spain.required = true; 
         }
     });
 
@@ -657,14 +671,14 @@
         non_spain.removeAttribute("required");
         non_spain.removeAttribute("name");
         spain.setAttribute("name", "state");
-        spain.required = true;
+        //spain.required = true;
       } else {
         non_spain.style.display = 'initial';
         spain.style.display = 'none';
         spain.removeAttribute("required");
         spain.removeAttribute("name");
         non_spain.setAttribute("name", "state");
-        non_spain.required = true;
+        //non_spain.required = true;
       }
     });
 
