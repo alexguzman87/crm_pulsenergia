@@ -17,7 +17,7 @@
             </div><!-- end card header -->
             <div class="card-body">
                 <div>
-                <form action="/convert_lead_to_oportunity/{{$contact->id}}" method="POST">
+                <form action="/convert_lead_to_oportunity/{{$contact->id}}" method="POST" class="needs-validation" novalidate>
                         @csrf
                         @if (auth()->user()->type_user=='admin')
                         <div class="mb-3">
@@ -33,7 +33,7 @@
                         @endif
                         <div class="mb-3">
                             <input type="hidden" name="id_contact" class="form-control" placeholder="Titulo" value="{{$contact->id}}">
-                            <input type="text" name="title" class="form-control" placeholder="Titulo" value="{{ old('title') }}" required>
+                            <input type="text" name="title" class="form-control" placeholder="Titulo" value="{{ old('title') }}">
                         </div>
                         <div class="row">
                             <div class="col-md-6">
@@ -43,14 +43,14 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <input type="text" name="organization" class="form-control" placeholder="Organización"  value="{{ old('organization') }}" required>                                    
+                                    <input type="text" name="organization" class="form-control" placeholder="Organización"  value="{{ old('organization') }}">                                    
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <input type="email" name="email" class="form-control" placeholder="Correo Electrónico"  value="{{$contact->email}}" required>
+                                    <input type="email" name="email" class="form-control" placeholder="Correo Electrónico"  value="{{$contact->email}}">
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -62,7 +62,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <select name="country" class="form-select" id="country" onchange="" required>
+                                    <select name="country" class="form-select" id="country" onchange="">
                                         <option value="{{$contact->country}}">{{$contact->country}}</option>
                                         @foreach ($country as $c)
                                             <option value="{{$c->name}}">{{$c->name}}</option>
@@ -73,50 +73,50 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     {{--Aqui esta el codigo de españa complementado con el script--}}
-                                    <select name="state" Style="display:none" class="form-select" id="spain" onchange="" required>
+                                    <select name="state" Style="display:none" class="form-select" id="spain" onchange="">
                                         <option value={{$contact->state}}>{{$contact->state}}</option>
                                         @foreach ($state as $s)
                                             <option value="{{$s->name}}">{{$s->name}}</option>
                                         @endforeach
                                     </select>
                                     {{--Aqui esta el input de no ser españa--}}
-                                    <input type="text" id="non_spain" Style="display:none" name="state" class="form-control" placeholder="Provincia" value="{{$contact->state}}" required>                                    
+                                    <input type="text" id="non_spain" Style="display:none" name="state" class="form-control" placeholder="Provincia" value="{{$contact->state}}">                                    
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <input type="text" name="city" class="form-control" placeholder="Ciudad" value="{{$contact->city}}" required>
+                                    <input type="text" name="city" class="form-control" placeholder="Ciudad" value="{{$contact->city}}">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <input type="text" name="street" class="form-control" placeholder="Calle / Avenida" value="{{$contact->street}}" required>                                    
+                                    <input type="text" name="street" class="form-control" placeholder="Calle / Avenida" value="{{$contact->street}}">                                    
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-9">
                                 <div class="mb-3">
-                                    <input type="text" name="address" class="form-control" placeholder="Dirección" value="{{$contact->address}}"  required>
+                                    <input type="text" name="address" class="form-control" placeholder="Dirección" value="{{$contact->address}}">
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="mb-3">
-                                    <input type="text" onkeypress="return valideKey(event);" minlength="5" maxlength="5" name="postal_code" class="form-control" placeholder="Código Postal" value="{{$contact->postal_code}}" required>                                    
+                                    <input type="text" onkeypress="return valideKey(event);" minlength="5" maxlength="5" name="postal_code" class="form-control" placeholder="Código Postal" value="{{$contact->postal_code}}">                                    
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="mb-3">
-                                    <input type="text" onkeypress="return valideKey(event);" name="budget" class="form-control" placeholder="Presupuesto" value="{{ old('budget') }}" required>
+                                    <input type="text" onkeypress="return valideKey(event);" name="budget" class="form-control" placeholder="Presupuesto" value="{{ old('budget') }}">
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="mb-3">
-                                    <select name="status" class="form-select" value="" required>
+                                    <select name="status" class="form-select" value="">
                                         <option value="oportunity">Oportunidad</option>
                                         <option value="proposal">En Propuesta</option>
                                         <option value="need">Necesito Apoyo</option>
@@ -139,7 +139,7 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="mb-3">
-                                    <select name="id_origins" class="form-select" required>
+                                    <select name="id_origins" class="form-select">
                                         <option value="" selected disabled hidden>Origen Oportunidad</option>
                                         @foreach ($origin as $o)
                                             <option value="{{$o->id}}">{{$o->name}}</option>
@@ -149,7 +149,7 @@
                             </div><!-- end row -->
                             <div class="col-md-4">
                                 <div class="mb-3">
-                                    <select name="id_level" class="form-select" required>
+                                    <select name="id_level" class="form-select">
                                         <option value="" selected disabled hidden>Nivel Oportunidad</option>
                                         @foreach ($level as $l)
                                             <option value="{{$l->id}}">{{$l->name}}</option>
@@ -159,7 +159,7 @@
                             </div><!-- end row -->
                             <div class="col-md-4">
                                 <div class="mb-3">
-                                    <select name="id_type" class="form-select" required>
+                                    <select name="id_type" class="form-select">
                                         <option value="" selected disabled hidden>Tipo Oportunidad</option>
                                         @foreach ($type as $t)
                                             <option value="{{$t->id}}">{{$t->name}}</option>
@@ -169,7 +169,7 @@
                             </div><!-- end row -->
                         </div><!-- end row -->
                         <div class="mb-3">
-                            <textarea name="description" class="form-control" cols="30" rows="10" placeholder="Descripción" value="{{ old('description') }}" required>{{$contact->notes}}</textarea>
+                            <textarea name="description" class="form-control" cols="30" rows="10" placeholder="Descripción" value="{{ old('description') }}">{{$contact->notes}}</textarea>
                         </div>
                         <div class="mt-4">
                             <a href="/oportunity"><button type="button" class="btn btn-light w-sm" data-bs-dismiss="modal">Cancelar</button></a>
@@ -187,6 +187,7 @@
 @endsection
 @section('script')
 
+<script src="{{ URL::asset('assets/js/pages/form-validation.init.js') }}"></script>
 <script>
 const value = document.querySelector("#value");
     const input = document.querySelector("#pi_input");
@@ -219,13 +220,13 @@ const value = document.querySelector("#value");
         non_spain.style.display = 'none';
         non_spain.removeAttribute("required");
         non_spain.removeAttribute("name");
-        spain.required = true;
+        //spain.required = true;
         }else{
         non_spain.style.display = 'initial';
         spain.style.display = 'none';
         spain.removeAttribute("required");
         spain.removeAttribute("name");
-        non_spain.required = true; 
+        //non_spain.required = true; 
         }
     });
     
@@ -236,14 +237,14 @@ const value = document.querySelector("#value");
         non_spain.removeAttribute("required");
         non_spain.removeAttribute("name");
         spain.setAttribute("name", "state");
-        spain.required = true;
+        //spain.required = true;
       } else {
         non_spain.style.display = 'initial';
         spain.style.display = 'none';
         spain.removeAttribute("required");
         spain.removeAttribute("name");
         non_spain.setAttribute("name", "state");
-        non_spain.required = true;
+        //non_spain.required = true;
       }
     });
 

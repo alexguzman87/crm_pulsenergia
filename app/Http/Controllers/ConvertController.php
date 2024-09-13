@@ -40,7 +40,7 @@ class ConvertController extends Controller
 
     }
 
-    public function convert(OportunityRequest $request , $id){
+    public function convert(Request $request , $id){
 
         $oportunity=new Oportunity;
         $oportunity->title=$request->input('title');
@@ -65,9 +65,11 @@ class ConvertController extends Controller
         
         $oportunity->save();
 
-        $contact = Contact::findOrFail($id);
-        $contact->type='client';
-        $contact->update();
+        if($request->input('status')=='sale'){
+            $contact = Contact::findOrFail($id);
+            $contact->type='client';
+            $contact->update();
+        }
 
         Session::flash('success_green','Los datos de la Oportunidad han sido agregados con éxito');
         

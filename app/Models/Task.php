@@ -13,13 +13,16 @@ class Task extends Model
     
     protected $fillable = [
         'task',
+        'coordinate',
         'id_user',
         'id_oportunity',
         'id_contact',
         'priority',
         'status',
         'assigned_date',
-        'done_date'
+        'assigned_time',
+        'done_date',
+        'done_time'
     ];
 
     public function user(){

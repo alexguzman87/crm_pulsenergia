@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\OportunityRequest;
 use App\Http\Requests\OportunityEditRequest;
+use App\Models\Contact;
 use App\Models\Country;
 use App\Models\FileSave;
 use App\Models\LevelLead;
@@ -63,7 +64,7 @@ class OportunityController extends Controller
         return view('oportunity.create', compact('origin', 'type', 'level','user','country','state'));
     }
 
-    public function store(OportunityRequest $request)
+    public function store(Request $request)
     {       
         $oportunity=new Oportunity();
         $oportunity->title=$request->input('title');
@@ -75,6 +76,7 @@ class OportunityController extends Controller
         $oportunity->country=$request->input('country');
         $oportunity->state=$request->input('state');
         $oportunity->address=$request->input('address');
+        $oportunity->coordinate=$request->input('coordinate');
         $oportunity->street=$request->input('street');
         $oportunity->city=$request->input('city');
         $oportunity->postal_code=$request->input('postal_code');
@@ -87,6 +89,23 @@ class OportunityController extends Controller
         $oportunity->id_type=$request->input('id_type');
         
         $oportunity->save();
+
+        if(!Contact::where('phone',$request->input('phone'))->first()){
+            $contact=new Contact();
+            $contact->name = $request->input('contact_name');
+            $contact->phone = $request->input('phone');
+            if($request->input('status') == 'sale'){
+                $contact->type = 'client';
+            }
+            $contact->save();
+
+            $contactId = Contact::latest()->first()->id;
+            $oportunityId = Oportunity::latest()->first()->id;
+            $assignedId = Oportunity::findOrFail($oportunityId);
+            $assignedId->id_contact = $contactId;
+            $assignedId->update();
+        }
+
 
         Session::flash('success_green','Los datos de la Oportunidad han sido agregados con éxito');
         
@@ -153,8 +172,14 @@ class OportunityController extends Controller
     public function updateStatus(Request $request, $id)
     {       
         $oportunity=Oportunity::findOrFail($id);
-
         $oportunity->status=$request->input('status');
+
+        if($request->input('status') == 'sale'){
+            $id_contact = $oportunity->id_contact;            
+            $contact = Contact::findOrFail($id_contact);
+            $contact->type = 'client';
+            $contact->update();
+        }
                 
         $oportunity->update();
         
@@ -162,7 +187,7 @@ class OportunityController extends Controller
 
     }
 
-    public function update(OportunityEditRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $oportunity=Oportunity::findOrFail($id);
 
@@ -174,6 +199,8 @@ class OportunityController extends Controller
         $oportunity->country=$request->input('country');
         $oportunity->state=$request->input('state');
         $oportunity->address=$request->input('address');
+        $oportunity->coordinate=$request->input('coordinate');
+        $oportunity->street=$request->input('street');
         $oportunity->street=$request->input('street');
         $oportunity->city=$request->input('city');
         $oportunity->postal_code=$request->input('postal_code');
@@ -185,7 +212,17 @@ class OportunityController extends Controller
         $oportunity->id_level=$request->input('id_level');
         $oportunity->id_type=$request->input('id_type');        
 
+        if($request->input('status') == 'sale'){
+            $id_contact = $oportunity->id_contact;
+            $contact = Contact::findOrFail($id_contact);
+            $contact->type = 'client';
+            $contact->update();
+        }
+
+
         $oportunity->update();
+
+        
 
         Session::flash('success_green','Los datos de la Oportunidad han sido modificados con éxito');
         

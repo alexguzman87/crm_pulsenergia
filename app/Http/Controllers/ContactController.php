@@ -238,6 +238,7 @@ class ContactController extends Controller
         $contact->country=$request->input('country');
         $contact->state=$request->input('state');
         $contact->address=$request->input('address');
+        $contact->coordinate=$request->input('coordinate');
         $contact->street=$request->input('street');
         $contact->city=$request->input('city');
         $contact->postal_code=$request->input('postal_code');

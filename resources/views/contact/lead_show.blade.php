@@ -77,8 +77,7 @@
                             @foreach ( $contact as $c )
                             <tr>
                                 <td>{{date("d/m/Y", strtotime($c->created_at))}}</td>
-                                <td>{{$c->origin->name}}</td>
-                                <td>{{$c->name}}</td>
+                                <td>@if ($c->id_origin){{$c->origin->name}}@else No indicado @endif</td>                                <td>{{$c->name}}</td>
                                 <td>{{$c->email}}</td>
                                 <td>{{$c->second_email}}</td>
                                 <td>{{$c->phone}}</td>

@@ -32,7 +32,7 @@
                             </div>
                             @endif
                             <div>
-                                <a href="/lead_create"><button type="submit" title="EXPORTAR EXCEL" name="send" class="btn btn-primary"><i class="bx bx-user-plus"></i></button></a>
+                                <a href="/client_create"><button type="submit" title="CREAR CLIENTE" name="send" class="btn btn-primary"><i class="bx bx-user-plus"></i></button></a>
                             </div>
                         </div>
                     </div><!-- end col -->
@@ -77,7 +77,7 @@
                             @foreach ( $contact as $c )
                             <tr>
                                 <td>{{date("d/m/Y", strtotime($c->created_at))}}</td>
-                                <td>{{$c->origin->name}}</td>
+                                <td>@if ($c->id_origin){{$c->origin->name}}@else No indicado @endif</td>
                                 <td>{{$c->name}}</td>
                                 <td>{{$c->email}}</td>
                                 <td>{{$c->second_email}}</td>

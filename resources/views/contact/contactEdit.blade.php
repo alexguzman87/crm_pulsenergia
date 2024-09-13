@@ -241,6 +241,11 @@
                                                     <input type="text" onkeypress="return valideKey(event);" minlength="5" maxlength="5" name="postal_code" value="{{$contact->postal_code}}" class="form-control" placeholder="Código Postal">                                    
                                                 </div>
                                             </div>
+                                            <div class="col-md-12">       
+                                                <div class="mb-3">
+                                                    <input type="url" name="coordinate" class="form-control" value="{{$contact->coordinate}}" placeholder="Coordenadas">
+                                                </div>
+                                            </div>
                                             <div class="col">
                                                     <select name="id_origins" class="form-select">
                                                         @if($contact->id_origins)
@@ -305,7 +310,7 @@
                     @if($contact->id_user)
                     <div class="tab-pane" id="navtabs-postsales" role="tabpanel">
                         <div class="card-body">
-                            <form action="/postsales_create" method="POST">
+                            <form action="/postsales_create" method="POST" class="needs-validation" novalidate>
                                 @csrf
                                     <div class="mb-3">
                                         <select class="form-control" name="id_oportunity" required>
@@ -355,59 +360,82 @@
                     @if($contact->id_user)
                     <div class="tab-pane" id="navtabs-task" role="tabpanel">
                         <div class="card-body">
-                            <form action="/task_lead_create" method="POST">
+                            <form action="/task_lead_create" method="POST" class="needs-validation" novalidate>
                                 @csrf
+                                <div class="row">
                                     <div class="mb-3">
                                         <input type="hidden" name="id_contact" value={{$contact->id}}>
                                         <input type="hidden" name="task_origin" value='lead'>
                                         <input type="hidden" name="id_user" value={{$contact->user->id}}>
                                         <input type="text" name="task" class="form-control" placeholder="Descripción de la Tarea" required>
                                     </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <select class="form-control" name="priority" required>
-                                                <option value="" disabled selected>PRIORIDAD</option>
-                                                <option value="alta" style="border: none; width: 100%; color: #ef7564; background-color: white;">ALTA</option>
-                                                <option value="media" style="border: none; width: 100%; color: #ffb968; background-color: white;">MEDIA</option>
-                                                <option value="baja" style="border: none; width: 100%; color: #7bc86c; background-color: white;">BAJA</option>
-                                            </select>                                    
+                                    
+                                    <div class="col-md-6 mb-3">
+                                        <input type="url" name="coordinate" class="form-control" placeholder="Coordenadas" required>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <select class="form-control" name="priority" required>
+                                            <option value="" disabled selected>PRIORIDAD</option>
+                                            <option value="alta" style="border: none; width: 100%; color: #ef7564; background-color: white;">ALTA</option>
+                                            <option value="media" style="border: none; width: 100%; color: #ffb968; background-color: white;">MEDIA</option>
+                                            <option value="baja" style="border: none; width: 100%; color: #7bc86c; background-color: white;">BAJA</option>
+                                        </select>                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <select class="form-control" name="status">
+                                            <option value="pendiente" style="border: none; width: 100%; color: #ef7564; background-color: white;">PENDIENTE</option>
+                                            <option value="en_proceso" style="border: none; width: 100%; color: #ffb968; background-color: white;">EN PROCESO</option>
+                                            <option value="hecho" style="border: none; width: 100%; color: #7bc86c; background-color: white;">HECHO</option>
+                                        </select>                                    
+                                    </div>
+
+                                    <div class="col-md-3 mb-3">
+                                        <label class="form-label" for="formrow-firstname-input">Fecha de Asignado</label>
+                                        <input type="date" name="assigned_date" class="form-control" placeholder="Fecha Asignado" value="<?php echo date('Y-m-d'); ?>" min="<?php echo date('Y-m-d'); ?>">
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label class="form-label" for="formrow-firstname-input">Hora de Asignado</label>                                        
+                                        <input class="form-control" name="assigned_time" type="time" placeholder="Hora Asignado"  min="<?php echo date('H:m'); ?>" required>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label class="form-label" for="formrow-firstname-input">Fecha de Realizado</label>
+                                        <input type="date" name="done_date" class="form-control" placeholder="Fecha Realizado" min="<?php echo date('Y-m-d'); ?>" required>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label class="form-label" for="formrow-firstname-input">Hora de Realizado</label>
+                                        <input class="form-control" name="done_time" type="time" placeholder="Hora Realizado" required>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <div class="mb-3">
+                                            <a href="/lead"><button type="button" class="btn btn-light w-sm" data-bs-dismiss="modal">Cancelar</button></a>
+                                            <button type="submit" class="btn btn-primary w-md">Agregar Tarea</button>
                                         </div>
-                                        <div class="col">
-                                            <select class="form-control" name="status">
-                                                <option value="pendiente" style="border: none; width: 100%; color: #ef7564; background-color: white;">PENDIENTE</option>
-                                                <option value="en_proceso" style="border: none; width: 100%; color: #ffb968; background-color: white;">EN PROCESO</option>
-                                                <option value="hecho" style="border: none; width: 100%; color: #7bc86c; background-color: white;">HECHO</option>
-                                            </select>                                    
-                                        </div>
-                                        <div class="col">
-                                            <input type="date" name="assigned_date" class="form-control" placeholder="Asignado el" value="<?php echo date('Y-m-d'); ?>" min="<?php echo date('Y-m-d'); ?>">                                                                       
-                                        </div>
-                                        <div class="col">
-                                            <input type="date" name="done_date" class="form-control" placeholder="Realizado el" value="<?php echo date('Y-m-d'); ?>" min="<?php echo date('Y-m-d'); ?>">                                                                     
-                                        </div>
-                                        <div class="modal-footer">
-                                            <div class="mb-3">
-                                                <a href="/lead"><button type="button" class="btn btn-light w-sm" data-bs-dismiss="modal">Cancelar</button></a>
-                                                <button type="submit" class="btn btn-primary w-md">Agregar Tarea</button>                                            </div>
-                                            </div>
-                                        </div>
-                                    @include('layouts.message')
+                                    </div>
+                                </div>
+                                @include('layouts.message')
                             </form>
                             <div class="table-responsive">
                                 <table class="table align-middle table-nowrap table-check">
                                     <thead>
                                         <tr>
+                                            <th scope="col"></th>
                                             <th scope="col">Tarea</th>
                                             <th scope="col">Prioridad</th>
                                             <th scope="col">Estado</th>
                                             <th scope="col">Creado</th>
                                             <th scope="col">Finalizado</th>
+                                            <th scope="col"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ( $task as $t )
                                             <tr>
-                                                <td>{{$t->task}}</td>
+                                                <td>
+                                                    <a href={{$t->coordinate}} target="_blank"><button type="submit" title="UBICACIÓN" class="btn btn-primary"><i class="bx bx-map"></i></button></a>
+                                                </td>
+                                                <td>
+                                                    {{$t->task}}
+                                                </td>
                                                 <td>
                                                     <div class="dropdown">
                                                         <a class="btn btn-link text-dark dropdown-toggle shadow-none" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -478,8 +506,18 @@
                                                         </ul>
                                                     </div><!-- end dropdown -->
                                                 </td>
-                                                <td>{{ date('d-M-y', strtotime($t->assigned_date)) }}</td>
-                                                <td>{{ date('d-M-y', strtotime($t->done_date)) }}</td>
+                                                <td>{{ date('d-M-y', strtotime($t->assigned_date)) }} {{date('H:i', strtotime($t->assigned_time))}}</td>
+                                                <td>{{ date('d-M-y', strtotime($t->done_date)) }} {{date('H:i', strtotime($t->done_time))}}</td>
+                                                <td>
+                                                    <div class="d-flex gap-2">
+                                                        <a href={{route('task_edit', $t->id)}}><button title="EDITAR OPORTUNIDAD" class="btn btn-primary"><i class="fas fa-pencil-alt"></i></button></a>
+                                                        <form action="{{route('task_delete', $t->id)}}" method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" title="BORRAR USUARIO" class="btn btn-primary"><i class="bx bx-x-circle"></i></button>
+                                                        </form>
+                                                    </div>  
+                                                </td>
                                         @endforeach
                                     </tbody>
                                 </table>

@@ -36,11 +36,14 @@ class TaskCotroller extends Controller
         $Task->id_user=$request->input('id_user');
         $Task->id_contact=$request->input('id_contact');
         $Task->task=$request->input('task');
+        $Task->coordinate=$request->input('coordinate');
         $Task->task_origin=$request->input('task_origin');
         $Task->priority=$request->input('priority');
         $Task->status=$request->input('status');
         $Task->assigned_date=$request->input('assigned_date');
+        $Task->assigned_time=$request->input('assigned_time');
         $Task->done_date=$request->input('done_date');
+        $Task->done_time=$request->input('done_time');
 
         $Task->save();
 
@@ -56,10 +59,13 @@ class TaskCotroller extends Controller
         $Task->id_oportunity=$request->input('id_oportunity');
         $Task->task_origin=$request->input('task_origin');
         $Task->task=$request->input('task');
+        $Task->coordinate=$request->input('coordinate');
         $Task->priority=$request->input('priority');
         $Task->status=$request->input('status');
         $Task->assigned_date=$request->input('assigned_date');
+        $Task->assigned_time=$request->input('assigned_time');
         $Task->done_date=$request->input('done_date');
+        $Task->done_time=$request->input('done_time');
 
         $Task->save();
 
@@ -104,7 +110,7 @@ class TaskCotroller extends Controller
 
     }
 
-    public function task_update(TaskEditRequest $request, $id)
+    public function task_update(Request $request, $id)
     {
         $task=Task::findOrFail($id);
         
@@ -112,9 +118,11 @@ class TaskCotroller extends Controller
         $task->id_oportunity=$request->input('id_oportunity');
         $task->task_origin=$request->input('task_origin');
         $task->task=$request->input('task');
+        $task->coordinate=$request->input('coordinate');
         $task->priority=$request->input('priority');
         $task->status=$request->input('status');
         $task->done_date=$request->input('done_date');
+        $task->done_time=$request->input('done_time');
 
         $task->update();
 

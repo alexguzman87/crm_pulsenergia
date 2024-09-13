@@ -151,12 +151,12 @@
                     {{--EDITAR--}}
                     <div class="tab-pane active" id="navtabs-profile" role="tabpanel">                    
                         <div class="card-body">
-                            <form action="/oportunity_edit/{{$oportunity->id}}" method="POST" enctype="multipart/form-data">
+                            <form action="/oportunity_edit/{{$oportunity->id}}" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
                                 @csrf
                                 @method('PUT')
                                     <div class="modal-body p-4">
                                         <div class="mb-3">
-                                            <input type="text" name="title" class="form-control" placeholder="Titulo" value="{{$oportunity->title}}" required>
+                                            <input type="text" name="title" class="form-control" placeholder="Titulo" value="{{$oportunity->title}}">
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
@@ -166,14 +166,14 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <input type="text" name="organization" class="form-control" placeholder="Organización"  value="{{$oportunity->organization}}" required>                                    
+                                                    <input type="text" name="organization" class="form-control" placeholder="Organización"  value="{{$oportunity->organization}}">                                    
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <input type="email" name="email" class="form-control" placeholder="Correo Electrónico"  value="{{$oportunity->email}}" required>
+                                                    <input type="email" name="email" class="form-control" placeholder="Correo Electrónico"  value="{{$oportunity->email}}">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -185,7 +185,7 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <select name="country" class="form-select" id="country" required>
+                                                    <select name="country" class="form-select" id="country">
                                                         <option value="{{$oportunity->country}}">{{$oportunity->country}}</option>
                                                         @foreach ($country as $c)
                                                             <option value="{{$c->name}}">{{$c->name}}</option>
@@ -196,50 +196,57 @@
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     {{--Aqui esta el codigo de españa complementado con el script--}}
-                                                    <select name="state" Style="display:none" class="form-select" id="spain" onchange="" required>
+                                                    <select name="state" Style="display:none" class="form-select" id="spain" onchange="">
                                                         <option value="{{$oportunity->state}}">{{$oportunity->state}}</option>
                                                         @foreach ($state as $s)
                                                             <option value={{$s->name}}>{{$s->name}}</option>
                                                         @endforeach
                                                     </select>
                                                     {{--Aqui esta el input de no ser españa--}}
-                                                    <input type="text" id="non_spain" Style="display:none" name="state" class="form-control" placeholder="Provincia" value="{{$oportunity->state}}" required>                                    
+                                                    <input type="text" id="non_spain" Style="display:none" name="state" class="form-control" placeholder="Provincia" value="{{$oportunity->state}}">                                    
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <input type="text" name="city" class="form-control" placeholder="Ciudad" value="{{$oportunity->city}}" required>
+                                                    <input type="text" name="city" class="form-control" placeholder="Ciudad" value="{{$oportunity->city}}">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <input type="text" name="street" class="form-control" placeholder="Calle / Avenida" value="{{$oportunity->street}}" required>                                    
+                                                    <input type="text" name="street" class="form-control" placeholder="Calle / Avenida" value="{{$oportunity->street}}">                                    
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-9">
                                                 <div class="mb-3">
-                                                    <input type="text" name="address" class="form-control" placeholder="Dirección" value="{{$oportunity->address}}" required>
+                                                    <input type="text" name="address" class="form-control" placeholder="Dirección" value="{{$oportunity->address}}">
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
                                                 <div class="mb-3">
-                                                    <input type="text" onkeypress="return valideKey(event);" minlength="5" maxlength="5" name="postal_code" class="form-control" placeholder="Código Postal" value="{{$oportunity->postal_code}}" required>                                    
+                                                    <input type="text" onkeypress="return valideKey(event);" minlength="5" maxlength="5" name="postal_code" class="form-control" placeholder="Código Postal" value="{{$oportunity->postal_code}}">                                    
+                                                </div>
+                                            </div>
+                                        </div>                                        
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="mb-3">
+                                                    <input type="url" name="coordinate" class="form-control" placeholder="Coordenadas" value="{{$oportunity->coordinate}}">
                                                 </div>
                                             </div>
                                         </div>                                        
                                         <div class="row">
                                             <div class="col-md-3">
                                                 <div class="mb-3">
-                                                    <input type="text" onkeypress="return valideKey(event);" name="budget" class="form-control" placeholder="Presupuesto" value={{$oportunity->budget}} required>
+                                                    <input type="text" onkeypress="return valideKey(event);" name="budget" class="form-control" placeholder="Presupuesto" value={{$oportunity->budget}}>
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
                                                 <div class="mb-3">
-                                                    <select name="status" class="form-select" value={{$oportunity->status}} required>
+                                                    <select name="status" class="form-select" value={{$oportunity->status}}>
                                                         <option value="oportunity">Oportunidad</option>
                                                         <option value="proposal">En Propuesta</option>
                                                         <option value="need">Necesito Apoyo</option>
@@ -255,7 +262,7 @@
                                             </div><!-- end row -->
                                             <div class="col-md-3">
                                                 <div class="mb-3">
-                                                    <input id="pi_input" name="probability" class="form-range mt-2" type="range" min="0" max="100" step="10" value={{$oportunity->probability}} required/>
+                                                    <input id="pi_input" name="probability" class="form-range mt-2" type="range" min="0" max="100" step="10" value={{$oportunity->probability}}/>
                                                 </div>
                                             </div><!-- end col -->
                                         </div><!-- end row -->
@@ -264,8 +271,12 @@
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <div class="mb-3">
-                                                    <select name="id_origins" class="form-select" required>
-                                                        <option value="{{$oportunity->id_origins}}">{{$oportunity->origin->name}}</option>
+                                                    <select name="id_origins" class="form-select">
+                                                        @if($oportunity->id_origins)
+                                                            <option value="{{$oportunity->id_origins}}">{{$oportunity->origin->name}}</option>
+                                                        @else
+                                                            <option value="" selected disabled hidden>Origen del Lead</option>
+                                                        @endif
                                                         @foreach ($origin as $o)
                                                             <option value="{{$o->id}}">{{$o->name}}</option>
                                                         @endforeach
@@ -274,8 +285,12 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="mb-3">
-                                                    <select name="id_level" class="form-select" required>
-                                                        <option value="{{$oportunity->id_level}}">{{$oportunity->level->name}}</option>
+                                                    <select name="id_level" class="form-select">
+                                                        @if($oportunity->id_level)
+                                                            <option value="{{$oportunity->id_level}}">{{$oportunity->level->name}}</option>
+                                                        @else
+                                                            <option value="" selected disabled hidden>Nivel del Lead</option>
+                                                        @endif
                                                         @foreach ($level as $l)
                                                             <option value="{{$l->id}}">{{$l->name}}</option>
                                                         @endforeach
@@ -284,8 +299,12 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="mb-3">
-                                                    <select name="id_type" class="form-select" required>
-                                                        <option value="{{$oportunity->id_type}}">{{$oportunity->type->name}}</option>
+                                                    <select name="id_type" class="form-select">
+                                                        @if($oportunity->id_type)
+                                                            <option value="{{$oportunity->id_type}}">{{$oportunity->type->name}}</option>
+                                                        @else
+                                                            <option value="" selected disabled hidden>Tipo del Lead</option>
+                                                        @endif
                                                         @foreach ($type as $t)
                                                             <option value="{{$t->id}}">{{$t->name}}</option>
                                                         @endforeach
@@ -295,7 +314,7 @@
                                         </div>
 
                                         <div class="mb-3">
-                                            <textarea name="description" class="form-control" cols="30" rows="10" placeholder="Descripción" required>{{$oportunity->description}}</textarea>
+                                            <textarea name="description" class="form-control" cols="30" rows="10" placeholder="Descripción">{{$oportunity->description}}</textarea>
                                         </div>
                                     </div>
                                     <!-- end modalbody -->
@@ -312,59 +331,77 @@
                     @if($oportunity->id_user)
                     <div class="tab-pane" id="navtabs-task" role="tabpanel">
                         <div class="card-body">
-                            <form action="/task_oportunity_create" method="POST">
+                            <form action="/task_oportunity_create" method="POST" class="needs-validation" novalidate>
                                 @csrf
+                                <div class="row">
                                     <div class="mb-3">
                                         <input type="hidden" name="id_oportunity" value={{$oportunity->id}}>
                                         <input type="hidden" name="task_origin" value='oportunity'>
                                         <input type="hidden" name="id_user" value={{$oportunity->user->id}}>
                                         <input type="text" name="task" class="form-control" placeholder="Descripción de la Tarea..." required>
                                     </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <select class="form-control" name="priority" required>
-                                                <option value="" disabled selected>PRIORIDAD</option>
-                                                <option value="alta" style="border: none; width: 100%; color: #ef7564; background-color: white;">ALTA</option>
-                                                <option value="media" style="border: none; width: 100%; color: #ffb968; background-color: white;">MEDIA</option>
-                                                <option value="baja" style="border: none; width: 100%; color: #7bc86c; background-color: white;">BAJA</option>
-                                            </select>                                    
+
+                                    <div class="col-md-6 mb-3">
+                                        <input type="url" name="coordinate" class="form-control" placeholder="Coordenadas" required>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <select class="form-control" name="priority" required>
+                                            <option value="" disabled selected>PRIORIDAD</option>
+                                            <option value="alta" style="border: none; width: 100%; color: #ef7564; background-color: white;">ALTA</option>
+                                            <option value="media" style="border: none; width: 100%; color: #ffb968; background-color: white;">MEDIA</option>
+                                            <option value="baja" style="border: none; width: 100%; color: #7bc86c; background-color: white;">BAJA</option>
+                                        </select>                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <select class="form-control" name="status">
+                                            <option value="pendiente" style="border: none; width: 100%; color: #ef7564; background-color: white;">PENDIENTE</option>
+                                            <option value="en_proceso" style="border: none; width: 100%; color: #ffb968; background-color: white;">EN PROCESO</option>
+                                            <option value="hecho" style="border: none; width: 100%; color: #7bc86c; background-color: white;">HECHO</option>
+                                        </select>                                    
+                                    </div>
+
+                                    <div class="col-md-3 mb-3">
+                                        <label class="form-label" for="formrow-firstname-input">Fecha de Asignado</label>
+                                        <input type="date" name="assigned_date" class="form-control" placeholder="Fecha Asignado" value="<?php echo date('Y-m-d'); ?>" min="<?php echo date('Y-m-d'); ?>">
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label class="form-label" for="formrow-firstname-input">Hora de Asignado</label>                                        
+                                        <input class="form-control" name="assigned_time" type="time" placeholder="Hora Asignado"  min="<?php echo date('H:m'); ?>" required>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label class="form-label" for="formrow-firstname-input">Fecha de Realizado</label>
+                                        <input type="date" name="done_date" class="form-control" placeholder="Fecha Realizado" min="<?php echo date('Y-m-d'); ?>" required>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label class="form-label" for="formrow-firstname-input">Hora de Realizado</label>
+                                        <input class="form-control" name="done_time" type="time" placeholder="Hora Realizado" required>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <div class="mb-3">
+                                                <a href="/lead"><button type="button" class="btn btn-light w-sm" data-bs-dismiss="modal">Cancelar</button></a>
+                                                <button type="submit" class="btn btn-primary w-md">Agregar Tarea</button>                                            
                                         </div>
-                                        <div class="col">
-                                            <select class="form-control" name="status">
-                                                <option value="pendiente" style="border: none; width: 100%; color: #ef7564; background-color: white;">PENDIENTE</option>
-                                                <option value="en_proceso" style="border: none; width: 100%; color: #ffb968; background-color: white;">EN PROCESO</option>
-                                                <option value="hecho" style="border: none; width: 100%; color: #7bc86c; background-color: white;">HECHO</option>
-                                            </select>                                    
-                                        </div>
-                                        <div class="col">
-                                                <input type="date" name="assigned_date" class="form-control" placeholder="Asignado el..." value="<?php echo date('Y-m-d'); ?>" min="<?php echo date('Y-m-d'); ?>">                                                                       
-                                        </div>
-                                        <div class="col">
-                                            <input type="date" name="done_date" class="form-control" placeholder="Realizado el..." value="<?php echo date('Y-m-d'); ?>" min="<?php echo date('Y-m-d'); ?>">                                                                     
-                                        </div>
-                                        <div class="modal-footer">
-                                            <div class="mb-3">
-                                                    <a href="/lead"><button type="button" class="btn btn-light w-sm" data-bs-dismiss="modal">Cancelar</button></a>
-                                                    <button type="submit" class="btn btn-primary w-md">Agregar Tarea</button>                                            
-                                                </div>
-                                            </div> 
-                                        </div>
+                                    </div> 
                                     @include('layouts.message')
+                                </div>
                             </form>
                             <div class="table-responsive">
                                 <table class="table align-middle table-nowrap table-check">
                                     <thead>
                                         <tr>
+                                            <th scope="col"></th>
                                             <th scope="col">Tarea</th>
                                             <th scope="col">Prioridad</th>
                                             <th scope="col">Estado</th>
                                             <th scope="col">Creado</th>
                                             <th scope="col">Finalizado</th>
+                                            <th scope="col"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($task as $t)
                                             <tr>
+                                                <td><a href={{$t->coordinate}} target="_blank"><button type="submit" title="UBICACIÓN" class="btn btn-primary"><i class="bx bx-map"></i></button></a></td>
                                                 <td>{{$t->task}}</td>
                                                 <td>
                                                     <div class="dropdown">
@@ -436,8 +473,18 @@
                                                         </ul>
                                                     </div><!-- end dropdown -->
                                                 </td>
-                                                <td>{{ date('d-M-y', strtotime($t->assigned_date)) }}</td>
-                                                <td>{{ date('d-M-y', strtotime($t->done_date)) }}</td>
+                                                <td>{{ date('d-M-y', strtotime($t->assigned_date)) }} {{date('H:i', strtotime($t->assigned_time))}}</td>
+                                                <td>{{ date('d-M-y', strtotime($t->done_date)) }} {{date('H:i', strtotime($t->done_time))}}</td>
+                                                <td>
+                                                    <div class="d-flex gap-2">
+                                                        <a href={{route('task_edit', $t->id)}}><button title="EDITAR OPORTUNIDAD" class="btn btn-primary"><i class="fas fa-pencil-alt"></i></button></a>
+                                                        <form action="{{route('task_delete', $t->id)}}" method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" title="BORRAR USUARIO" class="btn btn-primary"><i class="bx bx-x-circle"></i></button>
+                                                        </form>
+                                                    </div>  
+                                                </td>
                                         @endforeach
                                     </tbody>
                                 </table>
@@ -587,6 +634,7 @@
 
 
 <!-- ckeditor -->
+<script src="{{ URL::asset('assets/js/pages/form-validation.init.js') }}"></script>
 <script>
     const value = document.querySelector("#value");
     const input = document.querySelector("#pi_input");
@@ -620,13 +668,13 @@
         non_spain.style.display = 'none';
         non_spain.removeAttribute("required");
         non_spain.removeAttribute("name");
-        spain.required = true;
+        //spain.required = true;
         }else{
         non_spain.style.display = 'initial';
         spain.style.display = 'none';
         spain.removeAttribute("required");
         spain.removeAttribute("name");
-        non_spain.required = true; 
+        //non_spain.required = true; 
         }
     });
 
@@ -638,14 +686,14 @@
         non_spain.removeAttribute("required");
         non_spain.removeAttribute("name");
         spain.setAttribute("name", "state");
-        spain.required = true;
+        //spain.required = true;
       } else {
         non_spain.style.display = 'initial';
         spain.style.display = 'none';
         spain.removeAttribute("required");
         spain.removeAttribute("name");
         non_spain.setAttribute("name", "state");
-        non_spain.required = true;
+        //non_spain.required = true;
       }
     });
 

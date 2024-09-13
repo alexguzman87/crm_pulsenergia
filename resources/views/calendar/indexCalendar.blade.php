@@ -124,7 +124,7 @@
             //},
           
 
-          initialView: 'dayGridDay',
+          initialView: 'dayGridMonth',
           locales: 'es',
           events: @json($events),
           buttonText: { 

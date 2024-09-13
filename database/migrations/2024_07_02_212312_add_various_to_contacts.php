@@ -36,7 +36,7 @@ return new class extends Migration
             $table->dropColumn('address');
             $table->dropColumn('city');
             $table->dropColumn('state');
-            $table->dropColumn('postalCode');
+            $table->dropColumn('postal_code');
         });
     }
 };
