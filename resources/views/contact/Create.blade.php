@@ -8,6 +8,9 @@
 
 @extends('layouts.vertical-master-layout')
 @section('title')  AGREGAR {{strtoupper($namePage)}} | @endsection
+@section('css')
+<link href="{{ URL::asset('assets/libs/gridjs/gridjs.min.css') }}" rel="stylesheet" type="text/css" />
+@endsection
 @section('content')
 {{-- breadcrumbs  --}}
     @section('breadcrumb')
@@ -165,7 +168,13 @@
 </div><!-- end row -->
 <!-- End Form Layout -->
 
+@endsection
+@section('script')
+
 <script src="{{ URL::asset('assets/js/pages/form-validation.init.js') }}"></script>
+<script src="{{ URL::asset('assets/libs/gridjs/gridjs.min.js') }}"></script>
+<script src="{{ URL::asset('assets/js/pages/gridjs.init.js') }}"></script>
+<script src="{{ URL::asset('assets/js/app.js') }}"></script>
 <script>
 
     var spain = document.getElementById('spain');

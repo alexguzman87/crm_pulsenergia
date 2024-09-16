@@ -1,5 +1,8 @@
 @extends('layouts.vertical-master-layout')
 @section('title') EDITAR @if($contact->type=='client') CLIENTE @else LEAD @endif | @endsection
+@section('css')
+<link href="{{ URL::asset('assets/libs/gridjs/gridjs.min.css') }}" rel="stylesheet" type="text/css" />
+@endsection
 @section('content')
 {{-- breadcrumbs  --}}
     @section('breadcrumb')
@@ -727,6 +730,9 @@
 <!-- quill js -->
 <!-- init js -->
 <script src="{{ URL::asset('assets/js/pages/form-editor.init.js') }}"></script>
+<script src="{{ URL::asset('assets/libs/gridjs/gridjs.min.js') }}"></script>
+<script src="{{ URL::asset('assets/js/pages/gridjs.init.js') }}"></script>
+<script src="{{ URL::asset('assets/js/app.js') }}"></script>
 
 
 @endsection

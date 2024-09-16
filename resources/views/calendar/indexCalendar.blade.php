@@ -9,98 +9,100 @@
         @endcomponent
     @endsection
     <div class="row">
-      <div class="col-12">
-          <div class="row">
-              {{--<div class="col-xl-3">
-                  <div class="card card-h-100">
-                      <div class="card-body">
-                          <button class="btn btn-primary w-100" id="btn-new-event"><i class="mdi mdi-plus"></i> Create New Event</button>
+        <div class="col-12">
+            <div class="row">
+                <div class="col-xl-10">
+                    <div class="card card-h-100">
+                        <div class="card-body">  
+                            <div class="d-flex flex-wrap align-items-start justify-content-md-end mt-2 mt-md-0 gap-2 mb-3">
+                                <a href="#" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#addContactModal"><button type="submit" title="CREAR TAREA" name="send" class="btn btn-primary">Agregar Tarea</button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end col-->
+
+                <!-- Modal -->
+                <div class="modal fade" id="addContactModal" tabindex="-1" aria-labelledby="addContactModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="addContactModalLabel">Agregar Tarea</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <!-- end modalheader -->
+                            <div class="modal-body p-4">
+                                <form action="/task_lead_create" method="POST" class="needs-validation" novalidate>
+                                    @csrf
+                                    <div class="row">
+                                        <div class="mb-3">
+                                            <input type="hidden" name="task_origin" value='general'>
+                                            <input type="hidden" name="id_user" value={{auth()->user()->id}}>
+                                            <input type="text" name="task" class="form-control" placeholder="Descripción de la Tarea" required>
+                                        </div>
+                                        
+                                        <div class="col-md-6 mb-3">
+                                            <input type="url" name="coordinate" class="form-control" placeholder="Coordenadas" required>
+                                        </div>
+                                        <div class="col-md-3 mb-3">
+                                            <select class="form-control" name="priority" required>
+                                                <option value="" disabled selected>PRIORIDAD</option>
+                                                <option value="alta" style="border: none; width: 100%; color: #ef7564; background-color: white;">ALTA</option>
+                                                <option value="media" style="border: none; width: 100%; color: #ffb968; background-color: white;">MEDIA</option>
+                                                <option value="baja" style="border: none; width: 100%; color: #7bc86c; background-color: white;">BAJA</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-3 mb-3">
+                                            <select class="form-control" name="status">
+                                                <option value="pendiente" style="border: none; width: 100%; color: #ef7564; background-color: white;">PENDIENTE</option>
+                                                <option value="en_proceso" style="border: none; width: 100%; color: #ffb968; background-color: white;">EN PROCESO</option>
+                                                <option value="hecho" style="border: none; width: 100%; color: #7bc86c; background-color: white;">HECHO</option>
+                                            </select>                                    
+                                        </div>
+    
+                                        <div class="col-md-3 mb-3">
+                                            <label class="form-label" for="formrow-firstname-input">Fecha de Asignado</label>
+                                            <input type="date" name="assigned_date" class="form-control" placeholder="Fecha Asignado" value="<?php echo date('Y-m-d'); ?>" min="<?php echo date('Y-m-d'); ?>">
+                                        </div>
+                                        <div class="col-md-3 mb-3">
+                                            <label class="form-label" for="formrow-firstname-input">Hora de Asignado</label>                                        
+                                            <input class="form-control" name="assigned_time" type="time" placeholder="Hora Asignado"  min="<?php echo date('H:m'); ?>" required>
+                                        </div>
+                                        <div class="col-md-3 mb-3">
+                                            <label class="form-label" for="formrow-firstname-input">Fecha de Realizado</label>
+                                            <input type="date" name="done_date" class="form-control" placeholder="Fecha Realizado" min="<?php echo date('Y-m-d'); ?>" required>
+                                        </div>
+                                        <div class="col-md-3 mb-3">
+                                            <label class="form-label" for="formrow-firstname-input">Hora de Realizado</label>
+                                            <input class="form-control" name="done_time" type="time" placeholder="Hora Realizado" required>
+                                        </div>
+    
+                                        <div class="modal-footer">
+                                            <div class="mb-3">
+                                                <a href="/general_task"><button type="button" class="btn btn-light w-sm" data-bs-dismiss="modal">Cancelar</button></a>
+                                                <button type="submit" class="btn btn-primary w-md">Agregar Tarea</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @include('layouts.message')
+                                </form>
+                            </div>
+                        </div><!-- end content -->
+                    </div>
+                </div>
+                <!-- end modal -->
   
-                          <div id="external-events">
-                              <br>
-                              <p class="text-muted">Drag and drop your event or click in the calendar</p>
-                              <div class="external-event fc-event bg-success" data-class="bg-success">
-                                  <i class="mdi mdi-checkbox-blank-circle font-size-11 me-2"></i>New Event Planning
-                              </div>
-                              <div class="external-event fc-event bg-info" data-class="bg-info">
-                                  <i class="mdi mdi-checkbox-blank-circle font-size-11 me-2"></i>Meeting
-                              </div>
-                              <div class="external-event fc-event bg-warning" data-class="bg-warning">
-                                  <i class="mdi mdi-checkbox-blank-circle font-size-11 me-2"></i>Generating Reports
-                              </div>
-                              <div class="external-event fc-event bg-danger" data-class="bg-danger">
-                                  <i class="mdi mdi-checkbox-blank-circle font-size-11 me-2"></i>Create New theme
-                              </div>
-                          </div>
+                <div class="col-xl-10">
+                    <div class="card card-h-100">
+                        <div class="card-body">
+                            <div id="calendar"></div>
+                        </div>
+                    </div>
+                </div> <!-- end col -->
+            </div>
   
-                      </div>
-                  </div>
-              </div> <!-- end col-->--}}
-  
-              <div class="col-xl-10">
-                  <div class="card card-h-100">
-                      <div class="card-body">
-                          <div id="calendar"></div>
-                      </div>
-                  </div>
-              </div> <!-- end col -->
+            <div style='clear:both'></div>
           </div>
-  
-          <div style='clear:both'></div>
-  
-          {{--<!-- Add New Event MODAL -->
-          <div class="modal fade" id="event-modal" tabindex="-1">
-              <div class="modal-dialog modal-dialog-centered">
-                  <div class="modal-content">
-                      <div class="modal-header py-3 px-4 border-bottom-0">
-                          <h5 class="modal-title" id="modal-title">Event</h5>
-  
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
-  
-                      </div>
-                      <div class="modal-body p-4">
-                          <form class="needs-validation" name="event-form" id="form-event" novalidate>
-                              <div class="row">
-                                  <div class="col-12">
-                                      <div class="mb-3">
-                                          <label class="form-label">Event Name</label>
-                                          <input class="form-control" placeholder="Insert Event Name" type="text" name="title" id="event-title" required value="" />
-                                          <div class="invalid-feedback">Please provide a valid event name</div>
-                                      </div>
-                                  </div>
-                                  <div class="col-12">
-                                      <div class="mb-3">
-                                          <label class="form-label">Category</label>
-                                          <select class="form-select shadow-none" name="category" id="event-category" required>
-                                              <option value="" selected> --Select-- </option>
-                                              <option value="bg-danger">Danger</option>
-                                              <option value="bg-success">Success</option>
-                                              <option value="bg-primary">Primary</option>
-                                              <option value="bg-info">Info</option>
-                                              <option value="bg-dark">Dark</option>
-                                              <option value="bg-warning">Warning</option>
-                                          </select>
-                                          <div class="invalid-feedback">Please select a valid event category</div>
-                                      </div>
-                                  </div>
-                              </div>
-                              <div class="row mt-2">
-                                  <div class="col-6">
-                                      <button type="button" class="btn btn-danger" id="btn-delete-event">Delete</button>
-                                  </div>
-                                  <div class="col-6 text-end">
-                                      <button type="button" class="btn btn-light me-1" data-bs-dismiss="modal">Close</button>
-                                      <button type="submit" class="btn btn-success" id="btn-save-event">Save</button>
-                                  </div>
-                              </div>
-                          </form>
-                      </div>
-                  </div> <!-- end modal-content-->
-              </div> <!-- end modal dialog-->
-          </div>
-          <!-- end modal-->--}}
-      </div>
-  </div>
+    </div>
   
 
 
@@ -111,6 +113,7 @@
 <script src="{{ URL::asset('assets/libs/gridjs/gridjs.min.js') }}"></script>
 <script src="{{ URL::asset('assets/js/pages/gridjs.init.js') }}"></script>
 <script src="{{ URL::asset('assets/js/app.js') }}"></script>
+<script src="{{ URL::asset('assets/js/pages/form-validation.init.js') }}"></script>
 
     <script>
 

@@ -18,17 +18,22 @@ class CalendarController extends Controller
             foreach($all_events as $event){
                 
                 $color = null;
-    
-                if($event->status=='pendiente'){
-                    $color = '#ef7564';
-                }else if($event->status=='en_proceso'){
-                    $color = '#ffb968';
-                }else if($event->status=='hecho'){
-                    $color = '#7bc86c';
+                
+                if($event->task_origin == 'general'){
+                    $color = '#7ac3db';
+                }
+                else{
+                    if($event->status=='pendiente'){
+                        $color = '#ef7564';
+                    }else if($event->status=='en_proceso'){
+                        $color = '#ffb968';
+                    }else if($event->status=='hecho'){
+                        $color = '#7bc86c';
+                    }
                 }
     
                 $events [] = [
-                    'title'=>$event->task,
+                    'title'=>date("H:i", strtotime($event->assigned_time)) . " - " . $event->task,
                     'start'=>$event->assigned_date,
                     'end'=>$event->done_date,
                     'color'=> $color
@@ -47,12 +52,17 @@ class CalendarController extends Controller
 
                 $color = null;
 
-                if($event->status=='pendiente'){
-                    $color = '#ef7564';
-                }else if($event->status=='en_proceso'){
-                    $color = '#ffb968';
-                }else if($event->status=='hecho'){
-                    $color = '#7bc86c';
+                if($event->task_origin == 'general'){
+                    $color = '#7ac3db';
+                }
+                else{
+                    if($event->status=='pendiente'){
+                        $color = '#ef7564';
+                    }else if($event->status=='en_proceso'){
+                        $color = '#ffb968';
+                    }else if($event->status=='hecho'){
+                        $color = '#7bc86c';
+                    }
                 }
 
                 $events [] = [
