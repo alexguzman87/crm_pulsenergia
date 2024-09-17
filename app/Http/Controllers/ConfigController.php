@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\LevelLead;
+use App\Models\LoginRegister;
 use App\Models\Origin;
 use App\Models\TypesLead;
 use Illuminate\Support\Facades\Session;
@@ -215,5 +216,17 @@ class ConfigController extends Controller
         
     }
 
+    //**************REGISTER LOGIN*************
+
+    public function register_login()
+    {
+
+        $register_login = LoginRegister::all();
+
+        $register_login = LoginRegister::orderBy('created_at', 'DESC')->paginate(25);
+
+        return view('config.register_login',compact('register_login'));
+
+    }
 
 }

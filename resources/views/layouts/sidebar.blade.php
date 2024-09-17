@@ -131,6 +131,12 @@
                         <span class="menu-item" data-key="t-dashboard">NIVEL DE LEADS</span>
                     </a>
                 </li>
+                <li>
+                    <a href="/register_login">
+                        <i class="bx bx-list-plus nav-icon"></i>
+                        <span class="menu-item" data-key="t-dashboard">REGISTRO DE INGRESOS</span>
+                    </a>
+                </li>
                 @endif
             </ul>
         </div>

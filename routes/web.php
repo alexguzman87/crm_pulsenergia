@@ -76,6 +76,9 @@ Route::middleware('auth')->group(function() {
         Route::get('config_level_lead_edit/{origin}',[ConfigController::class,'edit_level'])->name('config_level_lead_edit');
         Route::put('config_level_lead_update/{origin}',[ConfigController::class,'update_level'])->name('config_level_lead_update');
         Route::delete('config_level_lead_delete/{origin}',[ConfigController::class,'destroy_level'])->name('config_level_lead_delete');
+
+        //REGISTER LOGIN
+        Route::get('register_login',[ConfigController::class, 'register_login'])->name('register_login');
     });
     
     //Routes Leads
