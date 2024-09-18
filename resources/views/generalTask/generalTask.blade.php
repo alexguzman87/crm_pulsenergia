@@ -94,19 +94,19 @@
                                         </div>
     
                                         <div class="col-md-3 mb-3">
-                                            <label class="form-label" for="formrow-firstname-input">Fecha de Asignado</label>
+                                            <label class="form-label" for="formrow-firstname-input">Fecha de Inicio</label>
                                             <input type="date" name="assigned_date" class="form-control" placeholder="Fecha Asignado" value="<?php echo date('Y-m-d'); ?>" min="<?php echo date('Y-m-d'); ?>">
                                         </div>
                                         <div class="col-md-3 mb-3">
-                                            <label class="form-label" for="formrow-firstname-input">Hora de Asignado</label>                                        
+                                            <label class="form-label" for="formrow-firstname-input">Hora de Inicio</label>                                        
                                             <input class="form-control" name="assigned_time" type="time" placeholder="Hora Asignado"  min="<?php echo date('H:m'); ?>" required>
                                         </div>
                                         <div class="col-md-3 mb-3">
-                                            <label class="form-label" for="formrow-firstname-input">Fecha de Realizado</label>
+                                            <label class="form-label" for="formrow-firstname-input">Fecha Fin</label>
                                             <input type="date" name="done_date" class="form-control" placeholder="Fecha Realizado" min="<?php echo date('Y-m-d'); ?>" required>
                                         </div>
                                         <div class="col-md-3 mb-3">
-                                            <label class="form-label" for="formrow-firstname-input">Hora de Realizado</label>
+                                            <label class="form-label" for="formrow-firstname-input">Hora Fin</label>
                                             <input class="form-control" name="done_time" type="time" placeholder="Hora Realizado" required>
                                         </div>
     
@@ -136,8 +136,8 @@
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Tarea</th>
                                 <th scope="col">Ubicación</th>
-                                <th scope="col">Fecha Inicio</th>
-                                <th scope="col">Fecha Fin</th>
+                                <th scope="col">Inicio</th>
+                                <th scope="col">Fin</th>
                                 <th style="width: 80px; min-width: 80px;">Acción</th>
                             </tr><!-- end tr -->
                         </thead><!-- end thead -->

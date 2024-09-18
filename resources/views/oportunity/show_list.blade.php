@@ -136,10 +136,14 @@
                                             <td>
                                                 {{$o->phone}}</td>  
                                             <td>
-                                                {{$o->origin->name}}
-                                            </td>                                            
-                                            <td>{{$o->level->name}}</td>
-                                            <td>{{$o->type->name}}</td>
+                                                @if ($o->id_origin){{$o->origin->name}}@else No indicado @endif
+                                            </td>
+                                            <td>                                            
+                                                @if ($o->id_level){{$o->level->name}}@else No indicado @endif
+                                            </td>
+                                            <td>
+                                                @if ($o->id_type){{$o->type->name}}@else No indicado @endif
+                                            </td>
                                             <td>
                                                 @if ($o->status=='oportunity')
                                                 <span class="badge badge-soft-info mb-0">OPORTUNIDAD</span>
@@ -156,11 +160,6 @@
                                             <td>
                                                 <div class="d-flex gap-2">
                                                     <a href="/oportunity_edit/{{$o->id}}"><button type="submit" title="EDITAR LEAD" class="btn btn-primary"><i class="fas fa-pencil-alt"></i></button></a>
-                                                    <form action="{{route('oportunity_delete', $o->id)}}" method="POST">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" title="BORRAR OPORTUNIDAD" class="btn btn-primary"><i class="bx bx-x-circle"></i></button>
-                                                    </form>  
                                                 </div>
                                             </td>
                                         </tr>

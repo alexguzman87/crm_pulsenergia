@@ -65,7 +65,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="mb-3">
-                                                <label class="form-label" for="formrow-firstname-input">FECHA INICIO: {{date("d/m/Y", strtotime($task->assigned_date))}} {{date("H:i", strtotime($task->assigned_time))}}</label>
+                                                <label class="form-label" for="formrow-firstname-input">FECHA DE INICIO: {{date("d/m/Y", strtotime($task->assigned_date))}} {{date("H:i", strtotime($task->assigned_time))}}</label>
                                             </div>
                                         </div>
                                     </div>

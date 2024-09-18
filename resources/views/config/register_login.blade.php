@@ -31,7 +31,8 @@
                             @foreach ( $register_login as $r )
                             <tr>
                                 <td>{{$r->user->name}}</td>
-                                <td>{{date("d/m/Y", strtotime($r->created_at))}}</td>
+                                <td>{{date("d/m/Y", strtotime($r->created_at))}} - {{date("H:i", strtotime($r->created_at))}}</td>
+                                <td></td>
                             </tr><!-- end tr --> 
                             @endforeach
                         </tbody><!-- end tbody -->

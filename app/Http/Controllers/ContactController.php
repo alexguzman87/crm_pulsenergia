@@ -295,13 +295,18 @@ class ContactController extends Controller
      */
     public function destroy($id)
     {
-        DB::table("contacts")->where('id',$id)->delete();
+        $contact = Contact::find($id);
+        $contact->delete();
         
-        DB::table("tasks")->where('id_contact',$id)->delete();
-       
-        DB::table("notes")->where('id_contact',$id)->delete();
+        Oportunity::where(['id_contact'=>$id])->delete();      
 
-        DB::table("file_saves")->where('id_contact',$id)->delete();
+        Task::where(['id_contact'=>$id])->delete();      
+
+        Note::where(['id_contact'=>$id])->delete();      
+        
+        FileSave::where(['id_contact'=>$id])->delete();      
+        
+        Note::where(['id_contact'=>$id])->delete();      
         
         Session::flash('danger_red','Los datos del Lead han sido eliminado con éxito');
 

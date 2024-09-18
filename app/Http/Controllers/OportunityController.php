@@ -248,16 +248,22 @@ class OportunityController extends Controller
     public function destroy($id)
     {
         
-        DB::table("oportunities")->where('id',$id)->delete();
-        
-        DB::table("tasks")->where('id_oportunity',$id)->delete();
-        
-        DB::table("notes")->where('id_oportunity',$id)->delete();
-        
-        DB::table("file_saves")->where('id_oportunity',$id)->delete();
+        $oportunity = Oportunity::find($id);
+        $oportunity->delete();      
+       
+        Task::where(['id_oportunity'=>$id])->delete();
+
+        Note::where(['id_oportunity'=>$id])->delete();
+
+        FileSave::where(['id_oportunity'=>$id])->delete();      
 
         Session::flash('danger_red','Los datos de la Oportunidad han sido eliminados con éxito');
 
-        return redirect()->back();
+        if(auth()->user()->type_user=='admin'){
+            return redirect('oportunity');
+        }else{
+            return redirect()->route('oportunity_show_user', auth()->user()->id);
+        }
+
     }
 }
