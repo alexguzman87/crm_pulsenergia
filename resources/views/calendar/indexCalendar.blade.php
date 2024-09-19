@@ -78,7 +78,7 @@
     
                                         <div class="modal-footer">
                                             <div class="mb-3">
-                                                <a href="/general_task"><button type="button" class="btn btn-light w-sm" data-bs-dismiss="modal">Cancelar</button></a>
+                                                <a href="/calendar"><button type="button" class="btn btn-light w-sm" data-bs-dismiss="modal">Cancelar</button></a>
                                                 <button type="submit" class="btn btn-primary w-md">Agregar Tarea</button>
                                             </div>
                                         </div>

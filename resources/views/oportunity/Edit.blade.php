@@ -103,15 +103,32 @@
         </div>
         @endif
         <div class="card">
-            <div class="card-body p-0">
-                <div class="p-4 mt-2">
-                    <form action="{{route('oportunity_delete', $oportunity->id)}}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <input type="hidden" name="status" value="lost">
-                        <button type="submit" class="btn btn-primary w-sm">BORRAR OPORTUNIDAD</button>                                                            
-                    </form>
+            <div class="card-body">
+                <div class="d-flex justify-content-center">
+                    <a href="#" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#addContactModal"><button type="submit" title="BORRAR" name="send" class="btn btn-primary">BORRAR OPORTUNIDAD</button></a>
                 </div>
+                <!-- Modal -->
+                <div class="modal fade" id="addContactModal" tabindex="-1" aria-labelledby="addContactModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                        <div class="modal-content">
+                            <!-- end modalheader -->
+                            <div class="modal-body p-4">
+                                <div class="d-flex justify-content-center">
+                                    <h4>¿SEGURO DESEA ELIMINAR LA OPORTUNIDAD?</h4>
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    <form action="{{route('oportunity_delete', $oportunity->id)}}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <input type="hidden" name="status" value="lost">
+                                        <button type="submit" title="BORRAR" class="btn btn-primary"> BORRAR OPORTUNIDAD</button>                                                            
+                                    </form>    
+                                </div>
+                            </div>
+                        </div><!-- end content -->
+                    </div>
+                </div>
+                <!-- end modal -->
             </div>
         </div>
     </div>
@@ -591,7 +608,17 @@
                                                             <td>{{$c->fileName}}</td>
                                                             <td>{{$c->file}}</td>
                                                             <td>{{ date('d-M-y', strtotime($c->created_at)) }}</td>
-                                                            <td><a href="/download_file_oportunity/{{$c->file}}"><button type="submit" title="DESCARGAR ARCHIVO" class="btn btn-primary"><i class="bx bx-download"></i></button></a></td>                                                           
+                                                            <td>
+                                                                <div class="d-flex gap-2">
+                                                                    <a href="/download_file_oportunity/{{$c->file}}"><button type="submit" title="DESCARGAR ARCHIVO" class="btn btn-primary"><i class="bx bx-download"></i></button></a>
+                                                                    <form action="{{route('file_delete_oportunity', $c->id)}}" method="POST">
+                                                                        @csrf
+                                                                        @method('DELETE')
+                                                                        <button type="submit" title="BORRAR ARCHIVO" class="btn btn-primary"><i class="bx bx-x-circle"></i></button>
+                                                                    </form>      
+                                                                </div>
+                                                            <td>
+
                                                     @endforeach
                                                 </tbody>
                                             </table>

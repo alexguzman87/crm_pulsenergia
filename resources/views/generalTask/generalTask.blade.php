@@ -255,7 +255,7 @@
                                                     <form action="{{route('task_delete', $t->id)}}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" title="BORRAR USUARIO" class="btn btn-primary"><i class="bx bx-x-circle"></i></button>
+                                                        <button type="submit" title="BORRAR TAREA" class="btn btn-primary"><i class="bx bx-x-circle"></i></button>
                                                     </form>  
                                                 </div>
                                             </td>

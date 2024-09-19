@@ -103,6 +103,8 @@ Route::middleware('auth')->group(function() {
     Route::get('download_file_lead/{file}',[SaveFilesController::class, 'download_file_lead'])->name('download_file_lead');
     Route::post('store_file_oportunity',[SaveFilesController::class, 'store_file_oportunity'])->name('store_file_oportunity');
     Route::get('download_file_oportunity/{file}',[SaveFilesController::class, 'download_file_oportunity'])->name('download_file_oportunity');
+    Route::delete('file_delete/{file}',[SaveFilesController::class,'destroy'])->name('file_delete');
+    Route::delete('file_delete_oportunity/{file}',[SaveFilesController::class,'destroy_oportunity'])->name('file_delete_oportunity');
 
     //OPORTUNITIES
     Route::get('oportunity',[OportunityController::class,'index'])->middleware('admin')->name('oportunity');

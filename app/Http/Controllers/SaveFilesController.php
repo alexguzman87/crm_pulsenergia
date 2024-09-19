@@ -65,4 +65,26 @@ class SaveFilesController extends Controller
         return response()->download($id);
     }
 
+
+    public function destroy($id){
+        $file = FileSave::find($id);
+        $file->delete();
+        if(auth()->user()->type_user=='admin'){
+            return redirect('lead');
+        }else{
+            return redirect()->route('lead_show_user', auth()->user()->id);
+        }
+    }
+
+    public function destroy_oportunity($id){
+        $file = FileSave::find($id);
+        $file->delete();
+        if(auth()->user()->type_user=='admin'){
+            return redirect('oportunity');
+        }else{
+            return redirect()->route('oportunity_show_user', auth()->user()->id);
+        }
+    }
+
+
 }

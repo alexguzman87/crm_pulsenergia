@@ -38,6 +38,7 @@
                     <table class="table align-middle table-nowrap table-check">
                         <thead>
                             <tr>
+                                <th scope="col">Fecha</th>
                                 <th scope="col">Origen</th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Correo Electrónico</th>
@@ -66,6 +67,9 @@
                             @foreach ($form as $f)
                                        <tr>
                                             <td>
+                                                {{date("d/m/Y", strtotime($f->date))}}
+                                            </td>
+                                            <td>
                                                 @if($f->form_id==2136)
                                                     <span class="badge badge-soft-warning mb-0">Presupuesto Ingles</span>
                                                 @elseif($f->form_id==2127)
@@ -76,7 +80,6 @@
                                                     <span class="badge badge-soft-info mb-0">Contacto Español</span>
                                                 @endif
                                             </td>
-
                                             @foreach (json_decode($f->fields) as $i)
                                             <td> {{$i->value}}</td>
                                             @endforeach
