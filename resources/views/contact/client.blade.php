@@ -17,7 +17,6 @@
         <div class="card">
             <div class="card-body">
                 <div class="row">
-                    
                     <div class="col-md-6">
                         <div class="mb-3">
                             <h5 class="card-title">Total Clientes <span class="text-muted fw-normal ms-2">{{$contact->count()}}</span></h5>
@@ -37,27 +36,42 @@
                         </div>
                     </div><!-- end col -->
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <form method="GET" action="/client">
-                            @csrf
-                            <input type="text" name="search_id" placeholder="Buscar ID" aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
-                            <input type="text" name="search_name" placeholder="Buscar Nombre" aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
-                            <input type="text" name="search_email" placeholder="Buscar email" aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
-
-                            <select style="width: 250px; border-color: var(--bs-input-border);background-color: var(--bs-input-bg);color: var(--bs-body-color); border: 1px solid #d2d6dc; border-radius: 5px; font-size: 14px; line-height: 1.45; outline: none; padding: 10px 13px;" class="gridjs-input gridjs-search-input" name="search_type">
-                                <option disabled selected>Buscar tipo...</option>
-                                    @foreach ($type as $t)
-                                        <option value={{$t->id}}>{{$t->name}}</option>  
-                                    @endforeach
-                            </select> 
-                            <input type="text" name="search_phone" placeholder="Buscar Telefono" aria-label="Type a keyword..." class="gridjs-input gridjs-search-input">
-                            <button type="submit" name="send" title="FILTRAR" class="btn btn-primary"><i class="bx bx-send"></i></button>
-                            <a href="/errase"><button type="submit" name="send" title="BORRAR FILTRO" class="btn btn-primary"><i class="bx bxs-eraser"></i></button></a>
-                        </form>
-                    </div>                    
-                </div><!-- end row -->
                 
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="card-body">
+                            <form method="GET" action="/client">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-md-2 mb-3">
+                                        <input type="text" name="search_id" placeholder="Buscar ID" class="form-control">
+                                    </div>
+                                    <div class="col-md-2 mb-3">
+                                        <input type="text" name="search_name" placeholder="Buscar Nombre" class="form-control">
+                                    </div>
+                                    <div class="col-md-2 mb-3">
+                                        <input type="text" name="search_email" placeholder="Buscar email" class="form-control">
+                                    </div>
+                                    <div class="col-md-2 mb-3">
+                                        <select class="form-control" name="search_type">
+                                            <option disabled selected>Buscar tipo...</option>
+                                                @foreach ($type as $t)
+                                                    <option value={{$t->id}}>{{$t->name}}</option>  
+                                                @endforeach
+                                        </select> 
+                                    </div>
+                                    <div class="col-md-2 mb-3">
+                                        <input type="text" name="search_phone" placeholder="Buscar Telefono" class="form-control">
+                                    </div>
+                                    <div class="col-md-2 mb-3">
+                                        <button type="submit" name="send" title="FILTRAR" class="btn btn-primary"><i class="bx bx-send"></i></button>
+                                        <a href="/errase"><button type="submit" name="send" title="BORRAR FILTRO" class="btn btn-primary"><i class="bx bxs-eraser"></i></button></a>        
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>               
 
                 <div class="table-responsive">
                     <table class="table align-middle table-nowrap table-check">

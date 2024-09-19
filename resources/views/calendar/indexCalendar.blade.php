@@ -114,18 +114,15 @@
 <script src="{{ URL::asset('assets/js/pages/gridjs.init.js') }}"></script>
 <script src="{{ URL::asset('assets/js/app.js') }}"></script>
 <script src="{{ URL::asset('assets/js/pages/form-validation.init.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
 
       document.addEventListener('DOMContentLoaded', function() {
+        
         var calendarEl = document.getElementById('calendar');
 
         var calendar = new FullCalendar.Calendar(calendarEl, {
-          
-            //eventClick: function(info) {
-                //alert('Event: ' + info.event.title,);
-            //},
-          
 
           initialView: 'dayGridMonth',
           locales: 'es',
@@ -139,6 +136,36 @@
             left: 'prev,next',
             center: 'title',
             right: 'dayGridDay,dayGridWeek,dayGridMonth'
+        },
+        eventClick: function(info) {
+            info.jsEvent.preventDefault(); // don't let the browser navigate
+            Swal.fire({
+                title: info.event.title,
+                icon: "info",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Ir a las coordenadas"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    if(info.event.url != 'null'){
+                        window.open(info.event.url);
+                    }else{
+                        Swal.fire({
+                            title: 'Esta tarea no tiene coordenadas',
+                            icon: "error",
+                            showCancelButton: true,
+                            confirmButtonColor: "#3085d6",
+                            cancelButtonColor: "#d33",
+                            confirmButtonText: "Añadir coordenadas"
+                        }).then((result) => {
+                            if (result.isConfirmed) { 
+                                window.open('task_edit/' + info.event.id)      
+                            }
+                        });
+                    }
+                }
+            });
         },
         });
         calendar.render();

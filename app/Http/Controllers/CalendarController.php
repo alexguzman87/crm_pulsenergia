@@ -36,7 +36,9 @@ class CalendarController extends Controller
                     'title'=>date("H:i", strtotime($event->assigned_time)) . " - " . $event->task,
                     'start'=>$event->assigned_date,
                     'end'=>$event->done_date,
-                    'color'=> $color
+                    'url'=>$event->coordinate,
+                    'color'=> $color,
+                    'id'=>$event->id,
                 ];
             }
     

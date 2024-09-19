@@ -12,6 +12,7 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
-        "fullcalendar": "^6.1.15"
+        "fullcalendar": "^6.1.15",
+        "sweetalert2": "^11.14.0"
     }
 }
