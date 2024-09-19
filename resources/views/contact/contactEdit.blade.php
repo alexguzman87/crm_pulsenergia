@@ -113,7 +113,18 @@
             </div>
         </div>
         @endif
-
+        <div class="card">
+            <div class="card-body p-0">
+                <div class="p-4 mt-2">
+                    <form action="{{route('lead_delete', $contact->id)}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <input type="hidden" name="status" value="lost">
+                        <button type="submit" title="BORRAR LEAD" class="btn btn-primary"> BORRAR @if($contact->type=='client') CLIENTE @else LEAD @endif</button>                                                            
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- end col -->
 

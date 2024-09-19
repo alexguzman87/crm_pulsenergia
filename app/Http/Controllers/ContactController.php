@@ -310,7 +310,12 @@ class ContactController extends Controller
         
         Session::flash('danger_red','Los datos del Lead han sido eliminado con éxito');
 
-        return redirect()->back();
+        if(auth()->user()->type_user=='admin'){
+            return redirect('lead');
+        }else{
+            return redirect()->route('lead_show_user', auth()->user()->id);
+        }
+
     }
 
     public function export() 

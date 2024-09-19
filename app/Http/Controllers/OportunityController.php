@@ -94,6 +94,19 @@ class OportunityController extends Controller
             $contact=new Contact();
             $contact->name = $request->input('contact_name');
             $contact->phone = $request->input('phone');
+            $contact->id_user=$request->input('id_user');
+            $contact->email=$request->input('email');
+            $contact->phone=$request->input('phone');
+            $contact->country=$request->input('country');
+            $contact->state=$request->input('state');
+            $contact->street=$request->input('street');
+            $contact->address=$request->input('address');
+            $contact->coordinate=$request->input('coordinate');
+            $contact->city=$request->input('city');
+            $contact->postal_code=$request->input('postal_code');
+            $contact->id_origins=$request->input('id_origins');
+            $contact->id_level=$request->input('id_level');
+            $contact->id_type=$request->input('id_type');
             if($request->input('status') == 'sale'){
                 $contact->type = 'client';
             }
