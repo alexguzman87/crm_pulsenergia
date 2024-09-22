@@ -60,19 +60,19 @@
                                         </div>
     
                                         <div class="col-md-3 mb-3">
-                                            <label class="form-label" for="formrow-firstname-input">Fecha de Asignado</label>
+                                            <label class="form-label" for="formrow-firstname-input">Fecha de Inicio</label>
                                             <input type="date" name="assigned_date" class="form-control" placeholder="Fecha Asignado" value="<?php echo date('Y-m-d'); ?>" min="<?php echo date('Y-m-d'); ?>">
                                         </div>
                                         <div class="col-md-3 mb-3">
-                                            <label class="form-label" for="formrow-firstname-input">Hora de Asignado</label>                                        
+                                            <label class="form-label" for="formrow-firstname-input">Hora de Inicio</label>                                        
                                             <input class="form-control" name="assigned_time" type="time" placeholder="Hora Asignado"  min="<?php echo date('H:m'); ?>" required>
                                         </div>
                                         <div class="col-md-3 mb-3">
-                                            <label class="form-label" for="formrow-firstname-input">Fecha de Realizado</label>
+                                            <label class="form-label" for="formrow-firstname-input">Fecha Fin</label>
                                             <input type="date" name="done_date" class="form-control" placeholder="Fecha Realizado" min="<?php echo date('Y-m-d'); ?>" required>
                                         </div>
                                         <div class="col-md-3 mb-3">
-                                            <label class="form-label" for="formrow-firstname-input">Hora de Realizado</label>
+                                            <label class="form-label" for="formrow-firstname-input">Hora Fin</label>
                                             <input class="form-control" name="done_time" type="time" placeholder="Hora Realizado" required>
                                         </div>
     
@@ -143,9 +143,10 @@
                 title: info.event.title,
                 icon: "info",
                 showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Ir a las coordenadas"
+                confirmButtonColor: "#DC3C00",
+                cancelButtonColor: "#6B367E",
+                confirmButtonText: "VER UBICACIÓN",
+                cancelButtonText: "CANCELAR"
             }).then((result) => {
                 if (result.isConfirmed) {
                     if(info.event.url != 'null'){
@@ -155,9 +156,10 @@
                             title: 'Esta tarea no tiene coordenadas',
                             icon: "error",
                             showCancelButton: true,
-                            confirmButtonColor: "#3085d6",
-                            cancelButtonColor: "#d33",
-                            confirmButtonText: "Añadir coordenadas"
+                            confirmButtonColor: "#DC3C00",
+                            cancelButtonColor: "#6B367E",
+                            confirmButtonText: "VER UBICACIÓN",
+                            cancelButtonText: "CANCELAR"
                         }).then((result) => {
                             if (result.isConfirmed) { 
                                 window.open('task_edit/' + info.event.id)      

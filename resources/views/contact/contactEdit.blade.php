@@ -128,14 +128,14 @@
                                     <h4>¿SEGURO DESEA ELIMINAR EL @if($contact->type=='client') CLIENTE @else LEAD @endif?</h4>
                                 </div>
                                 <div class="d-flex justify-content-center">
-                                    <h5>Este cambio eliminara las Oportunidades asociadas</h5>
+                                    <h5>Este cambio eliminará las Oportunidades, Tareas, Archivos y Notas Asociadas</h5>
                                 </div>
                                 <div class="d-flex justify-content-center">
                                     <form action="{{route('lead_delete', $contact->id)}}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <input type="hidden" name="status" value="lost">
-                                        <button type="submit" title="BORRAR" class="btn btn-primary"> BORRAR @if($contact->type=='client') CLIENTE @else LEAD @endif</button>                                                            
+                                        <button type="submit" title="ELIMINAR" class="btn btn-primary"> ELIMINAR </button>                                                            
                                     </form>    
                                 </div>
                             </div>

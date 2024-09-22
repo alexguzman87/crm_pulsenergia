@@ -121,7 +121,7 @@
                                         @csrf
                                         @method('DELETE')
                                         <input type="hidden" name="status" value="lost">
-                                        <button type="submit" title="BORRAR" class="btn btn-primary"> BORRAR OPORTUNIDAD</button>                                                            
+                                        <button type="submit" title="ELIMINAR" class="btn btn-primary"> ELIMINAR </button>                                                            
                                     </form>    
                                 </div>
                             </div>
@@ -275,7 +275,15 @@
                                             </div>
                                             <div class="col-md-3">
                                                 <div class="mb-3">
-                                                    <select name="status" class="form-select" value={{$oportunity->status}}>
+                                                    <select name="status" class="form-select">
+                                                        <option value="{{$oportunity->status}}">
+                                                            @if ($oportunity->status =='oportunity') OPORTUNIDAD 
+                                                            @elseif($oportunity->status =='proposal') EN PROPUESTA
+                                                            @elseif($oportunity->status =='need') NECESITO APOYO
+                                                            @elseif($oportunity->status =='sale') VENTA EXITOSA
+                                                            @elseif($oportunity->status =='lost') PÉRDIDO
+                                                            @endif
+                                                        </option>
                                                         <option value="oportunity">Oportunidad</option>
                                                         <option value="proposal">En Propuesta</option>
                                                         <option value="need">Necesito Apoyo</option>
