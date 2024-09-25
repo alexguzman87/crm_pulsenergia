@@ -36,13 +36,13 @@
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label" for="formrow-firstname-input">COORDENADAS DE LA TAREA</label>
-                                        <input type="url" name="coordinate" class="form-control" placeholder="Coordenadas" value="{{$task->coordinate}}" required>
+                                        <input type="url" name="coordinate" class="form-control" placeholder="Coordenadas" value="{{$task->coordinate}}">
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="mb-3">
                                                 <label class="form-label" for="formrow-firstname-input">PRIORIDAD</label>
-                                                <select class="form-control" name="priority" required>
+                                                <select class="form-control" name="priority">
                                                     <option value="{{$task->priority}}" disabled selected>{{strtoupper($task->priority)}}</option>
                                                     <option value="alta" style="border: none; width: 100%; color: #ef7564; background-color: white;">ALTA</option>
                                                     <option value="media" style="border: none; width: 100%; color: #ffb968; background-color: white;">MEDIA</option>
@@ -53,7 +53,7 @@
                                         <div class="col-md-6">
                                             <div class="mb-3">
                                                 <label class="form-label" for="formrow-firstname-input">ESTADO</label>
-                                                <select class="form-control" name="status" required>
+                                                <select class="form-control" name="status">
                                                     <option value="{{$task->status}}" disabled selected>{{strtoupper($task->status)}}</option>
                                                     <option value="pendiente" style="border: none; width: 100%; color: #ef7564; background-color: white;">PENDIENTE</option>
                                                     <option value="en_proceso" style="border: none; width: 100%; color: #ffb968; background-color: white;">EN PROCESO</option>

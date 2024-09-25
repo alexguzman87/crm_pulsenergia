@@ -30,7 +30,7 @@ class TaskCotroller extends Controller
         }
     }
 
-    public function store_lead(TaskCreateRequest $request)
+    public function store_lead(Request $request)
     {
         $Task=new Task();
         $Task->id_user=$request->input('id_user');
@@ -52,7 +52,7 @@ class TaskCotroller extends Controller
         return redirect()->back();
     }
 
-    public function store_oportunity(TaskCreateRequest $request)
+    public function store_oportunity(Request $request)
     {
         $Task=new Task();
         $Task->id_user=$request->input('id_user');

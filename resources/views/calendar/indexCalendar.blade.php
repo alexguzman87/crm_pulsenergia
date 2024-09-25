@@ -41,10 +41,10 @@
                                         </div>
                                         
                                         <div class="col-md-6 mb-3">
-                                            <input type="url" name="coordinate" class="form-control" placeholder="Coordenadas" required>
+                                            <input type="url" name="coordinate" class="form-control" placeholder="Coordenadas">
                                         </div>
                                         <div class="col-md-3 mb-3">
-                                            <select class="form-control" name="priority" required>
+                                            <select class="form-control" name="priority">
                                                 <option value="" disabled selected>PRIORIDAD</option>
                                                 <option value="alta" style="border: none; width: 100%; color: #ef7564; background-color: white;">ALTA</option>
                                                 <option value="media" style="border: none; width: 100%; color: #ffb968; background-color: white;">MEDIA</option>
@@ -158,7 +158,7 @@
                             showCancelButton: true,
                             confirmButtonColor: "#DC3C00",
                             cancelButtonColor: "#6B367E",
-                            confirmButtonText: "VER UBICACIÓN",
+                            confirmButtonText: "AGREGAR UBICACIÓN",
                             cancelButtonText: "CANCELAR"
                         }).then((result) => {
                             if (result.isConfirmed) { 

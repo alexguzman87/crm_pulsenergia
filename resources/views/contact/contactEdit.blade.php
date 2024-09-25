@@ -116,7 +116,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="d-flex justify-content-center">
-                    <a href="#" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#addContactModal"><button type="submit" title="BORRAR" name="send" class="btn btn-primary">BORRAR @if($contact->type=='client') CLIENTE @else LEAD @endif</button></a>
+                    <a href="#" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#addContactModal"><button type="submit" title="ELIMINAR" name="send" class="btn btn-primary"> ELIMINAR </button></a>
                 </div>
                 <!-- Modal -->
                 <div class="modal fade" id="addContactModal" tabindex="-1" aria-labelledby="addContactModalLabel" aria-hidden="true">
@@ -156,14 +156,14 @@
                 <ul class="nav nav-tabs" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" data-bs-toggle="tab" href="#navtabs-profile" role="tab">
-                            <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
+                            <span class="d-block d-sm-none"><i class="uil-user-circle" title="EDITAR"></i></span>
                             <span class="d-none d-sm-block">Editar</span>
                         </a>
                     </li>
                     @if($contact->type == 'client')
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="tab" href="#navtabs-postsales" role="tab">
-                            <span class="d-block d-sm-none"><i class="far fa-envelope"></i></span>
+                            <span class="d-block d-sm-none"><i class="uil-bill" title="POST VENTA"></i></span>
                             <span class="d-none d-sm-block">Post Ventas</span>
                         </a>
                     </li>
@@ -171,26 +171,26 @@
                     @if($contact->id_user)
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="tab" href="#navtabs-task" role="tab">
-                            <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
+                            <span class="d-block d-sm-none"><i class="uil-sitemap" title="TAREAS"></i></span>
                             <span class="d-none d-sm-block">Tareas</span>
                         </a>
                     </li>
                     @endif
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="tab" href="#navtabs-notes" role="tab">
-                            <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
+                            <span class="d-block d-sm-none"><i class="uil-clipboard-blank" title="NOTAS"></i></span>
                             <span class="d-none d-sm-block">Notas</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="tab" href="#navtabs-files" role="tab">
-                            <span class="d-block d-sm-none"><i class="far fa-envelope"></i></span>
+                            <span class="d-block d-sm-none"><i class="uil-upload" title="ARCHIVO"></i></span>
                             <span class="d-none d-sm-block">Archivos</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="tab" href="#navtabs-mail" role="tab">
-                            <span class="d-block d-sm-none"><i class="far fa-envelope"></i></span>
+                            <span class="d-block d-sm-none"><i class="far fa-envelope" title="MAIL"></i></span>
                             <span class="d-none d-sm-block">Email</span>
                         </a>
                     </li>
@@ -405,10 +405,10 @@
                                     </div>
                                     
                                     <div class="col-md-6 mb-3">
-                                        <input type="url" name="coordinate" class="form-control" placeholder="Coordenadas" required>
+                                        <input type="url" name="coordinate" class="form-control" placeholder="Coordenadas">
                                     </div>
                                     <div class="col-md-3 mb-3">
-                                        <select class="form-control" name="priority" required>
+                                        <select class="form-control" name="priority">
                                             <option value="" disabled selected>PRIORIDAD</option>
                                             <option value="alta" style="border: none; width: 100%; color: #ef7564; background-color: white;">ALTA</option>
                                             <option value="media" style="border: none; width: 100%; color: #ffb968; background-color: white;">MEDIA</option>
@@ -606,7 +606,7 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <div>
-                                            <form action="/store_file_lead" class="dropzone" method="POST" enctype="multipart/form-data">
+                                            <form action="/store_file_lead" class="needs-validation" method="POST" enctype="multipart/form-data" novalidate>
                                                 @csrf
                                                 <div class="mb-3">
                                                     <input type="hidden" name="id_contact" class="form-control" value="{{$contact->id}}">
@@ -614,13 +614,7 @@
                                                     <input name="fileName" type="text" class="form-control" placeholder="Nombre / Descripción del archivo" required>
                                                 </div>
                                                 <div class="fallback">
-                                                    <input name="file" type="file" multiple="multiple" required>
-                                                </div>
-                                                <div class="dz-message needsclick text-center">
-                                                    <div class="mb-3">
-                                                        <i class="display-4 text-muted uil uil-cloud-upload"></i>
-                                                        <h4>Suelte los archivos aquí o haga clic para cargarlos.</h4>
-                                                    </div>
+                                                    <input name="file[]" type="file" multiple="multiple" required>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <div class="mt-4">

@@ -11,8 +11,25 @@ use Illuminate\Support\Facades\Session;
 class SaveFilesController extends Controller
 {
 
-    public function store_file_lead(SaveFileRequest $request){
+    public function store_file_lead(Request $request){
 
+        
+        foreach ($request->file('file') as $image){
+            $file =new FileSave;
+            $file->id_contact=$request->input('id_contact');
+            $file->fileName=$request->input('fileName');
+            $contactId=$request->input('id_contact');
+            $extension = $image->getClientOriginalName();
+            $date = now()->format('Ymd_His');
+            $filename = $date."_".$contactId."_".$extension;
+            $image->move('files/',$filename);
+            $file->file=$filename;
+            $file->save();
+        }
+
+
+
+        /* CODIGO VIEJO
         $file=new FileSave;
         $file->id_contact=$request->input('id_contact');
         $file->fileName=$request->input('fileName');
@@ -26,6 +43,7 @@ class SaveFilesController extends Controller
             $file->file=$filename;
         }
         $file->save();
+        */
 
         Session::flash('success_green','Se ha agregado un archivo con éxito');
 
@@ -38,21 +56,20 @@ class SaveFilesController extends Controller
         return response()->download($id);
     }
 
-    public function store_file_oportunity(SaveFileRequest $request){
+    public function store_file_oportunity(Request $request){
 
-        $file=new FileSave;
-        $file->id_oportunity=$request->input('id_oportunity');
-        $file->fileName=$request->input('fileName');
-        $oportunityId=$request->input('id_oportunity');
-        if($request->hasFile('file')){
-            $fileUpdate=$request->file('file');
-            $extension = $fileUpdate->getClientOriginalName();
+        foreach ($request->file('file') as $image){
+            $file =new FileSave;
+            $file->id_oportunity=$request->input('id_oportunity');
+            $file->fileName=$request->input('fileName');
+            $contactId=$request->input('id_contact');
+            $extension = $image->getClientOriginalName();
             $date = now()->format('Ymd_His');
-            $filename = $date."_".$oportunityId."_".$extension;
-            $fileUpdate->move('files/',$filename);
+            $filename = $date."_".$contactId."_".$extension;
+            $image->move('files/',$filename);
             $file->file=$filename;
+            $file->save();
         }
-        $file->save();
 
         Session::flash('success_green','Se ha agregado un archivo con éxito');
 
