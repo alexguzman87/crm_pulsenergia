@@ -428,7 +428,7 @@
                                     </div>
                                     <div class="col-md-3 mb-3">
                                         <label class="form-label" for="formrow-firstname-input">Hora de Inicio</label>                                        
-                                        <input class="form-control" name="assigned_time" type="time" placeholder="Hora Asignado"  min="<?php echo date('H:m'); ?>" required>
+                                        <input class="form-control" name="assigned_time" type="time" placeholder="Hora Asignado"  required>
                                     </div>
                                     <div class="col-md-3 mb-3">
                                         <label class="form-label" for="formrow-firstname-input">Fecha Fin</label>

@@ -75,7 +75,7 @@
                                         </div>
                                         
                                         <div class="col-md-6 mb-3">
-                                            <input type="url" name="coordinate" class="form-control" placeholder="Coordenadas">
+                                            <input type="url" name="coordinate" class="form-control" placeholder="">
                                         </div>
                                         <div class="col-md-3 mb-3">
                                             <select class="form-control" name="priority">
@@ -95,15 +95,15 @@
     
                                         <div class="col-md-3 mb-3">
                                             <label class="form-label" for="formrow-firstname-input">Fecha de Inicio</label>
-                                            <input type="date" name="assigned_date" class="form-control" placeholder="Fecha Asignado" value="<?php echo date('Y-m-d'); ?>" min="<?php echo date('Y-m-d'); ?>">
+                                            <input type="date" name="assigned_date" class="form-control" placeholder="Fecha Asignado" value="<?php date_default_timezone_set("Europe/Madrid"); echo date('Y-m-d'); ?>" min="<?php date_default_timezone_set("Europe/Madrid"); echo date('Y-m-d'); ?>">
                                         </div>
                                         <div class="col-md-3 mb-3">
                                             <label class="form-label" for="formrow-firstname-input">Hora de Inicio</label>                                        
-                                            <input class="form-control" name="assigned_time" type="time" placeholder="Hora Asignado"  min="<?php echo date('H:m'); ?>" required>
+                                            <input class="form-control" name="assigned_time" type="time" placeholder="Hora Asignado"  required>
                                         </div>
                                         <div class="col-md-3 mb-3">
                                             <label class="form-label" for="formrow-firstname-input">Fecha Fin</label>
-                                            <input type="date" name="done_date" class="form-control" placeholder="Fecha Realizado" min="<?php echo date('Y-m-d'); ?>" required>
+                                            <input type="date" name="done_date" class="form-control" placeholder="Fecha Realizado" min="<?php date_default_timezone_set("Europe/Madrid"); echo date('Y-m-d'); ?>" required>
                                         </div>
                                         <div class="col-md-3 mb-3">
                                             <label class="form-label" for="formrow-firstname-input">Hora Fin</label>
