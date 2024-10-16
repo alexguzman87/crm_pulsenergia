@@ -566,6 +566,7 @@
 @section('script')
 
 <!-- dragula plugins -->
+<script src="{{ URL::asset('assets/js/app.js') }}"></script>
 <script src="{{ URL::asset('assets/libs/dragula/dragula.min.js') }}"></script>
 <script src="{{ URL::asset('assets/js/pages/kanbanboard.init.js') }}"></script>
 
