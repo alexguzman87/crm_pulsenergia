@@ -160,7 +160,11 @@ class ContactController extends Controller
 
         $type=TypesLead::all();
         
-        $contact=Contact::where('id_user',$id)->where('type','lead')->get();
+        if(auth()->user()->id == 8){
+            $contact=Contact::whereIn('id_user',[8,11])->where('type','lead')->get();
+        }else{
+            $contact=Contact::where('id_user',$id)->where('type','lead')->get();
+        }     
 
         $contact_user=Contact::orderBy('id')->paginate(25);
 
@@ -174,8 +178,12 @@ class ContactController extends Controller
         $user=User::all();
 
         $type=TypesLead::all();
-        
-        $contact=Contact::where('id_user',$id)->where('type','client')->get();
+
+        if(auth()->user()->id == 8){
+            $contact=Contact::whereIn('id_user',[8,13])->where('type','client')->get();
+        }else{
+            $contact=Contact::where('id_user',$id)->where('type','client')->get();
+        }     
 
         $contact_user=Contact::orderBy('id')->paginate(25);
 

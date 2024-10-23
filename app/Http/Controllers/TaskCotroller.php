@@ -22,6 +22,12 @@ class TaskCotroller extends Controller
 
         return view ('generalTask.generalTask',compact('task'));
         
+        }elseif(auth()->user()->id == 8){
+
+            $task = Task::whereIn('id_user', [8,11])->paginate(25);
+
+            return view ('generalTask.generalTask',compact('task'));
+
         }else{
 
             $task = Task::where('id_user',auth()->user()->id)->paginate(25);

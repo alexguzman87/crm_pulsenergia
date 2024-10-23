@@ -133,13 +133,27 @@ class OportunityController extends Controller
     {    
         $user=User::all();
         
-        $oportunity_user=Oportunity::where('id_user',$id)->get();
+        if(auth()->user()->id == 8){
 
-        $oportunity=Oportunity::where('status','oportunity')->where('id_user',$id)->get();
-        $proposal=Oportunity::where('status','proposal')->where('id_user',$id)->get();
-        $need=Oportunity::where('status','need')->where('id_user',$id)->get();
-        $sale=Oportunity::where('status','sale')->where('id_user',$id)->get();
-        $lost=Oportunity::where('status','lost')->where('id_user',$id)->get();
+            $oportunity_user=Oportunity::whereIn('id_user',[8,11])->get();
+
+            $oportunity=Oportunity::where('status','oportunity')->whereIn('id_user',[8,11])->get();
+            $proposal=Oportunity::where('status','proposal')->whereIn('id_user',[8,11])->get();
+            $need=Oportunity::where('status','need')->whereIn('id_user',[8,11])->get();
+            $sale=Oportunity::where('status','sale')->whereIn('id_user',[8,11])->get();
+            $lost=Oportunity::where('status','lost')->whereIn('id_user',[8,11])->get();
+
+        }else{
+
+            $oportunity_user=Oportunity::where('id_user',$id)->get();
+
+            $oportunity=Oportunity::where('status','oportunity')->where('id_user',$id)->get();
+            $proposal=Oportunity::where('status','proposal')->where('id_user',$id)->get();
+            $need=Oportunity::where('status','need')->where('id_user',$id)->get();
+            $sale=Oportunity::where('status','sale')->where('id_user',$id)->get();
+            $lost=Oportunity::where('status','lost')->where('id_user',$id)->get();
+
+        }    
 
         return view ('oportunity.show', compact('oportunity_user', 'oportunity','proposal','need','sale','lost','user'));
     }
@@ -147,8 +161,16 @@ class OportunityController extends Controller
     public function show_list($id)
     {    
         $user=User::all();
+
+        if(auth()->user()->id == 8){
         
-        $oportunity=Oportunity::where('id_user',$id)->get();
+            $oportunity=Oportunity::whereIn('id_user',[8,11])->get();
+
+        }else{
+
+            $oportunity=Oportunity::where('id_user',$id)->get();
+
+        }
 
         $oportunity_user=Oportunity::orderBy('id')->paginate(25);
 
