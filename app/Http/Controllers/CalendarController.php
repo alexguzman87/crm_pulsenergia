@@ -34,8 +34,8 @@ class CalendarController extends Controller
     
                 $events [] = [
                     'title'=>date("H:i", strtotime($event->assigned_time)) . " - " . $event->task,
-                    'start'=>$event->assigned_date,
-                    'end'=>$event->done_date,
+                    'start'=>$event->assigned_date . ' ' . $event->assigned_time,
+                    'end'=>$event->done_date . ' ' . $event->done_time,
                     'url'=>$event->coordinate,
                     'color'=> $color,
                     'id'=>$event->id,
@@ -69,8 +69,8 @@ class CalendarController extends Controller
 
                 $events [] = [
                     'title'=>$event->task,
-                    'start'=>$event->assigned_date,
-                    'end'=>$event->done_date,
+                    'start'=>$event->assigned_date . ' ' . $event->assigned_time,
+                    'end'=>$event->done_date . ' ' . $event->done_time,
                     'color'=> $color
                 ];
             }
@@ -102,8 +102,8 @@ class CalendarController extends Controller
 
                 $events [] = [
                     'title'=>$event->task,
-                    'start'=>$event->assigned_date,
-                    'end'=>$event->done_date,
+                    'start'=>$event->assigned_date . ' ' . $event->assigned_time,
+                    'end'=>$event->done_date . ' ' . $event->done_time,
                     'color'=> $color
                 ];
             }

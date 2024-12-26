@@ -124,18 +124,18 @@
 
         var calendar = new FullCalendar.Calendar(calendarEl, {
 
-          initialView: 'dayGridMonth',
+          initialView: 'timeGridWeek',
           locales: 'es',
           events: @json($events),
           buttonText: { 
-            dayGridDay: "Hoy", 
-            dayGridWeek: "Semana", 
+            timeGridDay: "Hoy", 
+            timeGridWeek: "Semana", 
             dayGridMonth: "Mes"
         },
           headerToolbar: {
             left: 'prev,next',
             center: 'title',
-            right: 'dayGridDay,dayGridWeek,dayGridMonth'
+            right: 'timeGridDay,timeGridWeek,dayGridMonth'
         },
         eventClick: function(info) {
             info.jsEvent.preventDefault(); // don't let the browser navigate
@@ -168,6 +168,13 @@
                     }
                 }
             });
+        },
+        nowIndicator: true,  // Indicador de la hora actual
+        allDaySlot: false,  // Desactiva la opción "All Day"
+        slotLabelFormat: {
+            hour: '2-digit',   // Muestra la hora en dos dígitos
+            minute: '2-digit', // Muestra los minutos en dos dígitos
+            hour12: true,      // Usa el formato de 24 horas
         },
         });
         calendar.render();

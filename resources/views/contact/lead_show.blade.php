@@ -40,7 +40,7 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="card-body">
-                            <form method="GET" action="/client">
+                            <form method="GET" action="/lead">
                                 @csrf
                                 <div class="row">
                                     <div class="col-md-2 mb-3">

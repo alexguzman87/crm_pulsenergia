@@ -5,7 +5,7 @@
 <div class="auth-page d-flex align-items-center min-vh-100">
     <div class="container-fluid p-0">
         <div class="row g-0">
-            <div class="col-xxl-3 col-lg-4 col-md-5">
+            <div class="col-xxl-3 col-lg-4 col-md-5 order-2 order-md-1">
                 <div class="d-flex flex-column h-100 py-5 px-4">
                     <div class="my-auto">
                         <div class="p-3 text-center">
@@ -28,7 +28,7 @@
             </div>
             <!-- end col -->
 
-            <div class="col-xxl-9 col-lg-8 col-md-7">
+            <div class="col-xxl-9 col-lg-8 col-md-7 order-1 order-md-2">
                 <div class="auth-bg bg-light py-md-5 p-4 d-flex">
                     <div class="bg-overlay-gradient"></div>
                     <!-- end bubble effect -->
