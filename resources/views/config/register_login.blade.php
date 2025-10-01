@@ -34,8 +34,13 @@
                         </div>
 
                         <div class="col-md-3 mb-3">
-                            <label for="created_at" class="form-label">Fecha de Registro:</label>
-                            <input type="date" name="created_at" id="created_at" class="form-control" value="{{ request('created_at') }}">
+                            <label for="created_at_start" class="form-label">Desde:</label>
+                            <input type="date" name="created_at_start" id="created_at_start" class="form-control" value="{{ request('created_at_start') }}">
+                        </div>
+
+                        <div class="col-md-3 mb-3">
+                            <label for="created_at_end" class="form-label">Hasta:</label>
+                            <input type="date" name="created_at_end" id="created_at_end" class="form-control" value="{{ request('created_at_end') }}">
                         </div>
 
                         <div class="col-md-3 mb-3 d-flex">

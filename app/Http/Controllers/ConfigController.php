@@ -228,8 +228,12 @@ class ConfigController extends Controller
             $query->where('id_user', $request->input('user_id'));
         }
 
-        if ($request->filled('created_at')) {
-            $query->whereDate('created_at', '=', $request->input('created_at'));
+        if ($request->filled('created_at_start')) {
+            $query->whereDate('created_at', '>=', $request->input('created_at_start'));
+        }
+
+        if ($request->filled('created_at_end')) {
+            $query->whereDate('created_at', '<=', $request->input('created_at_end'));
         }
 
         $register_login = $query->paginate(500)->withQueryString();
