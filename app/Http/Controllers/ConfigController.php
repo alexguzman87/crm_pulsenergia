@@ -6,6 +6,7 @@ use App\Models\LevelLead;
 use App\Models\LoginRegister;
 use App\Models\Origin;
 use App\Models\TypesLead;
+use App\Models\User;
 use Illuminate\Support\Facades\Session;
 
 use Illuminate\Http\Request;
@@ -218,14 +219,24 @@ class ConfigController extends Controller
 
     //**************REGISTER LOGIN*************
 
-    public function register_login()
+    public function register_login(Request $request)
     {
 
-        $register_login = LoginRegister::all();
+        $query = LoginRegister::orderBy('created_at', 'DESC');
 
-        $register_login = LoginRegister::orderBy('created_at', 'DESC')->paginate(25);
+        if ($request->filled('user_id')) {
+            $query->where('id_user', $request->input('user_id'));
+        }
 
-        return view('config.register_login',compact('register_login'));
+        if ($request->filled('created_at')) {
+            $query->whereDate('created_at', '=', $request->input('created_at'));
+        }
+
+        $register_login = $query->paginate(500)->withQueryString();
+
+        $users = User::all();
+        
+        return view('config.register_login',compact('register_login', 'users'));
 
     }
 
